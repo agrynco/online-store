@@ -1,42 +1,50 @@
-﻿@using System
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Online Store", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home", new {area = ""}, null)</li>
-                <li>@Html.ActionLink("API", "Index", "Help", new {area = ""}, null)</li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="container body-content">
+    <table style="width: 100%; height: 100%" border="0">
+        <thead>
+            <tr>
+                <td></td>
+                <td style="width: 640px; background: whitesmoke">
+                    <div>
+                        @Html.Partial("_topMenu")
+                    </div>
+                    <div>
+                        @Html.Partial("_searchControl")
+                    </div>
+                    <div>
+                        @Html.Partial("_horizontalCategorySelector")
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr height="100%">
+                <td></td>
+                <td style="background: white">
+                    @RenderSection("content")
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td style="background: whitesmoke">Footer</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
     @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-</div>
-
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
