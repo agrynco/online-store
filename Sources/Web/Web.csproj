@@ -305,6 +305,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
+    <Content Include="Views\Shared\_searchControl.cshtml" />
+    <Content Include="Views\Shared\_topMenu.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\ContanctInfo\Index.cshtml" />
+    <Content Include="Views\Stub\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
