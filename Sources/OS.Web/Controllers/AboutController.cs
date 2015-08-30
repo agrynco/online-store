@@ -1,13 +1,14 @@
-﻿using System.Web.Mvc;
+﻿#region Usings
+using System.Web.Mvc;
+#endregion
 
 namespace OS.Web.Controllers
 {
-    public class HomeController : Controller
+    public class AboutController : Controller
     {
+        // GET: About
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
     }
