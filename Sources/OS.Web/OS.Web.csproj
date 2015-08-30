@@ -246,7 +246,6 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
     <Content Include="Views\Shared\_topMenu.cshtml" />
