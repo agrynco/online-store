@@ -40,7 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ICRUDRepository.cs" />
+    <Compile Include="Core\IReadOnlyRepository.cs" />
+    <Compile Include="IOnlineStoreDbContext.cs" />
+    <Compile Include="IProductCategoriesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OS.Business.Domain\OS.Business.Domain.csproj">
+      <Project>{B2660F88-C0FB-4655-A8A9-4BF6616C5ADC}</Project>
+      <Name>OS.Business.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

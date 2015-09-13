@@ -55,8 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\BaseCRUDRepository.cs" />
+    <Compile Include="Core\BaseReadOnlyRepository.cs" />
+    <Compile Include="Core\BaseRepository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineStoreDbContext.cs" />
+    <Compile Include="ProductCategoriesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +71,10 @@
     <ProjectReference Include="..\OS.Business.Domain\OS.Business.Domain.csproj">
       <Project>{B2660F88-C0FB-4655-A8A9-4BF6616C5ADC}</Project>
       <Name>OS.Business.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
+      <Project>{7CDF2ABB-F7D6-4EA9-90D9-E09EEDF536A1}</Project>
+      <Name>OS.DAL.Abstract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
