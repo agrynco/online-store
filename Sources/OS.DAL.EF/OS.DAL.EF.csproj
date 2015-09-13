@@ -70,6 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-2.sql" />
+    <Content Include="Migrations\0-1.sql" />
     <Content Include="Migrations\0-0.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
