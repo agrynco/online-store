@@ -1,7 +1,7 @@
 SET domainName=dev.online-store.grynco.com.ua
 SET currentDir=%CD%
 
-CD "%currentDir%\..\Sources\Web"
+CD "%currentDir%\..\Sources\OS.Web"
 SET sitePath="%CD%"
 
 CD "%currentDir%"
