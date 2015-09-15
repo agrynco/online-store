@@ -6,16 +6,16 @@ namespace OS.DAL.EF.Core
 {
     public class BaseRepository<TDbContext> where TDbContext : DbContext
     {
-        private readonly TDbContext _dbContext;
+        private readonly TDbContext _entityFrameworkDbContext;
 
-        public BaseRepository(TDbContext dbContext)
+        public BaseRepository(TDbContext entityFrameworkDbContext)
         {
-            _dbContext = dbContext;
+            _entityFrameworkDbContext = entityFrameworkDbContext;
         }
 
-        protected TDbContext DbContext
+        protected TDbContext EntityFrameworkDbContext
         {
-            get { return _dbContext; }
+            get { return _entityFrameworkDbContext; }
         }
     }
 }

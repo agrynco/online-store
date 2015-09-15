@@ -1,29 +1,25 @@
 ﻿#region Usings
-using System.Data.Entity;
-using OS.Business.Domain;
 using OS.DAL.Abstract;
 #endregion
 
 namespace OS.DAL.EF
 {
-    public class OnlineStoreDbContext : DbContext, IOnlineStoreDbContext
+    public class OnlineStoreDbContext : IOnlineStoreDbContext
     {
-        private readonly IProductCategoriesRepository _categoriesRepository;
+        private readonly EntityFrameworkDbContext _entityFrameworkDbContext;
 
-        public OnlineStoreDbContext() : this("OnlineStore")
+        public OnlineStoreDbContext(EntityFrameworkDbContext entityFrameworkDbContext, IProductCategoriesRepository categoriesRepository)
         {
+            _entityFrameworkDbContext = entityFrameworkDbContext;
+            CategoriesRepository = categoriesRepository;
         }
 
-        public OnlineStoreDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
-        {
-            _categoriesRepository = new ProductCategoriesRepository(this);
-        }
 
-        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public IProductCategoriesRepository CategoriesRepository { get; }
 
-        IProductCategoriesRepository IOnlineStoreDbContext.CategoriesRepository
+        public int SaveChanges()
         {
-            get { return _categoriesRepository; }
+            return _entityFrameworkDbContext.SaveChanges();
         }
     }
 }

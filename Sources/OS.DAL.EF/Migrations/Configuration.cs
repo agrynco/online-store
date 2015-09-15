@@ -4,14 +4,14 @@ using System.Data.Entity.Migrations;
 
 namespace OS.DAL.EF.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<OnlineStoreDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EntityFrameworkDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(OnlineStoreDbContext context)
+        protected override void Seed(EntityFrameworkDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

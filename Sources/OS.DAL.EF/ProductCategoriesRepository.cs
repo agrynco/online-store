@@ -7,15 +7,15 @@ using OS.DAL.EF.Core;
 
 namespace OS.DAL.EF
 {
-    public class ProductCategoriesRepository : BaseCRUDRepository<OnlineStoreDbContext, ProductCategory, int>, IProductCategoriesRepository
+    public class ProductCategoriesRepository : BaseCRUDRepository<EntityFrameworkDbContext, ProductCategory, int>, IProductCategoriesRepository
     {
-        public ProductCategoriesRepository(OnlineStoreDbContext dbContext) : base(dbContext)
+        public ProductCategoriesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
         }
 
         public IQueryable<ProductCategory> GetRootCategories()
         {
-            return DbContext.ProductCategories.Where(productCategory => productCategory.Parent == null);
+            return EntityFrameworkDbContext.ProductCategories.Where(productCategory => productCategory.Parent == null);
         }
     }
 }

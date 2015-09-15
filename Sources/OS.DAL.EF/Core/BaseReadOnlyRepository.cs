@@ -13,13 +13,13 @@ namespace OS.DAL.EF.Core
         where TEntity : Entity<TEntityId>
         where TDbContext : DbContext
     {
-        public BaseReadOnlyRepository(TDbContext dbContext) : base(dbContext)
+        public BaseReadOnlyRepository(TDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
         }
 
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
-            IQueryable<TEntity> query = DbContext.Set<TEntity>();
+            IQueryable<TEntity> query = EntityFrameworkDbContext.Set<TEntity>();
 
             if (filter != null)
             {
@@ -44,12 +44,12 @@ namespace OS.DAL.EF.Core
 
         public virtual IQueryable<TEntity> GetAll()
         {
-            return DbContext.Set<TEntity>().AsQueryable();
+            return EntityFrameworkDbContext.Set<TEntity>().AsQueryable();
         }
 
         public virtual TEntity GetById(TEntityId id)
         {
-            return DbContext.Set<TEntity>().Find(id);
+            return EntityFrameworkDbContext.Set<TEntity>().Find(id);
         }
     }
 }

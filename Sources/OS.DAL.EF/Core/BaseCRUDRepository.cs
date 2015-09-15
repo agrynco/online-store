@@ -11,15 +11,15 @@ namespace OS.DAL.EF.Core
         where TEntity : Entity<TEntityId>
         where TDbContext : DbContext
     {
-        public BaseCRUDRepository(TDbContext dbContext)
-            : base(dbContext)
+        public BaseCRUDRepository(TDbContext entityFrameworkDbContext)
+            : base(entityFrameworkDbContext)
         {
         }
 
         public TEntity Add(TEntity entity)
         {
-            TEntity addedEntity = DbContext.Set<TEntity>().Add(entity);
-            DbContext.SaveChanges();
+            TEntity addedEntity = EntityFrameworkDbContext.Set<TEntity>().Add(entity);
+            EntityFrameworkDbContext.SaveChanges();
             return addedEntity;
         }
 
@@ -31,15 +31,15 @@ namespace OS.DAL.EF.Core
 
         public void Delete(TEntity entity)
         {
-            DbContext.Set<TEntity>().Remove(entity);
-            DbContext.SaveChanges();
+            EntityFrameworkDbContext.Set<TEntity>().Remove(entity);
+            EntityFrameworkDbContext.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            DbContext.Set<TEntity>().Attach(entity);
-            DbContext.Entry(entity).State = EntityState.Modified;
-            DbContext.SaveChanges();
+            EntityFrameworkDbContext.Set<TEntity>().Attach(entity);
+            EntityFrameworkDbContext.Entry(entity).State = EntityState.Modified;
+            EntityFrameworkDbContext.SaveChanges();
         }
     }
 }
