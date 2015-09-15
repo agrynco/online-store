@@ -17,6 +17,34 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Dependency", "OS.Depende
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Configuration", "OS.Configuration\OS.Configuration.csproj", "{F994D907-63E4-4A01-AAD1-C3E7807E6F51}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{93842B83-B84C-4015-9C28-DD9B454D52B6}"
+	ProjectSection(SolutionItems) = preProject
+		..\Tools\apply_migrations.bat = ..\Tools\apply_migrations.bat
+		..\Tools\prepare_dev_env.bat = ..\Tools\prepare_dev_env.bat
+		..\Tools\recreate_db.bat = ..\Tools\recreate_db.bat
+		..\Tools\setup_site.bat = ..\Tools\setup_site.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUpdatesApplier", "DbUpdatesApplier", "{60113D1B-2569-4FC3-A000-742A654EEC10}"
+	ProjectSection(SolutionItems) = preProject
+		..\Tools\DbUpdatesApplier\AGrynco.Lib.dll = ..\Tools\DbUpdatesApplier\AGrynco.Lib.dll
+		..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb = ..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb
+		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe
+		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe.config
+		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb
+		..\Tools\DbUpdatesApplier\DbVersioning.dll = ..\Tools\DbUpdatesApplier\DbVersioning.dll
+		..\Tools\DbUpdatesApplier\DbVersioning.pdb = ..\Tools\DbUpdatesApplier\DbVersioning.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentTools", "DeploymentTools", "{00F50C2E-2DB5-4E61-AFD8-411824DA2F8E}"
+	ProjectSection(SolutionItems) = preProject
+		..\Tools\DeploymentTools\appcmd.bat = ..\Tools\DeploymentTools\appcmd.bat
+		..\Tools\DeploymentTools\clean_dir.bat = ..\Tools\DeploymentTools\clean_dir.bat
+		..\Tools\DeploymentTools\dos_wrap.bat = ..\Tools\DeploymentTools\dos_wrap.bat
+		..\Tools\DeploymentTools\RemCom.exe = ..\Tools\DeploymentTools\RemCom.exe
+		..\Tools\DeploymentTools\str_contain.bat = ..\Tools\DeploymentTools\str_contain.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +82,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60113D1B-2569-4FC3-A000-742A654EEC10} = {93842B83-B84C-4015-9C28-DD9B454D52B6}
+		{00F50C2E-2DB5-4E61-AFD8-411824DA2F8E} = {93842B83-B84C-4015-9C28-DD9B454D52B6}
 	EndGlobalSection
 EndGlobal
