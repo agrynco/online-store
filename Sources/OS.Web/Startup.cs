@@ -1,14 +1,17 @@
-﻿using Microsoft.Owin;
+﻿#region Usings
+using Microsoft.Owin;
+using OS.Web;
 using Owin;
+#endregion
 
-[assembly: OwinStartupAttribute(typeof(OS.Web.Startup))]
+[assembly: OwinStartup(typeof (Startup))]
+
 namespace OS.Web
 {
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }

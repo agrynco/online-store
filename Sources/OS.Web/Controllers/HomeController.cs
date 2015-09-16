@@ -1,8 +1,7 @@
 ﻿#region Usings
-using System.Collections.Generic;
 using System.Web.Mvc;
-using OS.Business.Domain;
 using OS.Business.Logic;
+using OS.Web.Models;
 #endregion
 
 namespace OS.Web.Controllers
@@ -20,9 +19,11 @@ namespace OS.Web.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            IList<ProductCategory> productCategories = _productCategoriesBL.GetRootCategories();
+            HomePageViewModel viewModel = new HomePageViewModel();
 
-            return View();
+            viewModel.HorizontalCategorySelectorViewModel.RootCategories = _productCategoriesBL.GetRootCategories();
+
+            return View(viewModel);
         }
     }
 }
