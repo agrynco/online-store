@@ -8,4 +8,11 @@
 @section content
 {
     Main content
+
+    @if (Model.SelectedCategory != null)
+    {
+        <text>
+            Список товару з категорії [@Model.SelectedCategory.Name]
+        </text>
+    }
 }

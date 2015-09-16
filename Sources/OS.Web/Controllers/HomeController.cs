@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Logic;
 using OS.Web.Models;
@@ -24,6 +25,16 @@ namespace OS.Web.Controllers
             viewModel.HorizontalCategorySelectorViewModel.RootCategories = _productCategoriesBL.GetRootCategories();
 
             return View(viewModel);
+        }
+
+        public ActionResult ChangeCategory(int categoryId)
+        {
+            HomePageViewModel viewModel = new HomePageViewModel();
+
+            viewModel.HorizontalCategorySelectorViewModel.RootCategories = _productCategoriesBL.GetRootCategories();
+            viewModel.SelectedCategory = viewModel.HorizontalCategorySelectorViewModel.RootCategories.Single(productCategory => productCategory.Id == categoryId);
+
+            return View("Index", viewModel);
         }
     }
 }
