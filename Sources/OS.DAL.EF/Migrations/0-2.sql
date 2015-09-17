@@ -21,57 +21,57 @@ DELETE FROM ProductCategories
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'Р•и•в™®, Д®дгІЃал', NULL)
+  ( NULL, N'–ешетки, ƒифузоры', NULL)
 
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'ДҐ•а™®', NULL)
+  ( NULL, N'ƒверки', NULL)
 
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'Ф†бЃ≠®≠† (ђЃ≠в†¶≠л• •Ђ•ђ•≠вл)', NULL)
+  ( NULL, N'‘асонина (монтажные елементы)', NULL)
 
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'В•≠в®ЂпвЃал', NULL)
+  ( NULL, N'¬ентил€торы', NULL)
   
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'ВЃІ§геЃҐЃ§л', NULL)
+  ( NULL, N'¬оздуховоды', NULL)
 
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'ЭЂ•™ваЃгѓа†ҐЂпой®• гбваЃ©бвҐ†', NULL)
+  ( NULL, N'Ёлектроуправл€ющие устройства', NULL)
   
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'Ка•ѓ•¶', NULL)
+  ( NULL, N' репеж', NULL)
   
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'ИІЃЂпж®п', NULL)
+  ( NULL, N'»зол€ци€', NULL)
   
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'Па®вЃз≠Ѓ-Ґлвп¶≠л• гбв†≠ЃҐ™®', NULL)
+  ( NULL, N'ѕриточно-выт€жные установки', NULL)
   
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'ПаЃз••', NULL)
+  ( NULL, N'ѕрочее', NULL)
   
 INSERT INTO ProductCategories 
 	([Description], NAME, Parent_Id) 
 VALUES
-  ( NULL, N'ЗЃ≠вл', NULL)
+  ( NULL, N'«онты', NULL)
 -- END CHANGES
 
 -- Start writing new version info 
