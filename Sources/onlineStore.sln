@@ -45,6 +45,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentTools", "Deployme
 		..\Tools\DeploymentTools\str_contain.bat = ..\Tools\DeploymentTools\str_contain.bat
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Common", "OS.Common\OS.Common.csproj", "{F7DE2B54-B47C-423B-8035-F8D3205917AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Common.Tests", "OS.Common.Tests\OS.Common.Tests.csproj", "{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{60A381A2-8DED-431B-924E-EB6A38B2A213}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qa.online-store.grynco.com.ua", "qa.online-store.grynco.com.ua", "{B8FE35C0-8651-49DC-9250-9F7BDBD01BFF}"
+	ProjectSection(SolutionItems) = preProject
+		..\Configuration\qa.online-store.grynco.com.ua\appSettings.config = ..\Configuration\qa.online-store.grynco.com.ua\appSettings.config
+		..\Configuration\qa.online-store.grynco.com.ua\connectionStrings.config = ..\Configuration\qa.online-store.grynco.com.ua\connectionStrings.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +91,14 @@ Global
 		{F994D907-63E4-4A01-AAD1-C3E7807E6F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F994D907-63E4-4A01-AAD1-C3E7807E6F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F994D907-63E4-4A01-AAD1-C3E7807E6F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DE2B54-B47C-423B-8035-F8D3205917AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DE2B54-B47C-423B-8035-F8D3205917AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DE2B54-B47C-423B-8035-F8D3205917AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DE2B54-B47C-423B-8035-F8D3205917AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +106,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{60113D1B-2569-4FC3-A000-742A654EEC10} = {93842B83-B84C-4015-9C28-DD9B454D52B6}
 		{00F50C2E-2DB5-4E61-AFD8-411824DA2F8E} = {93842B83-B84C-4015-9C28-DD9B454D52B6}
+		{B8FE35C0-8651-49DC-9250-9F7BDBD01BFF} = {60A381A2-8DED-431B-924E-EB6A38B2A213}
 	EndGlobalSection
 EndGlobal

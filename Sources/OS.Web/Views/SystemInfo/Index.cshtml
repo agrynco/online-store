@@ -1,0 +1,75 @@
+﻿@using System.Reflection
+@using OS.Configuration
+@using OS.Web.Models
+@model SystemInfoViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>System Info</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th colspan="2">
+            Loaded assemblies
+        </th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Version</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        foreach (AssemblyName assemblyName in Model.AssemblyNames)
+        {
+            <tr>
+                <td>
+                    @assemblyName.Name
+                </td>
+                <td>
+                    @string.Format("Build: {0}; Major: {1}; MajorRevision: {2}; Minor: {3}; MinorRevision: {4}; Revision: {5}", assemblyName.Version.Build, assemblyName.Version.Major,
+                        assemblyName.Version.MajorRevision,
+                        assemblyName.Version.Minor,
+                        assemblyName.Version.MinorRevision,
+                        assemblyName.Version.Revision)
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>
+            ApplicationSettings
+        </th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            @ApplicationSettings.Instance.DbSettings.ToString()
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @ApplicationSettings.Instance.AppSettings.ToString();
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
