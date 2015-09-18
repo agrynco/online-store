@@ -14,7 +14,7 @@ namespace OS.Common
             if (member != null && member.Member is PropertyInfo)
                 return (PropertyInfo) member.Member;
 
-            throw new ArgumentException("Expression is not a Property", nameof(expression));
+            throw new ArgumentException("Expression is not a Property", "expression");
         }
 
         public static string PropertyName<U>(Expression<Func<T, U>> expression)
