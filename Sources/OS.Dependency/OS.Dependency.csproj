@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OS.Business.Domain\OS.Business.Domain.csproj">
+      <Project>{b2660f88-c0fb-4655-a8a9-4bf6616c5adc}</Project>
+      <Name>OS.Business.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OS.Business.Logic\OS.Business.Logic.csproj">
       <Project>{134E9999-4850-4F45-A283-FEF73E1529F4}</Project>
       <Name>OS.Business.Logic</Name>
