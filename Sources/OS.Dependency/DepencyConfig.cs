@@ -1,20 +1,22 @@
-﻿using Ninject;
-using OS.Business.Logic;
+﻿using OS.Business.Logic;
 using OS.Configuration;
 using OS.DAL.Abstract;
 using OS.DAL.EF;
+using SimpleInjector;
+using SimpleInjector.Integration.Web;
 
 namespace OS.Dependency
 {
     public static class DepencyConfig
     {
-        public static void Configure(IKernel kernel)
+        public static void Configure(Container container)
         {
-            kernel.Bind<EntityFrameworkDbContext>().ToSelf().WithConstructorArgument("nameOrConnectionString",
-            ApplicationSettings.Instance.DbSettings.ApplicationConnectionString);
-            kernel.Bind<IProductCategoriesRepository>().To<ProductCategoriesRepository>();
-            kernel.Bind<IOnlineStoreDbContext>().To<OnlineStoreDbContext>();
-            kernel.Bind<ProductCategoriesBL>().ToSelf();
+            var lifeStyle = new WebRequestLifestyle();
+
+            container.Register(() => new EntityFrameworkDbContext(ApplicationSettings.Instance.DbSettings.ApplicationConnectionString), lifeStyle);
+            container.Register<IProductCategoriesRepository, ProductCategoriesRepository>(lifeStyle);
+            container.Register<IOnlineStoreDbContext, OnlineStoreDbContext>(lifeStyle);
+            container.Register<ProductCategoriesBL>(lifeStyle);
         }
     }
 }
