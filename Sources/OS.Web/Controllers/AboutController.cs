@@ -1,15 +1,14 @@
 ﻿#region Usings
-using System.Web.Mvc;
+using OS.Business.Logic;
+using OS.Web.Models;
 #endregion
 
 namespace OS.Web.Controllers
 {
-    public class AboutController : Controller
+    public class AboutController : BaseLayoutController<HorizontalCategorySelectorViewModel>
     {
-        // GET: About
-        public ActionResult Index()
+        public AboutController(ProductCategoriesBL productCategoriesBL) : base(productCategoriesBL)
         {
-            return View();
         }
     }
 }

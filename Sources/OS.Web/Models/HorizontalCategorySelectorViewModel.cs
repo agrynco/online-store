@@ -13,5 +13,6 @@ namespace OS.Web.Models
         }
 
         public IList<ProductCategory> RootCategories { get; set; }
+        public ProductCategory SelectedCategory { get; set; }
     }
 }

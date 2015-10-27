@@ -1,6 +1,6 @@
 ﻿@using OS.Configuration
 @using OS.Web.Models
-@model HomePageViewModel
+@model HorizontalCategorySelectorViewModel
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
                 @Html.Partial("_searchControl")
             </div>
             <div>
-                @Html.Partial("_horizontalCategorySelector", Model.HorizontalCategorySelectorViewModel)
+                @Html.Partial("_horizontalCategorySelector", Model)
             </div>
         </td>
         <td></td>

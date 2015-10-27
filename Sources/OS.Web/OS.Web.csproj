@@ -245,9 +245,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseLayoutController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
-    <Compile Include="Controllers\ContanctInfoController.cs" />
+    <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\SystemInfoController.cs" />
@@ -334,12 +335,13 @@
     <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
     <Content Include="Views\Shared\_topMenu.cshtml" />
-    <Content Include="Views\ContanctInfo\Index.cshtml" />
+    <Content Include="Views\ContactInfo\Index.cshtml" />
     <Content Include="Views\Stub\Index.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\BaseLayout\Index.cshtml" />
     <Content Include="Views\SystemInfo\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Shared\_categoriesEditor.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
