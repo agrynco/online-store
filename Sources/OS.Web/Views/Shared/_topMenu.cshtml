@@ -1,4 +1,9 @@
-﻿@Html.ActionLink("Про магазин", "Index", "About") |
-@Html.ActionLink("Авторизація", "Index", "Stub") |
-@Html.ActionLink("Контакти", "Index", "ContactInfo") |
-@Html.ActionLink("Оплата та доставка", "Index", "Stub")
+﻿<div>
+    <ul>
+        <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
+        <li>@Html.ActionLink("Авторизація", "Index", "Stub")</li>
+        <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
+        <li>@Html.ActionLink("Оплата та доставка", "Index", "Stub")</li>
+    </ul>
+    @Html.Partial("_loginPartial")
+</div>

@@ -1,9 +1,11 @@
-﻿using OS.Business.Logic;
+﻿#region Usings
+using OS.Business.Logic;
 using OS.Configuration;
 using OS.DAL.Abstract;
 using OS.DAL.EF;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
+#endregion
 
 namespace OS.Dependency
 {
