@@ -370,6 +370,7 @@
     <Content Include="Views\Shared\_loginPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_mainLayout.cshtml" />
+    <Content Include="Views\Shared\_accountLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

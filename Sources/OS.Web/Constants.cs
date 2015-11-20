@@ -9,5 +9,10 @@
                 public const string TOP_SECTION = "topSection";
             }
         }
+
+        public static class PageData
+        {
+            public const string PAGE_TITLE = "PageTitle";
+        }
     }
 }

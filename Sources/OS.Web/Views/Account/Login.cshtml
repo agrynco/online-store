@@ -1,73 +1,56 @@
 ﻿@using OS.Web.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
-    Layout = "~/Views/Shared/_mainLayout.cshtml";
+    Layout = "~/Views/Shared/_accountLayout.cshtml";
+    PageData[Constants.PageData.PAGE_TITLE] = "Вхід в систему";
 }
 
-@section content
+@section accountFormContent
 {
-    <table class="fullSize">
-        <tr>
-            <td></td>
-            <td width="1px">
-                <h2>Вхід в систему.</h2>
-                @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {role = "form"}))
-                {
-                    @Html.AntiForgeryToken()
-
-                    @Html.ValidationSummary(true, "")
-                    <table>
-                        <tr>
-                            <td>
-                                @Html.LabelFor(m => m.Email, new {@class = "control-title"})
-                            </td>
-                            <td>
-                                @Html.TextBoxFor(m => m.Email)
-                            </td>
-                            <td>
-                                @Html.ValidationMessageFor(m => m.Email, "")
-                            </td>
-                        </tr>
-                        <tr style="height: 10px">
-                            <td colspan="3"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.LabelFor(m => m.Password, new { @class = "control-title" })
-                            </td>
-                            <td>
-                                @Html.PasswordFor(m => m.Password)
-                            </td>
-                            <td>
-                                @Html.ValidationMessageFor(m => m.Password, "")
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td colspan="2">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe, new {@class = "control-title"})
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td style="white-space: nowrap">
-                                <input type="submit" value="Ввійти" class="btn"/>
-                                @Html.ActionLink("Зареєструватися", "Register")
-                            </td>
-                            <td >
-
-                            </td>
-                        </tr>
-                    </table>
-                }
-            </td>
-            <td></td>
-        </tr>
-    </table>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Email, new { @class = "control-title" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Email)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Email, "")
+                </td>
+            </tr>
+            <tr class="row-space">
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Password, new { @class = "control-title" })
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.Password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Password, "")
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "control-title" })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="white-space: nowrap">
+                    <input type="submit" value="Ввійти" class="btn btn-default" />
+                    @Html.ActionLink("Зареєструватися", "Register")
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    }
 }

@@ -9,17 +9,17 @@
     margin: 0;
 }
 
-.minHeight
+.min-height
 {
     height: 1px;
 }
 
-.categoryButton
+.category-button
 {
     width: 100px;
 }
 
-.fullSize
+.funn-size
 {
     height: 100%;
     width: 100%;
@@ -28,4 +28,9 @@
 .control-title
 {
     white-space: nowrap;
+}
+
+.row-space
+{
+    height: 10px;
 }
