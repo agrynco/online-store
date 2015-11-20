@@ -4,11 +4,12 @@
 
 @section content
 {
-    <table class="funn-size">
+    <table class="full-size">
         <tr>
             <td></td>
             <td width="1px">
                 <h2>@PageData[Constants.PageData.PAGE_TITLE]</h2>
+                <hr/>
                 @Html.ValidationSummary()
 
                 @RenderSection("accountFormContent")

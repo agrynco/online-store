@@ -3,8 +3,6 @@
     height: 100%;
     width: 100%;
     background-color: lightgray;
-    font-family: HelveticaNeue;
-    font-size: 13px;
     padding: 0;
     margin: 0;
 }
@@ -19,7 +17,7 @@
     width: 100px;
 }
 
-.funn-size
+.full-size
 {
     height: 100%;
     width: 100%;

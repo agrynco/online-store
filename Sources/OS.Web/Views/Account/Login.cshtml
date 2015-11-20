@@ -12,11 +12,11 @@
         @Html.AntiForgeryToken()
         <table>
             <tr>
-                <td>
-                    @Html.LabelFor(m => m.Email, new { @class = "control-title" })
+                <td class="col-md-2 control-label">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
                 </td>
                 <td>
-                    @Html.TextBoxFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
                 </td>
                 <td>
                     @Html.ValidationMessageFor(m => m.Email, "")
@@ -26,11 +26,11 @@
                 <td colspan="3"></td>
             </tr>
             <tr>
-                <td>
-                    @Html.LabelFor(m => m.Password, new { @class = "control-title" })
+                <td class="col-md-2 control-label">
+                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
                 </td>
                 <td>
-                    @Html.PasswordFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                 </td>
                 <td>
                     @Html.ValidationMessageFor(m => m.Password, "")
@@ -38,10 +38,13 @@
             </tr>
             <tr>
                 <td></td>
-                <td colspan="2">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe, new { @class = "control-title" })
+                <td>
+                            <div>
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe, new {style = "font-weight: normal"})
+                            </div>
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
