@@ -16,7 +16,7 @@
                     @Html.LabelFor(m => m.Email, new { @class = "control-label" })
                 </td>
                 <td>
-                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                 </td>
                 <td>
                     @Html.ValidationMessageFor(m => m.Email, "")
@@ -39,10 +39,10 @@
             <tr>
                 <td></td>
                 <td>
-                            <div>
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe, new {style = "font-weight: normal"})
-                            </div>
+                    <div>
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, new { style = "font-weight: normal" })
+                    </div>
                 </td>
                 <td></td>
             </tr>
