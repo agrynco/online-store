@@ -12,7 +12,7 @@
     <table class="fullSize" border="1">
         @RenderSection("topSection", false)
         <tbody>
-            <tr height="100%">
+            <tr>
                 <td></td>
                 <td style="background: white">
                     @RenderSection("content")
@@ -21,7 +21,7 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr>
+            <tr class="minHeight">
                 <td></td>
                 <td style="background: whitesmoke; width: 768px">Environment: @ApplicationSettings.Instance.AppSettings.Environment</td>
                 <td></td>
