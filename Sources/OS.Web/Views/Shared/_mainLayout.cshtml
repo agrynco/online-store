@@ -1,0 +1,36 @@
+﻿@using OS.Configuration
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <table class="fullSize" border="1">
+        @RenderSection("topSection", false)
+        <tbody>
+            <tr height="100%">
+                <td></td>
+                <td style="background: white">
+                    @RenderSection("content")
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td style="background: whitesmoke; width: 768px">Environment: @ApplicationSettings.Instance.AppSettings.Environment</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", false)
+</body>
+</html>

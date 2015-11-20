@@ -11,3 +11,14 @@
 {
     width: 100px;
 }
+
+.fullSize
+{
+    height: 100%;
+    width: 100%;
+}
+
+.control-title
+{
+    white-space: nowrap;
+}
