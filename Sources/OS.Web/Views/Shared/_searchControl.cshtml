@@ -1,5 +1,13 @@
-﻿@Html.TextBox("tbxSearch", "", new
-    {
-        style = "width:570px"
-    })
-<input type="button" value="Шукати"/>
+﻿<table class="full-width">
+    <tr>
+        <td>
+            @Html.TextBox("tbxSearch", "", new
+                {
+                    @class = "form-control"
+                })
+        </td>
+        <td width="1px" style="padding: 5px">
+            <input type="button" value="Шукати" class="btn-primary"/>
+        </td>
+    </tr>
+</table>

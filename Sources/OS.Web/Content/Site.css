@@ -12,6 +12,11 @@
     height: 1px;
 }
 
+.full-width
+{
+    width: 100%;
+}
+
 .category-button
 {
     width: 100px;
