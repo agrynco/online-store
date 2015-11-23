@@ -1,9 +1,13 @@
 ﻿<div class="navbar navbar-inverse">
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Додому", "Index", "Home")</li>
-        <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
-        <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
-        <li>@Html.ActionLink("Оплата та доставка", "Index", "Stub")</li>
-    </ul>
-    @Html.Partial("_loginPartial")
+    <div style="float: right">
+        @Html.Partial("_loginPartial")
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Додому", "Index", "Home")</li>
+            <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
+            <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
+            <li>@Html.ActionLink("Оплата та доставка", "Index", "Stub")</li>
+        </ul>
+    </div>
 </div>
