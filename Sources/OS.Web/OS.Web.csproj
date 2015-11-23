@@ -262,6 +262,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
+    <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -371,6 +372,7 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_mainLayout.cshtml" />
     <Content Include="Views\Shared\_accountLayout.cshtml" />
+    <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

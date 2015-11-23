@@ -9,10 +9,10 @@ namespace OS.Web.Models
     {
         public HorizontalCategorySelectorViewModel()
         {
-            RootCategories = new List<ProductCategory>();
+            RootCategories = new List<HorizontalCategoryItemViewModel>();
         }
 
-        public IList<ProductCategory> RootCategories { get; set; }
+        public IList<HorizontalCategoryItemViewModel> RootCategories { get; set; }
         public ProductCategory SelectedCategory { get; set; }
     }
 }

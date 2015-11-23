@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 #endregion
 
@@ -10,5 +11,7 @@ namespace OS.Business.Domain
 
         [MaxLength(1024)]
         public string Description { get; set; }
+
+        public virtual List<ProductCategory> ChildCategories { get; set; } 
     }
 }

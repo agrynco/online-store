@@ -1,28 +1,20 @@
 ﻿@using OS.Web.Models
 @model HorizontalCategorySelectorViewModel
 
-
-<table border="1" width="100%">
-    <tr style="height: 100px">
-        @{
-            if (Model.RootCategories.Count > 0)
+<ul class="nav nav-pills">
+    @{
+        if (Model.RootCategories.Count > 0)
+        {
+            for (int i = 0; i < Model.RootCategories.Count; i++)
             {
-                for (int i = 0; i < Model.RootCategories.Count; i++)
-                {
-                    <td>
-                        @Html.ActionLink(Model.RootCategories[i].Name, "ChangeCategory", new
-                            {
-                                CategoryId = Model.RootCategories[i].Id
-                            })
-                    </td>
-                }
-            }
-            else
-            {
-                <td>
-                    В базі даних нема жодної категорії
-                </td>
+               @Html.Partial("_horizontalCategoryItem", Model.RootCategories[i])
             }
         }
-    </tr>
-</table>
+        else
+        {
+            <text>
+                В базі даних нема жодної категорії
+            </text>
+        }
+    }
+</ul>

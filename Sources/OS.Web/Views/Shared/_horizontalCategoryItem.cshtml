@@ -1,0 +1,18 @@
+﻿@using OS.Web.Models
+@model HorizontalCategoryItemViewModel
+
+@{
+    List<string> itemClasses = new List<string>();
+
+    if (Model.IsSelected)
+    {
+        itemClasses.Add("active");
+    }
+}
+
+<li role="presentation" class="@string.Join(", ", itemClasses)">
+    @Html.ActionLink(Model.ProductCategory.Name, "ChangeCategory", new
+        {
+            CategoryId = Model.ProductCategory.Id
+        })
+</li>
