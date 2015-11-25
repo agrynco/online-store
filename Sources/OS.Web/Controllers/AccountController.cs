@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models;
 #endregion

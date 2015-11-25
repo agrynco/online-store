@@ -6,8 +6,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Configuration;
+using OS.DAL.EF;
 using OS.Dependency;
 using OS.Web.App_Start;
 using OS.Web.Models;
@@ -44,13 +46,12 @@ namespace OS.Web.App_Start
 
         private static void InitializeContainer(Container container)
         {
-            DepencyConfig.Configure(container);
-            ApplicationDbContext applicationDbContext = new ApplicationDbContext(ApplicationSettings.Instance.DbSettings.ApplicationConnectionString);
+            DI.Configure(container);
 
-            container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(applicationDbContext), new WebRequestLifestyle());
+            //container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(applicationDbContext), new WebRequestLifestyle());
 
             container.RegisterPerWebRequest<UserManager<ApplicationUser, string>>(
-                () => new UserManager<ApplicationUser, string>(new UserStore<ApplicationUser>(applicationDbContext)));
+                () => new UserManager<ApplicationUser, string>(new UserStore<ApplicationUser>(DI.Resolve<EntityFrameworkDbContext>())));
 
             container.Register<IAuthenticationManager>(() =>
                 AdvancedExtensions.IsVerifying(container)

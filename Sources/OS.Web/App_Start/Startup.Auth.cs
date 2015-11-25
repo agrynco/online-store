@@ -4,7 +4,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using OS.Business.Domain;
 using OS.Business.Logic;
+using OS.DAL.EF;
+using OS.Dependency;
 using Owin;
 #endregion
 
@@ -16,8 +19,8 @@ namespace OS.Web
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext(DI.Resolve<EntityFrameworkDbContext>);
+            app.CreatePerOwinContext(DI.Resolve<ApplicationUserManager>);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
@@ -33,7 +36,7 @@ namespace OS.Web
                             // This is a security feature which is used when you change a password or add an external login to your account.  
                             OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                                 validateInterval: TimeSpan.FromMinutes(30),
-                                regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                                regenerateIdentity: (manager, user) => manager.CreateUserIdentityAsync(user))
                         }
                 });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);

@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="ApplicationUserManager.cs" />
     <Compile Include="IdentityConfig.cs" />
     <Compile Include="ProductCategoriesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +79,10 @@
     <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
       <Project>{7cdf2abb-f7d6-4ea9-90d9-e09eedf536a1}</Project>
       <Name>OS.DAL.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.DAL.EF\OS.DAL.EF.csproj">
+      <Project>{2f563658-f7b6-45c1-8a4c-e52bfa45015b}</Project>
+      <Name>OS.DAL.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
