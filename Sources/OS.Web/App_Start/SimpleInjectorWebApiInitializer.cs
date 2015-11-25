@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using OS.Business.Logic;
 using OS.Configuration;
 using OS.Dependency;
 using OS.Web.App_Start;

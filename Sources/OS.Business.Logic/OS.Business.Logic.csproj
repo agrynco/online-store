@@ -31,6 +31,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AGrynCo.Lib">
+      <HintPath>..\packages\AGrynco.Lib.dll.0.0.20\lib\net46\AGrynCo.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="IdentityConfig.cs" />
     <Compile Include="ProductCategoriesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,6 +71,10 @@
     <ProjectReference Include="..\OS.Business.Domain\OS.Business.Domain.csproj">
       <Project>{B2660F88-C0FB-4655-A8A9-4BF6616C5ADC}</Project>
       <Name>OS.Business.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.Configuration\OS.Configuration.csproj">
+      <Project>{f994d907-63e4-4a01-aad1-c3e7807e6f51}</Project>
+      <Name>OS.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
       <Project>{7cdf2abb-f7d6-4ea9-90d9-e09eedf536a1}</Project>
