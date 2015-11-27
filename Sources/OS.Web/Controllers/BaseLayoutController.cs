@@ -1,7 +1,6 @@
 ﻿#region Usings
 using System.Linq;
 using System.Web.Mvc;
-using Microsoft.Owin.Security.Provider;
 using OS.Business.Logic;
 using OS.Web.Models;
 #endregion

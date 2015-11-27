@@ -249,6 +249,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Administration\BaseAdminController.cs" />
+    <Compile Include="Controllers\Administration\AdministrationController.cs" />
     <Compile Include="Controllers\BaseLayoutController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
@@ -373,6 +375,7 @@
     <Content Include="Views\Shared\_mainLayout.cshtml" />
     <Content Include="Views\Shared\_accountLayout.cshtml" />
     <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
+    <Content Include="Views\Administration\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

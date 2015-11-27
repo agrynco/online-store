@@ -63,7 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUserManager.cs" />
-    <Compile Include="IdentityConfig.cs" />
+    <Compile Include="EmailService.cs" />
+    <Compile Include="SmsService.cs" />
     <Compile Include="ProductCategoriesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -87,6 +87,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-5.sql" />
     <Content Include="Migrations\0-4.sql" />
     <Content Include="Migrations\0-3.sql" />
     <Content Include="Migrations\0-2.sql" />
