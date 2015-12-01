@@ -3,3 +3,13 @@
 <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
 <li>@Html.ActionLink("Оплата та доставка", "Index", "Stub")</li>
 
+@if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
+{
+    <li>
+        @Html.ActionLink("Адміністративна частина", "Home", "Administration", null, new
+                           {
+                               @class = "warning"
+                           })
+    </li>
+}
+

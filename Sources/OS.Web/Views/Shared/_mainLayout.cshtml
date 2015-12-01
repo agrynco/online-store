@@ -3,12 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+
+@{
+    string bodyColor = Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin") ? "#d6c0c5;" : "lightgray";
+}
+
+<body style="background-color: @bodyColor">
     <table class="full-size" boder="1">
         <thead>
             <tr class="min-height">

@@ -4,18 +4,25 @@
 
 @section topMenu
 {
-        <li>
-            <a>Категорії</a>
-        </li>
-        <li>
-            <a>Продукція</a>
-        </li>
-        <li>
-            <a>Замовлення</a>
-        </li>
-        <li>
-            <a>Користувачі</a>
-        </li>
+    <li>
+        <a>Категорії</a>
+    </li>
+    <li>
+        <a>Продукція</a>
+    </li>
+    <li>
+        <a>Замовлення</a>
+    </li>
+    <li>
+        <a>Користувачі</a>
+    </li>
+    <li>
+        @Html.ActionLink("Магазин", "Index", "Home", null, new
+            {
+                style = "color: lightgreen !important;"
+            })
+    </li>
+
 }
 
 @section content
@@ -25,5 +32,5 @@
 
 @section scripts
 {
-    @RenderSection("scripts", false)    
+    @RenderSection("scripts", false)
 }
