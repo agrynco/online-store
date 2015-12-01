@@ -9,35 +9,50 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<table class="full-size">
-    <thead>
-    <tr class="min-height">
-        <td></td>
-        <td style="width: 640px; background: whitesmoke">
-            @Html.Partial("_topMenu")
-
-            @RenderSection("topSection", false)
-        </td>
-        <td></td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td></td>
-        <td style="background: white">
-            @RenderSection("content")
-        </td>
-        <td></td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <tr class="min-height">
-        <td></td>
-        <td class="panel-footer ">Environment: @ApplicationSettings.Instance.AppSettings.Environment</td>
-        <td></td>
-    </tr>
-    </tfoot>
-</table>
+    <table class="full-size" boder="1">
+        <thead>
+            <tr class="min-height">
+                <td></td>
+                <td style="width: 640px; background: whitesmoke">
+                    <div class="navbar navbar-inverse">
+                        <div style="float: right">
+                            @Html.Partial("_loginPartial")
+                        </div>
+                        <div>
+                            <ul class="nav navbar-nav">
+                                @if (IsSectionDefined("topMenu"))
+                                {
+                                    @RenderSection("topMenu")
+                                }
+                                else
+                                {
+                                    @Html.Partial("_topMenu")
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    @RenderSection("topSection", false)
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td style="background: white">
+                    @RenderSection("content")
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="min-height">
+                <td></td>
+                <td class="panel-footer ">Environment: @ApplicationSettings.Instance.AppSettings.Environment</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
     @RenderBody()
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

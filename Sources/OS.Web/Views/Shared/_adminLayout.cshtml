@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_mainLayout.cshtml";
+}
+
+@section topMenu
+{
+        <li>
+            <a>Категорії</a>
+        </li>
+        <li>
+            <a>Продукція</a>
+        </li>
+        <li>
+            <a>Замовлення</a>
+        </li>
+        <li>
+            <a>Користувачі</a>
+        </li>
+}
+
+@section content
+{
+    @RenderSection("content")
+}
+
+@section scripts
+{
+    @RenderSection("scripts", false)    
+}

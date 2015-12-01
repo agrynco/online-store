@@ -376,6 +376,7 @@
     <Content Include="Views\Shared\_accountLayout.cshtml" />
     <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
     <Content Include="Views\Administration\Home.cshtml" />
+    <Content Include="Views\Shared\_adminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

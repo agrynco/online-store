@@ -1,18 +1,18 @@
 ﻿@model dynamic
 
 @{
-    Layout = null;
+    Layout = "../Shared/_adminLayout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+@section content
+{<table class="full-width">
+        <tr>
+            <td></td>
+            <td style="width: 400px;">
+                Адміністративна частина. <br/>
+                Виберіть в верхньому меню область для керування данними.
+            </td>
+            <td></td>
+        </tr>
+</table>
+}
