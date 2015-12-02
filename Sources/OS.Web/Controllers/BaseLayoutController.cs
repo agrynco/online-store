@@ -26,7 +26,7 @@ namespace OS.Web.Controllers
         {
             TViewModel viewModel = CreateInstanceOfViewModel();
 
-            viewModel.RootCategories = _productCategoriesBL.GetRootCategories().Select(productCategory => new HorizontalCategoryItemViewModel
+            viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
                 {
                     ProductCategory = productCategory,
                     IsSelected = false
@@ -38,7 +38,7 @@ namespace OS.Web.Controllers
         public ActionResult ChangeCategory(int categoryId)
         {
             TViewModel viewModel = CreateInstanceOfViewModel();
-            viewModel.RootCategories = _productCategoriesBL.GetRootCategories().Select(productCategory => new HorizontalCategoryItemViewModel
+            viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
                 {
                     ProductCategory = productCategory,
                     IsSelected = productCategory.Id == categoryId

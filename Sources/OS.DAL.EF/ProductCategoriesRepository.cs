@@ -13,9 +13,9 @@ namespace OS.DAL.EF
         {
         }
 
-        public IQueryable<ProductCategory> GetRootCategories()
+        public IQueryable<ProductCategory> GetCategories(int? parentId)
         {
-            return EntityFrameworkDbContext.ProductCategories.Where(productCategory => productCategory.Parent == null);
+            return EntityFrameworkDbContext.ProductCategories.Where(productCategory => productCategory.ParentId == parentId);
         }
     }
 }

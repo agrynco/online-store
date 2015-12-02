@@ -1,0 +1,39 @@
+﻿@using OS.Business.Domain
+@using OS.Web.Models
+@model ProductCategoriesViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminListViewLayout .cshtml";
+}
+
+@section content
+{
+    <style>
+        .categoryItem
+        {
+            display: block; width: 180px; height: 140px; background-color: bisque; margin: 5px; padding: 5px;
+        }
+    </style>
+
+    <ul class="nav-pills">
+        @if (Model.LevelUpProductCategory != null)
+        {
+            <li class="categoryItem">
+                @Html.ActionLink("..", "Index", new
+                   {
+                       parentId = Model.LevelUpProductCategory.ParentId
+                   })
+            </li>
+        }
+
+        @foreach (ProductCategory productCategory in Model.ProductCategories)
+        {
+            <li class="categoryItem">
+                @Html.ActionLink(productCategory.Name, "Index", new
+                    {
+                        parentId = productCategory.Id
+                    })
+            </li>
+        }
+    </ul>
+}

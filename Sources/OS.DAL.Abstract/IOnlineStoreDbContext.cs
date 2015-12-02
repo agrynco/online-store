@@ -1,7 +1,4 @@
-﻿#region Usings
-#endregion
-
-namespace OS.DAL.Abstract
+﻿namespace OS.DAL.Abstract
 {
     public interface IOnlineStoreDbContext
     {

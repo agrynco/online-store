@@ -9,6 +9,8 @@ namespace OS.Business.Domain
     {
         public virtual ProductCategory Parent { get; set; }
 
+        public int? ParentId { get; set; }
+
         [MaxLength(1024)]
         public string Description { get; set; }
 

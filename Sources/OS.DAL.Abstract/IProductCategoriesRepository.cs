@@ -8,6 +8,6 @@ namespace OS.DAL.Abstract
 {
     public interface IProductCategoriesRepository : ICRUDRepository<ProductCategory, int>
     {
-        IQueryable<ProductCategory> GetRootCategories();
+        IQueryable<ProductCategory> GetCategories(int? parentId);
     }
 }

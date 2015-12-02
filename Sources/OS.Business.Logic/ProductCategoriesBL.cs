@@ -16,9 +16,14 @@ namespace OS.Business.Logic
             _onlineStoreDbContext = onlineStoreDbContext;
         }
 
-        public IList<ProductCategory> GetRootCategories()
+        public IList<ProductCategory> GetCategories(int? parentId)
         {
-            return _onlineStoreDbContext.CategoriesRepository.GetRootCategories().ToList();
+            return _onlineStoreDbContext.CategoriesRepository.GetCategories(parentId).ToList();
+        }
+
+        public ProductCategory GetCategory(int id)
+        {
+            return _onlineStoreDbContext.CategoriesRepository.GetById(id);
         }
     }
 }

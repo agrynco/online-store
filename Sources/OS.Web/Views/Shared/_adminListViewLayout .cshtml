@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "_adminLayout.cshtml";
+}
+
+@section content
+{
+    <table class="full-size">
+        <tr class="min-height">
+            <td>
+                <nav class="navbar navbar-link">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Створити</a></li>
+                        <li><a href="#">Видалити</a></li>
+                    </ul>
+                </nav>
+            </td>
+        </tr>
+        <tr class="min-height">
+            <td>
+                @RenderSection("content")
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+}

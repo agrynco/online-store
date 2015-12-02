@@ -251,6 +251,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Administration\BaseAdminController.cs" />
     <Compile Include="Controllers\Administration\AdministrationController.cs" />
+    <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\BaseLayoutController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
@@ -263,10 +264,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -377,6 +378,8 @@
     <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
     <Content Include="Views\Administration\Home.cshtml" />
     <Content Include="Views\Shared\_adminLayout.cshtml" />
+    <Content Include="Views\ProductCategories\Index.cshtml" />
+    <Content Include="Views\Shared\_adminListViewLayout .cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
