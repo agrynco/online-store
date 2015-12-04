@@ -1,0 +1,45 @@
+﻿@using OS.Web.Models
+@model BaseCreateOrEditVireModel
+@{
+    Layout = "_adminLayout.cshtml";
+}
+
+@section content
+{
+    @{
+        string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
+    }
+
+    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post))
+    {
+        <table class="full-size" border="1">
+            <tr class="min-height">
+                <td colspan="3" class="min-width">@(Model.Id.HasValue ? "Редагування" : "Створення")</td>
+            </tr>
+            <tr class="min-height">
+                <td></td>
+                <td>
+                    @Html.ValidationSummary()
+                    @RenderSection("editor")
+                </td>
+                <td></td>
+            </tr>
+            <tr class="min-height">
+                <td></td>
+                <td class="min-width" style="white-space: nowrap">
+                    <input type="submit" value="Зберегти" />
+                    <input type="button" value="Відмінити" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+        </table>
+    }
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
