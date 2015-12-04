@@ -4,12 +4,25 @@
 
 @section content
 {
+    @{
+        string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
+    }
+
     <table class="full-size">
         <tr class="min-height">
             <td>
                 <nav class="navbar navbar-link">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Створити</a></li>
+                        <li class="active">
+                            @if (IsSectionDefined("creationAction"))
+                            {
+                                @RenderSection("creationAction")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Створити", "Create", currentControllerName)
+                            }
+                        </li>
                         <li><a href="#">Видалити</a></li>
                     </ul>
                 </nav>

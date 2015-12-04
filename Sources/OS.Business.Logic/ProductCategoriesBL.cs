@@ -25,5 +25,15 @@ namespace OS.Business.Logic
         {
             return _onlineStoreDbContext.CategoriesRepository.GetById(id);
         }
+
+        public void Update(ProductCategory productCategory)
+        {
+            _onlineStoreDbContext.CategoriesRepository.Update(productCategory);
+        }
+
+        public void Create(ProductCategory productCategory)
+        {
+            _onlineStoreDbContext.CategoriesRepository.Add(productCategory);
+        }
     }
 }

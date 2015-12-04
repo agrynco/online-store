@@ -1,0 +1,21 @@
+﻿@using OS.Web.Models.ProductCategoryViewModels
+@model ProductCategoryCreateOrEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminEditLayout .cshtml";
+}
+
+@section editor
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ParentId)
+    <table>
+        <tr>
+            <td>@Html.LabelFor(model => model.Name, new { @class = "control-label" })</td>
+            <td>@Html.EditorFor(model => model.Name, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(model => model.Name)</td>
+        </tr>
+    </table>
+
+    
+}

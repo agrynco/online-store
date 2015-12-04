@@ -13,6 +13,7 @@
         public static class PageData
         {
             public const string PAGE_TITLE = "PageTitle";
+            public const string CREATE_ARGUMENTS = "CreateArguments";
         }
     }
 }

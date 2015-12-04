@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OS.Business.Domain;
 
-namespace OS.Web.Models
+namespace OS.Web.Models.ProductCategoryViewModels
 {
     public class ProductCategoriesViewModel
     {

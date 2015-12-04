@@ -16,6 +16,11 @@
     height: 1px;
 }
 
+.min-width
+{
+    width: 1px;
+}
+
 .full-width
 {
     width: 100%;

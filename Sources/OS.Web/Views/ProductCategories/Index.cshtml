@@ -1,9 +1,17 @@
 ﻿@using OS.Business.Domain
-@using OS.Web.Models
+@using OS.Web.Models.ProductCategoryViewModels
 @model ProductCategoriesViewModel
 
 @{
-    Layout = "~/Views/Shared/_adminListViewLayout .cshtml";
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
+}
+
+@section creationAction
+{
+    @Html.ActionLink("Створити", "Create", new
+        {
+            parentId = Model.LevelUpProductCategory?.Id
+        })
 }
 
 @section content

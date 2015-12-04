@@ -1,8 +1,9 @@
 ﻿#region Usings
 using System.Linq;
 using System.Web.Mvc;
+using OS.Business.Domain;
 using OS.Business.Logic;
-using OS.Web.Models;
+using OS.Web.Models.ProductCategoryViewModels;
 #endregion
 
 namespace OS.Web.Controllers.Administration
@@ -29,6 +30,55 @@ namespace OS.Web.Controllers.Administration
             }
 
             return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create(int? parentId)
+        {
+            ProductCategoryCreateOrEditViewModel model = new ProductCategoryCreateOrEditViewModel();
+            model.ParentId = parentId;
+            return View("Edit", model);
+        }
+
+        [HttpPost]
+        public ActionResult Save(ProductCategoryCreateOrEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_productCategoriesBL.GetCategories(model.ParentId).Any(productCategory => productCategory.Name == model.Name))
+                {
+                    ModelState.AddModelError("Name", "Така категорія вже існує");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    ProductCategory productCategory;
+
+                    if (model.Id.HasValue)
+                    {
+                        productCategory = _productCategoriesBL.GetCategory(model.Id.Value);
+                        productCategory.Name = model.Name;
+
+                        _productCategoriesBL.Update(productCategory);
+                    }
+                    else
+                    {
+                        productCategory = new ProductCategory
+                            {
+                                ParentId = model.ParentId,
+                                Name = model.Name
+                            };
+                        _productCategoriesBL.Create(productCategory);
+                    }
+
+                    return RedirectToAction("Index", new
+                        {
+                            parentId = model.ParentId
+                        });
+                }
+            }
+
+            return View("Edit", model);
         }
     }
 }
