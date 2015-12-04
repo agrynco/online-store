@@ -382,8 +382,8 @@
     <Content Include="Views\Shared\_adminLayout.cshtml" />
     <Content Include="Views\ProductCategories\Index.cshtml" />
     <Content Include="Views\Shared\_adminListLayout.cshtml" />
-    <None Include="Views\ProductCategories\Edit.cshtml" />
     <Content Include="Views\Shared\_adminEditLayout .cshtml" />
+    <Content Include="Views\ProductCategories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
