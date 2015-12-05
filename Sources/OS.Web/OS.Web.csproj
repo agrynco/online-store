@@ -385,6 +385,7 @@
     <Content Include="Views\Shared\_adminEditLayout .cshtml" />
     <Content Include="Views\ProductCategories\Edit.cshtml" />
     <Content Include="Views\Shared\_requiredMark.cshtml" />
+    <Content Include="Views\ProductCategories\_productCategoryItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

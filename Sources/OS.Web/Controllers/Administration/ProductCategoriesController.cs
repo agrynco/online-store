@@ -40,12 +40,26 @@ namespace OS.Web.Controllers.Administration
             return View("Edit", model);
         }
 
+        public ActionResult Edit(int categoryId)
+        {
+            ProductCategory productCategory = _productCategoriesBL.GetCategory(categoryId);
+
+            ProductCategoryCreateOrEditViewModel model = new ProductCategoryCreateOrEditViewModel
+                {
+                    Name = productCategory.Name,
+                    ParentId = productCategory.ParentId,
+                    Id = productCategory.Id
+                };
+
+            return View("Edit", model);
+        }
+
         [HttpPost]
         public ActionResult Save(ProductCategoryCreateOrEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                if (_productCategoriesBL.GetCategories(model.ParentId).Any(productCategory => productCategory.Name == model.Name))
+                if (!model.Id.HasValue && _productCategoriesBL.GetCategories(model.ParentId).Any(productCategory => productCategory.Name == model.Name))
                 {
                     ModelState.AddModelError("Name", "Така категорія вже існує");
                 }

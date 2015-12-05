@@ -18,7 +18,7 @@
 
 .validation-summary-errors
 {
-    color: red;    
+    color: red;
 }
 
 .field-validation-error
@@ -65,4 +65,15 @@
 .row-space
 {
     height: 10px;
+}
+
+.productCategoryItem
+{
+    display: block;
+    width: 180px;
+    height: 140px;
+    background-color: aliceblue;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
 }

@@ -1,0 +1,31 @@
+﻿@using OS.Business.Domain
+@model ProductCategory
+
+<li class="productCategoryItem">
+    <table class="full-size">
+        <tr>
+            <td>
+                @Html.ActionLink(Model.Name, "Index", new
+                    {
+                        parentId = Model.Id
+                    })
+            </td>
+        </tr>
+        <tr class="min-height">
+            <td>
+                <div style="float: right;">
+                    @Html.ActionLink("Редагувати", "Edit",
+                        new
+                            {
+                                categoryId = Model.Id
+                            },
+                        new
+                            {
+                                @class = "btn-info btn-sm",
+                                style = "font-size: smaller"
+                            })
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
