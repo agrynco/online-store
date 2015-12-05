@@ -30,16 +30,15 @@
         <tr class="min-height">
             <td>
                 <div style="float: right;">
-                    @Html.ActionLink("Редагувати", "Edit",
+                    @Html.ActionLink(" ", "Edit",
                         new
-                            {
-                                categoryId = Model.Id
-                            },
+                        {
+                            categoryId = Model.Id
+                        },
                         new
-                            {
-                                @class = "btn-info btn-sm",
-                                style = "font-size:smaller"
-                            })
+                        {
+                            style = "width: 16px; height: 16px; display: block; background-image: url('Images/editCategory.png')",
+                        })
                 </div>
             </td>
         </tr>
