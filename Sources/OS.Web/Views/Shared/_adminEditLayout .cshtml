@@ -10,7 +10,7 @@
         string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
     }
 
-    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post, 
+    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post,
         new
         {
             @class = "full-size"
@@ -26,11 +26,10 @@
                 <td colspan="3" style="height: 15px"></td>
             </tr>
             <tr class="min-height">
-                <td class="min-width" colspan="2">
+                <td class="min-width" colspan="3">
                     @Html.ValidationSummary()
                     @RenderSection("editor")
                 </td>
-                <td></td>
             </tr>
             <tr>
                 <td colspan="3" class="full-height"></td>

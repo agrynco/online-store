@@ -6,6 +6,11 @@
     margin: 0;
 }
 
+.requiredMark
+{
+    color: red;
+}
+
 .warning
 {
     color: red !important;
