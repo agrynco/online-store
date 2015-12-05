@@ -10,23 +10,34 @@
         string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
     }
 
-    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post))
+    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post, 
+        new
+        {
+            @class = "full-size"
+        }))
     {
-        <table class="full-size" border="0">
+        <table class="full-size">
             <tr class="min-height">
-                <td colspan="3" class="min-width">@(Model.Id.HasValue ? "Редагування" : "Створення")</td>
+                <td colspan="3" class="min-width">
+                    <h2>@(Model.Id.HasValue ? "Редагування" : "Створення") категорії</h2>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height: 15px"></td>
             </tr>
             <tr class="min-height">
-                <td></td>
-                <td>
+                <td class="min-width" colspan="2">
                     @Html.ValidationSummary()
                     @RenderSection("editor")
                 </td>
                 <td></td>
             </tr>
+            <tr>
+                <td colspan="3" class="full-height"></td>
+            </tr>
             <tr class="min-height">
-                <td></td>
-                <td class="min-width" style="white-space: nowrap">
+                <td>&nbsp;</td>
+                <td style="white-space: nowrap" class="min-width">
                     <input type="submit" value="Зберегти" class="btn btn-default" />
 
                     @if (IsSectionDefined("cancelAction"))
@@ -43,10 +54,10 @@
                         })
                     }
                 </td>
-                <td></td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="3"></td>
+                <td colspan="3" style="height: 45px;"></td>
             </tr>
         </table>
     }

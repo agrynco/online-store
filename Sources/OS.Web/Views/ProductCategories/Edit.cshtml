@@ -9,9 +9,9 @@
 {
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.ParentId)
-    <table border="1">
+    <table border="0">
         <tr>
-            <td>@Html.LabelFor(model => model.Name, new { @class = "control-label" })</td>
+            <td>@Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })</td>
             <td>@Html.EditorFor(model => model.Name, new { @class = "form-control" })</td>
             <td>@Html.ValidationMessageFor(model => model.Name)</td>
         </tr>

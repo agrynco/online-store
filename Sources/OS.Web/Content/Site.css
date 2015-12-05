@@ -11,6 +11,16 @@
     color: red !important;
 }
 
+.validation-summary-errors
+{
+    color: red;    
+}
+
+.field-validation-error
+{
+    color: red;
+}
+
 .min-height
 {
     height: 1px;
@@ -19,6 +29,11 @@
 .min-width
 {
     width: 1px;
+}
+
+.full-height
+{
+    height: 100%;
 }
 
 .full-width
