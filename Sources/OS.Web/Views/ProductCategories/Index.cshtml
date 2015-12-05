@@ -19,12 +19,11 @@
     <ul class="nav-pills">
         @if (Model.LevelUpProductCategory != null)
         {
-            <li class="categoryItem">
-                @Html.ActionLink("..", "Index", new
-                   {
-                       parentId = Model.LevelUpProductCategory.ParentId
-                   })
-            </li>
+            @Html.Partial("_productCategoryItem", new ProductCategory
+                {
+                    Name = "..",
+                    Id = Model.LevelUpProductCategory.ParentId ?? 0
+                })
         }
 
         @foreach (ProductCategory productCategory in Model.ProductCategories)
