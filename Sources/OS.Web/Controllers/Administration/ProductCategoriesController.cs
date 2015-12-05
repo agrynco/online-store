@@ -32,6 +32,13 @@ namespace OS.Web.Controllers.Administration
             return View(viewModel);
         }
 
+        public ActionResult Delete(int categoryId)
+        {
+            _productCategoriesBL.Delete(categoryId);
+
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public ActionResult Create(int? parentId)
         {

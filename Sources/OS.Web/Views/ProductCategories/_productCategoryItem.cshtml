@@ -3,6 +3,21 @@
 
 <li class="productCategoryItem">
     <table class="full-size">
+        <tr class="min-height">
+            <td>
+                <div style="float: right;">
+                    @Html.ActionLink(" ", "Delete",
+                        new
+                        {
+                            categoryId = Model.Id
+                        },
+                        new
+                        {
+                            style = "width: 16px; height: 16px; display: block; background-image: url('Images/delete.png')"
+                        })
+                </div>
+            </td>
+        </tr>
         <tr>
             <td>
                 @Html.ActionLink(Model.Name, "Index", new
@@ -22,7 +37,7 @@
                         new
                             {
                                 @class = "btn-info btn-sm",
-                                style = "font-size: smaller"
+                                style = "font-size:smaller"
                             })
                 </div>
             </td>

@@ -35,5 +35,10 @@ namespace OS.Business.Logic
         {
             _onlineStoreDbContext.CategoriesRepository.Add(productCategory);
         }
+
+        public void Delete(int categoryId)
+        {
+            _onlineStoreDbContext.CategoriesRepository.Delete(categoryId);
+        }
     }
 }
