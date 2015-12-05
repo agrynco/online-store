@@ -9,13 +9,25 @@
 {
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.ParentId)
-    <table>
+    <table border="1">
         <tr>
             <td>@Html.LabelFor(model => model.Name, new { @class = "control-label" })</td>
             <td>@Html.EditorFor(model => model.Name, new { @class = "form-control" })</td>
             <td>@Html.ValidationMessageFor(model => model.Name)</td>
         </tr>
     </table>
+}
 
-    
+@section cancelAction
+{
+    @Html.ActionLink("Відмінити", "Index",
+        new
+        {
+            parentId = Model.ParentId
+        },
+        new
+        {
+            onclick = "return confirmCancel();",
+            @class = "btn btn-default"
+        })
 }

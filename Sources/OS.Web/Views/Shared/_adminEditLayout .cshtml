@@ -12,7 +12,7 @@
 
     @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post))
     {
-        <table class="full-size" border="1">
+        <table class="full-size" border="0">
             <tr class="min-height">
                 <td colspan="3" class="min-width">@(Model.Id.HasValue ? "Редагування" : "Створення")</td>
             </tr>
@@ -27,8 +27,21 @@
             <tr class="min-height">
                 <td></td>
                 <td class="min-width" style="white-space: nowrap">
-                    <input type="submit" value="Зберегти" />
-                    <input type="button" value="Відмінити" />
+                    <input type="submit" value="Зберегти" class="btn btn-default" />
+
+                    @if (IsSectionDefined("cancelAction"))
+                    {
+                        @RenderSection("cancelAction")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Відмінити", "Index", currentControllerName,
+                        new
+                        {
+                            onclick = "return confirmCancel();",
+                            @class = "btn btn-default"
+                        })
+                    }
                 </td>
                 <td></td>
             </tr>
@@ -41,5 +54,11 @@
 
 @section scripts
 {
+    <script type="text/javascript">
+        function confirmCancel() {
+            return confirm("Ви впевненні що хочете повернутися до списку із втратою всіх зроблених змін?");
+        }
+    </script>
+
     @Scripts.Render("~/bundles/jqueryval")
 }
