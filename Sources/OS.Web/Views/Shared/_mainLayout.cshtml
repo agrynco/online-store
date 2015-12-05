@@ -18,7 +18,7 @@
         <thead>
             <tr class="min-height">
                 <td></td>
-                <td style="width: 640px; background: whitesmoke">
+                <td style="width: 780px; background: whitesmoke">
                     <div class="navbar navbar-inverse">
                         <div style="float: right">
                             @Html.Partial("_loginPartial")
@@ -56,7 +56,17 @@
         <tfoot>
             <tr class="min-height">
                 <td></td>
-                <td class="panel-footer ">Environment: @ApplicationSettings.Instance.AppSettings.Environment</td>
+                <td class="panel-footer" style="font-size: 11px;">
+                    <div><b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment</div>
+                    <div>
+                        <span>
+                            <b>Client:</b>
+                        </span>
+                        <span id="browserInfo">
+
+                        </span>
+                    </div>
+                </td>
                 <td></td>
             </tr>
         </tfoot>
@@ -65,5 +75,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts")
+
+    <script>
+        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+    </script>
 </body>
 </html>
