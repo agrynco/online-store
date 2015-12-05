@@ -4,7 +4,8 @@ namespace OS.Web.Models.ProductCategoryViewModels
 {
     public class ProductCategoryCreateOrEditViewModel : BaseCreateOrEditVireModel
     {
-        [Required]
+        [Required(ErrorMessage = "Поле Назва обов'язкове")]
+        [Display(Name = "Назва")]
         public string Name { get; set; }
         public int? ParentId { get; set; }
     }
