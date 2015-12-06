@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Brand.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="IdentityEntity.cs" />
     <Compile Include="NamedEntity.cs" />

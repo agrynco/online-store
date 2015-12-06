@@ -66,11 +66,14 @@
     <Compile Include="Core\BaseCRUDRepository.cs" />
     <Compile Include="Core\BaseReadOnlyRepository.cs" />
     <Compile Include="Core\BaseRepository.cs" />
+    <Compile Include="EntityConfigurations\BrandConfiguration.cs" />
+    <Compile Include="EntityConfigurations\CountryConfiguration.cs" />
+    <Compile Include="EntityConfigurations\ProductCategoryConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EntityFrameworkDbContext.cs" />
     <Compile Include="OnlineStoreDbContext.cs" />
     <Compile Include="ProductCategoriesRepository.cs" />
-    <Compile Include="ProductEntityConfiguration.cs" />
+    <Compile Include="EntityConfigurations\ProductConfiguration.cs" />
     <Compile Include="ProductsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +92,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-9.sql" />
     <Content Include="Migrations\0-8.sql" />
     <Content Include="Migrations\0-7.sql" />
     <Content Include="Migrations\0-6.sql" />
