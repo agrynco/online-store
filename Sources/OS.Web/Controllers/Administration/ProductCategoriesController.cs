@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Domain;
@@ -21,7 +22,8 @@ namespace OS.Web.Controllers.Administration
         {
             ProductCategoriesViewModel viewModel = new ProductCategoriesViewModel
                 {
-                    ProductCategories = _productCategoriesBL.GetCategories(parentId).ToList()
+                    ProductCategories = _productCategoriesBL.GetCategories(parentId),
+                    ProductsFromLevelUpProductCategory = parentId.HasValue ? _productCategoriesBL.GetProducts(parentId.Value) : new List<Product>()
                 };
 
             if (parentId != null)

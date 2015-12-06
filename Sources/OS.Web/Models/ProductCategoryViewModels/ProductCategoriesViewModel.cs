@@ -7,6 +7,8 @@ namespace OS.Web.Models.ProductCategoryViewModels
     {
         public List<ProductCategory> ProductCategories { get; set; }
 
+        public List<Product> ProductsFromLevelUpProductCategory { get; set; } 
+
         public ProductCategory LevelUpProductCategory { get; set; }
     }
 }

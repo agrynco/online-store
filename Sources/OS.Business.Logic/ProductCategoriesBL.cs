@@ -16,7 +16,7 @@ namespace OS.Business.Logic
             _productCategoriesRepository = productCategoriesRepository;
         }
 
-        public IList<ProductCategory> GetCategories(int? parentId)
+        public List<ProductCategory> GetCategories(int? parentId)
         {
             return _productCategoriesRepository.GetCategories(parentId).ToList();
         }
