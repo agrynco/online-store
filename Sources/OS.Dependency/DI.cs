@@ -26,11 +26,25 @@ namespace OS.Dependency
 
             container.Register(() => new EntityFrameworkDbContext(ApplicationSettings.Instance.DbSettings.ApplicationConnectionString), lifeStyle);
 
-            container.Register<IProductCategoriesRepository, ProductCategoriesRepository>(lifeStyle);
-            container.Register<IOnlineStoreDbContext, OnlineStoreDbContext>(lifeStyle);
-            container.Register<ProductCategoriesBL>(lifeStyle);
+            Register<IProductCategoriesRepository, ProductCategoriesRepository>(lifeStyle);
+            Register<IOnlineStoreDbContext, OnlineStoreDbContext>(lifeStyle);
+            Register<ProductCategoriesBL>(lifeStyle);
 
-            container.Register<IProductsRepository, ProductsRepository>(lifeStyle);
+            Register<IProductsRepository, ProductsRepository>(lifeStyle);
+            Register<ProductsBL>(lifeStyle);
+        }
+
+        private static void Register<TImplementation>(ScopedLifestyle lifestyle)
+            where TImplementation : class
+        {
+            _container.Register<TImplementation>(lifestyle);
+        }
+
+        private static void Register<TService, TImplementation>(ScopedLifestyle lifestyle) 
+            where TService : class 
+            where TImplementation : class, TService
+        {
+            _container.Register<TService, TImplementation>(lifestyle);
         }
 
         public static T Resolve<T>() where T : class

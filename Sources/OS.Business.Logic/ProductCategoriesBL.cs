@@ -9,36 +9,41 @@ namespace OS.Business.Logic
 {
     public class ProductCategoriesBL
     {
-        private readonly IOnlineStoreDbContext _onlineStoreDbContext;
+        private readonly IProductCategoriesRepository _productCategoriesRepository;
 
-        public ProductCategoriesBL(IOnlineStoreDbContext onlineStoreDbContext)
+        public ProductCategoriesBL(IProductCategoriesRepository productCategoriesRepository)
         {
-            _onlineStoreDbContext = onlineStoreDbContext;
+            _productCategoriesRepository = productCategoriesRepository;
         }
 
         public IList<ProductCategory> GetCategories(int? parentId)
         {
-            return _onlineStoreDbContext.CategoriesRepository.GetCategories(parentId).ToList();
+            return _productCategoriesRepository.GetCategories(parentId).ToList();
         }
 
         public ProductCategory GetCategory(int id)
         {
-            return _onlineStoreDbContext.CategoriesRepository.GetById(id);
+            return _productCategoriesRepository.GetById(id);
         }
 
         public void Update(ProductCategory productCategory)
         {
-            _onlineStoreDbContext.CategoriesRepository.Update(productCategory);
+            _productCategoriesRepository.Update(productCategory);
         }
 
         public void Create(ProductCategory productCategory)
         {
-            _onlineStoreDbContext.CategoriesRepository.Add(productCategory);
+            _productCategoriesRepository.Add(productCategory);
         }
 
         public void Delete(int categoryId)
         {
-            _onlineStoreDbContext.CategoriesRepository.Delete(categoryId);
+            _productCategoriesRepository.Delete(categoryId);
+        }
+
+        public List<Product> GetProducts(int categoryId)
+        {
+            return _productCategoriesRepository.GetById(categoryId).Products.ToList();
         }
     }
 }

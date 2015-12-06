@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUserManager.cs" />
     <Compile Include="EmailService.cs" />
+    <Compile Include="ProductsBL.cs" />
     <Compile Include="SmsService.cs" />
     <Compile Include="ProductCategoriesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
