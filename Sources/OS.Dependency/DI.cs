@@ -29,7 +29,8 @@ namespace OS.Dependency
             container.Register<IProductCategoriesRepository, ProductCategoriesRepository>(lifeStyle);
             container.Register<IOnlineStoreDbContext, OnlineStoreDbContext>(lifeStyle);
             container.Register<ProductCategoriesBL>(lifeStyle);
-            
+
+            container.Register<IProductsRepository, ProductsRepository>(lifeStyle);
         }
 
         public static T Resolve<T>() where T : class

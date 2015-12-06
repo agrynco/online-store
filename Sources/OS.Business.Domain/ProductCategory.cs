@@ -7,6 +7,12 @@ namespace OS.Business.Domain
 {
     public class ProductCategory : NamedEntity
     {
+        public ProductCategory()
+        {
+            ChildCategories = new List<ProductCategory>();
+            Products = new List<Product>();
+        }
+
         public virtual ProductCategory Parent { get; set; }
 
         public int? ParentId { get; set; }
@@ -14,6 +20,8 @@ namespace OS.Business.Domain
         [MaxLength(1024)]
         public string Description { get; set; }
 
-        public virtual List<ProductCategory> ChildCategories { get; set; } 
+        public virtual List<ProductCategory> ChildCategories { get; private set; }
+
+        public virtual List<Product> Products { get; private set; } 
     }
 }

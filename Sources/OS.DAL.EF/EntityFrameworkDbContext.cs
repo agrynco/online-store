@@ -1,5 +1,6 @@
 ﻿#region Usings
 using System.Data.Entity;
+using System.Reflection;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OS.Business.Domain;
 #endregion
@@ -16,6 +17,14 @@ namespace OS.DAL.EF
         {
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetAssembly(GetType()));
+        }
+
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

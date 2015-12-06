@@ -70,6 +70,8 @@
     <Compile Include="EntityFrameworkDbContext.cs" />
     <Compile Include="OnlineStoreDbContext.cs" />
     <Compile Include="ProductCategoriesRepository.cs" />
+    <Compile Include="ProductEntityConfiguration.cs" />
+    <Compile Include="ProductsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +89,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-8.sql" />
     <Content Include="Migrations\0-7.sql" />
     <Content Include="Migrations\0-6.sql" />
     <Content Include="Migrations\0-5.sql" />

@@ -7,7 +7,7 @@ namespace OS.Business.Domain
     public class NamedEntity : IdentityEntity
     {
         [Required]
-        [MaxLength(250, ErrorMessage = "The length of the Name property can not be more than 250 characters")]
-        public string Name { get; set; }
+        [MaxLength(250, ErrorMessage = "Кількість символів в полі Назва має бути не більше 250 символів")]
+        public virtual string Name { get; set; }
     }
 }
