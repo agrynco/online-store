@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models.ProductCategoryViewModels;
+using OS.Web.Models.ProductViewModels;
 #endregion
 
 namespace OS.Web.Controllers.Administration
@@ -102,6 +103,14 @@ namespace OS.Web.Controllers.Administration
             }
 
             return View("Edit", model);
+        }
+
+        [HttpGet]
+        public ActionResult CreateProduct(int categoryId)
+        {
+            ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel();
+
+            return View("ProductEdit", model);
         }
     }
 }

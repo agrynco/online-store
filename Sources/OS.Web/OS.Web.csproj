@@ -257,6 +257,7 @@
     <Compile Include="Controllers\Administration\BaseAdminController.cs" />
     <Compile Include="Controllers\Administration\AdministrationController.cs" />
     <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
+    <Compile Include="Controllers\Administration\ProductsController.cs" />
     <Compile Include="Controllers\BaseLayoutController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
@@ -269,13 +270,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BaseCreateOrEditVireModel.cs" />
+    <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
+    <Compile Include="Models\ProductViewModels\ProductCreateOrEditViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -397,6 +399,8 @@
     <None Include="Views\Countries\Index.cshtml" />
     <Content Include="Views\Countries\Update.cshtml" />
     <Content Include="Views\ProductCategories\_productItem.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\ProductCategories\ProductEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

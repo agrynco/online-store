@@ -14,6 +14,24 @@
         })
 }
 
+@section subAtionsToolBar
+{
+    <nav class="navbar navbar-link">
+        <ul class="nav navbar-nav">
+            <li>
+                @Html.ActionLink("Додати новий товар", "CreateProduct", new
+                    {
+                        categoryId = Model.LevelUpProductCategory?.Id
+                    },
+                    new
+                        {
+                            
+                        })
+            </li>
+        </ul>
+    </nav>
+}
+
 @section content
 {
     <ul class="nav-pills">

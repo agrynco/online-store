@@ -2,7 +2,7 @@
 
 namespace OS.Web.Models.ProductCategoryViewModels
 {
-    public class ProductCategoryCreateOrEditViewModel : BaseCreateOrEditVireModel
+    public class ProductCategoryCreateOrEditViewModel : BaseCreateOrEditViewModel
     {
         [Required(ErrorMessage = "Поле Назва обов'язкове")]
         [Display(Name = "Назва")]
