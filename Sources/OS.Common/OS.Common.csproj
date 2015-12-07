@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionStringEncoder.cs" />
+    <Compile Include="KeyEqualityComparer.cs" />
     <Compile Include="PropertyMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

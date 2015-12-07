@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7CDF2ABB-F7D6-4EA9-90D9-E09EEDF536A1}</ProjectGuid>
+    <ProjectGuid>{7B197038-72AA-4FB0-9DA5-186DCF118721}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OS.DAL.Abstract</RootNamespace>
-    <AssemblyName>OS.DAL.Abstract</AssemblyName>
+    <RootNamespace>OS.Business.Logic.Tests</RootNamespace>
+    <AssemblyName>OS.Business.Logic.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,18 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\ICRUDRepository.cs" />
-    <Compile Include="Core\IReadOnlyRepository.cs" />
-    <Compile Include="ICountriesRepository.cs" />
-    <Compile Include="IOnlineStoreDbContext.cs" />
-    <Compile Include="IProductCategoriesRepository.cs" />
-    <Compile Include="IProductsRepository.cs" />
+    <Compile Include="CountriesBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\OS.Business.Domain\OS.Business.Domain.csproj">
-      <Project>{B2660F88-C0FB-4655-A8A9-4BF6616C5ADC}</Project>
+      <Project>{b2660f88-c0fb-4655-a8a9-4bf6616c5adc}</Project>
       <Name>OS.Business.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.Business.Logic\OS.Business.Logic.csproj">
+      <Project>{134e9999-4850-4f45-a283-fef73e1529f4}</Project>
+      <Name>OS.Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
+      <Project>{7cdf2abb-f7d6-4ea9-90d9-e09eedf536a1}</Project>
+      <Name>OS.DAL.Abstract</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

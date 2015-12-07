@@ -1,10 +1,9 @@
 ﻿using OS.Business.Domain;
 using OS.DAL.Abstract;
-using OS.DAL.EF.Core;
 
-namespace OS.DAL.EF
+namespace OS.DAL.EF.Repositories
 {
-    public class ProductsRepository : BaseCRUDRepository<EntityFrameworkDbContext, Product, int>, IProductsRepository
+    public class ProductsRepository : BaseOnlineStoreCRUDRepository<Product>, IProductsRepository
     {
         public ProductsRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

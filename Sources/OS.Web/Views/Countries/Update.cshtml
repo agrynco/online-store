@@ -1,0 +1,36 @@
+﻿@using OS.Business.Logic
+@model UpdateCountriesResult
+
+@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+@section content
+{
+    <h3>
+        Результат оновлення країн
+    </h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Оновлено
+            </th>
+            <th>
+                Створено
+            </th>
+            <th>
+                Видалено
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@Model.Updated.Count</td>
+            <td>@Model.Created.Count</td>
+            <td>@Model.Deleted.Count</td>
+        </tr>
+        </tbody>
+    </table>
+}

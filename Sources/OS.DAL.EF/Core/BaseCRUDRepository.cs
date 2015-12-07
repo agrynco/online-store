@@ -29,7 +29,7 @@ namespace OS.DAL.EF.Core
             Delete(entity);
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             EntityFrameworkDbContext.Set<TEntity>().Remove(entity);
             EntityFrameworkDbContext.SaveChanges();

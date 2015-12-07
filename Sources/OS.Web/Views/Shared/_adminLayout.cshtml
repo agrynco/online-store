@@ -5,10 +5,10 @@
 @section topMenu
 {
     <li>
-        @Html.ActionLink("Категорія", "Index", "ProductCategories")
+        @Html.ActionLink("Продукція", "Index", "ProductCategories")
     </li>
     <li>
-        <a>Продукція</a>
+        @Html.ActionLink("Країни", "Index", "Countries")
     </li>
     <li>
         <a>Замовлення</a>
@@ -18,9 +18,9 @@
     </li>
     <li>
         @Html.ActionLink("Магазин", "Index", "Home", null, new
-            {
-                style = "color: lightgreen !important;"
-            })
+   {
+       style = "color: lightgreen !important;"
+   })
     </li>
 
 }

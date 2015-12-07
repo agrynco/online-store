@@ -6,6 +6,7 @@ using OS.Business.Logic;
 using OS.Configuration;
 using OS.DAL.Abstract;
 using OS.DAL.EF;
+using OS.DAL.EF.Repositories;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 #endregion
@@ -32,6 +33,9 @@ namespace OS.Dependency
 
             Register<IProductsRepository, ProductsRepository>(lifeStyle);
             Register<ProductsBL>(lifeStyle);
+
+            Register<ICountriesRepository, CountriesRepository>(lifeStyle);
+            Register<CountriesBL>(lifeStyle);
         }
 
         private static void Register<TImplementation>(ScopedLifestyle lifestyle)
