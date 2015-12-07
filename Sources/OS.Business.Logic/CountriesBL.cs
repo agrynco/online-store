@@ -58,12 +58,23 @@ namespace OS.Business.Logic
 
             UpdateCountriesResult result = new UpdateCountriesResult
                 {
-                    Updated = newCountries.Intersect(existedCountries, new KeyEqualityComparer<Country>(o => o.EnglishName)).ToList(),
+                    Updated = existedCountries.Intersect(newCountries, new KeyEqualityComparer<Country>(o => o.EnglishName)).ToList(),
                     Created = newCountries.Except(existedCountries, new KeyEqualityComparer<Country>(o => o.EnglishName)).ToList(),
                     Deleted = existedCountries.Except(newCountries, new KeyEqualityComparer<Country>(o => o.EnglishName)).ToList()
                 };
 
-            result.Updated.ForEach(item => _countriesRepository.Update(item));
+            result.Updated.ForEach(item =>
+            {
+                Country source = newCountries.Single(country => country.EnglishName == item.EnglishName);
+
+                item.EnglishName = source.EnglishName;
+                item.ISO = source.ISO;
+                item.PhoneCode = source.PhoneCode;
+                item.ThreeCharsCode = source.ThreeCharsCode;
+                item.TwoCharsCode = source.TwoCharsCode;
+
+                _countriesRepository.Update(item);
+            });
             result.Created.ForEach(item => _countriesRepository.Add(item));
             result.Deleted.ForEach(item => _countriesRepository.Delete(item));
 
