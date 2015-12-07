@@ -67,12 +67,23 @@
     height: 10px;
 }
 
-.productCategoryItem
+.product-category-item
 {
     display: block;
     width: 180px;
     height: 140px;
     background-color: aliceblue;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.product-item
+{
+    display: block;
+    width: 180px;
+    height: 140px;
+    background-color: oldlace;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;

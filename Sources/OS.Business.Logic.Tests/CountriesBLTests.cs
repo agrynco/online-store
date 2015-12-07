@@ -112,5 +112,18 @@ namespace OS.Business.Logic.Tests
             Assert.That(updateCountriesResult.Updated.Count, Is.EqualTo(0));
             Assert.That(updateCountriesResult.Deleted.Count, Is.EqualTo(1));
         }
+
+        [Test]
+        public void GetOnlineCountries_ShouldReturn246()
+        {
+            //Arrange
+            CountriesBL countriesBL = new CountriesBL(null);
+
+            //Act
+            List<Country> onlineCountries = countriesBL.GetOnlineCountries();
+
+            //Assert
+            Assert.That(onlineCountries.Count, Is.EqualTo(246));
+        }
     }
 }

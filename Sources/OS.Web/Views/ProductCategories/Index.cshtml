@@ -30,5 +30,10 @@
         {
             @Html.Partial("_productCategoryItem", productCategory)
         }
+
+        @foreach (Product product in Model.ProductsFromLevelUpProductCategory)
+        {
+            @Html.Partial("_productItem", product)
+        }
     </ul>
 }

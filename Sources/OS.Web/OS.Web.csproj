@@ -396,6 +396,7 @@
     <None Include="Views\Countries\ImportResult.cshtml" />
     <None Include="Views\Countries\Index.cshtml" />
     <Content Include="Views\Countries\Update.cshtml" />
+    <Content Include="Views\ProductCategories\_productItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

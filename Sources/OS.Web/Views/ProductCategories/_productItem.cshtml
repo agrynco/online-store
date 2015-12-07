@@ -1,0 +1,46 @@
+﻿@using OS.Business.Domain
+@model Product
+
+<li class="product-item">
+    <table class="full-size">
+        <tr class="min-height">
+            <td>
+                <div style="float: right;">
+                    @Html.ActionLink(" ", "Delete",
+                            new
+                            {
+                                categoryId = Model.Id
+                            },
+                            new
+                            {
+                                style = "width: 16px; height: 16px; display: block; background-image: url('Images/delete.png')",
+                                onclick = "return confirmDelete();"
+                            })
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Model.Name
+            </td>
+        </tr>
+        @if (Model.Id != 0)
+        {
+            <tr class="min-height">
+                <td>
+                    <div style="float: right;">
+                        @Html.ActionLink(" ", "Edit",
+                            new
+                                {
+                                    categoryId = Model.Id
+                                },
+                            new
+                                {
+                                    style = "width: 16px; height: 16px; display: block; background-image: url('Images/editCategory.png')",
+                                })
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</li>
