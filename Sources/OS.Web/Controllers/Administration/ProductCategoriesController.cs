@@ -108,7 +108,11 @@ namespace OS.Web.Controllers.Administration
         [HttpGet]
         public ActionResult CreateProduct(int categoryId)
         {
-            ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel();
+            ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel
+                {
+                    Product = new Product(),
+                    ParentCategoryId = categoryId
+                };
 
             return View("ProductEdit", model);
         }

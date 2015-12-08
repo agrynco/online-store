@@ -73,6 +73,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EntityFrameworkDbContext.cs" />
     <Compile Include="OnlineStoreDbContext.cs" />
+    <Compile Include="Repositories\BrandsRepository.cs" />
     <Compile Include="Repositories\CountriesRepository.cs" />
     <Compile Include="Repositories\ProductCategoriesRepository.cs" />
     <Compile Include="EntityConfigurations\ProductConfiguration.cs" />
@@ -94,6 +95,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-13.sql" />
     <Content Include="Migrations\0-12.sql" />
     <Content Include="Migrations\0-11.sql" />
     <Content Include="Migrations\0-10.sql" />

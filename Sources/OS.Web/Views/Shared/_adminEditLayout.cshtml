@@ -1,0 +1,76 @@
+﻿@using OS.Web.Models
+@model BaseCreateOrEditViewModel
+@{
+    Layout = "_adminLayout.cshtml";
+}
+
+@section content
+{
+    @{
+        string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
+    }
+
+    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post,
+        new
+        {
+            @class = "full-size"
+        }))
+    {
+        <table class="full-size">
+            <tr class="min-height">
+                <td colspan="3" class="min-width">
+                    <h2>@(Model.Id.HasValue ? "Редагування" : "Створення")</h2>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height: 15px"></td>
+            </tr>
+            <tr class="min-height">
+                <td class="min-width" colspan="3">
+                    @Html.ValidationSummary()
+                    @RenderSection("editor")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="full-height"></td>
+            </tr>
+            <tr class="min-height">
+                <td>&nbsp;</td>
+                <td style="white-space: nowrap" class="min-width">
+                    <input type="submit" value="Зберегти" class="btn btn-default" />
+
+                    @if (IsSectionDefined("cancelAction"))
+                    {
+                        @RenderSection("cancelAction")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Відмінити", "Index", currentControllerName,
+                        new
+                        {
+                            onclick = "return confirmCancel();",
+                            @class = "btn btn-default"
+                        })
+                    }
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height: 45px;"></td>
+            </tr>
+        </table>
+    }
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        function confirmCancel() {
+            return confirm("Ви впевненні що хочете повернутися до списку із втратою всіх зроблених змін?");
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("sxripts", false)
+}

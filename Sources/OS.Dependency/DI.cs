@@ -36,6 +36,9 @@ namespace OS.Dependency
 
             Register<ICountriesRepository, CountriesRepository>(lifeStyle);
             Register<CountriesBL>(lifeStyle);
+
+            Register<IBrandsRepository, BrandsRepository>(lifeStyle);
+            Register<BrandsBL>(lifeStyle);
         }
 
         private static void Register<TImplementation>(ScopedLifestyle lifestyle)

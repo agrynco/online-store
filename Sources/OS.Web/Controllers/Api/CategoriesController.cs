@@ -16,7 +16,6 @@ namespace OS.Web.Controllers.Api
             _productCategoriesBL = productCategoriesBL;
         }
 
-        [Route("top")]
         public IList<ProductCategory> GetRootCategories()
         {
             return _productCategoriesBL.GetCategories(null);

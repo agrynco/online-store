@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Core\ICRUDRepository.cs" />
     <Compile Include="Core\IReadOnlyRepository.cs" />
+    <Compile Include="IBrandsRepository.cs" />
     <Compile Include="ICountriesRepository.cs" />
     <Compile Include="IOnlineStoreDbContext.cs" />
     <Compile Include="IProductCategoriesRepository.cs" />

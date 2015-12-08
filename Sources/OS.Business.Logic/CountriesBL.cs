@@ -80,5 +80,10 @@ namespace OS.Business.Logic
 
             return result;
         }
+
+        public List<Country> Find(string nameSearchPattern)
+        {
+            return _countriesRepository.GetAll().Where(country => country.Name.Contains(nameSearchPattern)).ToList();
+        } 
     }
 }

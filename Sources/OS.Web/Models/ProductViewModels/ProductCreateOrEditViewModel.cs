@@ -11,5 +11,7 @@ namespace OS.Web.Models.ProductViewModels
         }
 
         public Product Product { get; set; }
+
+        public int ParentCategoryId { get; set; }
     }
 }

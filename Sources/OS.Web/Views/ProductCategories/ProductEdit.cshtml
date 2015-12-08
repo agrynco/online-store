@@ -2,10 +2,128 @@
 @model ProductCreateOrEditViewModel
 
 @{
-    Layout = "~/Views/Shared/_adminEditLayout .cshtml";
+    Layout = "~/Views/Shared/_adminEditLayout.cshtml";
 }
 
 @section editor
 {
-    Editor
+    <style>
+        .ui-autocomplete
+        {
+            max-height: 100px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+    </style>
+
+    <table class="full-width">
+        <tr>
+            <td class="min-width col-md-2" style="white-space: nowrap">
+                <span>
+                    @Html.LabelFor(m => m.Product.Name)
+                </span>@Html.Partial("_requiredMark")
+            </td>
+            <td style="width: 250px">@Html.TextBoxFor(model => model.Product.Name, new {@class = "form-control"})</td>
+            <td style="white-space: nowrap">@Html.ValidationMessageFor(model => model.Product.Name)</td>
+        </tr>
+        <tr class="row-space">
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="min-width col-md-2" style="white-space: nowrap;" valign="top">
+                <span>
+                    @Html.LabelFor(m => m.Product.Description)
+                </span>
+            </td>
+            <td colspan="2">
+                @Html.TextAreaFor(m => m.Product.Description)
+            </td>
+        </tr>
+        <tr class="row-space">
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="min-width col-md-2">
+                @Html.LabelFor(m => m.Product.Brand)
+            </td>
+            <td>
+                <div class="ui-widget">
+                    <input id="@Html.IdFor(m => m.Product.Brand.Name)"/>
+                </div>
+            </td>
+        </tr>
+        <tr class="row-space">
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="min-width col-md-2">
+                @Html.LabelFor(m => m.Product.CountryProducer)
+            </td>
+            <td>
+                <div class="ui-widget">
+                    <input id="@Html.IdFor(m => m.Product.CountryProducer.Name)" />
+                </div>
+            </td>
+        </tr>
+    </table>
+}
+
+@section cancelAction
+{
+    @Html.ActionLink("Відмінити", "Index",
+        new
+            {
+                parentId = Model.ParentCategoryId
+            },
+        new
+            {
+                onclick = "return confirmCancel();",
+                @class = "btn btn-default"
+            })
+}
+
+@section sxripts
+{
+    <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            selector: "#@Html.IdFor(m => m.Product.Description)"
+        });
+    </script>
+    <script src="~/Scripts/jquery-ui/jquery-ui.js">
+    </script>
+
+    <script type="text/javascript">
+        $("#@Html.IdFor(m => m.Product.Brand.Name)").autocomplete(
+        {
+            source: "/api/Brands",
+            minLength: 2,
+            create: function()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
+                {
+                    return $('<li>')
+                        .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                        .appendTo(ul);
+                };
+            }
+        });
+    </script>
+<script type="text/javascript">
+        $("#@Html.IdFor(m => m.Product.CountryProducer.Name)").autocomplete(
+        {
+            source: "/api/Countries",
+            minLength: 2,
+            create: function()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
+                {
+                    return $('<li>')
+                        .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                        .appendTo(ul);
+                };
+            }
+        });
+</script>
 }

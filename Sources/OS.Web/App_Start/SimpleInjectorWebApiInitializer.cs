@@ -1,22 +1,21 @@
 #region Usings
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using OS.Business.Domain;
-using OS.Business.Logic;
-using OS.Configuration;
 using OS.DAL.EF;
 using OS.Dependency;
 using OS.Web.App_Start;
-using OS.Web.Models;
 using SimpleInjector;
 using SimpleInjector.Advanced;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
+using SimpleInjector.Integration.WebApi;
 using WebActivator;
 #endregion
 
@@ -40,8 +39,8 @@ namespace OS.Web.App_Start
             //container.Verify();
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
-//            GlobalConfiguration.Configuration.DependencyResolver =
-//                new SimpleInjectorWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver =
+                new SimpleInjectorWebApiDependencyResolver(container);
         }
 
         private static void InitializeContainer(Container container)
