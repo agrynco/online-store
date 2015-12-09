@@ -109,7 +109,7 @@ var tinyMCEPopup = {
 	 * @method getWindowArg
 	 * @param {String} name Name of the window argument to retrive.
 	 * @param {String} defaultValue Optional default value to return.
-	 * @return {String} Argument value or default value if it wasn't found.
+	 * @return {String} Argument value or default id if it wasn't found.
 	 */
 	getWindowArg : function(name, defaultValue) {
 		var value = this.params[name];
@@ -123,7 +123,7 @@ var tinyMCEPopup = {
 	 * @method getParam
 	 * @param {String} name Name of the editor config option to retrive.
 	 * @param {String} defaultValue Optional default value to return.
-	 * @return {String} Parameter value or default value if it wasn't found.
+	 * @return {String} Parameter value or default id if it wasn't found.
 	 */
 	getParam : function(name, defaultValue) {
 		return this.editor.getParam(name, defaultValue);
@@ -135,7 +135,7 @@ var tinyMCEPopup = {
 	 * @method getLang
 	 * @param {String} name Language item like mydialog.something.
 	 * @param {String} defaultValue Optional default value to return.
-	 * @return {String} Language value for the item like "my string" or the default value if it wasn't found.
+	 * @return {String} Language value for the item like "my string" or the default id if it wasn't found.
 	 */
 	getLang : function(name, defaultValue) {
 		return this.editor.getLang(name, defaultValue);

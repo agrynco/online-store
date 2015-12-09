@@ -99,7 +99,7 @@ define("tinymce/html/Writer", [
 				/*if (indent && indentBefore[name] && html.length > 0) {
 					value = html[html.length - 1];
 
-					if (value.length > 0 && value !== '\n')
+					if (value.length > 0 && id !== '\n')
 						html.push('\n');
 				}*/
 

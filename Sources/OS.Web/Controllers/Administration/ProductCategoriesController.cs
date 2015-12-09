@@ -1,9 +1,12 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
+using OS.Business.Logic.Exceptions;
 using OS.Web.Models.ProductCategoryViewModels;
 using OS.Web.Models.ProductViewModels;
 #endregion
@@ -13,10 +16,17 @@ namespace OS.Web.Controllers.Administration
     public class ProductCategoriesController : BaseAdminController
     {
         private readonly ProductCategoriesBL _productCategoriesBL;
+        private readonly ProductsBL _productsBL;
+        private readonly BrandsBL _brandsBL;
+        private readonly CountriesBL _countriesBL;
 
-        public ProductCategoriesController(ProductCategoriesBL productCategoriesBL)
+        public ProductCategoriesController(ProductCategoriesBL productCategoriesBL, ProductsBL productsBL,
+            BrandsBL brandsBL, CountriesBL countriesBL)
         {
             _productCategoriesBL = productCategoriesBL;
+            _productsBL = productsBL;
+            _brandsBL = brandsBL;
+            _countriesBL = countriesBL;
         }
 
         public ActionResult Index(int? parentId)
@@ -29,7 +39,7 @@ namespace OS.Web.Controllers.Administration
 
             if (parentId != null)
             {
-                viewModel.LevelUpProductCategory = _productCategoriesBL.GetCategory(parentId.Value);
+                viewModel.LevelUpProductCategory = _productCategoriesBL.GetById(parentId.Value);
             }
 
             return View(viewModel);
@@ -52,7 +62,7 @@ namespace OS.Web.Controllers.Administration
 
         public ActionResult Edit(int categoryId)
         {
-            ProductCategory productCategory = _productCategoriesBL.GetCategory(categoryId);
+            ProductCategory productCategory = _productCategoriesBL.GetById(categoryId);
 
             ProductCategoryCreateOrEditViewModel model = new ProductCategoryCreateOrEditViewModel
                 {
@@ -80,7 +90,7 @@ namespace OS.Web.Controllers.Administration
 
                     if (model.Id.HasValue)
                     {
-                        productCategory = _productCategoriesBL.GetCategory(model.Id.Value);
+                        productCategory = _productCategoriesBL.GetById(model.Id.Value);
                         productCategory.Name = model.Name;
 
                         _productCategoriesBL.Update(productCategory);
@@ -111,8 +121,79 @@ namespace OS.Web.Controllers.Administration
             ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel
                 {
                     Product = new Product(),
-                    ParentCategoryId = categoryId
+                    ParentCategoryId = categoryId,
+                    PostedProductPhotos = new List<HttpPostedFileBase>(new HttpPostedFileBase[5])
                 };
+
+            return View("ProductEdit", model);
+        }
+
+        [ValidateInput(false)]
+        public ActionResult SaveProduct(ProductCreateOrEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Product target;
+
+                if (model.Id.HasValue)
+                {
+                    target = _productsBL.GetById(model.Id.Value);
+                }
+                else
+                {
+                    target = new Product();
+                }
+                
+                target.Name = model.Product.Name;
+                target.Description = model.Product.Description;
+
+                if (!string.IsNullOrEmpty(model.BrandName))
+                {
+                    try
+                    {
+                        Brand existedBrand = _brandsBL.GetByName(model.BrandName);
+                        target.BrandId = existedBrand.Id;
+                    }
+                    catch (ThereIsNoBrandWithNameException)
+                    {
+                        ModelState.AddModelError("BrandName", $"Бренд з ім'ям '{model.BrandName}' не існує");
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(model.CountryName))
+                {
+                    try
+                    {
+                        Country existedCountry = _countriesBL.GetByName(model.CountryName);
+                        target.CountryProducer = existedCountry;
+                    }
+                    catch (ThereIsNoCountryWithNameException)
+                    {
+                        ModelState.AddModelError("CountryName", $"Країна ім'ям '{model.CountryName}' не існує");
+                    }
+                }
+
+                ProductCategory owner = _productCategoriesBL.GetById(model.ParentCategoryId);
+
+                _productCategoriesBL.Add(target, owner);
+
+                if (target.Id == 0)
+                {
+                    _productsBL.Create(target);
+                }
+                else
+                {
+                    _productsBL.Update(target);
+                }
+
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index", new
+                        {
+                            parentId = model.ParentCategoryId
+                    });
+                }
+            }
 
             return View("ProductEdit", model);
         }

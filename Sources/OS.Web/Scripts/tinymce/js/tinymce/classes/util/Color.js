@@ -26,7 +26,7 @@ define("tinymce/util/Color", [], function() {
 	 *
 	 * @constructor
 	 * @method Color
-	 * @param {String} value Optional initial value to parse.
+	 * @param {String} value Optional initial id to parse.
 	 */
 	function Color(value) {
 		var self = this, r = 0, g = 0, b = 0;
@@ -184,7 +184,7 @@ define("tinymce/util/Color", [], function() {
 		 *  * {h: 360, s: 100, v: 100}
 		 *
 		 * @method parse
-		 * @param {Object/String} value Color value to parse.
+		 * @param {Object/String} value Color id to parse.
 		 * @return {tinymce.util.Color} Current color instance.
 		 */
 		function parse(value) {

@@ -19,5 +19,15 @@ namespace OS.Business.Logic
         {
             _productsRepository.Add(product);
         }
+
+        public Product GetById(int id)
+        {
+            return _productsRepository.GetById(id);
+        }
+
+        public void Update(Product product)
+        {
+            _productsRepository.Update(product);
+        }
     }
 }

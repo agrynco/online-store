@@ -6,9 +6,9 @@ namespace OS.Business.Domain
 {
     public class NamedEntity : IdentityEntity
     {
-        [Required]
+        [Required(ErrorMessage = "Поле Назва обов'язкове")]
         [MaxLength(250, ErrorMessage = "Кількість символів в полі Назва має бути не більше 250 символів")]
         [Display(Name = "Назва")]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

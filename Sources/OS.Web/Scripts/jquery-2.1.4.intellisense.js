@@ -65,13 +65,13 @@ intellisense.annotate(jQuery, {
   },
   'data': function() {
     /// <signature>
-    ///   <summary>Returns value at named data store for the element, as set by jQuery.data(element, name, value), or the full data store for the element.</summary>
+    ///   <summary>Returns value at named data store for the element, as set by jQuery.data(element, name, id), or the full data store for the element.</summary>
     ///   <param name="element" type="Element">The DOM element to query for the data.</param>
     ///   <param name="key" type="String">Name of the data stored.</param>
     ///   <returns type="Object" />
     /// </signature>
     /// <signature>
-    ///   <summary>Returns value at named data store for the element, as set by jQuery.data(element, name, value), or the full data store for the element.</summary>
+    ///   <summary>Returns value at named data store for the element, as set by jQuery.data(element, name, id), or the full data store for the element.</summary>
     ///   <param name="element" type="Element">The DOM element to query for the data.</param>
     ///   <returns type="Object" />
     /// </signature>
@@ -186,7 +186,7 @@ intellisense.annotate(jQuery, {
   'inArray': function() {
     /// <signature>
     ///   <summary>Search for a specified value within an array and return its index (or -1 if not found).</summary>
-    ///   <param name="value" type="Anything">The value to search for.</param>
+    ///   <param name="value" type="Anything">The id to search for.</param>
     ///   <param name="array" type="Array">An array through which to search.</param>
     ///   <param name="fromIndex" type="Number">The index of the array at which to begin the search. The default is 0, which will search the whole array.</param>
     ///   <returns type="Number" />
@@ -216,7 +216,7 @@ intellisense.annotate(jQuery, {
   'isNumeric': function() {
     /// <signature>
     ///   <summary>Determines whether its argument is a number.</summary>
-    ///   <param name="value" type="PlainObject">The value to be tested.</param>
+    ///   <param name="value" type="PlainObject">The id to be tested.</param>
     ///   <returns type="Boolean" />
     /// </signature>
   },
@@ -258,7 +258,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Translate all items in an array or object to new array of items.</summary>
     ///   <param name="arrayOrObject" type="">The Array or Object to translate.</param>
-    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the value; the second argument is the index or key of the array or object property. The function can return any value to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
+    ///   <param name="callback( value, indexOrKey )" type="Function">The function to process each item against.  The first argument to the function is the id; the second argument is the index or key of the array or object property. The function can return any id to add to the array. A returned array will be flattened into the resulting array. Within the function, this refers to the global (window) object.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -681,7 +681,7 @@ intellisense.annotate(jQuery.Event.prototype, {
     /// <returns type="Element" />
   },
   'result': function() {
-    /// <summary>The last value returned by an event handler that was triggered by this event, unless the value was undefined.</summary>
+    /// <summary>The last value returned by an event handler that was triggered by this event, unless the id was undefined.</summary>
     /// <returns type="Object" />
   },
   'stopImmediatePropagation': function() {
@@ -861,7 +861,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more attributes for the set of matched elements.</summary>
     ///   <param name="attributeName" type="String">The name of the attribute to set.</param>
-    ///   <param name="value" type="">A value to set for the attribute.</param>
+    ///   <param name="value" type="">A id to set for the attribute.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -872,7 +872,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more attributes for the set of matched elements.</summary>
     ///   <param name="attributeName" type="String">The name of the attribute to set.</param>
-    ///   <param name="function(index, attr)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old attribute value as arguments.</param>
+    ///   <param name="function(index, attr)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old attribute id as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -880,35 +880,35 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value containing the a given substring.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'attributeContainsPrefix': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-).</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'attributeContainsWord': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value containing a given word, delimited by spaces.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'attributeEndsWith': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value ending exactly with a given string. The comparison is case sensitive.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'attributeEquals': function() {
     /// <signature>
-    ///   <summary>Selects elements that have the specified attribute with a value exactly equal to a certain value.</summary>
+    ///   <summary>Selects elements that have the specified attribute with a value exactly equal to a certain id.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'attributeHas': function() {
@@ -929,14 +929,14 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Select elements that either don't have the specified attribute, or do have the specified attribute but not with a certain value.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'attributeStartsWith': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value beginning exactly with a given string.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute id. Can be either an unquoted single word or a quoted string.</param>
     /// </signature>
   },
   'before': function() {
@@ -1056,8 +1056,8 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Create a deep copy of the set of matched elements.</summary>
-    ///   <param name="withDataAndEvents" type="Boolean">A Boolean indicating whether event handlers and data should be copied along with the elements. The default value is false. *In jQuery 1.5.0 the default value was incorrectly true; it was changed back to false in 1.5.1 and up.</param>
-    ///   <param name="deepWithDataAndEvents" type="Boolean">A Boolean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's value (which defaults to false).</param>
+    ///   <param name="withDataAndEvents" type="Boolean">A Boolean indicating whether event handlers and data should be copied along with the elements. The default value is false. *In jQuery 1.5.0 the default id was incorrectly true; it was changed back to false in 1.5.1 and up.</param>
+    ///   <param name="deepWithDataAndEvents" type="Boolean">A Boolean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's id (which defaults to false).</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1102,13 +1102,13 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more CSS properties for the set of matched elements.</summary>
     ///   <param name="propertyName" type="String">A CSS property name.</param>
-    ///   <param name="value" type="">A value to set for the property.</param>
+    ///   <param name="value" type="">A id to set for the property.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Set one or more CSS properties for the set of matched elements.</summary>
     ///   <param name="propertyName" type="String">A CSS property name.</param>
-    ///   <param name="function(index, value)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old value as arguments.</param>
+    ///   <param name="function(index, value)" type="Function">A function returning the id to set. this is the current element. Receives the index position of the element in the set and the old id as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1121,7 +1121,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Store arbitrary data associated with the matched elements.</summary>
     ///   <param name="key" type="String">A string naming the piece of data to set.</param>
-    ///   <param name="value" type="Object">The new data value; it can be any Javascript type including Array or Object.</param>
+    ///   <param name="value" type="Object">The new data id; it can be any Javascript type including Array or Object.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2107,7 +2107,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more properties for the set of matched elements.</summary>
     ///   <param name="propertyName" type="String">The name of the property to set.</param>
-    ///   <param name="value" type="">A value to set for the property.</param>
+    ///   <param name="value" type="">A id to set for the property.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2118,7 +2118,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Set one or more properties for the set of matched elements.</summary>
     ///   <param name="propertyName" type="String">The name of the property to set.</param>
-    ///   <param name="function(index, oldPropertyValue)" type="Function">A function returning the value to set. Receives the index position of the element in the set and the old property value as arguments. Within the function, the keyword this refers to the current element.</param>
+    ///   <param name="function(index, oldPropertyValue)" type="Function">A function returning the value to set. Receives the index position of the element in the set and the old property id as arguments. Within the function, the keyword this refers to the current element.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2580,12 +2580,12 @@ intellisense.annotate(jQuery.fn, {
   'val': function() {
     /// <signature>
     ///   <summary>Set the value of each element in the set of matched elements.</summary>
-    ///   <param name="value" type="">A string of text or an array of strings corresponding to the value of each matched element to set as selected/checked.</param>
+    ///   <param name="value" type="">A string of text or an array of strings corresponding to the id of each matched element to set as selected/checked.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Set the value of each element in the set of matched elements.</summary>
-    ///   <param name="function(index, value)" type="Function">A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old value as arguments.</param>
+    ///   <param name="function(index, value)" type="Function">A function returning the id to set. this is the current element. Receives the index position of the element in the set and the old id as arguments.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },

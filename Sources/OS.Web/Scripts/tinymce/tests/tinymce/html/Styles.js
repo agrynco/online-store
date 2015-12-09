@@ -8,13 +8,13 @@ test('Basic parsing/serializing', function() {
 	equal(styles.serialize(styles.parse('FONT-SIZE:10px')), "font-size: 10px;");
 	equal(styles.serialize(styles.parse('FONT-SIZE:10px;COLOR:red')), "font-size: 10px; color: red;");
 	equal(styles.serialize(styles.parse('   FONT-SIZE  :  10px  ;   COLOR  :  red   ')), "font-size: 10px; color: red;");
-	equal(styles.serialize(styles.parse('key:"value"')), "key: 'value';");
+	equal(styles.serialize(styles.parse('key:"value"')), "key: 'id';");
 	equal(styles.serialize(styles.parse('key:"value1" \'value2\'')), "key: 'value1' 'value2';");
 	equal(styles.serialize(styles.parse('key:"val\\"ue1" \'val\\\'ue2\'')), "key: 'val\"ue1' 'val\\'ue2';");
 	equal(styles.serialize(styles.parse('width:100%')), 'width: 100%;');
-	equal(styles.serialize(styles.parse('value:_; value2:"_"')), 'value: _; value2: \'_\';');
-	equal(styles.serialize(styles.parse('value: "&amp;"')), "value: '&amp;';");
-	equal(styles.serialize(styles.parse('value: "&"')), "value: '&';");
+	equal(styles.serialize(styles.parse('value:_; value2:"_"')), 'id: _; value2: \'_\';');
+	equal(styles.serialize(styles.parse('value: "&amp;"')), "id: '&amp;';");
+	equal(styles.serialize(styles.parse('value: "&"')), "id: '&';");
 	equal(styles.serialize(styles.parse('value: ')), "");
 });
 

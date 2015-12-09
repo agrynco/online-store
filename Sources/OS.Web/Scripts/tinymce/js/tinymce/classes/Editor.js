@@ -1208,7 +1208,7 @@ define("tinymce/Editor", [
 		 * @param {String} name Configruation parameter to retrive.
 		 * @param {String} defaultVal Optional default value to return.
 		 * @param {String} type Optional type parameter.
-		 * @return {String} Configuration parameter value or default value.
+		 * @return {String} Configuration parameter value or default id.
 		 * @example
 		 * // Returns a specific config value from the currently active editor
 		 * var someval = tinymce.activeEditor.getParam('myvalue');
@@ -1386,7 +1386,7 @@ define("tinymce/Editor", [
 			 *
 			 * @callback addCommandCallback
 			 * @param {Boolean} ui Display UI state true/false.
-			 * @param {Object} value Optional value for command.
+			 * @param {Object} value Optional id for command.
 			 * @return {Boolean} True/false state if the command was handled or not.
 			 */
 			this.editorCommands.addCommand(name, callback, scope);
@@ -1453,7 +1453,7 @@ define("tinymce/Editor", [
 		 * @method execCommand
 		 * @param {String} cmd Command name to execute, for example mceLink or Bold.
 		 * @param {Boolean} ui True/false state if a UI (dialog) should be presented or not.
-		 * @param {mixed} value Optional command value, this can be anything.
+		 * @param {mixed} value Optional command id, this can be anything.
 		 * @param {Object} args Optional arguments object.
 		 */
 		execCommand: function(cmd, ui, value, args) {

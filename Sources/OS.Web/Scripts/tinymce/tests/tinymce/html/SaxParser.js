@@ -89,8 +89,8 @@
 		counter = createCounter(writer);
 		parser = new tinymce.html.SaxParser(counter, schema);
 		writer.reset();
-		parser.parse('<span id=id1 title="title value" class=\'class1 class2\' data-value="value1" MYATTR="val1" myns:myattr="val2" disabled empty=""></span>');
-		equal(writer.getContent(), '<span id="id1" title="title value" class="class1 class2" data-value="value1" myattr="val1" myns:myattr="val2" disabled="disabled" empty=""></span>', 'Parse attribute formats.');
+		parser.parse('<span id=id1 title="title value" class=\'class1 class2\' data-id="value1" MYATTR="val1" myns:myattr="val2" disabled empty=""></span>');
+		equal(writer.getContent(), '<span id="id1" title="title value" class="class1 class2" data-id="value1" myattr="val1" myns:myattr="val2" disabled="disabled" empty=""></span>', 'Parse attribute formats.');
 		deepEqual(counter.counts, {start:1, end:1}, 'Parse attribute formats counts.');
 
 		counter = createCounter(writer);
@@ -373,7 +373,7 @@
 		parser = new tinymce.html.SaxParser(counter, schema);
 		writer.reset();
 		parser.parse('<!-- comment value -->');
-		equal(writer.getContent(), '<!-- comment value -->', 'Parse comment with value.');
+		equal(writer.getContent(), '<!-- comment value -->', 'Parse comment with id.');
 		deepEqual(counter.counts, {comment:1}, 'Parse comment with value count.');
 
 		counter = createCounter(writer);

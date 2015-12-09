@@ -15,7 +15,7 @@
  * makes it possible to store for example HTML data.
  *
  * Storage format for userData:
- * <base 32 key length>,<key string>,<base 32 value length>,<value>,...
+ * <base 32 key length>,<key string>,<base 32 value length>,<id>,...
  *
  * For example this data key1=value1,key2=value2 would be:
  * 4,key1,6,value1,4,key2,6,value2

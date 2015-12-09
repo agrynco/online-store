@@ -8,12 +8,14 @@
 {
     @{
         string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
+        string saveActionName = PageData[Constants.PageData.SAVE_ACTION_NAME] != null ? (string) PageData[Constants.PageData.SAVE_ACTION_NAME] : "Save";
     }
 
-    @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post,
+    @using (Html.BeginForm(saveActionName, currentControllerName, ViewContext.RouteData.Values, FormMethod.Post,
         new
         {
-            @class = "full-size"
+            @class = "full-size",
+            enctype = "multipart/form-data"
         }))
     {
         <table class="full-size">
@@ -72,5 +74,5 @@
 
     @Scripts.Render("~/bundles/jqueryval")
 
-    @RenderSection("sxripts", false)
+    @RenderSection("scripts", false)
 }

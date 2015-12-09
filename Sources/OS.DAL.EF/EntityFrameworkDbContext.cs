@@ -28,5 +28,7 @@ namespace OS.DAL.EF
         public DbSet<Product> Products { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<ProductPhoto> ProductPhotos { get; set; }
+        public DbSet<File> Files { get; set; } 
     }
 }

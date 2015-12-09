@@ -3,13 +3,13 @@
 
 @{
     Layout = "~/Views/Shared/_adminEditLayout.cshtml";
+    PageData[Constants.PageData.SAVE_ACTION_NAME] = "SaveProduct";
 }
 
 @section editor
 {
     <style>
-        .ui-autocomplete
-        {
+        .ui-autocomplete {
             max-height: 100px;
             overflow-y: auto;
             /* prevent horizontal scrollbar */
@@ -17,6 +17,8 @@
         }
     </style>
 
+    @Html.HiddenFor(m => m.Product.Id)
+    @Html.HiddenFor(m => m.ParentCategoryId)
     <table class="full-width">
         <tr>
             <td class="min-width col-md-2" style="white-space: nowrap">
@@ -24,7 +26,7 @@
                     @Html.LabelFor(m => m.Product.Name)
                 </span>@Html.Partial("_requiredMark")
             </td>
-            <td style="width: 250px">@Html.TextBoxFor(model => model.Product.Name, new {@class = "form-control"})</td>
+            <td style="width: 250px">@Html.TextBoxFor(model => model.Product.Name, new { @class = "form-control" })</td>
             <td style="white-space: nowrap">@Html.ValidationMessageFor(model => model.Product.Name)</td>
         </tr>
         <tr class="row-space">
@@ -49,7 +51,7 @@
             </td>
             <td>
                 <div class="ui-widget">
-                    <input id="@Html.IdFor(m => m.Product.Brand.Name)"/>
+                    @Html.TextBoxFor(m => m.BrandName)
                 </div>
             </td>
         </tr>
@@ -62,8 +64,27 @@
             </td>
             <td>
                 <div class="ui-widget">
-                    <input id="@Html.IdFor(m => m.Product.CountryProducer.Name)" />
+                    @Html.TextBoxFor(m => m.CountryName)
                 </div>
+            </td>
+        </tr>
+        <tr class="row-space">
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="min-width col-md-2" valign="top">
+                @Html.LabelFor(m => m.Product.Photos)
+            </td>
+            <td colspan="2">
+                <table>
+                    @for (int i = 0; i < Model.PostedProductPhotos.Count; i++)
+                    {
+                        <tr>
+                            <td style="padding-right: 5px">@(i + 1)</td>
+                            <td><input type="file" name="PostedProductPhotos"/></td>
+                        </tr>
+                    }    
+                </table>
             </td>
         </tr>
     </table>
@@ -73,17 +94,17 @@
 {
     @Html.ActionLink("Відмінити", "Index",
         new
-            {
-                parentId = Model.ParentCategoryId
-            },
+        {
+            parentId = Model.ParentCategoryId
+        },
         new
-            {
-                onclick = "return confirmCancel();",
-                @class = "btn btn-default"
-            })
+        {
+            onclick = "return confirmCancel();",
+            @class = "btn btn-default"
+        })
 }
 
-@section sxripts
+@section scripts
 {
     <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
@@ -95,14 +116,12 @@
     </script>
 
     <script type="text/javascript">
-        $("#@Html.IdFor(m => m.Product.Brand.Name)").autocomplete(
+        $("#@Html.IdFor(m => m.BrandName)").autocomplete(
         {
             source: "/api/Brands",
             minLength: 2,
-            create: function()
-            {
-                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
-                {
+            create: function () {
+                $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
                     return $('<li>')
                         .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
                         .appendTo(ul);
@@ -110,20 +129,18 @@
             }
         });
     </script>
-<script type="text/javascript">
-        $("#@Html.IdFor(m => m.Product.CountryProducer.Name)").autocomplete(
+    <script type="text/javascript">
+        $("#@Html.IdFor(m => m.CountryName)").autocomplete(
         {
             source: "/api/Countries",
             minLength: 2,
-            create: function()
-            {
-                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
-                {
+            create: function () {
+                $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
                     return $('<li>')
                         .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
                         .appendTo(ul);
                 };
             }
         });
-</script>
+    </script>
 }

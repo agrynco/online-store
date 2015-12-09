@@ -14,6 +14,7 @@
         {
             public const string PAGE_TITLE = "PageTitle";
             public const string CREATE_ARGUMENTS = "CreateArguments";
+            public const string SAVE_ACTION_NAME = "SaveActionName";
         }
     }
 }

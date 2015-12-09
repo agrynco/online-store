@@ -108,7 +108,7 @@ define("tinymce/html/Node", [], function() {
 		 *
 		 * @method attr
 		 * @param {String} name Attribute name to set or get.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {String/tinymce.html.Node} String or undefined on a get operation or the current node on a set operation.
 		 */
 		attr: function(name, value) {

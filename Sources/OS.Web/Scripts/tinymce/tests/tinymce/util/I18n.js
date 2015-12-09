@@ -14,11 +14,11 @@ test("Translate strings", function() {
 
 	equal(tinymce.util.I18n.translate("text"), "text translation");
 	equal(tinymce.util.I18n.translate("untranslated text"), "untranslated text");
-	equal(tinymce.util.I18n.translate(["untranslated value:{0}{1}", "a", "b"]), "untranslated value:ab");
-	equal(tinymce.util.I18n.translate(["value:{0}{1}", "a", "b"]), "value translation:ab");
+	equal(tinymce.util.I18n.translate(["untranslated value:{0}{1}", "a", "b"]), "untranslated id:ab");
+	equal(tinymce.util.I18n.translate(["value:{0}{1}", "a", "b"]), "id translation:ab");
 	equal(tinymce.util.I18n.translate("untranslated text{context:context}"), "untranslated text");
-	equal(tinymce.util.I18n.translate(["untranslated value:{0}{1}{context:something}", "a", "b"]), "untranslated value:ab");
-	equal(tinymce.util.I18n.translate(["value:{0}{1}{context:something}", "a", "b"]), "value translation:ab with context");
+	equal(tinymce.util.I18n.translate(["untranslated value:{0}{1}{context:something}", "a", "b"]), "untranslated id:ab");
+	equal(tinymce.util.I18n.translate(["value:{0}{1}{context:something}", "a", "b"]), "id translation:ab with context");
 });
 
 test("Switch language", function() {

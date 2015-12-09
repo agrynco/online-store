@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using HtmlAgilityPack;
 using OS.Business.Domain;
+using OS.Business.Logic.Exceptions;
 using OS.Common;
 using OS.DAL.Abstract;
 
@@ -84,6 +85,18 @@ namespace OS.Business.Logic
         public List<Country> Find(string nameSearchPattern)
         {
             return _countriesRepository.GetAll().Where(country => country.Name.Contains(nameSearchPattern)).ToList();
-        } 
+        }
+
+        public Country GetByName(string name)
+        {
+            Country result = _countriesRepository.GetAll().FirstOrDefault(country => country.Name == name);
+
+            if (result == null)
+            {
+                throw new ThereIsNoCountryWithNameException(name);
+            }
+
+            return result;
+        }
     }
 }

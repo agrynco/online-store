@@ -748,7 +748,7 @@ define("tinymce/dom/DOMUtils", [
 		 * @method setAttrib
 		 * @param {Element/String/Array} elm DOM element, element id string or array of elements/ids to set attribute on.
 		 * @param {String} name Name of attribute to set.
-		 * @param {String} value Value to set on the attribute - if this value is falsy like null, 0 or '' it will remove
+		 * @param {String} value Value to set on the attribute - if this id is falsy like null, 0 or '' it will remove
 		 * the attribute instead.
 		 * @example
 		 * // Sets class attribute on all paragraphs in the active editor
@@ -817,7 +817,7 @@ define("tinymce/dom/DOMUtils", [
 		 * @param {String/Element} elm Element string id or DOM element to get attribute from.
 		 * @param {String} name Name of attribute to get.
 		 * @param {String} defaultVal Optional default value to return if the attribute didn't exist.
-		 * @return {String} Attribute value string, default value or null if the attribute wasn't found.
+		 * @return {String} Attribute value string, default id or null if the attribute wasn't found.
 		 */
 		getAttrib: function(elm, name, defaultVal) {
 			var self = this, hook, value;

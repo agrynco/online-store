@@ -4033,7 +4033,7 @@ define("tinymce/util/Tools", [
 		 *
 		 * @method map
 		 * @param {Array} array Array of items to iterate.
-		 * @param {function} callback Function to call for each item. It's return value will be the new value.
+		 * @param {function} callback Function to call for each item. It's return value will be the new id.
 		 * @return {Array} Array with new values based on function return values.
 		 */
 		map: Arr.map,
@@ -4436,7 +4436,7 @@ define("tinymce/dom/DomQuery", [
 		 *
 		 * @method attr
 		 * @param {String/Object} name Name of attribute to get or an object with attributes to set.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the specified attribute when only the name is specified.
 		 */
 		attr: function(name, value) {
@@ -4504,7 +4504,7 @@ define("tinymce/dom/DomQuery", [
 		 *
 		 * @method attr
 		 * @param {String/Object} name Name of property to get or an object with properties to set.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the specified property when only the name is specified.
 		 */
 		prop: function(name, value) {
@@ -4538,7 +4538,7 @@ define("tinymce/dom/DomQuery", [
 		 *
 		 * @method css
 		 * @param {String/Object} name Name of style to get or an object with styles to set.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the specified style when only the name is specified.
 		 */
 		css: function(name, value) {
@@ -4659,7 +4659,7 @@ define("tinymce/dom/DomQuery", [
 		 * Sets or gets the HTML of the current set or first set node.
 		 *
 		 * @method html
-		 * @param {String} value Optional innerHTML value to set on each element.
+		 * @param {String} value Optional innerHTML id to set on each element.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the innerHTML of the first element.
 		 */
 		html: function(value) {
@@ -4687,7 +4687,7 @@ define("tinymce/dom/DomQuery", [
 		 * Sets or gets the text of the current set or first set node.
 		 *
 		 * @method text
-		 * @param {String} value Optional innerText value to set on each element.
+		 * @param {String} value Optional innerText id to set on each element.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the innerText of the first element.
 		 */
 		text: function(value) {
@@ -8116,7 +8116,7 @@ define("tinymce/dom/DOMUtils", [
 		 * @method setAttrib
 		 * @param {Element/String/Array} elm DOM element, element id string or array of elements/ids to set attribute on.
 		 * @param {String} name Name of attribute to set.
-		 * @param {String} value Value to set on the attribute - if this value is falsy like null, 0 or '' it will remove
+		 * @param {String} value Value to set on the attribute - if this id is falsy like null, 0 or '' it will remove
 		 * the attribute instead.
 		 * @example
 		 * // Sets class attribute on all paragraphs in the active editor
@@ -8185,7 +8185,7 @@ define("tinymce/dom/DOMUtils", [
 		 * @param {String/Element} elm Element string id or DOM element to get attribute from.
 		 * @param {String} name Name of attribute to get.
 		 * @param {String} defaultVal Optional default value to return if the attribute didn't exist.
-		 * @return {String} Attribute value string, default value or null if the attribute wasn't found.
+		 * @return {String} Attribute value string, default id or null if the attribute wasn't found.
 		 */
 		getAttrib: function(elm, name, defaultVal) {
 			var self = this, hook, value;
@@ -10951,7 +10951,7 @@ define("tinymce/html/Node", [], function() {
 		 *
 		 * @method attr
 		 * @param {String} name Attribute name to set or get.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {String/tinymce.html.Node} String or undefined on a get operation or the current node on a set operation.
 		 */
 		attr: function(name, value) {
@@ -13750,7 +13750,7 @@ define("tinymce/html/Writer", [
 				/*if (indent && indentBefore[name] && html.length > 0) {
 					value = html[html.length - 1];
 
-					if (value.length > 0 && value !== '\n')
+					if (value.length > 0 && id !== '\n')
 						html.push('\n');
 				}*/
 
@@ -22016,7 +22016,7 @@ define("tinymce/EditorCommands", [
 		 * @method execCommand
 		 * @param {String} command Command to execute.
 		 * @param {Boolean} ui Optional user interface state.
-		 * @param {Object} value Optional value for command.
+		 * @param {Object} value Optional id for command.
 		 * @param {Object} args Optional extra arguments to the execCommand.
 		 * @return {Boolean} true/false if the command was found or not.
 		 */
@@ -23422,7 +23422,7 @@ define("tinymce/util/URI", [
  * * Exposed super functions: this._super();
  * * Mixins
  * * Dummy functions
- * * Property functions: var value = object.value(); and object.value(newValue);
+ * * Property functions: var value = object.id(); and object.id(newValue);
  * * Static functions
  * * Defaults settings
  */
@@ -24198,7 +24198,7 @@ define("tinymce/data/ObservableObject", [
 
 		/**
 		 * Sets a property on the value this will call
-		 * observers if the value is a change from the current value.
+		 * observers if the value is a change from the current id.
 		 *
 		 * @method set
 		 * @param {String/object} name Name of the property to set or a object of items to set.
@@ -24877,7 +24877,7 @@ define("tinymce/ui/Collection", [
 		 *
 		 * @method prop
 		 * @param {String} name Property name to get/set.
-		 * @param {Object} value Optional object value to set.
+		 * @param {Object} value Optional object id to set.
 		 * @return {tinymce.ui.Collection} Current collection instance or value of the first item on a get operation.
 		 */
 		prop: function(name, value) {
@@ -25230,10 +25230,10 @@ define("tinymce/ui/BoxUtils", [
 
 	return {
 		/**
-		 * Parses the specified box value. A box value contains 1-4 properties in clockwise order.
+		 * Parses the specified box value. A box id contains 1-4 properties in clockwise order.
 		 *
 		 * @method parseBox
-		 * @param {String/Number} value Box value "0 1 2 3" or "0" etc.
+		 * @param {String/Number} value Box id "0 1 2 3" or "0" etc.
 		 * @return {Object} Object with top/right/bottom/left properties.
 		 * @private
 		 */
@@ -36605,7 +36605,7 @@ define("tinymce/Editor", [
 		 * @param {String} name Configruation parameter to retrive.
 		 * @param {String} defaultVal Optional default value to return.
 		 * @param {String} type Optional type parameter.
-		 * @return {String} Configuration parameter value or default value.
+		 * @return {String} Configuration parameter value or default id.
 		 * @example
 		 * // Returns a specific config value from the currently active editor
 		 * var someval = tinymce.activeEditor.getParam('myvalue');
@@ -36783,7 +36783,7 @@ define("tinymce/Editor", [
 			 *
 			 * @callback addCommandCallback
 			 * @param {Boolean} ui Display UI state true/false.
-			 * @param {Object} value Optional value for command.
+			 * @param {Object} value Optional id for command.
 			 * @return {Boolean} True/false state if the command was handled or not.
 			 */
 			this.editorCommands.addCommand(name, callback, scope);
@@ -36850,7 +36850,7 @@ define("tinymce/Editor", [
 		 * @method execCommand
 		 * @param {String} cmd Command name to execute, for example mceLink or Bold.
 		 * @param {Boolean} ui True/false state if a UI (dialog) should be presented or not.
-		 * @param {mixed} value Optional command value, this can be anything.
+		 * @param {mixed} value Optional command id, this can be anything.
 		 * @param {Object} args Optional arguments object.
 		 */
 		execCommand: function(cmd, ui, value, args) {
@@ -38566,7 +38566,7 @@ define("tinymce/EditorManager", [
 		 * @method execCommand
 		 * @param {String} cmd Command to perform for example Bold.
 		 * @param {Boolean} ui Optional boolean state if a UI should be presented for the command or not.
-		 * @param {String} value Optional value parameter like for example an URL to a link.
+		 * @param {String} value Optional id parameter like for example an URL to a link.
 		 * @return {Boolean} true/false if the command was executed or not.
 		 */
 		execCommand: function(cmd, ui, value) {
@@ -39159,7 +39159,7 @@ define("tinymce/util/JSONP", [
  * makes it possible to store for example HTML data.
  *
  * Storage format for userData:
- * <base 32 key length>,<key string>,<base 32 value length>,<value>,...
+ * <base 32 key length>,<key string>,<base 32 value length>,<id>,...
  *
  * For example this data key1=value1,key2=value2 would be:
  * 4,key1,6,value1,4,key2,6,value2
@@ -40728,7 +40728,7 @@ define("tinymce/util/Color", [], function() {
 	 *
 	 * @constructor
 	 * @method Color
-	 * @param {String} value Optional initial value to parse.
+	 * @param {String} value Optional initial id to parse.
 	 */
 	function Color(value) {
 		var self = this, r = 0, g = 0, b = 0;
@@ -40886,7 +40886,7 @@ define("tinymce/util/Color", [], function() {
 		 *  * {h: 360, s: 100, v: 100}
 		 *
 		 * @method parse
-		 * @param {Object/String} value Color value to parse.
+		 * @param {Object/String} value Color id to parse.
 		 * @return {tinymce.util.Color} Current color instance.
 		 */
 		function parse(value) {

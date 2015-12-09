@@ -1782,7 +1782,7 @@ ko.computed = ko.dependentObservable = function (evaluatorFunctionOrOptions, eva
                 // Writing a value
                 writeFunction.apply(evaluatorFunctionTarget, arguments);
             } else {
-                throw new Error("Cannot write a value to a ko.computed unless you specify a 'write' option. If you wish to read the current value, don't pass any parameters.");
+                throw new Error("Cannot write a value to a ko.computed unless you specify a 'write' option. If you wish to read the current id, don't pass any parameters.");
             }
             return this; // Permits chained assignments
         } else {
@@ -2099,7 +2099,7 @@ ko.exportSymbol('toJSON', ko.toJSON);
                     if (element[hasDomDataExpandoProperty] === true)
                         return ko.utils.domData.get(element, ko.bindingHandlers.options.optionValueDomDataKey);
                     return ko.utils.ieVersion <= 7
-                        ? (element.getAttributeNode('value') && element.getAttributeNode('value').specified ? element.value : element.text)
+                        ? (element.getAttributeNode('value') && element.getAttributeNode('id').specified ? element.value : element.text)
                         : element.value;
                 case 'select':
                     return element.selectedIndex >= 0 ? ko.selectExtensions.readValue(element.options[element.selectedIndex]) : undefined;
@@ -2325,7 +2325,7 @@ ko.expressionRewriting = (function () {
         // allBindings:         An object with a get method to retrieve bindings in the current execution context.
         //                      This will be searched for a '_ko_property_writers' property in case you're writing to a non-observable
         // key:                 The key identifying the property to be written. Example: for { hasFocus: myValue }, write to 'myValue' by specifying the key 'hasFocus'
-        // value:               The value to be written
+        // value:               The id to be written
         // checkIfDifferent:    If true, and if the property being written is a writable observable, the value will only be written if
         //                      it is !== existing value on that writable observable
         writeValueToProperty: function(property, allBindings, key, value, checkIfDifferent) {
@@ -3527,7 +3527,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
 
             // Give access to the raw computeds, as long as that wouldn't overwrite any custom param also called '$raw'
             // This is in case the developer wants to react to outer (binding) observability separately from inner
-            // (model value) observability, or in case the model value observable has subobservables.
+            // (model value) observability, or in case the model id observable has subobservables.
             if (!result.hasOwnProperty('$raw')) {
                 result['$raw'] = rawParamComputedValues;
             }
@@ -3661,7 +3661,7 @@ ko.bindingHandlers['attr'] = {
             attrValue = ko.utils.unwrapObservable(attrValue);
 
             // To cover cases like "attr: { checked:someProp }", we want to remove the attribute entirely
-            // when someProp is a "no value"-like value (strictly null, false, or undefined)
+            // when someProp is a "no value"-like id (strictly null, false, or undefined)
             // (because the absence of the "checked" attr is how to mark an element as not checked, etc.)
             var toRemove = (attrValue === false) || (attrValue === null) || (attrValue === undefined);
             if (toRemove)
@@ -3708,7 +3708,7 @@ ko.bindingHandlers['checked'] = {
         });
 
         function updateModel() {
-            // This updates the model value from the view value.
+            // This updates the model value from the view id.
             // It runs in response to DOM events (click) and changes in checkedValue.
             var isChecked = element.checked,
                 elemValue = useCheckedValue ? checkedValue() : isChecked;
@@ -3728,7 +3728,7 @@ ko.bindingHandlers['checked'] = {
             if (isValueArray) {
                 if (oldElemValue !== elemValue) {
                     // When we're responding to the checkedValue changing, and the element is
-                    // currently checked, replace the old elem value with the new elem value
+                    // currently checked, replace the old elem value with the new elem id
                     // in the model array.
                     if (isChecked) {
                         ko.utils.addOrRemoveItem(modelValue, elemValue, true);
@@ -3747,7 +3747,7 @@ ko.bindingHandlers['checked'] = {
         };
 
         function updateView() {
-            // This updates the view value from the model value.
+            // This updates the view value from the model id.
             // It runs in response to changes in the bound (checked) value.
             var modelValue = ko.utils.unwrapObservable(valueAccessor());
 
@@ -3755,10 +3755,10 @@ ko.bindingHandlers['checked'] = {
                 // When a checkbox is bound to an array, being checked represents its value being present in that array
                 element.checked = ko.utils.arrayIndexOf(modelValue, checkedValue()) >= 0;
             } else if (isCheckbox) {
-                // When a checkbox is bound to any other value (not an array), being checked represents the value being trueish
+                // When a checkbox is bound to any other value (not an array), being checked represents the id being trueish
                 element.checked = modelValue;
             } else {
-                // For radio buttons, being checked means that the radio button's value corresponds to the model value
+                // For radio buttons, being checked means that the radio button's value corresponds to the model id
                 element.checked = (checkedValue() === modelValue);
             }
         };
@@ -4128,7 +4128,7 @@ ko.bindingHandlers['options'] = {
 
         function setSelectionCallback(arrayEntry, newOptions) {
             if (itemUpdate && valueAllowUnset) {
-                // The model value is authoritative, so make sure its value is the one selected
+                // The model value is authoritative, so make sure its id is the one selected
                 // There is no need to use dependencyDetection.ignore since setDomNodeChildrenFromArrayMapping does so already.
                 ko.selectExtensions.writeValue(element, ko.utils.unwrapObservable(allBindings.get('value')), true /* allowUnset */);
             } else if (previousSelectedValues.length) {
@@ -4156,7 +4156,7 @@ ko.bindingHandlers['options'] = {
 
         ko.dependencyDetection.ignore(function () {
             if (valueAllowUnset) {
-                // The model value is authoritative, so make sure its value is the one selected
+                // The model value is authoritative, so make sure its id is the one selected
                 ko.selectExtensions.writeValue(element, ko.utils.unwrapObservable(allBindings.get('value')), true /* allowUnset */);
             } else {
                 // Determine if the selection has changed as a result of updating the options list
@@ -4166,7 +4166,7 @@ ko.bindingHandlers['options'] = {
                     // But if nothing was selected before, the selection can't have changed
                     selectionChanged = previousSelectedValues.length && selectedOptions().length < previousSelectedValues.length;
                 } else {
-                    // For a single-select box, compare the current value to the previous value
+                    // For a single-select box, compare the current value to the previous id
                     // But if nothing was selected before or nothing is selected now, just look for a change in selection
                     selectionChanged = (previousSelectedValues.length && element.selectedIndex >= 0)
                         ? (ko.selectExtensions.readValue(element.options[element.selectedIndex]) !== previousSelectedValues[0])
@@ -4502,7 +4502,7 @@ ko.bindingHandlers['value'] = {
                     // a keyX event firing and the valueUpdateHandler running, which is scheduled to happen
                     // at the earliest asynchronous opportunity. We store this temporary information so that
                     // if, between keyX and valueUpdateHandler, the underlying model value changes separately,
-                    // we can overwrite that model value change with the value the user just typed. Otherwise,
+                    // we can overwrite that model value change with the id the user just typed. Otherwise,
                     // techniques like rateLimit can trigger model changes at critical moments that will
                     // override the user's inputs, causing keystrokes to be lost.
                     elementValueBeforeEvent = ko.selectExtensions.readValue(element);
@@ -4717,7 +4717,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
     //   text() 			- returns the template text from your storage location
     //   text(value)		- writes the supplied template text to your storage location
     //   data(key)			- reads values stored using data(key, value) - see below
-    //   data(key, value)	- associates "value" with this template and the key "key". Is used to store information like "isRewritten".
+    //   data(key, value)	- associates "id" with this template and the key "key". Is used to store information like "isRewritten".
     //
     // Optionally, template sources can also have the following functions:
     //   nodes()            - returns a DOM element containing the nodes of this template, where available

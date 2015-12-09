@@ -21,7 +21,7 @@ namespace OS.Business.Logic
             return _productCategoriesRepository.GetCategories(parentId).ToList();
         }
 
-        public ProductCategory GetCategory(int id)
+        public ProductCategory GetById(int id)
         {
             return _productCategoriesRepository.GetById(id);
         }
@@ -44,6 +44,14 @@ namespace OS.Business.Logic
         public List<Product> GetProducts(int categoryId)
         {
             return _productCategoriesRepository.GetById(categoryId).Products.ToList();
+        }
+
+        public void Add(Product product, ProductCategory owner)
+        {
+            if (!product.Categories.Contains(owner))
+            {
+                product.Categories.Add(owner);
+            }
         }
     }
 }

@@ -361,7 +361,7 @@ define("tinymce/dom/DomQuery", [
 		 *
 		 * @method attr
 		 * @param {String/Object} name Name of attribute to get or an object with attributes to set.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the specified attribute when only the name is specified.
 		 */
 		attr: function(name, value) {
@@ -429,7 +429,7 @@ define("tinymce/dom/DomQuery", [
 		 *
 		 * @method attr
 		 * @param {String/Object} name Name of property to get or an object with properties to set.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the specified property when only the name is specified.
 		 */
 		prop: function(name, value) {
@@ -463,7 +463,7 @@ define("tinymce/dom/DomQuery", [
 		 *
 		 * @method css
 		 * @param {String/Object} name Name of style to get or an object with styles to set.
-		 * @param {String} value Optional value to set.
+		 * @param {String} value Optional id to set.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the specified style when only the name is specified.
 		 */
 		css: function(name, value) {
@@ -584,7 +584,7 @@ define("tinymce/dom/DomQuery", [
 		 * Sets or gets the HTML of the current set or first set node.
 		 *
 		 * @method html
-		 * @param {String} value Optional innerHTML value to set on each element.
+		 * @param {String} value Optional innerHTML id to set on each element.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the innerHTML of the first element.
 		 */
 		html: function(value) {
@@ -612,7 +612,7 @@ define("tinymce/dom/DomQuery", [
 		 * Sets or gets the text of the current set or first set node.
 		 *
 		 * @method text
-		 * @param {String} value Optional innerText value to set on each element.
+		 * @param {String} value Optional innerText id to set on each element.
 		 * @return {tinymce.dom.DomQuery/String} Current set or the innerText of the first element.
 		 */
 		text: function(value) {

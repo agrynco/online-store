@@ -24,5 +24,8 @@ namespace OS.Business.Domain
         public int BrandId { get; set; }
         [Display(Name = "Країна-виробник")]
         public virtual Country CountryProducer { get; set; }
+
+        [Display(Name = "Зображення")]
+        public List<ProductPhoto> Photos { get; set; }
     }
 }

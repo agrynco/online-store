@@ -20,10 +20,10 @@ define("tinymce/ui/BoxUtils", [
 
 	return {
 		/**
-		 * Parses the specified box value. A box value contains 1-4 properties in clockwise order.
+		 * Parses the specified box value. A box id contains 1-4 properties in clockwise order.
 		 *
 		 * @method parseBox
-		 * @param {String/Number} value Box value "0 1 2 3" or "0" etc.
+		 * @param {String/Number} value Box id "0 1 2 3" or "0" etc.
 		 * @return {Object} Object with top/right/bottom/left properties.
 		 * @private
 		 */

@@ -403,7 +403,7 @@ define("tinymce/util/Tools", [
 		 *
 		 * @method map
 		 * @param {Array} array Array of items to iterate.
-		 * @param {function} callback Function to call for each item. It's return value will be the new value.
+		 * @param {function} callback Function to call for each item. It's return value will be the new id.
 		 * @return {Array} Array with new values based on function return values.
 		 */
 		map: Arr.map,

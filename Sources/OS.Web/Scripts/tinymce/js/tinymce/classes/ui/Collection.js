@@ -218,7 +218,7 @@ define("tinymce/ui/Collection", [
 		 *
 		 * @method prop
 		 * @param {String} name Property name to get/set.
-		 * @param {Object} value Optional object value to set.
+		 * @param {Object} value Optional object id to set.
 		 * @return {tinymce.ui.Collection} Current collection instance or value of the first item on a get operation.
 		 */
 		prop: function(name, value) {

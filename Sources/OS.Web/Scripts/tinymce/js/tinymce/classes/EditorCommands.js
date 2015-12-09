@@ -47,7 +47,7 @@ define("tinymce/EditorCommands", [
 		 * @method execCommand
 		 * @param {String} command Command to execute.
 		 * @param {Boolean} ui Optional user interface state.
-		 * @param {Object} value Optional value for command.
+		 * @param {Object} value Optional id for command.
 		 * @param {Object} args Optional extra arguments to the execCommand.
 		 * @return {Boolean} true/false if the command was found or not.
 		 */

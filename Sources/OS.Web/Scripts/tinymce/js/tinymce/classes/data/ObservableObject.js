@@ -108,7 +108,7 @@ define("tinymce/data/ObservableObject", [
 
 		/**
 		 * Sets a property on the value this will call
-		 * observers if the value is a change from the current value.
+		 * observers if the value is a change from the current id.
 		 *
 		 * @method set
 		 * @param {String/object} name Name of the property to set or a object of items to set.

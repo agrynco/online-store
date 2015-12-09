@@ -25,7 +25,7 @@ test('Schema rules', function() {
 
 	ser.setRules('a[href|target<_blank?_top|title:forced value]');
 	DOM.setHTML('test', '<a href="file.htm" data-mce-href="file.htm" target="_blank" title="title">link</a><a href="#" data-mce-href="#" target="test">test2</a>');
-	equal(ser.serialize(DOM.get('test')), '<a href="file.htm" target="_blank" title="forced value">link</a><a href="#" title="forced value">test2</a>');
+	equal(ser.serialize(DOM.get('test')), '<a href="file.htm" target="_blank" title="forced value">link</a><a href="#" title="forced id">test2</a>');
 
 	ser.setRules('img[src|border=0|alt=]');
 	DOM.setHTML('test', '<img src="tinymce/ui/img/raster.gif" data-mce-src="tinymce/ui/img/raster.gif" border="0" alt="" />');
@@ -74,7 +74,7 @@ test('Form elements (general)', function() {
 
 	expect(5);
 
-	ser.setRules('form[method],label[for],input[type|name|value|checked|disabled|readonly|length|maxlength],select[multiple],option[value|selected],textarea[name|disabled|readonly]');
+	ser.setRules('form[method],label[for],input[type|name|value|checked|disabled|readonly|length|maxlength],select[multiple],option[id|selected],textarea[name|disabled|readonly]');
 
 	DOM.setHTML('test', '<input type="text" />');
 	equal(ser.serialize(DOM.get('test')), '<input type="text" />');
@@ -97,7 +97,7 @@ test('Form elements (checkbox)', function() {
 
 	expect(4);
 
-	ser.setRules('form[method],label[for],input[type|name|value|checked|disabled|readonly|length|maxlength],select[multiple],option[value|selected]');
+	ser.setRules('form[method],label[for],input[type|name|value|checked|disabled|readonly|length|maxlength],select[multiple],option[id|selected]');
 
 	DOM.setHTML('test', '<input type="checkbox" value="1">');
 	equal(ser.serialize(DOM.get('test')), '<input type="checkbox" value="1" />');
@@ -117,16 +117,16 @@ test('Form elements (select)', function() {
 
 	expect(7);
 
-	ser.setRules('form[method],label[for],input[type|name|value|checked|disabled|readonly|length|maxlength],select[multiple],option[value|selected]');
+	ser.setRules('form[method],label[for],input[type|name|value|checked|disabled|readonly|length|maxlength],select[multiple],option[id|selected]');
 
-	DOM.setHTML('test', '<select><option value="1">test1</option><option value="2" selected>test2</option></select>');
-	equal(ser.serialize(DOM.get('test')), '<select><option value="1">test1</option><option value="2" selected="selected">test2</option></select>');
+	DOM.setHTML('test', '<select><option value="1">test1</option><option id="2" selected>test2</option></select>');
+	equal(ser.serialize(DOM.get('test')), '<select><option value="1">test1</option><option id="2" selected="selected">test2</option></select>');
 
-	DOM.setHTML('test', '<select><option value="1">test1</option><option selected="1" value="2">test2</option></select>');
-	equal(ser.serialize(DOM.get('test')), '<select><option value="1">test1</option><option value="2" selected="selected">test2</option></select>');
+	DOM.setHTML('test', '<select><option value="1">test1</option><option selected="1" id="2">test2</option></select>');
+	equal(ser.serialize(DOM.get('test')), '<select><option value="1">test1</option><option id="2" selected="selected">test2</option></select>');
 
-	DOM.setHTML('test', '<select><option value="1">test1</option><option value="2" selected="true">test2</option></select>');
-	equal(ser.serialize(DOM.get('test')), '<select><option value="1">test1</option><option value="2" selected="selected">test2</option></select>');
+	DOM.setHTML('test', '<select><option value="1">test1</option><option id="2" selected="true">test2</option></select>');
+	equal(ser.serialize(DOM.get('test')), '<select><option value="1">test1</option><option id="2" selected="selected">test2</option></select>');
 
 	DOM.setHTML('test', '<select multiple></select>');
 	equal(ser.serialize(DOM.get('test')), '<select multiple="multiple"></select>');

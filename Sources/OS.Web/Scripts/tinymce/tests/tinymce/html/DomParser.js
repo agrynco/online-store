@@ -458,8 +458,8 @@
 		var parser, root, schema = new tinymce.html.Schema({schema: "html5"});
 
 		parser = new tinymce.html.DomParser({}, schema);
-		root = parser.parse('<datalist><option label="a1" value="b1"><option label="a2" value="b2"><option label="a3" value="b3"></datalist>');
-		equal(serializer.serialize(root), '<datalist><option label="a1" value="b1"></option><option label="a2" value="b2"></option><option label="a3" value="b3"></option></datalist>');
+		root = parser.parse('<datalist><option label="a1" value="b1"><option label="a2" id="b2"><option label="a3" id="b3"></datalist>');
+		equal(serializer.serialize(root), '<datalist><option label="a1" value="b1"></option><option label="a2" id="b2"></option><option label="a3" id="b3"></option></datalist>');
 	});
 
 	test('Parse inline contents before block bug #5424', function() {
