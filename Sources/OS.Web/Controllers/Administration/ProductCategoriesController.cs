@@ -1,5 +1,4 @@
 ﻿#region Usings
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -174,6 +173,23 @@ namespace OS.Web.Controllers.Administration
                 }
 
                 ProductCategory owner = _productCategoriesBL.GetById(model.ParentCategoryId);
+
+                foreach (HttpPostedFileBase postedFile in model.PostedProductPhotos)
+                {
+                    if (postedFile != null)
+                    {
+                        ProductPhoto productPhoto = new ProductPhoto
+                            {
+                                Content = new byte[postedFile.InputStream.Length],
+                                ContentType = postedFile.ContentType,
+                                FileName = postedFile.FileName
+                        };
+
+                        postedFile.InputStream.Read(productPhoto.Content, 0, productPhoto.Content.Length);
+
+                        target.Photos.Add(productPhoto);
+                    }
+                }
 
                 _productCategoriesBL.Add(target, owner);
 

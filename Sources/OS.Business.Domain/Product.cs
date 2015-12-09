@@ -10,6 +10,7 @@ namespace OS.Business.Domain
         public Product()
         {
             Categories = new List<ProductCategory>();
+            Photos = new List<ProductPhoto>();
         }
 
         [Display(Name = "Опис")]
