@@ -33,7 +33,11 @@ namespace OS.Web.Controllers.Administration
             ProductCategoriesViewModel viewModel = new ProductCategoriesViewModel
                 {
                     ProductCategories = _productCategoriesBL.GetCategories(parentId),
-                    ProductsFromLevelUpProductCategory = parentId.HasValue ? _productCategoriesBL.GetProducts(parentId.Value) : new List<Product>()
+                    ProductsFromLevelUpProductCategory = parentId.HasValue ? _productCategoriesBL.GetProducts(parentId.Value).Select(product => new ProductListItemViewModel
+                        {
+                            ParentCategoryId = parentId.Value,
+                            Product = product
+                        }).ToList() : new List<ProductListItemViewModel>()
                 };
 
             if (parentId != null)
@@ -125,6 +129,16 @@ namespace OS.Web.Controllers.Administration
                 };
 
             return View("ProductEdit", model);
+        }
+
+        public ActionResult DeleteProduct(int productId, int categoryId)
+        {
+            _productsBL.Delete(productId);
+
+            return RedirectToAction("Index", new
+                {
+                    parentId = categoryId
+                });
         }
 
         [ValidateInput(false)]

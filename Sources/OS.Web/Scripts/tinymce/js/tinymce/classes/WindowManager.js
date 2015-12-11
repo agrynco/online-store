@@ -208,7 +208,7 @@ define("tinymce/WindowManager", [
 		 * dialog to get params passed from the tinymce plugin.
 		 *
 		 * @example
-		 * var dialogArguments = top.tinymce.activeEditor.windowManager.getParams();
+		 * Product dialogArguments = top.tinymce.activeEditor.windowManager.getParams();
 		 *
 		 * @method getParams
 		 * @return {Object} Name/value object with parameters passed from windowManager.open call.

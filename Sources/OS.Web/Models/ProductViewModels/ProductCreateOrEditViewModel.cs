@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿#region Usings
+using System.Collections.Generic;
 using System.Web;
 using OS.Business.Domain;
+#endregion
 
 namespace OS.Web.Models.ProductViewModels
 {

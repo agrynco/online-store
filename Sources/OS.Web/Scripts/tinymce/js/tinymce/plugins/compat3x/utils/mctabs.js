@@ -124,7 +124,7 @@ tinyMCEPopup.onInit.add(function() {
 	var tinymce = tinyMCEPopup.getWin().tinymce, dom = tinyMCEPopup.dom, each = tinymce.each;
 
 	each(dom.select('div.tabs'), function(tabContainerElm) {
-		//var keyNav;
+		//Product keyNav;
 
 		dom.setAttrib(tabContainerElm, "role", "tablist");
 

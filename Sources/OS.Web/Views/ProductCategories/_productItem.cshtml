@@ -1,15 +1,16 @@
-﻿@using OS.Business.Domain
-@model Product
+﻿@using OS.Web.Models.ProductCategoryViewModels
+@model ProductListItemViewModel
 
 <li class="product-item">
     <table class="full-size">
         <tr class="min-height">
             <td>
                 <div style="float: right;">
-                    @Html.ActionLink(" ", "Delete",
+                    @Html.ActionLink(" ", "DeleteProduct",
                             new
                             {
-                                categoryId = Model.Id
+                                productId = Model.Product.Id,
+                                categoryId = Model.ParentCategoryId
                             },
                             new
                             {
@@ -21,26 +22,23 @@
         </tr>
         <tr>
             <td>
-                @Model.Name
+                @Model.Product.Name
             </td>
         </tr>
-        @if (Model.Id != 0)
-        {
-            <tr class="min-height">
-                <td>
-                    <div style="float: right;">
-                        @Html.ActionLink(" ", "Edit",
+        <tr class="min-height">
+            <td>
+                <div style="float: right;">
+                    @Html.ActionLink(" ", "Edit",
                             new
-                                {
-                                    categoryId = Model.Id
-                                },
+                            {
+                                categoryId = Model.Product.Id
+                            },
                             new
-                                {
-                                    style = "width: 16px; height: 16px; display: block; background-image: url('Images/editCategory.png')",
-                                })
-                    </div>
-                </td>
-            </tr>
-        }
+                            {
+                                style = "width: 16px; height: 16px; display: block; background-image: url('Images/editCategory.png')",
+                            })
+                </div>
+            </td>
+        </tr>
     </table>
 </li>

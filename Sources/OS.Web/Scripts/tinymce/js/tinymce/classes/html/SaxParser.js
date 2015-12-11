@@ -16,7 +16,7 @@
  * and attributes that doesn't fit the schema if the validate setting is enabled.
  *
  * @example
- * var parser = new tinymce.html.SaxParser({
+ * Product parser = new tinymce.html.SaxParser({
  *     validate: true,
  *
  *     comment: function(text) {

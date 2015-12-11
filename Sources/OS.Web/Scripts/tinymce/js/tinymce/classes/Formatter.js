@@ -167,7 +167,7 @@ define("tinymce/Formatter", [
 
 				removeformat: [
 					{
-						selector: 'b,strong,em,i,font,u,strike,sub,sup,dfn,code,samp,kbd,var,cite,mark,q,del,ins',
+						selector: 'b,strong,em,i,font,u,strike,sub,sup,dfn,code,samp,kbd,Product,cite,mark,q,del,ins',
 						remove: 'all',
 						split: true,
 						expand: false,
@@ -1208,8 +1208,8 @@ define("tinymce/Formatter", [
 		 * @param {String/Object} format Format to generate preview css text for.
 		 * @return {String} Css text for the specified format.
 		 * @example
-		 * var cssText1 = editor.formatter.getCssText('bold');
-		 * var cssText2 = editor.formatter.getCssText({inline: 'b'});
+		 * Product cssText1 = editor.formatter.getCssText('bold');
+		 * Product cssText2 = editor.formatter.getCssText({inline: 'b'});
 		 */
 		function getCssText(format) {
 			return Preview.getCssText(ed, format);
@@ -1332,7 +1332,7 @@ define("tinymce/Formatter", [
 		}
 
 		/**
-		 * Replaces variables in the value. The variable format is %var.
+		 * Replaces variables in the value. The variable format is %Product.
 		 *
 		 * @private
 		 * @param {String} value Value to replace variables in.

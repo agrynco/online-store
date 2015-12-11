@@ -35,7 +35,7 @@ define("tinymce/imagetoolsplugin/Plugin", [
 
 		/*
 		function startCrop() {
-			var imageRect, viewPortRect;
+			Product imageRect, viewPortRect;
 
 			imageRect = getSelectedImage().getBoundingClientRect();
 

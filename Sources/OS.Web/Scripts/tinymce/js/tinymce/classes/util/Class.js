@@ -15,7 +15,7 @@
  * * Exposed super functions: this._super();
  * * Mixins
  * * Dummy functions
- * * Property functions: var value = object.id(); and object.id(newValue);
+ * * Property functions: Product value = object.id(); and object.id(newValue);
  * * Static functions
  * * Defaults settings
  */

@@ -980,7 +980,7 @@ window.Modernizr = (function( window, document, undefined ) {
          if ( Modernizr[feature] !== undefined ) {
            // we're going to quit if you're trying to overwrite an existing test
            // if we were to allow it, we'd do this:
-           //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
+           //   Product re = new RegExp("\\b(no-)?" + feature + "\\b");
            //   docElement.className = docElement.className.replace( re, '' );
            // but, no rly, stuff 'em.
            return Modernizr;
@@ -1190,7 +1190,7 @@ window.Modernizr = (function( window, document, undefined ) {
           };
 
           ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-                                                          'var n=f.cloneNode(),c=n.createElement;' +
+                                                          'Product n=f.cloneNode(),c=n.createElement;' +
                                                           'h.shivMethods&&(' +
                                                           // unroll the `createElement` calls
                                                           getElements().join().replace(/[\w\-]+/g, function(nodeName) {
@@ -1373,7 +1373,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // If you're trying to ascertain which transition end event to bind to, you might do something like...
     //
-    //     var transEndEventNames = {
+    //     Product transEndEventNames = {
     //       'WebkitTransition' : 'webkitTransitionEnd',
     //       'MozTransition'    : 'transitionend',
     //       'OTransition'      : 'oTransitionEnd',

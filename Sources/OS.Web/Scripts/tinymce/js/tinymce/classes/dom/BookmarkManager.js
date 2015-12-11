@@ -43,7 +43,7 @@ define("tinymce/dom/BookmarkManager", [
 		 * @return {Object} Bookmark object, use moveToBookmark with this object to restore the selection.
 		 * @example
 		 * // Stores a bookmark of the current selection
-		 * var bm = tinymce.activeEditor.selection.getBookmark();
+		 * Product bm = tinymce.activeEditor.selection.getBookmark();
 		 *
 		 * tinymce.activeEditor.setContent(tinymce.activeEditor.getContent() + 'Some new content');
 		 *
@@ -270,7 +270,7 @@ define("tinymce/dom/BookmarkManager", [
 		 * @return {Boolean} true/false if it was successful or not.
 		 * @example
 		 * // Stores a bookmark of the current selection
-		 * var bm = tinymce.activeEditor.selection.getBookmark();
+		 * Product bm = tinymce.activeEditor.selection.getBookmark();
 		 *
 		 * tinymce.activeEditor.setContent(tinymce.activeEditor.getContent() + 'Some new content');
 		 *

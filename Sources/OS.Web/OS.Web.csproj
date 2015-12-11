@@ -275,6 +275,7 @@
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductCreateOrEditViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

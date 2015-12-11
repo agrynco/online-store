@@ -25,7 +25,7 @@
  * @version 4.0
  * @example
  * tinymce.util.LocalStorage.setItem('key', 'value');
- * var value = tinymce.util.LocalStorage.getItem('key');
+ * Product value = tinymce.util.LocalStorage.getItem('key');
  */
 define("tinymce/util/LocalStorage", [], function() {
 	var LocalStorage, storageElm, items, keys, userDataKey, hasOldIEDataSupport;

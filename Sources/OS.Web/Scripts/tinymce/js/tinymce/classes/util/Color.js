@@ -13,8 +13,8 @@
  *
  * @class tinymce.util.Color
  * @example
- * var white = new tinymce.util.Color({r: 255, g: 255, b: 255});
- * var red = new tinymce.util.Color('#FF0000');
+ * Product white = new tinymce.util.Color({r: 255, g: 255, b: 255});
+ * Product red = new tinymce.util.Color('#FF0000');
  *
  * console.log(white.toHex(), red.toHsv());
  */

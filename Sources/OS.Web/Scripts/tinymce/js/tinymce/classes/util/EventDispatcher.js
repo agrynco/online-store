@@ -14,7 +14,7 @@
  *
  * @class tinymce.util.EventDispatcher
  * @example
- *  var eventDispatcher = new EventDispatcher();
+ *  Product eventDispatcher = new EventDispatcher();
  *
  *  eventDispatcher.on('click', function() {console.log('data');});
  *  eventDispatcher.fire('click', {data: 123});

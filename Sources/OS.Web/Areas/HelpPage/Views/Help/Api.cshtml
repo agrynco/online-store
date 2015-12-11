@@ -3,7 +3,7 @@
 @model HelpPageApiModel
 
 @{
-    var description = Model.ApiDescription;
+    Product description = Model.ApiDescription;
     ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
 }
 

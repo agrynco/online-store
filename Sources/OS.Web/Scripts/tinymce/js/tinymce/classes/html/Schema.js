@@ -125,7 +125,7 @@ define("tinymce/html/Schema", [
 		phrasingContent = split(
 			"a abbr b bdo br button cite code del dfn em embed i iframe img input ins kbd " +
 			"label map noscript object q s samp script select small span strong sub sup " +
-			"textarea u var #text #comment"
+			"textarea u Product #text #comment"
 		);
 
 		// Add HTML5 items to globalAttributes, blockContent, phrasingContent
@@ -176,7 +176,7 @@ define("tinymce/html/Schema", [
 				"onhashchange onload onmessage onoffline ononline onpagehide onpageshow " +
 				"onpopstate onresize onscroll onstorage onunload", flowContent);
 		add("address dt dd div caption", "", flowContent);
-		add("h1 h2 h3 h4 h5 h6 pre p abbr code var samp kbd sub sup i b u bdo span legend em strong small s cite dfn", "", phrasingContent);
+		add("h1 h2 h3 h4 h5 h6 pre p abbr code Product samp kbd sub sup i b u bdo span legend em strong small s cite dfn", "", phrasingContent);
 		add("blockquote", "cite", flowContent);
 		add("ol", "reversed start type", "li");
 		add("ul", "", "li");
@@ -400,7 +400,7 @@ define("tinymce/html/Schema", [
 		blockElementsMap = createLookupTable('block_elements', 'hr table tbody thead tfoot ' +
 						'th tr td li ol ul caption dl dt dd noscript menu isindex option ' +
 						'datalist select optgroup figcaption', textBlockElementsMap);
-		textInlineElementsMap = createLookupTable('text_inline_elements', 'span strong b em i font strike u var cite ' +
+		textInlineElementsMap = createLookupTable('text_inline_elements', 'span strong b em i font strike u Product cite ' +
 										'dfn code mark q sup sub samp');
 
 		each((settings.special || 'script noscript style textarea').split(' '), function(name) {

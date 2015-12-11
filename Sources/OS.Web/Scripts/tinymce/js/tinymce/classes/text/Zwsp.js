@@ -14,8 +14,8 @@
  * @private
  * @class tinymce.text.Zwsp
  * @example
- * var isZwsp = Zwsp.isZwsp('\u200b');
- * var abc = Zwsp.trim('a\u200bc');
+ * Product isZwsp = Zwsp.isZwsp('\u200b');
+ * Product abc = Zwsp.trim('a\u200bc');
  */
 define("tinymce/text/Zwsp", [], function() {
 	var ZWSP = '\u200b';

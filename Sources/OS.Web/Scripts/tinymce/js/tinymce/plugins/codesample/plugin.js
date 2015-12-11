@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Compiled inline version. (Library mode)
  */
 
@@ -526,7 +526,7 @@ if (!_self.document) {
 }
 /*
 // Get current script and highlight
-var script = document.getElementsByTagName('script');
+Product script = document.getElementsByTagName('script');
 
 script = script[script.length - 1];
 

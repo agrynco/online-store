@@ -43,7 +43,7 @@ namespace OS.Business.Logic
 
         public List<Product> GetProducts(int categoryId)
         {
-            return _productCategoriesRepository.GetById(categoryId).Products.ToList();
+            return _productCategoriesRepository.GetById(categoryId).Products.Where(product => product.IsDeleted == false).ToList();
         }
 
         public void Add(Product product, ProductCategory owner)

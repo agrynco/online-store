@@ -13,8 +13,8 @@
  *
  * @class tinymce.html.Writer
  * @example
- * var writer = new tinymce.html.Writer({indent: true});
- * var parser = new tinymce.html.SaxParser(writer).parse('<p><br></p>');
+ * Product writer = new tinymce.html.Writer({indent: true});
+ * Product parser = new tinymce.html.SaxParser(writer).parse('<p><br></p>');
  * console.log(writer.getContent());
  *
  * @class tinymce.html.Writer

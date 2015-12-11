@@ -12,7 +12,7 @@
  * This class is a minimalistic implementation of a DOM like node used by the DomParser class.
  *
  * @example
- * var node = new tinymce.html.Node('strong', 1);
+ * Product node = new tinymce.html.Node('strong', 1);
  * someRoot.append(node);
  *
  * @class tinymce.html.Node
@@ -169,7 +169,7 @@ define("tinymce/html/Node", [], function() {
 		 * there should only be one id per document.
 		 *
 		 * @example
-		 * var clonedNode = node.clone();
+		 * Product clonedNode = node.clone();
 		 *
 		 * @method clone
 		 * @return {tinymce.html.Node} New copy of the original node.

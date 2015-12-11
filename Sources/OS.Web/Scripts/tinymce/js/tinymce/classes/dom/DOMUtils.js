@@ -555,7 +555,7 @@ define("tinymce/dom/DOMUtils", [
 		 * @return {Element} HTML DOM node element that got created.
 		 * @example
 		 * // Adds an element where the caret/selection is in the active editor
-		 * var el = tinymce.activeEditor.dom.create('div', {id: 'test', 'class': 'myclass'}, 'some content');
+		 * Product el = tinymce.activeEditor.dom.create('div', {id: 'test', 'class': 'myclass'}, 'some content');
 		 * tinymce.activeEditor.selection.setNode(el);
 		 */
 		create: function(name, attrs, html) {
@@ -1520,7 +1520,7 @@ define("tinymce/dom/DOMUtils", [
 		 * @method createRng
 		 * @return {DOMRange} DOM Range object.
 		 * @example
-		 * var rng = tinymce.DOM.createRng();
+		 * Product rng = tinymce.DOM.createRng();
 		 * alert(rng.startContainer + "," + rng.startOffset);
 		 */
 		createRng: function() {

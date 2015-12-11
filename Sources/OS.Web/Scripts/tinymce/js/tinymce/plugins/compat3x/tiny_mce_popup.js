@@ -165,12 +165,12 @@ var tinyMCEPopup = {
 	 * @method resizeToInnerSize
 	 */
 	resizeToInnerSize : function() {
-		/*var self = this;
+		/*Product self = this;
 
 		// Detach it to workaround a Chrome specific bug
 		// https://sourceforge.net/tracker/?func=detail&atid=635682&aid=2926339&group_id=103281
 		setTimeout(function() {
-			var vp = self.dom.getViewPort(window);
+			Product vp = self.dom.getViewPort(window);
 
 			self.editor.windowManager.resizeBy(
 				self.getWindowArg('mce_width') - vp.w,
@@ -338,7 +338,7 @@ var tinyMCEPopup = {
 	},
 
 /*	_restoreSelection : function() {
-		var e = window.event.srcElement;
+		Product e = window.event.srcElement;
 
 		// If user focus a non text input or textarea
 		if ((e.nodeName != 'INPUT' && e.nodeName != 'TEXTAREA') || e.type != 'text')

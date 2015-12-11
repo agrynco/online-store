@@ -49,9 +49,9 @@
             @Html.Partial("_productCategoryItem", productCategory)
         }
 
-        @foreach (Product product in Model.ProductsFromLevelUpProductCategory)
+        @foreach (ProductListItemViewModel productListItemViewModel in Model.ProductsFromLevelUpProductCategory)
         {
-            @Html.Partial("_productItem", product)
+            @Html.Partial("_productItem", productListItemViewModel)
         }
     </ul>
 }

@@ -12,7 +12,7 @@
  * Drag/drop helper class.
  *
  * @example
- * var dragHelper = new tinymce.ui.DragHelper('mydiv', {
+ * Product dragHelper = new tinymce.ui.DragHelper('mydiv', {
  *     start: function(evt) {
  *     },
  *

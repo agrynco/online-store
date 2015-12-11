@@ -270,7 +270,7 @@ define("tinymce/util/Tools", [
 	 * tinymce.createNS('tinymce.somepackage.subpackage');
 	 *
 	 * // Add a singleton
-	 * var tinymce.somepackage.subpackage.SomeSingleton = {
+	 * Product tinymce.somepackage.subpackage.SomeSingleton = {
 	 *     method: function() {
 	 *         // Some method
 	 *     }
@@ -304,7 +304,7 @@ define("tinymce/util/Tools", [
 	 * @return {Object} Last object in path or null if it couldn't be resolved.
 	 * @example
 	 * // Resolve a path into an object reference
-	 * var obj = tinymce.resolve('a.b.c.d');
+	 * Product obj = tinymce.resolve('a.b.c.d');
 	 */
 	function resolve(n, o) {
 		var i, l;
@@ -331,7 +331,7 @@ define("tinymce/util/Tools", [
 	 * @param {string} d Delimiter to split by.
 	 * @example
 	 * // Split a string into an array with a,b,c
-	 * var arr = tinymce.explode('a, b,   c');
+	 * Product arr = tinymce.explode('a, b,   c');
 	 */
 	function explode(s, d) {
 		if (!s || is(s, 'array')) {
@@ -418,7 +418,7 @@ define("tinymce/util/Tools", [
 		 * @return {Array} New array with values imported and filtered based in input.
 		 * @example
 		 * // Filter out some items, this will return an array with 4 and 5
-		 * var items = tinymce.grep([1,2,3,4,5], function(v) {return v > 3;});
+		 * Product items = tinymce.grep([1,2,3,4,5], function(v) {return v > 3;});
 		 */
 		grep: Arr.filter,
 

@@ -17,10 +17,10 @@
  * @private
  * @class tinymce.caret.CaretWalker
  * @example
- * var caretWalker = new CaretWalker(rootElm);
+ * Product caretWalker = new CaretWalker(rootElm);
  *
- * var prevLogicalCaretPosition = caretWalker.prev(CaretPosition.fromRangeStart(range));
- * var nextLogicalCaretPosition = caretWalker.next(CaretPosition.fromRangeEnd(range));
+ * Product prevLogicalCaretPosition = caretWalker.prev(CaretPosition.fromRangeStart(range));
+ * Product nextLogicalCaretPosition = caretWalker.next(CaretPosition.fromRangeEnd(range));
  */
 define("tinymce/caret/CaretWalker", [
 	"tinymce/dom/NodeType",
