@@ -29,5 +29,11 @@ namespace OS.Business.Logic
         {
             _productsRepository.Update(product);
         }
+
+        public void Delete(int productId)
+        {
+            Product product = _productsRepository.GetById(productId);
+            _productsRepository.Delete(product);
+        }
     }
 }

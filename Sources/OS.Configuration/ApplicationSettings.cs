@@ -13,10 +13,12 @@ namespace OS.Configuration
         {
             DbSettings = new DbSettingsContainer();
             AppSettings = new ApplicationSettingsContainer();
+            TestsSettings = new TestsSettingsContainer();
         }
 
         public DbSettingsContainer DbSettings { get; private set; }
         public ApplicationSettingsContainer AppSettings { get; private set; }
+        public TestsSettingsContainer TestsSettings { get; private set; }
 
         public class ApplicationSettingsContainer : BaseClass
         {
@@ -41,6 +43,14 @@ namespace OS.Configuration
                 stringBuilder.Append(" = " + ConnectionStringEncoder.Encode(ApplicationConnectionString));
 
                 return stringBuilder.ToString();
+            }
+        }
+
+        public class TestsSettingsContainer : BaseClass
+        {
+            public string DbUpdatesApplierExeName
+            {
+                get { return SettingsManager.Instance.GetAppSetting<string>("dbUpdatesApplierExeName"); }
             }
         }
     }

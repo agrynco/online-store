@@ -18,7 +18,7 @@ namespace OS.Business.Logic.Tests
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>().AsQueryable());
             countriesRepository.Setup(r => r.Update(It.IsAny<Country>())).Callback((Country country) => {});
             countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => {});
-            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country country) => {});
+            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => {});
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>().AsQueryable());
             
             CountriesBL countriesBL = new CountriesBL(countriesRepository.Object);
@@ -39,7 +39,7 @@ namespace OS.Business.Logic.Tests
             var countriesRepository = new Mock<ICountriesRepository>();
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>().AsQueryable());
             countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => { });
-            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country country) => { });
+            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => { });
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>().AsQueryable());
 
             CountriesBL countriesBL = new CountriesBL(countriesRepository.Object);
@@ -65,7 +65,7 @@ namespace OS.Business.Logic.Tests
             //Arrange
             var countriesRepository = new Mock<ICountriesRepository>();
             countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => { });
-            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country country) => { });
+            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => { });
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>(new[]
                 {
                     new Country

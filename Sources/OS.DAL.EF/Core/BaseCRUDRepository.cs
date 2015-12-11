@@ -1,5 +1,6 @@
 ﻿#region Usings
 using System.Data.Entity;
+using System.Linq;
 using OS.Business.Domain;
 using OS.DAL.Abstract.Core;
 #endregion
@@ -23,15 +24,15 @@ namespace OS.DAL.EF.Core
             return addedEntity;
         }
 
-        public void Delete(TEntityId id)
+        public void Delete(params TEntityId[] id)
         {
-            TEntity entity = GetById(id);
-            Delete(entity);
+            var entities = GetAll().Where(entity => id.Contains(entity.Id)).ToArray();
+            Delete(entities);
         }
 
-        public virtual void Delete(TEntity entity)
+        public virtual void Delete(params TEntity[] entities)
         {
-            EntityFrameworkDbContext.Set<TEntity>().Remove(entity);
+            EntityFrameworkDbContext.Set<TEntity>().RemoveRange(entities);
             EntityFrameworkDbContext.SaveChanges();
         }
 

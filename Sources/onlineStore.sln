@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUpdatesApplier", "DbUpdat
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb
 		..\Tools\DbUpdatesApplier\DbVersioning.dll = ..\Tools\DbUpdatesApplier\DbVersioning.dll
 		..\Tools\DbUpdatesApplier\DbVersioning.pdb = ..\Tools\DbUpdatesApplier\DbVersioning.pdb
+		..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe
+		..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentTools", "DeploymentTools", "{00F50C2E-2DB5-4E61-AFD8-411824DA2F8E}"

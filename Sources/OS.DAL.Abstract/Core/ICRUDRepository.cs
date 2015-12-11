@@ -7,8 +7,8 @@ namespace OS.DAL.Abstract.Core
     public interface ICRUDRepository<TEntity, TEntityId> : IReadOnlyRepository<TEntity, TEntityId> where TEntity : Entity<TEntityId>
     {
         TEntity Add(TEntity entity);
-        void Delete(TEntityId id);
-        void Delete(TEntity entity);
+        void Delete(params TEntityId[] id);
+        void Delete(params TEntity[] entities);
         void Update(TEntity entity);
     }
 }

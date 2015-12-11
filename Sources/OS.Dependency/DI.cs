@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OS.Business.Domain;
@@ -21,7 +22,7 @@ namespace OS.Dependency
         {
             _container = container;
 
-            var lifeStyle = new WebRequestLifestyle();
+            var lifeStyle = HttpContext.Current != null ? new WebRequestLifestyle() : Lifestyle.Singleton;
 
             container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(_container.GetInstance<EntityFrameworkDbContext>()));
 
@@ -41,13 +42,13 @@ namespace OS.Dependency
             Register<BrandsBL>(lifeStyle);
         }
 
-        private static void Register<TImplementation>(ScopedLifestyle lifestyle)
+        private static void Register<TImplementation>(Lifestyle lifestyle)
             where TImplementation : class
         {
             _container.Register<TImplementation>(lifestyle);
         }
 
-        private static void Register<TService, TImplementation>(ScopedLifestyle lifestyle) 
+        private static void Register<TService, TImplementation>(Lifestyle lifestyle) 
             where TService : class 
             where TImplementation : class, TService
         {

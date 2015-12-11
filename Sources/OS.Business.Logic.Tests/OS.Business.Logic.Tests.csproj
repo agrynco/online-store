@@ -31,6 +31,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AGrynCo.Lib, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AGrynco.Lib.dll.0.0.20\lib\net46\AGrynCo.Lib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
@@ -39,7 +59,11 @@
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector">
+      <HintPath>..\packages\SimpleInjector.3.1.1\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,10 +73,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDbIntegrationTestFixture.cs" />
     <Compile Include="CountriesBLTests.cs" />
+    <Compile Include="ProductsBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetDatabaseException.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +92,21 @@
       <Project>{134e9999-4850-4f45-a283-fef73e1529f4}</Project>
       <Name>OS.Business.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OS.Configuration\OS.Configuration.csproj">
+      <Project>{f994d907-63e4-4a01-aad1-c3e7807e6f51}</Project>
+      <Name>OS.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
       <Project>{7cdf2abb-f7d6-4ea9-90d9-e09eedf536a1}</Project>
       <Name>OS.DAL.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.DAL.EF\OS.DAL.EF.csproj">
+      <Project>{2f563658-f7b6-45c1-8a4c-e52bfa45015b}</Project>
+      <Name>OS.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.Dependency\OS.Dependency.csproj">
+      <Project>{2d41701e-f0b7-49c0-83df-3ed824f7e8fa}</Project>
+      <Name>OS.Dependency</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
