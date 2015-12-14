@@ -68,11 +68,14 @@
   <ItemGroup>
     <Compile Include="ApplicationUserManager.cs" />
     <Compile Include="BrandsBL.cs" />
+    <Compile Include="ContentContentTypesBL.cs" />
+    <Compile Include="ContentsBl.cs" />
     <Compile Include="CountriesBL.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Exceptions\BaseBusinessException.cs" />
     <Compile Include="Exceptions\ThereIsNoBrandWithNameException.cs" />
     <Compile Include="Exceptions\ThereIsNoCountryWithNameException.cs" />
+    <Compile Include="FilesBl.cs" />
     <Compile Include="ProductsBL.cs" />
     <Compile Include="SmsService.cs" />
     <Compile Include="ProductCategoriesBL.cs" />

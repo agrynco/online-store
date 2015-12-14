@@ -2,13 +2,13 @@
 
 namespace OS.Business.Domain
 {
-    public abstract class File : IdentityEntity
+    public class File : IdentityEntity
     {
         [StringLength(255)]
         public string FileName { get; set; }
-        [StringLength(100)]
-        public string ContentType { get; set; }
+        
+        public virtual ContentContentType ContentContentType { get; set; }
 
-        public byte[] Content { get; set; }
+        public byte[] Data { get; set; }
     }
 }

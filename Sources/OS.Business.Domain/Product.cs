@@ -27,6 +27,6 @@ namespace OS.Business.Domain
         public virtual Country CountryProducer { get; set; }
 
         [Display(Name = "Зображення")]
-        public List<ProductPhoto> Photos { get; set; }
+        public virtual List<ProductPhoto> Photos { get; set; }
     }
 }

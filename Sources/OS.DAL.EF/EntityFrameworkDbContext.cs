@@ -30,5 +30,9 @@ namespace OS.DAL.EF
         public DbSet<Brand> Brands { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }
         public DbSet<File> Files { get; set; } 
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<ContentType> ContentTypes { get; set; }
+        public DbSet<ContentContentType> ContentContentTypes { get; set; }
+
     }
 }

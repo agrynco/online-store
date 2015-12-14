@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using OS.Business.Domain;
 using OS.DAL.EF.Core;
 

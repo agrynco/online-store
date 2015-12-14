@@ -260,6 +260,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StubController.cs" />
@@ -1054,6 +1055,7 @@
     <Content Include="Scripts\tinymce\tests\.jshintrc" />
     <Content Include="Scripts\tinymce\tests\js\qunit\QUnit.LICENSE" />
     <Content Include="Scripts\tinymce\tools\antlib\ant-contrib.zip" />
+    <Content Include="Views\ProductCategories\_productPhotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

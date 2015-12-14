@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,14 +19,16 @@ namespace OS.Web.Controllers.Administration
         private readonly ProductsBL _productsBL;
         private readonly BrandsBL _brandsBL;
         private readonly CountriesBL _countriesBL;
+        private readonly ContentContentTypesBL _contentContentTypesBL;
 
         public ProductCategoriesController(ProductCategoriesBL productCategoriesBL, ProductsBL productsBL,
-            BrandsBL brandsBL, CountriesBL countriesBL)
+            BrandsBL brandsBL, CountriesBL countriesBL, ContentContentTypesBL contentContentTypesBL)
         {
             _productCategoriesBL = productCategoriesBL;
             _productsBL = productsBL;
             _brandsBL = brandsBL;
             _countriesBL = countriesBL;
+            _contentContentTypesBL = contentContentTypesBL;
         }
 
         public ActionResult Index(int? parentId)
@@ -118,14 +121,28 @@ namespace OS.Web.Controllers.Administration
             return View("Edit", model);
         }
 
+        public ActionResult EditProduct(int productId, int ownerCategoryId)
+        {
+            Product product = _productsBL.GetById(productId);
+
+            ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel
+                {
+                    Product = product,
+                    BrandName = product.Brand.Name,
+                    CountryName = product.CountryProducer.Name,
+                    OwnerCategoryId = ownerCategoryId
+                };
+
+            return View("ProductEdit", model);
+        }
+
         [HttpGet]
         public ActionResult CreateProduct(int categoryId)
         {
             ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel
                 {
                     Product = new Product(),
-                    ParentCategoryId = categoryId,
-                    PostedProductPhotos = new List<HttpPostedFileBase>(new HttpPostedFileBase[5])
+                    OwnerCategoryId = categoryId
                 };
 
             return View("ProductEdit", model);
@@ -182,11 +199,11 @@ namespace OS.Web.Controllers.Administration
                     }
                     catch (ThereIsNoCountryWithNameException)
                     {
-                        ModelState.AddModelError("CountryName", $"Країна ім'ям '{model.CountryName}' не існує");
+                        ModelState.AddModelError("CountryName", string.Format("Країна ім'ям '{0}' не існує", model.CountryName));
                     }
                 }
 
-                ProductCategory owner = _productCategoriesBL.GetById(model.ParentCategoryId);
+                ProductCategory owner = _productCategoriesBL.GetById(model.OwnerCategoryId);
 
                 foreach (HttpPostedFileBase postedFile in model.PostedProductPhotos)
                 {
@@ -194,12 +211,12 @@ namespace OS.Web.Controllers.Administration
                     {
                         ProductPhoto productPhoto = new ProductPhoto
                             {
-                                Content = new byte[postedFile.InputStream.Length],
-                                ContentType = postedFile.ContentType,
+                                Data = new byte[postedFile.InputStream.Length],
+                                ContentContentType = _contentContentTypesBL.Get(postedFile.ContentType),
                                 FileName = postedFile.FileName
                         };
 
-                        postedFile.InputStream.Read(productPhoto.Content, 0, productPhoto.Content.Length);
+                        postedFile.InputStream.Read(productPhoto.Data, 0, productPhoto.Data.Length);
 
                         target.Photos.Add(productPhoto);
                     }
@@ -220,7 +237,7 @@ namespace OS.Web.Controllers.Administration
                 {
                     return RedirectToAction("Index", new
                         {
-                            parentId = model.ParentCategoryId
+                            parentId = model.OwnerCategoryId
                     });
                 }
             }

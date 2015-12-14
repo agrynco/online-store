@@ -28,10 +28,11 @@
         <tr class="min-height">
             <td>
                 <div style="float: right;">
-                    @Html.ActionLink(" ", "Edit",
+                    @Html.ActionLink(" ", "EditProduct",
                             new
                             {
-                                categoryId = Model.Product.Id
+                                productId = Model.Product.Id,
+                                ownerCategoryId = Model.ParentCategoryId
                             },
                             new
                             {

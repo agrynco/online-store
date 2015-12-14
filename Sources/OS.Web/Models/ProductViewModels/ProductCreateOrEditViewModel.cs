@@ -8,6 +8,11 @@ namespace OS.Web.Models.ProductViewModels
 {
     public class ProductCreateOrEditViewModel : BaseCreateOrEditViewModel
     {
+        public ProductCreateOrEditViewModel()
+        {
+            PostedProductPhotos = new List<HttpPostedFileBase>(new HttpPostedFileBase[5]);
+        }
+
         public override int? Id
         {
             get { return Product.Id == 0 ? (int?) null : Product.Id; }
@@ -16,7 +21,7 @@ namespace OS.Web.Models.ProductViewModels
 
         public Product Product { get; set; }
 
-        public int ParentCategoryId { get; set; }
+        public int OwnerCategoryId { get; set; }
 
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 

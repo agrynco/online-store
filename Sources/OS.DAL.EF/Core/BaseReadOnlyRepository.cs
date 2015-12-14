@@ -15,7 +15,10 @@ namespace OS.DAL.EF.Core
     {
         public BaseReadOnlyRepository(TDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
+            DbSet = EntityFrameworkDbContext.Set<TEntity>();
         }
+
+        protected DbSet<TEntity> DbSet { get; private set; }
 
         public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {

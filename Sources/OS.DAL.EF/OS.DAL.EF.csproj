@@ -74,7 +74,12 @@
     <Compile Include="EntityFrameworkDbContext.cs" />
     <Compile Include="OnlineStoreDbContext.cs" />
     <Compile Include="Repositories\BrandsRepository.cs" />
+    <Compile Include="Repositories\ContentContentTypesRepository.cs" />
+    <Compile Include="Repositories\ContentsRepository.cs" />
+    <Compile Include="Repositories\ContentTypesRepository.cs" />
     <Compile Include="Repositories\CountriesRepository.cs" />
+    <Compile Include="Repositories\FilesRepository.cs" />
+    <Compile Include="Repositories\NamedEntitiesRepository.cs" />
     <Compile Include="Repositories\ProductCategoriesRepository.cs" />
     <Compile Include="EntityConfigurations\ProductConfiguration.cs" />
     <Compile Include="Repositories\ProductsRepository.cs" />
@@ -95,6 +100,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-18.sql" />
+    <Content Include="Migrations\0-17.sql" />
+    <Content Include="Migrations\0-16.sql" />
+    <Content Include="Migrations\0-15.sql" />
     <Content Include="Migrations\0-14.sql" />
     <Content Include="Migrations\0-13.sql" />
     <Content Include="Migrations\0-12.sql" />

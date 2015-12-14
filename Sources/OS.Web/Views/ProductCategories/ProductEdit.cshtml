@@ -18,7 +18,7 @@
     </style>
 
     @Html.HiddenFor(m => m.Product.Id)
-    @Html.HiddenFor(m => m.ParentCategoryId)
+    @Html.HiddenFor(m => m.OwnerCategoryId)
     <table class="full-width">
         <tr>
             <td class="min-width col-md-2" style="white-space: nowrap">
@@ -75,13 +75,24 @@
             <td class="min-width col-md-2" valign="top">
                 @Html.LabelFor(m => m.Product.Photos)
             </td>
+            <td>
+                @Html.Partial("_productPhotos", Model.Product.Photos)
+            </td>
+        </tr>
+        <tr class="row-space">
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="min-width col-md-2" valign="top">
+                @Html.LabelFor(m => m.Product.Photos)
+            </td>
             <td colspan="2">
                 <table>
                     @for (int i = 0; i < Model.PostedProductPhotos.Count; i++)
                     {
                         <tr>
                             <td style="padding-right: 5px">@(i + 1)</td>
-                            <td><input type="file" name="PostedProductPhotos"/></td>
+                            <td><input type="file" name="@Html.IdFor(m => m.PostedProductPhotos)"/></td>
                         </tr>
                     }    
                 </table>
@@ -95,7 +106,7 @@
     @Html.ActionLink("Відмінити", "Index",
         new
         {
-            parentId = Model.ParentCategoryId
+            parentId = Model.OwnerCategoryId
         },
         new
         {

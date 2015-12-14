@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDbIntegrationTestFixture.cs" />
+    <Compile Include="ContentContentTypesBLTests.cs" />
     <Compile Include="CountriesBLTests.cs" />
     <Compile Include="ProductsBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

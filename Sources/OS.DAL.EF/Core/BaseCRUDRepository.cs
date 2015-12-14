@@ -19,7 +19,7 @@ namespace OS.DAL.EF.Core
 
         public TEntity Add(TEntity entity)
         {
-            TEntity addedEntity = EntityFrameworkDbContext.Set<TEntity>().Add(entity);
+            TEntity addedEntity = DbSet.Add(entity);
             EntityFrameworkDbContext.SaveChanges();
             return addedEntity;
         }
@@ -32,13 +32,13 @@ namespace OS.DAL.EF.Core
 
         public virtual void Delete(params TEntity[] entities)
         {
-            EntityFrameworkDbContext.Set<TEntity>().RemoveRange(entities);
+            DbSet.RemoveRange(entities);
             EntityFrameworkDbContext.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            EntityFrameworkDbContext.Set<TEntity>().Attach(entity);
+            DbSet.Attach(entity);
             EntityFrameworkDbContext.Entry(entity).State = EntityState.Modified;
             EntityFrameworkDbContext.SaveChanges();
         }

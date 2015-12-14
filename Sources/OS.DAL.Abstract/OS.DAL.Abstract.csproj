@@ -42,9 +42,17 @@
   <ItemGroup>
     <Compile Include="Core\ICRUDRepository.cs" />
     <Compile Include="Core\IReadOnlyRepository.cs" />
+    <Compile Include="Exceptions\DALException.cs" />
+    <Compile Include="Exceptions\ThereIsNoEntityException.cs" />
     <Compile Include="IBrandsRepository.cs" />
+    <Compile Include="IContentContentTypesRepository.cs" />
+    <Compile Include="IContentsRepository.cs" />
+    <Compile Include="IContentTypesRepository.cs" />
     <Compile Include="ICountriesRepository.cs" />
+    <Compile Include="IFilesRepository.cs" />
+    <Compile Include="INamedEntitiesRepository.cs" />
     <Compile Include="IOnlineStoreDbContext.cs" />
+    <Compile Include="IOnlineStoreRepository.cs" />
     <Compile Include="IProductCategoriesRepository.cs" />
     <Compile Include="IProductsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

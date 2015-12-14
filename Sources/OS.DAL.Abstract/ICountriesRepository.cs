@@ -1,9 +1,10 @@
+#region Usings
 using OS.Business.Domain;
-using OS.DAL.Abstract.Core;
+#endregion
 
 namespace OS.DAL.Abstract
 {
-    public interface ICountriesRepository : ICRUDRepository<Country, int>
+    public interface ICountriesRepository : IOnlineStoreRepository<Country>
     {
     }
 }

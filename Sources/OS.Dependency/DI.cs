@@ -40,6 +40,17 @@ namespace OS.Dependency
 
             Register<IBrandsRepository, BrandsRepository>(lifeStyle);
             Register<BrandsBL>(lifeStyle);
+
+            Register<IFilesRepository, FilesRepository>(lifeStyle);
+            Register<FilesBL>(lifeStyle);
+
+            Register<IContentsRepository, ContentsRepository>(lifeStyle);
+            Register<ContentsBl>(lifeStyle);
+
+            Register<IContentTypesRepository, ContentTypesRepository>(lifeStyle);
+            
+            Register<IContentContentTypesRepository, ContentContentTypesRepository>(lifeStyle);
+            Register<ContentContentTypesBL>(lifeStyle);
         }
 
         private static void Register<TImplementation>(Lifestyle lifestyle)
