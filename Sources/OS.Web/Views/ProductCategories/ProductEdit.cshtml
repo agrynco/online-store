@@ -76,7 +76,7 @@
                 @Html.LabelFor(m => m.Product.Photos)
             </td>
             <td>
-                @Html.Partial("_productPhotos", Model.Product.Photos)
+                @Html.EditorFor(model => model.ProductPhotoViewModels, "_productPhotos")
             </td>
         </tr>
         <tr class="row-space">

@@ -32,5 +32,4 @@ namespace OS.Business.Logic
             return result;
         }
     }
-
 }

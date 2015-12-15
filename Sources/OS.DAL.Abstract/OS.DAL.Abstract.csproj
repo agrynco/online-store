@@ -54,6 +54,7 @@
     <Compile Include="IOnlineStoreDbContext.cs" />
     <Compile Include="IOnlineStoreRepository.cs" />
     <Compile Include="IProductCategoriesRepository.cs" />
+    <Compile Include="IProductPhotosRepository.cs" />
     <Compile Include="IProductsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

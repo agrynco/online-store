@@ -82,6 +82,7 @@
     <Compile Include="Repositories\NamedEntitiesRepository.cs" />
     <Compile Include="Repositories\ProductCategoriesRepository.cs" />
     <Compile Include="EntityConfigurations\ProductConfiguration.cs" />
+    <Compile Include="Repositories\ProductPhotosRepository.cs" />
     <Compile Include="Repositories\ProductsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +101,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\0-19.sql" />
     <Content Include="Migrations\0-18.sql" />
     <Content Include="Migrations\0-17.sql" />
     <Content Include="Migrations\0-16.sql" />

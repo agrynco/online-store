@@ -1,5 +1,4 @@
 ﻿#region Usings
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,20 +14,23 @@ namespace OS.Web.Controllers.Administration
 {
     public class ProductCategoriesController : BaseAdminController
     {
-        private readonly ProductCategoriesBL _productCategoriesBL;
-        private readonly ProductsBL _productsBL;
         private readonly BrandsBL _brandsBL;
-        private readonly CountriesBL _countriesBL;
         private readonly ContentContentTypesBL _contentContentTypesBL;
+        private readonly CountriesBL _countriesBL;
+        private readonly ProductCategoriesBL _productCategoriesBL;
+        private readonly ProductPhotosBL _productPhotosBL;
+        private readonly ProductsBL _productsBL;
 
         public ProductCategoriesController(ProductCategoriesBL productCategoriesBL, ProductsBL productsBL,
-            BrandsBL brandsBL, CountriesBL countriesBL, ContentContentTypesBL contentContentTypesBL)
+            BrandsBL brandsBL, CountriesBL countriesBL, ContentContentTypesBL contentContentTypesBL,
+            ProductPhotosBL productPhotosBL)
         {
             _productCategoriesBL = productCategoriesBL;
             _productsBL = productsBL;
             _brandsBL = brandsBL;
             _countriesBL = countriesBL;
             _contentContentTypesBL = contentContentTypesBL;
+            _productPhotosBL = productPhotosBL;
         }
 
         public ActionResult Index(int? parentId)
@@ -36,11 +38,13 @@ namespace OS.Web.Controllers.Administration
             ProductCategoriesViewModel viewModel = new ProductCategoriesViewModel
                 {
                     ProductCategories = _productCategoriesBL.GetCategories(parentId),
-                    ProductsFromLevelUpProductCategory = parentId.HasValue ? _productCategoriesBL.GetProducts(parentId.Value).Select(product => new ProductListItemViewModel
-                        {
-                            ParentCategoryId = parentId.Value,
-                            Product = product
-                        }).ToList() : new List<ProductListItemViewModel>()
+                    ProductsFromLevelUpProductCategory = parentId.HasValue
+                        ? _productCategoriesBL.GetProducts(parentId.Value).Select(product => new ProductListItemViewModel
+                            {
+                                ParentCategoryId = parentId.Value,
+                                Product = product
+                            }).ToList()
+                        : new List<ProductListItemViewModel>()
                 };
 
             if (parentId != null)
@@ -130,7 +134,13 @@ namespace OS.Web.Controllers.Administration
                     Product = product,
                     BrandName = product.Brand.Name,
                     CountryName = product.CountryProducer.Name,
-                    OwnerCategoryId = ownerCategoryId
+                    OwnerCategoryId = ownerCategoryId,
+                    ProductPhotoViewModels = product.Photos.Select(photo => new ProductPhotoViewModel
+                        {
+                            Id = photo.Id,
+                            IsDeleted = false,
+                            FileName = photo.FileName
+                        }).ToList()
                 };
 
             return View("ProductEdit", model);
@@ -168,12 +178,14 @@ namespace OS.Web.Controllers.Administration
                 if (model.Id.HasValue)
                 {
                     target = _productsBL.GetById(model.Id.Value);
+
+                    DeletePhotos(target, model);
                 }
                 else
                 {
                     target = new Product();
                 }
-                
+
                 target.Name = model.Product.Name;
                 target.Description = model.Product.Description;
 
@@ -214,7 +226,7 @@ namespace OS.Web.Controllers.Administration
                                 Data = new byte[postedFile.InputStream.Length],
                                 ContentContentType = _contentContentTypesBL.Get(postedFile.ContentType),
                                 FileName = postedFile.FileName
-                        };
+                            };
 
                         postedFile.InputStream.Read(productPhoto.Data, 0, productPhoto.Data.Length);
 
@@ -238,11 +250,25 @@ namespace OS.Web.Controllers.Administration
                     return RedirectToAction("Index", new
                         {
                             parentId = model.OwnerCategoryId
-                    });
+                        });
                 }
             }
 
             return View("ProductEdit", model);
+        }
+
+        private void DeletePhotos(Product product, ProductCreateOrEditViewModel model)
+        {
+            int[] productPhotoIdsToDelete = (from productPhotoViewModel in model.ProductPhotoViewModels
+                where productPhotoViewModel.IsDeleted
+                select productPhotoViewModel.Id).ToArray();
+
+            _productPhotosBL.Delete(productPhotoIdsToDelete);
+
+            foreach (int photoId in productPhotoIdsToDelete)
+            {
+                product.Photos.Remove(product.Photos.Single(photo => photo.Id == photoId));
+            }
         }
     }
 }

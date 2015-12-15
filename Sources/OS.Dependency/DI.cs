@@ -51,6 +51,9 @@ namespace OS.Dependency
             
             Register<IContentContentTypesRepository, ContentContentTypesRepository>(lifeStyle);
             Register<ContentContentTypesBL>(lifeStyle);
+
+            Register<IProductPhotosRepository, ProductPhotosRepository>(lifeStyle);
+            Register<ProductPhotosBL>(lifeStyle);
         }
 
         private static void Register<TImplementation>(Lifestyle lifestyle)

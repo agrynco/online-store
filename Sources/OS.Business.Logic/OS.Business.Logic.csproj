@@ -76,6 +76,7 @@
     <Compile Include="Exceptions\ThereIsNoBrandWithNameException.cs" />
     <Compile Include="Exceptions\ThereIsNoCountryWithNameException.cs" />
     <Compile Include="FilesBl.cs" />
+    <Compile Include="ProductPhotosBL.cs" />
     <Compile Include="ProductsBL.cs" />
     <Compile Include="SmsService.cs" />
     <Compile Include="ProductCategoriesBL.cs" />
