@@ -63,6 +63,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{C741
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Business.Logic.Tests", "OS.Business.Logic.Tests\OS.Business.Logic.Tests.csproj", "{7B197038-72AA-4FB0-9DA5-186DCF118721}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "online-store.grynco.com.ua", "online-store.grynco.com.ua", "{CC5A58FA-5252-4294-9491-4618BBD425EB}"
+	ProjectSection(SolutionItems) = preProject
+		..\Configuration\online-store.grynco.com.ua\appSettings.config = ..\Configuration\online-store.grynco.com.ua\appSettings.config
+		..\Configuration\online-store.grynco.com.ua\connectionStrings.config = ..\Configuration\online-store.grynco.com.ua\connectionStrings.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,8 +131,8 @@ Global
 		{00F50C2E-2DB5-4E61-AFD8-411824DA2F8E} = {93842B83-B84C-4015-9C28-DD9B454D52B6}
 		{F7DE2B54-B47C-423B-8035-F8D3205917AA} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
 		{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
-		{60A381A2-8DED-431B-924E-EB6A38B2A213} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
 		{B8FE35C0-8651-49DC-9250-9F7BDBD01BFF} = {60A381A2-8DED-431B-924E-EB6A38B2A213}
 		{7B197038-72AA-4FB0-9DA5-186DCF118721} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
+		{CC5A58FA-5252-4294-9491-4618BBD425EB} = {60A381A2-8DED-431B-924E-EB6A38B2A213}
 	EndGlobalSection
 EndGlobal
