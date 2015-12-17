@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -198,7 +199,7 @@ namespace OS.Web.Controllers.Administration
                     }
                     catch (ThereIsNoBrandWithNameException)
                     {
-                        ModelState.AddModelError("BrandName", $"Бренд з ім'ям '{model.BrandName}' не існує");
+                        ModelState.AddModelError("BrandName", string.Format("Бренд з ім'ям '{0}' не існує", model.BrandName));
                     }
                 }
 
