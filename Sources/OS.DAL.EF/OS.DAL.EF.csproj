@@ -111,6 +111,7 @@
     <Content Include="Migrations\0-12.sql" />
     <Content Include="Migrations\0-11.sql" />
     <Content Include="Migrations\0-10.sql" />
+    <Content Include="Migrations\0-20.sql" />
     <Content Include="Migrations\0-9.sql" />
     <Content Include="Migrations\0-8.sql" />
     <Content Include="Migrations\0-7.sql" />
