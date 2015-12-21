@@ -9,9 +9,9 @@
 @section creationAction
 {
     @Html.ActionLink("Створити", "Create", new
-        {
-            parentId = Model.LevelUpProductCategory?.Id
-        })
+{
+    parentId = Model.LevelUpProductCategory == null ? (int?) null : Model.LevelUpProductCategory.Id
+})
 }
 
 @section subAtionsToolBar
@@ -21,14 +21,14 @@
             <li>
                 @Html.ActionLink("Додати новий товар", "CreateProduct", new
                     {
-                        categoryId = Model.LevelUpProductCategory?.Id
+                        categoryId = Model.LevelUpProductCategory.Id
                     },
                     new
                         {
-                            
                         })
             </li>
         </ul>
+
     </nav>
 }
 
