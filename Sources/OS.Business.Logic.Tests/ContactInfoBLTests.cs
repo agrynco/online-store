@@ -1,0 +1,23 @@
+﻿using NUnit.Framework;
+using OS.Business.Domain;
+using OS.Dependency;
+
+namespace OS.Business.Logic.Tests
+{
+    [TestFixture]
+    public class ContactInfoBLTests : BaseDbIntegrationTestFixture
+    {
+        [Test]
+        public void Get_SholudReturnNotNull()
+        {
+            //Arrange
+            ContactInfoBL contactInfoBl = DI.Resolve<ContactInfoBL>();
+
+            //Act
+            ContactInfo info = contactInfoBl.Get();
+            
+            //Assert
+            Assert.IsNotNull(info);
+        }
+    }
+}

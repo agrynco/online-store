@@ -1,11 +1,17 @@
-﻿@model dynamic
+﻿@using OS.Business.Domain
+@model ContactInfo
 
 @{
-    ViewBag.Title = "Контакти";
-    Layout = "../Shared/_Layout.cshtml";
+    Layout = "../Shared/_mainLayout.cshtml";
 }
 
 @section content
 {
-    <h2>@ViewBag.Title</h2>
+    <h2>Контакти</h2>
+
+    @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+}
+
+@section scripts
+{
 }

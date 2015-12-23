@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUserManager.cs" />
     <Compile Include="BrandsBL.cs" />
+    <Compile Include="ContactInfoBL.cs" />
     <Compile Include="ContentContentTypesBL.cs" />
     <Compile Include="ContentsBl.cs" />
     <Compile Include="CountriesBL.cs" />

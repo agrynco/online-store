@@ -54,6 +54,9 @@ namespace OS.Dependency
 
             Register<IProductPhotosRepository, ProductPhotosRepository>(lifeStyle);
             Register<ProductPhotosBL>(lifeStyle);
+
+            Register<IContactInfosRepository, ContactInfosRepository>(lifeStyle);
+            Register<ContactInfoBL>(lifeStyle);
         }
 
         private static void Register<TImplementation>(Lifestyle lifestyle)
