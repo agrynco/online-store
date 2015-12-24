@@ -1,0 +1,4 @@
+﻿@using OS.Business.Domain
+@model ContactInfo
+    
+@Html.Raw(HttpUtility.HtmlDecode(Model.Content))

@@ -34,5 +34,7 @@ namespace OS.DAL.EF
         public DbSet<ContentType> ContentTypes { get; set; }
         public DbSet<ContentContentType> ContentContentTypes { get; set; }
 
+        public DbSet<ContactInfo> ContactInfos { get; set; }
+
     }
 }

@@ -1,11 +1,28 @@
-﻿@model dynamic
+﻿@using OS.Business.Domain
+@model ContactInfo
 
 @{
-    ViewBag.Title = "Контакти";
-    Layout = "../Shared/_Layout.cshtml";
+    Layout = "../Shared/_mainLayout.cshtml";
 }
 
 @section content
 {
-    <h2>@ViewBag.Title</h2>
+    <table class="full-size">
+        <tr class="min-height">
+            <td>
+                <h2>Контакти</h2>
+
+                @Html.Partial("_contactInfo", Model)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+
+
+}
+
+@section scripts
+{
 }

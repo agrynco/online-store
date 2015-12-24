@@ -6,7 +6,7 @@ namespace OS.Web.Controllers.Administration
     {
         public ActionResult Home()
         {
-            return View();
+            return RedirectToAction("Index", "ProductCategories");
         }
     }
 }

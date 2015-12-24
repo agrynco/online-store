@@ -1,14 +1,22 @@
 ﻿#region Usings
+using System.Web.Mvc;
 using OS.Business.Logic;
-using OS.Web.Models;
 #endregion
 
 namespace OS.Web.Controllers
 {
-    public class ContactInfoController : BaseLayoutController<HorizontalCategorySelectorViewModel>
+    public class ContactInfoController : Controller
     {
-        public ContactInfoController(ProductCategoriesBL productCategoriesBL) : base(productCategoriesBL)
+        private readonly ContactInfoBL _contactInfoBl;
+
+        public ContactInfoController(ContactInfoBL contactInfoBl)
         {
+            _contactInfoBl = contactInfoBl;
+        }
+
+        public ActionResult Index()
+        {
+            return View(_contactInfoBl.Get());
         }
     }
 }

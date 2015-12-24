@@ -12,19 +12,26 @@
         <tr class="min-height">
             <td>
                 <nav class="navbar navbar-link">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            @if (IsSectionDefined("creationAction"))
-                            {
-                                @RenderSection("creationAction")
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Створити", "Create", currentControllerName)
-                            }
-                        </li>
-                        <li><a href="#">Видалити</a></li>
-                    </ul>
+                    @if (IsSectionDefined("actionsToolBar"))
+                    {
+                        @RenderSection("actionsToolBar")
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                @if (IsSectionDefined("creationAction"))
+                                {
+                                    @RenderSection("creationAction")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Створити", "Create", currentControllerName)
+                                }
+                            </li>
+                            <li><a href="#">Видалити</a></li>
+                        </ul>
+                    }
                 </nav>
             </td>
         </tr>

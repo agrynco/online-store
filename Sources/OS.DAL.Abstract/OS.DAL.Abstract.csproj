@@ -45,6 +45,7 @@
     <Compile Include="Exceptions\DALException.cs" />
     <Compile Include="Exceptions\ThereIsNoEntityException.cs" />
     <Compile Include="IBrandsRepository.cs" />
+    <Compile Include="IContactInfosRepository.cs" />
     <Compile Include="IContentContentTypesRepository.cs" />
     <Compile Include="IContentsRepository.cs" />
     <Compile Include="IContentTypesRepository.cs" />
