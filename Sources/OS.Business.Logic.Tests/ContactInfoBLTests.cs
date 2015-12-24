@@ -8,7 +8,7 @@ namespace OS.Business.Logic.Tests
     public class ContactInfoBLTests : BaseDbIntegrationTestFixture
     {
         [Test]
-        public void Get_SholudReturnNotNull()
+        public void Get_ShouldReturnNotNull()
         {
             //Arrange
             ContactInfoBL contactInfoBl = DI.Resolve<ContactInfoBL>();

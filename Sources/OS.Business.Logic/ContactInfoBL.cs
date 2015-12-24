@@ -17,5 +17,10 @@ namespace OS.Business.Logic
         {
             return _contactInfosRepository.GetAll().Single();
         }
+
+        public void Update(ContactInfo contactInfo)
+        {
+            _contactInfosRepository.Update(contactInfo);
+        }
     }
 }
