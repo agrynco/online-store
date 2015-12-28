@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OS.Business.Domain;
 using OS.Dependency;
+using OS.Repositories.Tests;
 
 namespace OS.Business.Logic.Tests
 {

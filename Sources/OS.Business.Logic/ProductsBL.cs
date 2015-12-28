@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using OS.Business.Domain;
 using OS.DAL.Abstract;
 
@@ -13,6 +15,11 @@ namespace OS.Business.Logic
         {
             _productsRepository = productsRepository;
             _productCategoriesRepository = productCategoriesRepository;
+        }
+
+        public List<Product> Get(ProductsFilter filter)
+        {
+            return _productsRepository.Get(filter).ToList();
         }
 
         public void Create(Product product)

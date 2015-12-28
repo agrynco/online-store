@@ -1,5 +1,4 @@
 ﻿#region Usings
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,11 +39,14 @@ namespace OS.Web.Controllers.Administration
                 {
                     ProductCategories = _productCategoriesBL.GetCategories(parentId),
                     ProductsFromLevelUpProductCategory = parentId.HasValue
-                        ? _productCategoriesBL.GetProducts(parentId.Value).Select(product => new ProductListItemViewModel
+                        ? _productsBL.Get(new ProductsFilter
                             {
-                                ParentCategoryId = parentId.Value,
-                                Product = product
-                            }).ToList()
+                                ParentId = parentId
+                            }).Select(product => new ProductListItemViewModel
+                                {
+                                    ParentCategoryId = parentId.Value,
+                                    Product = product
+                                }).ToList()
                         : new List<ProductListItemViewModel>()
                 };
 

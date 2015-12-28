@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D41701E-F0B7-49C0-83DF-3ED824F7E8FA}</ProjectGuid>
+    <ProjectGuid>{2769A653-2C66-46E0-B1F2-9CF7799056A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OS.Dependency</RootNamespace>
-    <AssemblyName>OS.Dependency</AssemblyName>
+    <RootNamespace>OS.Repositories.Tests</RootNamespace>
+    <AssemblyName>OS.Repositories.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -50,18 +50,17 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SimpleInjector.Integration.Web, Version=3.1.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.Integration.Web.3.1.1\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,34 +69,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DI.cs" />
+    <Compile Include="BaseDbIntegrationTestFixture.cs" />
+    <Compile Include="ProductsRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="ResetDatabaseException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OS.Business.Domain\OS.Business.Domain.csproj">
       <Project>{b2660f88-c0fb-4655-a8a9-4bf6616c5adc}</Project>
       <Name>OS.Business.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OS.Business.Logic\OS.Business.Logic.csproj">
-      <Project>{134E9999-4850-4F45-A283-FEF73E1529F4}</Project>
-      <Name>OS.Business.Logic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OS.Configuration\OS.Configuration.csproj">
-      <Project>{F994D907-63E4-4A01-AAD1-C3E7807E6F51}</Project>
+      <Project>{f994d907-63e4-4a01-aad1-c3e7807e6f51}</Project>
       <Name>OS.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
-      <Project>{7CDF2ABB-F7D6-4EA9-90D9-E09EEDF536A1}</Project>
+      <Project>{7cdf2abb-f7d6-4ea9-90d9-e09eedf536a1}</Project>
       <Name>OS.DAL.Abstract</Name>
     </ProjectReference>
     <ProjectReference Include="..\OS.DAL.EF\OS.DAL.EF.csproj">
-      <Project>{2F563658-F7B6-45C1-8A4C-E52BFA45015B}</Project>
+      <Project>{2f563658-f7b6-45c1-8a4c-e52bfa45015b}</Project>
       <Name>OS.DAL.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OS.Dependency\OS.Dependency.csproj">
+      <Project>{2d41701e-f0b7-49c0-83df-3ed824f7e8fa}</Project>
+      <Name>OS.Dependency</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

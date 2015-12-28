@@ -1,5 +1,6 @@
 ﻿#region Usings
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OS.Business.Domain;
@@ -15,6 +16,7 @@ namespace OS.DAL.EF
 
         public EntityFrameworkDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
+            Database.Log = message => Debug.WriteLine(message);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -59,8 +59,9 @@
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SimpleInjector">
-      <HintPath>..\packages\SimpleInjector.3.1.1\lib\net45\SimpleInjector.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -73,16 +74,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDbIntegrationTestFixture.cs" />
     <Compile Include="ContactInfoBLTests.cs" />
     <Compile Include="ContentContentTypesBLTests.cs" />
     <Compile Include="CountriesBLTests.cs" />
     <Compile Include="ProductsBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResetDatabaseException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +110,10 @@
     <ProjectReference Include="..\OS.Dependency\OS.Dependency.csproj">
       <Project>{2d41701e-f0b7-49c0-83df-3ed824f7e8fa}</Project>
       <Name>OS.Dependency</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.Repositories.Tests\OS.Repositories.Tests.csproj">
+      <Project>{2769a653-2c66-46e0-b1f2-9cf7799056a5}</Project>
+      <Name>OS.Repositories.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

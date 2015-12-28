@@ -1,6 +1,6 @@
 using System;
 
-namespace OS.Business.Logic.Tests
+namespace OS.Repositories.Tests
 {
     public class ResetDatabaseException : Exception
     {

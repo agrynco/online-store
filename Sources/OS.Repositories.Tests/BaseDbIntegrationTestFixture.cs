@@ -3,15 +3,14 @@ using System.IO;
 using OS.Configuration;
 using OS.DAL.EF;
 using OS.Dependency;
-using SimpleInjector;
 
-namespace OS.Business.Logic.Tests
+namespace OS.Repositories.Tests
 {
     public class BaseDbIntegrationTestFixture
     {
         protected BaseDbIntegrationTestFixture()
         {
-            Container container = new Container();
+            SimpleInjector.Container container = new SimpleInjector.Container();
             DI.Configure(container);
 
             EntityFrameworkDbContext = DI.Resolve<EntityFrameworkDbContext>();

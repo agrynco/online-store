@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
@@ -39,11 +40,6 @@ namespace OS.Business.Logic
         public void Delete(int categoryId)
         {
             _productCategoriesRepository.Delete(categoryId);
-        }
-
-        public List<Product> GetProducts(int categoryId)
-        {
-            return _productCategoriesRepository.GetById(categoryId).Products.Where(product => product.IsDeleted == false).ToList();
         }
 
         public void Add(Product product, ProductCategory owner)

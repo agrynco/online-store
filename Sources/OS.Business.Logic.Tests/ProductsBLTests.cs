@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using OS.Dependency;
+using OS.Repositories.Tests;
 
 namespace OS.Business.Logic.Tests
 {
