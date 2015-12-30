@@ -123,11 +123,6 @@
     </script>
 
     <script type="text/javascript">
-        $("#@Html.IdFor(model => model.Filter.Text)").keypress(function()
-        {
-            $("#@Html.IdFor(model => model.Filter.ParentId)").val("@Model.Filter.ParentId");
-        });
-
         $("#@Html.IdFor(model => model.Filter.Text)").autocomplete(
         {
             source: "/api/categories/autocomplete",
@@ -146,10 +141,7 @@
             },
             select: function(event, ui)
             {
-                $("#@Html.IdFor(model => model.Filter.Text)").val(ui.item.Name);
-                $("#@Html.IdFor(model => model.Filter.ParentId)").val(ui.item.Id);
-
-                return false;
+                location.href = "ProductCategories/Edit/?categoryId=" + ui.item.Id;
             }
         });
 
