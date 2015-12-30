@@ -22,10 +22,25 @@ namespace OS.Business.Logic
             return _productCategoriesRepository.GetCategories(parentId).ToList();
         }
 
+        public List<ProductCategory> SearchCategories(string searchTerm)
+        {
+            return _productCategoriesRepository.SearchCategories(searchTerm).ToList();
+        }
+
+        public List<ProductCategory> GetParentCategories(int categoryId)
+        {
+            return _productCategoriesRepository.GetParentCategories(categoryId).ToList();
+        }
+
         public ProductCategory GetById(int id)
         {
             return _productCategoriesRepository.GetById(id);
         }
+
+        public IList<ProductCategory> SearchByFilter(ProductCategoriesFilter filter)
+        {
+            return _productCategoriesRepository.SearchByFilter(filter);
+        } 
 
         public void Update(ProductCategory productCategory)
         {

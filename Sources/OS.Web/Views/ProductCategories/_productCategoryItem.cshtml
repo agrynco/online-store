@@ -1,4 +1,5 @@
 ﻿@using OS.Business.Domain
+@using OS.Web.Models.ProductCategoryViewModels
 @model ProductCategory
 
 <li class="product-category-item">
@@ -24,9 +25,9 @@
         }
         <tr>
             <td>
-                @Html.ActionLink(Model.Name, "Index", new
+                @Html.ActionLink(Model.Name, "Index", new ProductCategoriesFilterViewModel
                     {
-                        parentId = Model.Id != 0 ? (int?) Model.Id : null
+                        ParentId = Model.Id != 0 ? (int?) Model.Id : null
                     })
             </td>
         </tr>

@@ -5,6 +5,7 @@ using OS.Business.Logic;
 
 namespace OS.Web.Controllers.Api
 {
+    [RoutePrefix("api/countries")]
     public class CountriesController : ApiController
     {
         private readonly CountriesBL _countriesBL;
@@ -14,7 +15,7 @@ namespace OS.Web.Controllers.Api
             _countriesBL = countriesBL;
         }
 
-        [HttpGet]
+        [Route("autocomplete")]
         public List<string> Get(string term)
         {
             return _countriesBL.Find(term).Select(c => c.Name).ToList();

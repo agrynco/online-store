@@ -7,7 +7,7 @@
 @section content
 {
     @{
-        string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
+        string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
         string saveActionName = PageData[Constants.PageData.SAVE_ACTION_NAME] != null ? (string) PageData[Constants.PageData.SAVE_ACTION_NAME] : "Save";
     }
 

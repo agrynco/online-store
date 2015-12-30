@@ -2,6 +2,11 @@
 {
     public static class Constants
     {
+        public class RouteDataKeys
+        {
+            public const string CONTROLLER = "controller";
+        }
+
         public static class Views
         {
             public static class Sections

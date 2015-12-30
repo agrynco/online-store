@@ -15,8 +15,8 @@
     }
     else if (modelDescription is CollectionModelDescription)
     {
-        Product collectionDescription = modelDescription as CollectionModelDescription;
-        Product elementDescription = collectionDescription.ElementDescription;
+        var collectionDescription = modelDescription as CollectionModelDescription;
+        var elementDescription = collectionDescription.ElementDescription;
         @:Collection of @Html.DisplayFor(m => elementDescription.ModelType, "ModelDescriptionLink", new { modelDescription = elementDescription })
     }
     else

@@ -274,12 +274,14 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
     <Compile Include="Models\ContactInfoEditViewModel.cs" />
-    <Compile Include="Models\ProductCategoryViewModels\CategoriesAndProductsFilterViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\LevelUpProductCategoryViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoryAutocompleteItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductCreateOrEditViewModel.cs" />

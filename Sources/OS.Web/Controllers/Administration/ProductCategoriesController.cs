@@ -33,26 +33,36 @@ namespace OS.Web.Controllers.Administration
             _productPhotosBL = productPhotosBL;
         }
 
-        public ActionResult Index(int? parentId)
+        public ActionResult Index(ProductCategoriesFilterViewModel filter)
         {
             ProductCategoriesViewModel viewModel = new ProductCategoriesViewModel
                 {
-                    ProductCategories = _productCategoriesBL.GetCategories(parentId),
-                    ProductsFromLevelUpProductCategory = parentId.HasValue
+                    Filter = filter,
+                    ProductCategories = _productCategoriesBL.SearchByFilter(new ProductCategoriesFilter
+                        {
+                            Text = filter.Text,
+                            ParentId = filter.ParentId,
+                            IgnoreParentId = false
+                        }),
+                    ProductsFromLevelUpProductCategory = filter.ParentId.HasValue
                         ? _productsBL.Get(new ProductsFilter
                             {
-                                ParentId = parentId
+                                ParentId = filter.ParentId
                             }).Select(product => new ProductListItemViewModel
                                 {
-                                    ParentCategoryId = parentId.Value,
+                                    ParentCategoryId = filter.ParentId.Value,
                                     Product = product
                                 }).ToList()
                         : new List<ProductListItemViewModel>()
                 };
 
-            if (parentId != null)
+            if (filter.ParentId != null)
             {
-                viewModel.LevelUpProductCategory = _productCategoriesBL.GetById(parentId.Value);
+                ProductCategory parentProductCategory = _productCategoriesBL.GetById(filter.ParentId.Value);
+                viewModel.LevelUpProductCategoryId = parentProductCategory.ParentId;
+                viewModel.LevelUpCategories = _productCategoriesBL.GetParentCategories(filter.ParentId.Value);
+
+                viewModel.LevelUpCategories.Add(parentProductCategory);
             }
 
             return View(viewModel);

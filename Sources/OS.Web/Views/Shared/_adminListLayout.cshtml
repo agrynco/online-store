@@ -2,6 +2,11 @@
     Layout = "_adminLayout.cshtml";
 }
 
+@section topSection
+{
+    @RenderSection("topSection", false)
+}
+
 @section content
 {
     @{
@@ -59,4 +64,6 @@
             return confirm("Ви впевнені що хочете видалити елемент?");
         }
     </script>
+
+    @RenderSection("scripts", false)
 }

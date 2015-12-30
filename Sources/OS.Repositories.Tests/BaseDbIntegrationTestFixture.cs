@@ -10,9 +10,6 @@ namespace OS.Repositories.Tests
     {
         protected BaseDbIntegrationTestFixture()
         {
-            SimpleInjector.Container container = new SimpleInjector.Container();
-            DI.Configure(container);
-
             EntityFrameworkDbContext = DI.Resolve<EntityFrameworkDbContext>();
         }
 

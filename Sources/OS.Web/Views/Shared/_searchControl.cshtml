@@ -1,13 +1,19 @@
-﻿<table class="full-width">
-    <tr>
-        <td style="padding-left: 5px">
-            @Html.TextBox("tbxSearch", "", new
-                {
-                    @class = "form-control"
-                })
-        </td>
-        <td width="1px" style="padding-left: 5px; padding-right: 5px">
-            <input type="button" value="Шукати" class="btn-primary"/>
-        </td>
-    </tr>
-</table>
+﻿@{
+    string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
+}
+@using (Html.BeginForm("Search", currentControllerName, ViewContext.RouteData.Values, FormMethod.Get))
+{
+    <table class="full-width">
+        <tr>
+            <td style="padding-left: 5px">
+                @Html.TextBox("tbxSearch", "", new
+                    {
+                        @class = "form-control"
+                    })
+            </td>
+            <td width="1px" style="padding-left: 5px; padding-right: 5px">
+                <input type="submit" value="Шукати" class="btn-primary"/>
+            </td>
+        </tr>
+    </table>
+}

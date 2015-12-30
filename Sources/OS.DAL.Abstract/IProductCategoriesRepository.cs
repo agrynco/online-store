@@ -1,12 +1,14 @@
-#region Usings
+using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
-#endregion
 
 namespace OS.DAL.Abstract
 {
     public interface IProductCategoriesRepository : IOnlineStoreRepository<ProductCategory>
     {
         IQueryable<ProductCategory> GetCategories(int? parentId);
+        IQueryable<ProductCategory> SearchCategories(string searchTerm);
+        IList<ProductCategory> GetParentCategories(int categoryId);
+        IList<ProductCategory> SearchByFilter(ProductCategoriesFilter filter);
     }
 }

@@ -70,7 +70,7 @@
 .product-category-item
 {
     display: block;
-    width: 180px;
+    width: 220px;
     height: 140px;
     background-color: aliceblue;
     margin: 5px;
@@ -81,7 +81,7 @@
 .product-item
 {
     display: block;
-    width: 180px;
+    width: 220px;
     height: 140px;
     background-color: oldlace;
     margin: 5px;

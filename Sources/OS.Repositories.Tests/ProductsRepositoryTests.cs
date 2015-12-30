@@ -8,14 +8,8 @@ using OS.Dependency;
 namespace OS.Repositories.Tests
 {
     [TestFixture]
-    public class ProductsRepositoryReadOnlyTests : BaseDbIntegrationTestFixture
+    public class ProductsRepositoryReadOnlyTests : BaseReadonlyRepositoryTests
     {
-        [OneTimeSetUp]
-        public void Init()
-        {
-            ResetDataBase();
-        }
-
         [Test]
         public void GeProducts_ByName()
         {
@@ -67,6 +61,5 @@ namespace OS.Repositories.Tests
             //Assert
             Assert.That(products.Count, Is.EqualTo(1));
         }
-
     }
 }
