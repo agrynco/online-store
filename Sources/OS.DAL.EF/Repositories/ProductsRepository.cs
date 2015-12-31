@@ -13,14 +13,18 @@ namespace OS.DAL.EF.Repositories
         public IQueryable<Product> Get(ProductsFilter filter)
         {
             IQueryable<Product> result = GetAll();
-            if (filter.ParentId != null)
-            {
-                result = result.Where(product => product.Categories.Any(category => category.Id == filter.ParentId.Value));
-            }
 
-            if (!string.IsNullOrEmpty(filter.Text))
+            if (filter != null)
             {
-                result = result.Where(product => product.Name.Contains(filter.Text));
+                if (filter.ParentId != null)
+                {
+                    result = result.Where(product => product.Categories.Any(category => category.Id == filter.ParentId.Value));
+                }
+
+                if (!string.IsNullOrEmpty(filter.Text))
+                {
+                    result = result.Where(product => product.Name.Contains(filter.Text));
+                }
             }
 
             return result;

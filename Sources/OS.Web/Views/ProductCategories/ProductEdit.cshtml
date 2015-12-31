@@ -10,7 +10,7 @@
 {
     <style>
         .ui-autocomplete {
-            max-height: 100px;
+            max-height: 300px;
             overflow-y: auto;
             /* prevent horizontal scrollbar */
             overflow-x: hidden;
@@ -130,8 +130,8 @@
     <script type="text/javascript">
         $("#@Html.IdFor(m => m.BrandName)").autocomplete(
         {
-            source: "/api/Brands",
-            minLength: 2,
+            source: "/api/brands/autocomplete",
+            minLength: 1,
             create: function () {
                 $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
                     return $('<li>')
@@ -144,8 +144,8 @@
     <script type="text/javascript">
         $("#@Html.IdFor(m => m.CountryName)").autocomplete(
         {
-            source: "/api/Countries",
-            minLength: 2,
+            source: "/api/countries/autocomplete",
+            minLength: 1,
             create: function () {
                 $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
                     return $('<li>')

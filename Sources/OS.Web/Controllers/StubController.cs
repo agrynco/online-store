@@ -1,14 +1,14 @@
 ﻿#region Usings
-using OS.Business.Logic;
-using OS.Web.Models;
+using System.Web.Mvc;
 #endregion
 
 namespace OS.Web.Controllers
 {
-    public class StubController : BaseLayoutController<HorizontalCategorySelectorViewModel>
+    public class StubController : Controller
     {
-        public StubController(ProductCategoriesBL productCategoriesBL) : base(productCategoriesBL)
+        public ActionResult Index()
         {
+            return View();
         }
     }
 }

@@ -259,12 +259,11 @@
     <Compile Include="Controllers\Administration\ProductsController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
-    <Compile Include="Controllers\BaseLayoutController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\SystemInfoController.cs" />
@@ -1068,6 +1067,7 @@
     <Content Include="Views\ContactInfoAdmin\Index.cshtml" />
     <Content Include="Views\Shared\_contactInfo.cshtml" />
     <Content Include="Views\ContactInfoAdmin\Edit.cshtml" />
+    <Content Include="Views\Home\_productItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
