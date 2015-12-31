@@ -1,6 +1,7 @@
 ﻿#region Usings
 using System.Linq;
 using System.Web.Mvc;
+using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models;
 #endregion
@@ -43,6 +44,10 @@ namespace OS.Web.Controllers
                 }).ToList();
 
             viewModel.SelectedCategory = viewModel.RootCategories.Single(productCategory => productCategory.ProductCategory.Id == categoryId).ProductCategory;
+            viewModel.Products = _productsBL.Get(new ProductsFilter
+                {
+                    ParentId = categoryId
+                });
 
             return View("Index", viewModel);
         }
