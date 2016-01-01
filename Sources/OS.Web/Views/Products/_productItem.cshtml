@@ -1,5 +1,10 @@
 ﻿@using OS.Business.Domain
 @model Product
 <li class="product-item">
-    @Model.Name
+    <a href='@Url.Action("Details", new
+                 {
+                     productId = Model.Id
+                 })'>
+            @Model.Name
+    </a>
 </li>
