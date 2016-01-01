@@ -52,9 +52,9 @@ namespace OS.Web.Controllers
             return View("Index", viewModel);
         }
 
-        public ActionResult Details(int productid)
+        public ActionResult Details(int productId)
         {
-            return View();
+            return View(_productsBL.GetById(productId));
         }
     }
 }

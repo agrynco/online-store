@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using OS.Business.Domain
+@model Product
 
 @{
     ViewBag.Title = "title";
@@ -7,7 +8,29 @@
 
 @section content
 {
-    <h2>Деталі товару</h2>    
+    <table class="full-size">
+        <tr class="min-height">
+            <td>
+                <h3>
+                    @Model.Name
+                </h3>
+                <div>
+                    @foreach (ProductPhoto productPhoto in Model.Photos)
+                    {
+                        <img height="240px" width="320px" src="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})"/>
+                    }
+                </div>
+                <div>
+                    @Html.Raw(Model.Description)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
 }
 
 @section scripts
