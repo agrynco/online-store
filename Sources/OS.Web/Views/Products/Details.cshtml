@@ -14,11 +14,15 @@
                 <h3>
                     @Model.Name
                 </h3>
-                <div>
-                    @foreach (ProductPhoto productPhoto in Model.Photos)
-                    {
-                        <img height="240px" width="320px" src="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})"/>
-                    }
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        @foreach (ProductPhoto productPhoto in Model.Photos)
+                        {
+                            <a href="#" class="thumbnail">
+                                <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})" />
+                            </a>
+                        }
+                    </div>
                 </div>
                 <div>
                     @Html.Raw(Model.Description)
@@ -26,15 +30,13 @@
             </td>
         </tr>
         <tr>
-            <td>
-                
-            </td>
+            <td></td>
         </tr>
     </table>
 }
 
 @section scripts
 {
-    
+
 }
 

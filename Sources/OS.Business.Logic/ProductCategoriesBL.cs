@@ -1,5 +1,4 @@
 ﻿#region Usings
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
@@ -29,7 +28,7 @@ namespace OS.Business.Logic
 
         public List<ProductCategory> GetParentCategories(int categoryId)
         {
-            return _productCategoriesRepository.GetParentCategories(categoryId).ToList();
+            return _productCategoriesRepository.GetParentCategories(categoryId).OrderBy(category => category.Name).ToList();
         }
 
         public ProductCategory GetById(int id)
