@@ -256,10 +256,10 @@
     <Compile Include="Controllers\Administration\BaseAdminController.cs" />
     <Compile Include="Controllers\Administration\AdministrationController.cs" />
     <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
-    <Compile Include="Controllers\Administration\ProductsController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
@@ -944,7 +944,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
     <Content Include="Views\Shared\_topMenu.cshtml" />
@@ -1067,10 +1067,12 @@
     <Content Include="Views\ContactInfoAdmin\Index.cshtml" />
     <Content Include="Views\Shared\_contactInfo.cshtml" />
     <Content Include="Views\ContactInfoAdmin\Edit.cshtml" />
-    <Content Include="Views\Home\_productItem.cshtml" />
+    <Content Include="Views\Products\_productItem.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
