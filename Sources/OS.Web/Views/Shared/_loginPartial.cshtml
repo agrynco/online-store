@@ -13,7 +13,7 @@
             @Html.AntiForgeryToken()
         }
 
-        <ul class="nav navbar-nav">
+        <ul id="login" class="nav navbar-nav">
             <li>
                 <span class="login-first-button">
                     @Html.ActionLink("Здрастуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", null, new { title = "Керувати" })
@@ -24,12 +24,13 @@
                     <a href="javascript:document.getElementById('logoutForm').submit()">Вийти</a>
                 </span>
             </li>
+            @Html.Partial("_consumerBasket")
         </ul>
 
     }
     else
     {
-        <ul class="nav navbar-nav">
+        <ul id="login" class="nav navbar-nav">
             <li>
                 <span class="login-first-button">
                     @Html.ActionLink("Реєстрація", "Register", "Account", null, new { id = "registerLink" })
@@ -37,9 +38,10 @@
             </li>
             <li>
                 <span>
-                    @Html.ActionLink("Вхід", "Login", "Account", null, new { id = "loginLink" })
+                    @Html.ActionLink("Вхід", "Login", "Account", null, new {id = "loginLink"})
                 </span>
             </li>
+            @Html.Partial("_consumerBasket")
         </ul>
     }
 </div>

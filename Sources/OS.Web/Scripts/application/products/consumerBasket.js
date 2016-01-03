@@ -37,6 +37,12 @@ function ConsumerBasket()
         return -1;
     }
 
+    var updateUI = function()
+    {
+        $("#basketCounter").html(_products.length);
+        save();
+    }
+
     var add = function (product)
     {
         if (indexof(product.id) !== -1)
@@ -45,7 +51,7 @@ function ConsumerBasket()
         }
 
         _products.push(product);
-        save();
+        updateUI();
     }
 
     var load = function ()
@@ -65,7 +71,10 @@ function ConsumerBasket()
     {
         $(".btn-buy-product").click(function ()
         {
-            add(new Product($(this).attr("productId"), $(this).attr("productPrice")));
+            var productId = parseInt($(this).attr("productId"));
+            var productPrice = parseFloat($(this).attr("productPrice"));
+
+            add(new Product(productId, productPrice));
             $(this).hide();
         });
     }
