@@ -1,0 +1,1 @@
+var consumerBasket = new ConsumerBasket();

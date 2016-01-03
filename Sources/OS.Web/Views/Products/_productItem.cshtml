@@ -1,10 +1,28 @@
 ﻿@using OS.Business.Domain
 @model Product
 <li class="product-item">
-    <a href='@Url.Action("Details", new
-                 {
-                     productId = Model.Id
-                 })'>
-            @Model.Name
-    </a>
+    <table class="full-size">
+        <tr class="min-height">
+            <td>
+                <a href='@Url.Action("Details", new
+                             {
+                                 productId = Model.Id
+                             })'>
+                    @Model.Name
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+        <tr class="min-height">
+            <td>
+                <div align="right">
+                    <input type="button" class="btn-buy-product" value="Купити" productId="@Model.Id" productPrice="@Model.Price"/>    
+                </div>
+            </td>
+        </tr>
+    </table>
 </li>
