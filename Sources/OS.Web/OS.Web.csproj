@@ -1075,7 +1075,7 @@
     <Content Include="Views\Products\_productItem.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Shared\_consumerBasket.cshtml" />
-    <None Include="Views\ConsumerBasket\Index.cshtml" />
+    <Content Include="Views\ConsumerBasket\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
