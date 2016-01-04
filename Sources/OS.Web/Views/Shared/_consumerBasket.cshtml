@@ -1,10 +1,12 @@
 ﻿<li>
-    <span style="padding-left: 5px">
-        <img height="16" width="16" src="~/Images/basket.png" alt="Корзина" />
-    </span>
-</li>
-<li style="color: antiquewhite; margin-left: -8px">
-    <span id="basketCounter">
-        0
+    <span>
+        <a href="@Url.Action("Index", "ConsumerBasket")">
+            <span style="padding-left: 5px">
+                <img height="16" width="16" src="~/Images/basket.png" alt="Корзина" />
+            </span>
+            <span id="basketCounter" style="color: antiquewhite; margin-left: -8px">
+                0
+            </span>
+        </a>
     </span>
 </li>

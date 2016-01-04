@@ -256,6 +256,7 @@
     <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
+    <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -1074,10 +1075,10 @@
     <Content Include="Views\Products\_productItem.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Shared\_consumerBasket.cshtml" />
+    <None Include="Views\ConsumerBasket\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
