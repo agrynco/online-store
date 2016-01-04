@@ -20,8 +20,8 @@ namespace OS.Repositories.Tests
 
             //Assert
             Assert.That(productCategories.Count, Is.EqualTo(2));
-            Assert.That(productCategories[0].Id, Is.EqualTo(12));
-            Assert.That(productCategories[1].Id, Is.EqualTo(7));
+            Assert.That(productCategories[0].Id, Is.EqualTo(7));
+            Assert.That(productCategories[1].Id, Is.EqualTo(12));
         }
     }
 }
