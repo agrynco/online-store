@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using OS.Business.Domain;
 using OS.DAL.Abstract;
 
@@ -28,6 +29,11 @@ namespace OS.DAL.EF.Repositories
             }
 
             return result;
+        }
+
+        public IQueryable<Product> GetByIds(IEnumerable<int> ids)
+        {
+            return DbSet.Where(product => ids.Contains(product.Id));
         }
     }
 }

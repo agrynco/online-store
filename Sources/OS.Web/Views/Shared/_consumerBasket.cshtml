@@ -1,12 +1,32 @@
 ﻿<li>
     <span>
-        <a href="@Url.Action("Index", "ConsumerBasket")">
-            <span style="padding-left: 5px">
-                <img height="16" width="16" src="~/Images/basket.png" alt="Корзина" />
-            </span>
-            <span id="basketCounter" style="color: antiquewhite; margin-left: -8px">
-                0
-            </span>
-        </a>
+        @using (Html.BeginForm("Index", "ConsumerBasket", FormMethod.Post, new
+            {
+                id = "frmConsumerBasket"
+            }))
+        {
+            <input type="hidden" id="consumerBasketProductIds" name="consumerBasketProductIds"/>
+            <a href="#" id="consumerBasketLink">
+                <span style="padding-left: 5px">
+                    <img height="16" width="16" src="~/Images/basket.png" alt="Корзина" />
+                </span>
+                <span id="basketCounter" style="color: antiquewhite; margin-left: -8px">
+                    0
+                </span>
+            </a>
+        }
     </span>
 </li>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script src="~/Scripts/application/products/consumerBasket.js"></script>
+
+<script type="text/javascript">
+    var consumerBasket;
+
+    $().ready(function ()
+    {
+        consumerBasket = new ConsumerBasket();
+    });
+</script>

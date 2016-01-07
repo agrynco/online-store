@@ -32,6 +32,11 @@ namespace OS.Business.Logic
             return _productsRepository.GetById(id);
         }
 
+        public List<Product> GetByIds(IEnumerable<int> ids)
+        {
+            return _productsRepository.GetByIds(ids).ToList();
+        } 
+
         public void Update(Product product)
         {
             _productsRepository.Update(product);

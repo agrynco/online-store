@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using OS.Web.Models
+@model ConsumerBasketViewModel
 
 @{
     Layout = "../Shared/_mainLayout.cshtml";
@@ -12,15 +13,72 @@
                 <h2>Корзина</h2>
             </td>
         </tr>
-        <tr>
+        <tr class="min-height">
             <td>
+                <table id="tableConsumerBasket" class="full-width" border="1">
+                    <thead>
+                    <tr>
+                        <th width="100px">Код товару</th>
+                        <th>Назва товару</th>
+                        <th width="100px">Ціна</th>
+                        <th width="50px">Кількість</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.ProductToByDescriptors.Count > 0)
+                    {
+                        for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
+                        {
+                            <tr>
+                                <td>@Model.ProductToByDescriptors[i].Product.Id</td>
+                                <td>@Model.ProductToByDescriptors[i].Product.Name</td>
+                                <td>@Model.ProductToByDescriptors[i].Product.Price</td>
+                                <td>
+                                    @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
+                                        {
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">
+                                Корзина пуста
+                            </td>
+                        </tr>
+                    }
+
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">
+                            Всього
+                        </td>
+                        <td id="basketTotalAmount">
+                            0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="center">
+                            <input type="button" value="Оформити замовлення"/>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+
                 
             </td>
+        </tr>
+        <tr>
+            <td></td>
         </tr>
     </table>
 }
 
 @section scripts
 {
-    
+
 }

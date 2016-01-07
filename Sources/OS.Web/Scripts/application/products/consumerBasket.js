@@ -12,6 +12,7 @@ function Product(id, price)
 
     this.id = id;
     this.price = price;
+    this.quantity = 1;
 }
 
 function ConsumerBasket()
@@ -25,7 +26,7 @@ function ConsumerBasket()
         $.cookie(_cookieKey, productsToStore);
     }
 
-    var indexof = function (productId)
+    var indexOf = function (productId)
     {
         for (var i = 0; i < _products.length; i++)
         {
@@ -37,15 +38,26 @@ function ConsumerBasket()
         return -1;
     }
 
+    var getTotalAmount = function()
+    {
+        var result = 0;
+        _products.forEach(function(product)
+        {
+            result = result + product.price * product.quantity;
+        });
+        return result;
+    }
+
     var updateUI = function()
     {
         $("#basketCounter").html(_products.length);
+        $("#basketTotalAmount").html(getTotalAmount());
         save();
     }
 
     var add = function (product)
     {
-        if (indexof(product.id) !== -1)
+        if (indexOf(product.id) !== -1)
         {
             throw "Product with id = " + product.id + " is already in basket.";
         }
@@ -77,13 +89,20 @@ function ConsumerBasket()
             add(new Product(productId, productPrice));
             $(this).hide();
         });
+
+        $("#consumerBasketLink").click(function ()
+        {
+            $("#consumerBasketProductIds").val(JSON.stringify(_products));
+            $("#frmConsumerBasket").submit();
+        });
     }
 
     this.contains = function (productId)
     {
-        return indexof(productId) !== 1;
+        return indexOf(productId) !== 1;
     }
 
     load();
     init();
+    updateUI();
 }

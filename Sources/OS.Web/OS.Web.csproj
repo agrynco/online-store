@@ -258,6 +258,7 @@
     <Compile Include="Controllers\Api\CountriesController.cs" />
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
@@ -271,6 +272,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
+    <Compile Include="Models\ConsumerBasketViewModel.cs" />
     <Compile Include="Models\ContactInfoEditViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\LevelUpProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryAutocompleteItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductListItemViewModel.cs" />
+    <Compile Include="Models\ProductInBasketViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductCreateOrEditViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="OsSqlErrorLog.cs" />
