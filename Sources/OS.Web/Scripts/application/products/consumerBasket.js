@@ -1,4 +1,4 @@
-function Product(id, price)
+function Product(id, price, quantity)
 {
     if (id == undefined)
     {
@@ -10,9 +10,14 @@ function Product(id, price)
         throw "price can not be undefined";
     }
 
+    if (quantity == undefined)
+    {
+        throw new "quantity can not be undefined";
+    }
+
     this.id = id;
     this.price = price;
-    this.quantity = 1;
+    this.quantity = quantity;
 }
 
 function ConsumerBasket()
@@ -64,6 +69,10 @@ function ConsumerBasket()
                 $(el).show();
             }
         });
+        $(".quantity").each(function(index, el)
+        {
+            $(el).val(_products[indexOf(parseInt($(el).attr("productId")))].quantity);
+        });
     }
 
     var add = function (product)
@@ -84,8 +93,18 @@ function ConsumerBasket()
             var storedProducts = JSON.parse(consumerBasketCookie.toString());
             storedProducts.forEach(function (product)
             {
-                add(new Product(parseInt(product.id), parseFloat(product.price)));
+                add(new Product(parseInt(product.id), parseFloat(product.price), parseInt(product.quantity)));
             });
+        }
+    }
+
+    var changeQuantityOn = function(productId, difference)
+    {
+        var product = _products[indexOf(productId)];
+        product.quantity = product.quantity + difference;
+        if (product.quantity < 0)
+        {
+            product.quantity = 0;
         }
     }
 
@@ -96,9 +115,10 @@ function ConsumerBasket()
             var productId = parseInt($(this).attr("productId"));
             var productPrice = parseFloat($(this).attr("productPrice"));
 
-            add(new Product(productId, productPrice));
+            add(new Product(productId, productPrice, 1));
             $(this).hide();
             save();
+            updateUI();
         });
 
         $("#consumerBasketLink").click(function ()
@@ -106,6 +126,17 @@ function ConsumerBasket()
             $("#consumerBasketProductIds").val(JSON.stringify(_products));
             $("#frmConsumerBasket").submit();
         });
+
+        $(".quantity-changer").click(function ()
+        {
+            var productId = parseInt($(this).attr("productId"));
+            var diff = parseInt($(this).attr("diff"));
+            changeQuantityOn(productId, diff);
+            save();
+            updateUI();
+        });
+
+        
     }
 
     load();
