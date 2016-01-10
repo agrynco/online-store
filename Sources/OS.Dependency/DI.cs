@@ -67,6 +67,12 @@ namespace OS.Dependency
 
             Register<IOrdersRepository, OrdersRepository>();
             Register<OrdersBL>();
+
+            Register<IPersonsRepository, PersonsRepository>();
+
+            Register<IOrderStatusHistoryItemsRepository, OrderStatusHistoryItemsRepository>();
+
+            Register<IOrderedProductsRepository, OrderedProductsRepository>();
         }
 
         public static void Register<TImplementation>()

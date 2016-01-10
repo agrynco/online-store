@@ -127,12 +127,6 @@ function ConsumerBasket()
             $("#frmConsumerBasket").submit();
         });
 
-        $("#createOrder").click(function()
-        {
-            $("#consumerBasketRawData").val(JSON.stringify(_products));
-            $("#frmCreateOrder").submit();
-        });
-
         $(".quantity-changer").click(function ()
         {
             var productId = parseInt($(this).attr("productId"));

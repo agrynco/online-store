@@ -1,9 +1,12 @@
 ﻿#region Usings
+using System;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OS.Business.Domain;
+using OS.DAL.Abstract.Exceptions;
 #endregion
 
 namespace OS.DAL.EF
@@ -17,6 +20,28 @@ namespace OS.DAL.EF
         public EntityFrameworkDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
             Database.Log = message => Debug.WriteLine(message);
+        }
+
+        public override int SaveChanges()
+        {
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string errorMessage = string.Empty;
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        errorMessage += string.Format("Property: {0} Error: {1}",
+                            validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
+                    }
+                }
+                throw new DALException(errorMessage, ex);
+            }
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

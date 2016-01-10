@@ -6,7 +6,6 @@ namespace OS.Business.Domain
     {
         public int ProductId { get; set; }
 
-        [Required]
         public Product Product { get; set; }
 
         [Required]

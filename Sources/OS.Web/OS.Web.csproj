@@ -274,6 +274,7 @@
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
     <Compile Include="Models\ConsumerBasketViewModel.cs" />
     <Compile Include="Models\ContactInfoEditViewModel.cs" />
+    <Compile Include="Models\EditOrderViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\LevelUpProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
@@ -1082,6 +1083,7 @@
     <Content Include="Views\Shared\_consumerBasket.cshtml" />
     <Content Include="Views\ConsumerBasket\Index.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
