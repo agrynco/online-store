@@ -20,7 +20,7 @@ namespace OS.Web
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(DI.Resolve<EntityFrameworkDbContext>);
-            app.CreatePerOwinContext(DI.Resolve<ApplicationUserManager>);
+            app.CreatePerOwinContext(DI.Resolve<UsersBL>);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
@@ -34,9 +34,9 @@ namespace OS.Web
                         {
                             // Enables the application to validate the security stamp when the user logs in.
                             // This is a security feature which is used when you change a password or add an external login to your account.  
-                            OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                            OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UsersBL, ApplicationUser>(
                                 validateInterval: TimeSpan.FromMinutes(30),
-                                regenerateIdentity: (manager, user) => manager.CreateUserIdentityAsync(user))
+                                regenerateIdentity: (usersBL, user) => usersBL.CreateUserIdentityAsync(user))
                         }
                 });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);

@@ -1081,6 +1081,7 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Shared\_consumerBasket.cshtml" />
     <Content Include="Views\ConsumerBasket\Index.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

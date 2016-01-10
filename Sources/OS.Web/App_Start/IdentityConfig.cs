@@ -10,24 +10,24 @@ using OS.Business.Logic;
 
 namespace OS.Web
 {
-    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+    // Configure the application user manager used in this application. usersBL is defined in ASP.NET Identity and is used by the application.
 
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {
-        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
-            : base(userManager, authenticationManager)
+        public ApplicationSignInManager(UsersBL usersBL, IAuthenticationManager authenticationManager)
+            : base(usersBL, authenticationManager)
         {
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
         {
-            return ((ApplicationUserManager)UserManager).CreateUserIdentityAsync(user);
+            return ((UsersBL)UserManager).CreateUserIdentityAsync(user);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
-            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+            return new ApplicationSignInManager(context.GetUserManager<UsersBL>(), context.Authentication);
         }
     }
 }

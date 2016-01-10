@@ -50,7 +50,13 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Brand.cs" />
+    <Compile Include="Buyer.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderStatus.cs" />
+    <Compile Include="OrderStatusesHistoryItem.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="ProductCategoriesFilter.cs" />
+    <Compile Include="OrderedProduct.cs" />
     <Compile Include="ProductsFilter.cs" />
     <Compile Include="ContactInfo.cs" />
     <Compile Include="Content.cs" />

@@ -64,7 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\BaseCRUDRepository.cs" />
+    <Compile Include="EntityConfigurations\BuyerConfiguration.cs" />
     <Compile Include="EntityConfigurations\ContactInfoConfiguration.cs" />
+    <Compile Include="EntityConfigurations\OrderConfiguration.cs" />
+    <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="Repositories\BaseOnlineStoreCRUDRepository.cs" />
     <Compile Include="Core\BaseReadOnlyRepository.cs" />
     <Compile Include="Core\BaseRepository.cs" />
@@ -82,6 +85,10 @@
     <Compile Include="Repositories\CountriesRepository.cs" />
     <Compile Include="Repositories\FilesRepository.cs" />
     <Compile Include="Repositories\NamedEntitiesRepository.cs" />
+    <Compile Include="Repositories\OrderedProductsRepository.cs" />
+    <Compile Include="Repositories\OrdersRepository.cs" />
+    <Compile Include="Repositories\OrderStatusHistoryItemsRepository.cs" />
+    <Compile Include="Repositories\PersonsRepository.cs" />
     <Compile Include="Repositories\ProductCategoriesRepository.cs" />
     <Compile Include="EntityConfigurations\ProductConfiguration.cs" />
     <Compile Include="Repositories\ProductPhotosRepository.cs" />
@@ -113,6 +120,12 @@
     <Content Include="Migrations\0-12.sql" />
     <Content Include="Migrations\0-11.sql" />
     <Content Include="Migrations\0-10.sql" />
+    <Content Include="Migrations\0-31.sql" />
+    <Content Include="Migrations\0-30.sql" />
+    <Content Include="Migrations\0-29.sql" />
+    <Content Include="Migrations\0-28.sql" />
+    <Content Include="Migrations\0-27.sql" />
+    <Content Include="Migrations\0-26.sql" />
     <Content Include="Migrations\0-25.sql" />
     <Content Include="Migrations\0-24.sql" />
     <Content Include="Migrations\0-23.sql" />

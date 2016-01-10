@@ -64,6 +64,9 @@ namespace OS.Dependency
 
             Register<IContactInfosRepository, ContactInfosRepository>();
             Register<ContactInfoBL>();
+
+            Register<IOrdersRepository, OrdersRepository>();
+            Register<OrdersBL>();
         }
 
         public static void Register<TImplementation>()

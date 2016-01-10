@@ -17,13 +17,13 @@ namespace OS.Web.Controllers
             _productsBL = productsBL;
         }
 
-        public ActionResult Index(string consumerBasketProductIds)
+        public ActionResult Index(string consumerBasketRawData)
         {
-            List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(consumerBasketProductIds);
+            List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(consumerBasketRawData);
 
             ConsumerBasketViewModel consumerBasketViewModel = new ConsumerBasketViewModel();
 
-            if (!string.IsNullOrEmpty(consumerBasketProductIds))
+            if (!string.IsNullOrEmpty(consumerBasketRawData))
             {
                 List<Product> products = _productsBL.GetByIds(productInBasketViewModels.Select(x => x.Id));
 

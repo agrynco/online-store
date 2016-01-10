@@ -123,8 +123,14 @@ function ConsumerBasket()
 
         $("#consumerBasketLink").click(function ()
         {
-            $("#consumerBasketProductIds").val(JSON.stringify(_products));
+            $("#consumerBasketRawData").val(JSON.stringify(_products));
             $("#frmConsumerBasket").submit();
+        });
+
+        $("#createOrder").click(function()
+        {
+            $("#consumerBasketRawData").val(JSON.stringify(_products));
+            $("#frmCreateOrder").submit();
         });
 
         $(".quantity-changer").click(function ()

@@ -57,6 +57,7 @@
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUserManager.cs" />
+    <Compile Include="UsersBL.cs" />
     <Compile Include="BrandsBL.cs" />
     <Compile Include="ContactInfoBL.cs" />
     <Compile Include="ContentContentTypesBL.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Exceptions\ThereIsNoBrandWithNameException.cs" />
     <Compile Include="Exceptions\ThereIsNoCountryWithNameException.cs" />
     <Compile Include="FilesBl.cs" />
+    <Compile Include="OrdersBL.cs" />
     <Compile Include="ProductPhotosBL.cs" />
     <Compile Include="ProductsBL.cs" />
     <Compile Include="SmsService.cs" />

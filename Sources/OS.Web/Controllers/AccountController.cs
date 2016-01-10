@@ -17,11 +17,11 @@ namespace OS.Web.Controllers
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private UsersBL _usersBL;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(UsersBL usersBL, ApplicationSignInManager signInManager)
         {
-            UserManager = userManager;
+            UsersBL = usersBL;
             SignInManager = signInManager;
         }
 
@@ -31,10 +31,10 @@ namespace OS.Web.Controllers
             private set { _signInManager = value; }
         }
 
-        public ApplicationUserManager UserManager
+        public UsersBL UsersBL
         {
-            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-            private set { _userManager = value; }
+            get { return _usersBL ?? HttpContext.GetOwinContext().GetUserManager<UsersBL>(); }
+            private set { _usersBL = value; }
         }
 
         //
@@ -139,17 +139,22 @@ namespace OS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser
+                    {
+                        UserName = model.Email,
+                        Email = model.Email
+                    };
+
+                IdentityResult result = await UsersBL.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, false, false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // string code = await usersBL.GenerateEmailConfirmationTokenAsync(user.Id);
                     // Product callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    // await usersBL.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -169,7 +174,7 @@ namespace OS.Web.Controllers
             {
                 return View("Error");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            var result = await UsersBL.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -190,8 +195,8 @@ namespace OS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var user = await UsersBL.FindByNameAsync(model.Email);
+                if (user == null || !(await UsersBL.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
@@ -199,9 +204,9 @@ namespace OS.Web.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                // string code = await usersBL.GeneratePasswordResetTokenAsync(user.Id);
                 // Product callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                // await usersBL.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -236,13 +241,13 @@ namespace OS.Web.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UsersBL.FindByNameAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            var result = await UsersBL.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -281,7 +286,7 @@ namespace OS.Web.Controllers
             {
                 return View("Error");
             }
-            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+            var userFactors = await UsersBL.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions =
                 userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose}).ToList();
             return
@@ -362,10 +367,10 @@ namespace OS.Web.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
-                var result = await UserManager.CreateAsync(user);
+                var result = await UsersBL.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    result = await UsersBL.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, false, false);
@@ -401,10 +406,10 @@ namespace OS.Web.Controllers
         {
             if (disposing)
             {
-                if (_userManager != null)
+                if (_usersBL != null)
                 {
-                    _userManager.Dispose();
-                    _userManager = null;
+                    _usersBL.Dispose();
+                    _usersBL = null;
                 }
 
                 if (_signInManager != null)

@@ -54,6 +54,10 @@
     <Compile Include="INamedEntitiesRepository.cs" />
     <Compile Include="IOnlineStoreDbContext.cs" />
     <Compile Include="IOnlineStoreRepository.cs" />
+    <Compile Include="IOrderedProductsRepository.cs" />
+    <Compile Include="IOrdersRepository.cs" />
+    <Compile Include="IOrderStatusHistoryItemsRepository.cs" />
+    <Compile Include="IPersonsRepository.cs" />
     <Compile Include="IProductCategoriesRepository.cs" />
     <Compile Include="IProductPhotosRepository.cs" />
     <Compile Include="IProductsRepository.cs" />
