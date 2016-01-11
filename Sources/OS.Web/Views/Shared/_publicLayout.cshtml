@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
             </button>
             @Html.ActionLink(ApplicationSettings.Instance.AppSettings.ApplicationName, "Index", "Home",
-                new {area = ""}, new {@class = "navbar-brand"})
+                new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse row">
             <ul class="nav navbar-nav navbar-left">
@@ -48,10 +48,22 @@
 
 <div class="footer container body-content">
     <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
+    <p>
+        <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
+    </p>
+    <p>
+        <span>
+            <b>Client:</b>
+        </span>
+        <span id="browserInfo"></span>
+    </p>
 </div>
-
 
 @section scripts
 {
+    <script>
+        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+    </script>
+
     @RenderSection("scripts")
 }
