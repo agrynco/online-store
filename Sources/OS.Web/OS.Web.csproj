@@ -954,7 +954,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
@@ -985,7 +984,7 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Shared\_loginPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Shared\_mainLayout.cshtml" />
+    <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Shared\_accountLayout.cshtml" />
     <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
     <Content Include="Views\Administration\Home.cshtml" />
@@ -1084,6 +1083,7 @@
     <Content Include="Views\ConsumerBasket\Index.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\OrderDetails.cshtml" />
+    <Content Include="Views\Shared\_publicLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

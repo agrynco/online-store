@@ -1,24 +1,9 @@
-﻿<li>
-    <span>
-        @using (Html.BeginForm("Index", "ConsumerBasket", FormMethod.Post, new
-            {
-                id = "frmConsumerBasket"
-            }))
-        {
-            <input type="hidden" id="consumerBasketRawData" name="consumerBasketRawData"/>
-            <a href="#" id="consumerBasketLink">
-                <span style="padding-left: 5px">
-                    <img height="16" width="16" src="~/Images/basket.png" alt="Корзина" />
-                </span>
-                <span id="basketCounter" style="color: antiquewhite; margin-left: -8px">
-                    0
-                </span>
-            </a>
-        }
+﻿<a href="#" id="consumerBasketLink" class="">Корзина
+    <span id="basketCounter" class="badge">
+        0
     </span>
-</li>
+</a>
 
-@Scripts.Render("~/bundles/jquery")
 
 <script src="~/Scripts/application/products/consumerBasket.js"></script>
 

@@ -26,6 +26,11 @@ namespace OS.Configuration
             {
                 get { return SettingsManager.Instance.GetAppSetting<ApplicationEnvironment>("ApplicationEnvironment"); }
             }
+
+            public string ApplicationName
+            {
+                get { return SettingsManager.Instance.GetAppSetting("ApplicationName", "Online Store"); }
+            }
         }
 
         public class DbSettingsContainer : BaseClass
