@@ -42,11 +42,32 @@ textarea
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -5em;
+    margin: 0 auto -7em;
 }
 
 .footer, .push 
 {
-   height: 5em;
+   height: 7em;
    font-size: 11px;
 }
+
+.table-container 
+{
+    display: table;
+    padding-bottom: 10px;
+}
+
+.table-container .table-row 
+{
+    height: 100%;
+    display: table-row;
+}
+
+.table-container .table-row .table-col 
+{
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+}
+
+
