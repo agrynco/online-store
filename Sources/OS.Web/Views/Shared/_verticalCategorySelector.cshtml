@@ -7,31 +7,31 @@
 <!-- #main-menu config - instance specific stuff not covered in the theme -->
 <!-- Put this in an external stylesheet if you want the media query to work in IE8 (e.g. where the rest of your page styles are) -->
 <style type="text/css">
-	@@media (min-width: 768px) {
-		#main-menu {
-			float: left;
-			position: relative;
-			/*z-index: 9999;*/
-			width: 100%;
-		}
-		#main-menu ul {
-			width: 12em; /* fixed width only please - you can use the "subMenusMinWidth"/"subMenusMaxWidth" script options to override this if you like */
-		}
-	}
+    @@media (min-width: 768px) {
+        #main-menu {
+            float: left;
+            position: relative;
+            /*z-index: 9999;*/
+            width: 100%;
+        }
+
+            #main-menu ul {
+                width: 12em; /* fixed width only please - you can use the "subMenusMinWidth"/"subMenusMaxWidth" script options to override this if you like */
+            }
+    }
 </style>
 
 <!-- Respond.js for IE8 support of media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
 <!-- jQuery -->
 <!-- SmartMenus jQuery plugin -->
 <script src="~/Scripts/SmartMenus/jquery.smartmenus.js"></script>
 
 <!-- SmartMenus jQuery init -->
 <script type="text/javascript">
-    $(function()
+    $(function ()
     {
         $('#main-menu').smartmenus({
             mainMenuSubOffsetX: 1,
@@ -44,60 +44,56 @@
 
 <nav role="navigation">
     <!-- Sample menu definition -->
-    <ul id="main-menu" class="sm sm-clean sm-vertical" data-smartmenus-id="14525940231965854">
+    <ul id="main-menu" class="sm sm-clean sm-vertical">
         <li><a href="">Home</a></li>
         <li>
-            <a href="" class="has-submenu" aria-haspopup="true"  aria-expanded="false"><span class="sub-arrow">+</span>About</a>
-            <ul  role="group" aria-hidden="true"  aria-expanded="false">
-                <li><a >Introduction to SmartMenus jQuery</a></li>
-                <li><a >Themes</a></li>
-                <li><a >The author</a></li>
+            <a href="" class="has-submenu" aria-haspopup="true" aria-expanded="false"><span class="sub-arrow">+</span>About</a>
+            <ul role="group" aria-hidden="true" aria-expanded="false">
+                <li><a>Introduction to SmartMenus jQuery</a></li>
+                <li><a>Themes</a></li>
+                <li><a>The author</a></li>
                 <li>
-                    <a  class="has-submenu"  aria-haspopup="true"  aria-expanded="false"><span class="sub-arrow">+</span>The company</a>
-                    <ul id="sm-14525940231965854-4" role="group" aria-hidden="true"  aria-expanded="false">
-                        <li><a >About Vadikom</a></li>
-                        <li><a >Projects</a></li>
-                        <li><a >Services</a></li>
-                        <li><a >Privacy policy</a></li>
+                    <a class="has-submenu" aria-haspopup="true" aria-expanded="false"><span class="sub-arrow">+</span>The company</a>
+                    <ul role="group" aria-hidden="true" aria-expanded="false">
+                        <li><a>About Vadikom</a></li>
+                        <li><a>Projects</a></li>
+                        <li><a>Services</a></li>
+                        <li><a>Privacy policy</a></li>
                     </ul>
                 </li>
-                <li><a >Old SmartMenus versions</a></li>
+                <li><a>Old SmartMenus versions</a></li>
             </ul>
         </li>
-        <li><a >Download</a></li>
+        <li><a>Download</a></li>
         <li>
-            <a  class="has-submenu" id="sm-14525940231965854-5" aria-haspopup="true" aria-controls="sm-14525940231965854-6" aria-expanded="false"><span class="sub-arrow">+</span>Support</a>
-            <ul id="sm-14525940231965854-6" role="group" aria-hidden="true" aria-labelledby="sm-14525940231965854-5" aria-expanded="false">
-                <li><a >Premium support</a></li>
-                <li><a >Forums</a></li>
+            <a class="has-submenu" aria-haspopup="true" aria-expanded="false"><span class="sub-arrow">+</span>Support</a>
+            <ul role="group" aria-hidden="true" aria-expanded="false">
+                <li><a>Premium support</a></li>
+                <li><a>Forums</a></li>
             </ul>
         </li>
         <li><a href="http://www.smartmenus.org/docs/">Docs</a></li>
         <li>
-            <a href="#" class="has-submenu" id="sm-14525940231965854-7" aria-haspopup="true" aria-controls="sm-14525940231965854-8" aria-expanded="false"><span class="sub-arrow">+</span>Sub test</a>
-            <ul id="sm-14525940231965854-8" role="group" aria-hidden="true" aria-labelledby="sm-14525940231965854-7" aria-expanded="false" class="sm-nowrap" style="width: auto; display: none; top: auto; left: 0px; margin-left: 215px; margin-top: -49px; min-width: 10em; max-width: 20em;">
+            <a href="#" class="has-submenu"><span class="sub-arrow">+</span>Sub test</a>
+            <ul role="group" aria-hidden="true" class="sm-nowrap">
                 <li><a href="#">Dummy item</a></li>
                 <li><a href="#">Dummy item</a></li>
                 <li><a href="#" class="disabled">Disabled menu item</a></li>
                 <li><a href="#">Dummy item</a></li>
                 <li>
-                    <a href="#" class="has-submenu" id="sm-14525940231965854-9" aria-haspopup="true" aria-controls="sm-14525940231965854-10" aria-expanded="false"><span class="sub-arrow">+</span>more...</a>
-                    <ul id="sm-14525940231965854-10" role="group" aria-hidden="true" aria-labelledby="sm-14525940231965854-9" aria-expanded="false" class="" style="width: 20em; min-width: 10em; display: none; max-width: 20em; top: auto; left: 0px; margin-left: 177px; margin-top: -446px;">
+                    <a href="#" class="has-submenu" aria-haspopup="true"><span class="sub-arrow">+</span>more...</a>
+                    <ul role="group" aria-hidden="true" >
                         <li><a href="#">A pretty long text to test the default subMenusMaxWidth:20em setting for the sub menus</a></li>
                         <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
                         <li>
-                            <a href="#" class="has-submenu" id="sm-14525940231965854-11" aria-haspopup="true" aria-controls="sm-14525940231965854-12" aria-expanded="false"><span class="sub-arrow">+</span>more...</a>
-                            <ul id="sm-14525940231965854-12" role="group" aria-hidden="true" aria-labelledby="sm-14525940231965854-11" aria-expanded="false" class="sm-nowrap" style="width: auto; min-width: 10em; display: none; max-width: 20em; top: auto; left: 0px; margin-left: 357px; margin-top: -49px;">
+                            <a href="#" class="has-submenu"><span class="sub-arrow">+</span>more...</a>
+                            <ul role="group" aria-hidden="true" class="sm-nowrap">
                                 <li><a href="#">Dummy item</a></li>
                                 <li><a href="#" class="current">A 'current' class item</a></li>
                                 <li><a href="#">Dummy item</a></li>
                                 <li>
-                                    <a href="#" class="has-submenu" id="sm-14525940231965854-13" aria-haspopup="true" aria-controls="sm-14525940231965854-14" aria-expanded="false"><span class="sub-arrow">+</span>more...</a>
-                                    <ul id="sm-14525940231965854-14" role="group" aria-hidden="true" aria-labelledby="sm-14525940231965854-13" aria-expanded="false">
+                                    <a href="#" class="has-submenu" aria-haspopup="true" aria-expanded="false"><span class="sub-arrow">+</span>more...</a>
+                                    <ul role="group" aria-hidden="true" aria-expanded="false">
                                         <li><a href="#">subMenusMinWidth</a></li>
                                         <li><a href="#">10em</a></li>
                                         <li><a href="#">forced.</a></li>
@@ -107,40 +103,8 @@
                                 <li><a href="#">Dummy item</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
+
                         <li><a href="#">A pretty long text to test the default subMenusMaxWidth:20em setting for the sub menus</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">A pretty long text to test the default subMenusMaxWidth:20em setting for the sub menus</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">A pretty long text to test the default subMenusMaxWidth:20em setting for the sub menus</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
-                        <li><a href="#">Dummy item</a></li>
                         <li><a href="#">Dummy item</a></li>
                         <li><a href="#">Dummy item</a></li>
                         <li><a href="#">Dummy item</a></li>
@@ -150,8 +114,8 @@
             </ul>
         </li>
         <li>
-            <a href="#" class="has-submenu" id="sm-14525940231965854-15" aria-haspopup="true" aria-controls="sm-14525940231965854-16" aria-expanded="false"><span class="sub-arrow">+</span>Mega menu</a>
-            <ul class="mega-menu" id="sm-14525940231965854-16" role="group" aria-hidden="true" aria-labelledby="sm-14525940231965854-15" aria-expanded="false" style="width: 20em; display: none; top: auto; left: 0px; margin-left: 215px; margin-top: -49px; min-width: 10em; max-width: 20em;">
+            <a href="#" class="has-submenu" aria-haspopup="true" aria-expanded="false"><span class="sub-arrow">+</span>Mega menu</a>
+            <ul class="mega-menu" role="group" aria-hidden="true" aria-expanded="false" style="width: 20em; display: none; top: auto; left: 0px; margin-left: 215px; margin-top: -49px; min-width: 10em; max-width: 20em;">
                 <li>
                     <!-- The mega drop down contents -->
                     <div style="width:400px;max-width:100%;">
