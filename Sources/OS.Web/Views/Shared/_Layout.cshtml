@@ -13,14 +13,16 @@
 }
 
 <body style="background-color: @bodyColor">
-    
-        @RenderBody()
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts")
 
-        <script>
-            document.getElementById("browserInfo").innerHTML = navigator.userAgent;
-        </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderBody()
+
+    @RenderSection("scripts")
+
+    <script>
+        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+    </script>
 </body>
 </html>
