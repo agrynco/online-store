@@ -2,57 +2,42 @@
 @model RegisterViewModel
 @{
     PageData[Constants.PageData.PAGE_TITLE] = "Реєстрація";
-    Layout = "~/Views/Shared/_accountLayout.cshtml";
+    Layout = "~/Views/Shared/_publicLayout.cshtml";
 }
 
-@section accountFormContent
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new
-    {
-        role = "form"
-    }))
-    {
-        @Html.AntiForgeryToken()
-        <table style="width: 350px">
-            <tr>
-                <td class="col-md-2 control-label">
-                    @Html.LabelFor(m => m.Email)
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                </td>
-            </tr>
-            <tr class="row-space">
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td class="col-md-2 control-label">
-                    @Html.LabelFor(m => m.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                </td>
-            </tr>
-            <tr class="row-space">
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td class="col-md-2 control-label">
-                    @Html.LabelFor(m => m.ConfirmPassword)
-                </td>
-                <td>
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                </td>
-            </tr>
-            <tr class="row-space">
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" class="btn btn-default" value="Зареєструватися"/>
-                </td>
-            </tr>
-        </table>
-    }
+    @Html.AntiForgeryToken()
+    <h4>Реєстрація</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })
+            <div class="col-md-7">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-5 control-label" })
+            <div class="col-md-7">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-7">
+                <input type="submit" class="btn btn-default" value="Зареєструватися" />
+            </div>
+        </div>
+}
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
