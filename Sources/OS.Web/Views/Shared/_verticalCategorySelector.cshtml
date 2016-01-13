@@ -40,7 +40,8 @@
             mainMenuSubOffsetX: 1,
             mainMenuSubOffsetY: -8,
             subMenusSubOffsetX: 1,
-            subMenusSubOffsetY: -8
+            subMenusSubOffsetY: -8,
+            subIndicators: true
         });
     });
 </script>
@@ -51,7 +52,7 @@
         @foreach (VerticalCategorySelectorItemViewModel category in Model.Categories)
         {
             <li>
-                <a href="#">@category.Name</a>
+                @Html.Partial("_verticalCategorySelectorItem", category)
                 @Html.Partial("_verticalCategorySelectorChildItems", category.ChildCategories)
             </li>
         }

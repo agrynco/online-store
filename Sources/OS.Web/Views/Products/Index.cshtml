@@ -6,26 +6,14 @@
     Layout = "../Shared/_publicLayout.cshtml";
 }
 
-@*@section content
-{
-    <table class="full-size">
-        <tbody>
-        <tr class="min-height">
-            <td>
-                <ul class="nav-pills">
-                    @foreach (Product product in Model.Products)
-                    {
-                        @Html.Partial("_productItem", product)
-                    }
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
-}*@
+
+<div id="products" class="row list-group">
+    @foreach (Product product in Model.Products)
+    {
+        @Html.Partial("_productItem", product)
+    }
+</div>
+
 
 @section scripts
 {

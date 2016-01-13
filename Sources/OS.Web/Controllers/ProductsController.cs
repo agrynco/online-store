@@ -43,7 +43,7 @@ namespace OS.Web.Controllers
                     IsSelected = productCategory.Id == categoryId
                 }).ToList();
 
-            viewModel.SelectedCategory = viewModel.RootCategories.Single(productCategory => productCategory.ProductCategory.Id == categoryId).ProductCategory;
+            viewModel.SelectedCategory = _productCategoriesBL.GetById(categoryId);
             viewModel.Products = _productsBL.Get(new ProductsFilter
                 {
                     ParentId = categoryId

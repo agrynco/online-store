@@ -1,0 +1,11 @@
+﻿@using OS.Web.Controllers
+@model VerticalCategorySelectorItemViewModel
+<div>
+    <span>
+        @Html.ActionLink(Model.Name, "ChangeCategory", "Products", new
+            {
+                categoryId = Model.Id
+            }, null)
+    </span>
+
+</div>

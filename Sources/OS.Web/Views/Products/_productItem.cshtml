@@ -1,28 +1,43 @@
 ﻿@using OS.Business.Domain
+@using OS.Common
 @model Product
-<li class="product-item">
-    <table class="full-size">
-        <tr class="min-height">
-            <td>
-                <a href='@Url.Action("Details", new
-                             {
-                                 productId = Model.Id
-                             })'>
-                    @Model.Name
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>
 
-            </td>
-        </tr>
-        <tr class="min-height">
-            <td>
-                <div align="right">
-                    <input type="button" class="btn-buy-product" style="display: none" value="Купити" productId="@Model.Id" productPrice="@Model.Price"/>
+<div class="item col-xs-3 col-lg-3">
+    <div class="thumbnail">
+        <a href="@Url.Action("Details", "Products", new
+                         {
+                             productId = @Model.Id
+                         })">
+
+            <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+            <div class="caption">
+                <h5 class="group inner list-group-item-heading">
+                    @Model.Name
+                </h5>
+                <p class="group inner list-group-item-text">
+                    @{
+                        string description = Model.Description.Trunc(100);
+
+                        if (description.Length < Model.Description.Length)
+                        {
+                            description += "...";
+                        }
+                    }
+
+                    @description
+                </p>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <b>
+                            @Model.Price
+                        </b>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <a class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Id" productPrice="@Model.Price">Купити</a>
+                    </div>
                 </div>
-            </td>
-        </tr>
-    </table>
-</li>
+            </div>
+        </a>
+    </div>
+</div>

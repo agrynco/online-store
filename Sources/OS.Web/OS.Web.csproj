@@ -1139,6 +1139,7 @@
     <Content Include="Scripts\SmartMenus\README.md" />
     <Content Include="Views\Shared\_verticalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_verticalCategorySelectorChildItems.cshtml" />
+    <Content Include="Views\Shared\_verticalCategorySelectorItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

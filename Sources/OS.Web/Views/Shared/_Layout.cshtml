@@ -1,11 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 
 @{
@@ -14,15 +13,15 @@
 
 <body style="background-color: @bodyColor">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 
-    @RenderBody()
+@RenderBody()
 
-    @RenderSection("scripts")
+@RenderSection("scripts")
 
-    <script>
-        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
-    </script>
+<script>
+    document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+</script>
 </body>
 </html>

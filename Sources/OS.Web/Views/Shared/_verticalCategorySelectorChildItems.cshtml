@@ -7,7 +7,7 @@
         @foreach (VerticalCategorySelectorItemViewModel category in Model)
         {
             <li>
-                <a href="#">@category.Name</a>
+                @Html.Partial("_verticalCategorySelectorItem", category)
                 @Html.Partial("_verticalCategorySelectorChildItems", category.ChildCategories)
             </li>
         }
