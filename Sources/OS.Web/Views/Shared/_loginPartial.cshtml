@@ -4,25 +4,21 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
     {
         @Html.AntiForgeryToken()
-
         
-            <li>
-                @Html.ActionLink("Здрастуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", null, new {title = "Керувати"})
-            </li>
-            <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()">Вийти</a>
-            </li>
-        
+        <li>
+            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", null, new {title = "Керувати"})
+        </li>
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()">Вийти</a>
+        </li>
     }
 }
 else
 {
-    
-        <li>
-            @Html.ActionLink("Реєстрація", "Register", "Account", null, new {id = "registerLink"})
-        </li>
-        <li>
-            @Html.ActionLink("Вхід", "Login", "Account", null, new {id = "loginLink"})
-        </li>
-    
+    <li>
+        @Html.ActionLink("Реєстрація", "Register", "Account", null, new {id = "registerLink"})
+    </li>
+    <li>
+        @Html.ActionLink("Вхід", "Login", "Account", null, new {id = "loginLink"})
+    </li>
 }
