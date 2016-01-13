@@ -1,0 +1,59 @@
+﻿@using OS.Web.Controllers
+@model VerticalCategorySelectorViewModel
+
+<!-- SmartMenus core CSS (required) -->
+<link href="~/Scripts/SmartMenus/css/sm-core-css.css" rel="stylesheet" />
+
+<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+<link href="~/Scripts/SmartMenus/css/sm-clean/sm-clean.css" rel="stylesheet" />
+
+<!-- #main-menu config - instance specific stuff not covered in the theme -->
+<!-- Put this in an external stylesheet if you want the media query to work in IE8 (e.g. where the rest of your page styles are) -->
+<style type="text/css">
+    @@media (min-width: 768px) {
+        #main-menu {
+            float: left;
+            position: relative;
+            /*z-index: 9999;*/
+            width: 100%;
+        }
+
+            #main-menu ul {
+                width: 12em; /* fixed width only please - you can use the "subMenusMinWidth"/"subMenusMaxWidth" script options to override this if you like */
+            }
+    }
+</style>
+
+<!-- Respond.js for IE8 support of media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- jQuery -->
+<!-- SmartMenus jQuery plugin -->
+<script src="~/Scripts/SmartMenus/jquery.smartmenus.js"></script>
+
+<!-- SmartMenus jQuery init -->
+<script type="text/javascript">
+    $(function ()
+    {
+        $('#main-menu').smartmenus({
+            mainMenuSubOffsetX: 1,
+            mainMenuSubOffsetY: -8,
+            subMenusSubOffsetX: 1,
+            subMenusSubOffsetY: -8
+        });
+    });
+</script>
+
+<nav role="navigation">
+    <!-- Sample menu definition -->
+    <ul id="main-menu" class="sm sm-clean sm-vertical">
+        @foreach (VerticalCategorySelectorItemViewModel category in Model.Categories)
+        {
+            <li>
+                <a href="#">@category.Name</a>
+                @Html.Partial("_verticalCategorySelectorChildItems", category.ChildCategories)
+            </li>
+        }
+    </ul>
+</nav>

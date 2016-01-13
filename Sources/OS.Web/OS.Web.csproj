@@ -256,6 +256,7 @@
     <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -267,6 +268,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\SystemInfoController.cs" />
+    <Compile Include="Controllers\VerticalCategorySelectorViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -433,6 +435,33 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SmartMenus\addons\bootstrap\jquery.smartmenus.bootstrap.css" />
+    <Content Include="Scripts\SmartMenus\addons\bootstrap\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Scripts\SmartMenus\addons\bootstrap\jquery.smartmenus.bootstrap.min.js" />
+    <Content Include="Scripts\SmartMenus\addons\keyboard\jquery.smartmenus.keyboard.js" />
+    <Content Include="Scripts\SmartMenus\addons\keyboard\jquery.smartmenus.keyboard.min.js" />
+    <Content Include="Scripts\SmartMenus\css\sm-blue\sm-blue.css" />
+    <Content Include="Scripts\SmartMenus\css\sm-clean\sm-clean.css" />
+    <Content Include="Scripts\SmartMenus\css\sm-core-css.css" />
+    <Content Include="Scripts\SmartMenus\css\sm-mint\sm-mint.css" />
+    <Content Include="Scripts\SmartMenus\css\sm-simple\sm-simple.css" />
+    <Content Include="Scripts\SmartMenus\demo\bootstrap-navbar-fixed-bottom.html" />
+    <Content Include="Scripts\SmartMenus\demo\bootstrap-navbar-fixed-top.html" />
+    <Content Include="Scripts\SmartMenus\demo\bootstrap-navbar-static-top.html" />
+    <Content Include="Scripts\SmartMenus\demo\bootstrap-navbar.html" />
+    <Content Include="Scripts\SmartMenus\demo\index.html" />
+    <Content Include="Scripts\SmartMenus\demo\keyboard-navigation.html" />
+    <Content Include="Scripts\SmartMenus\jquery.smartmenus.js" />
+    <Content Include="Scripts\SmartMenus\jquery.smartmenus.min.js" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\demo.css" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\readme.txt" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\shjs\shjs.css" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\shjs\shjs.js" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\themes-switcher.js" />
+    <Content Include="Scripts\SmartMenus\libs\jquery\jquery.js" />
     <Content Include="Scripts\tinymce\changelog.txt" />
     <Content Include="Scripts\tinymce\Gruntfile.js" />
     <Content Include="Scripts\tinymce\js\tinymce\classes\AddOnManager.js" />
@@ -954,7 +983,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
@@ -985,7 +1013,7 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Shared\_loginPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Shared\_mainLayout.cshtml" />
+    <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Shared\_accountLayout.cshtml" />
     <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
     <Content Include="Views\Administration\Home.cshtml" />
@@ -1084,6 +1112,33 @@
     <Content Include="Views\ConsumerBasket\Index.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\OrderDetails.cshtml" />
+    <Content Include="Views\Shared\_publicLayout.cshtml" />
+    <Content Include="Scripts\SmartMenus\css\sm-blue\mixins\_round-corners-last-item.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-blue\mixins\_sub-items-indentation.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-blue\sm-blue.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-blue\_mixins.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-blue\_sm-blue.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-clean\mixins\_round-corners-last-item.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-clean\mixins\_sub-items-indentation.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-clean\sm-clean.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-clean\_mixins.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-clean\_sm-clean.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-mint\mixins\_sub-items-indentation.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-mint\sm-mint.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-mint\_mixins.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-mint\_sm-mint.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-simple\mixins\_sub-items-indentation.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-simple\sm-simple.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-simple\_mixins.scss" />
+    <Content Include="Scripts\SmartMenus\css\sm-simple\_sm-simple.scss" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\SmartMenus\libs\demo-assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\SmartMenus\LICENSE-MIT" />
+    <Content Include="Scripts\SmartMenus\README.md" />
+    <Content Include="Views\Shared\_verticalCategorySelector.cshtml" />
+    <Content Include="Views\Shared\_verticalCategorySelectorChildItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

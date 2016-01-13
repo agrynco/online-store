@@ -1,47 +1,28 @@
 ﻿@using Microsoft.AspNet.Identity
-<style>
-    .login-first-button
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
     {
-        padding-right: 15px;
-    }
-</style>
-<div style="padding-right: 15px;">
-    @if (Request.IsAuthenticated)
-    {
-        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-        {
-            @Html.AntiForgeryToken()
-        }
+        @Html.AntiForgeryToken()
 
-        <ul id="login" class="nav navbar-nav">
+        
             <li>
-                <span class="login-first-button">
-                    @Html.ActionLink("Здрастуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", null, new { title = "Керувати" })
-                </span>
+                @Html.ActionLink("Здрастуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", null, new {title = "Керувати"})
             </li>
             <li>
-                <span>
-                    <a href="javascript:document.getElementById('logoutForm').submit()">Вийти</a>
-                </span>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Вийти</a>
             </li>
-            @Html.Partial("_consumerBasket")
-        </ul>
-
+        
     }
-    else
-    {
-        <ul id="login" class="nav navbar-nav">
-            <li>
-                <span class="login-first-button">
-                    @Html.ActionLink("Реєстрація", "Register", "Account", null, new { id = "registerLink" })
-                </span>
-            </li>
-            <li>
-                <span>
-                    @Html.ActionLink("Вхід", "Login", "Account", null, new {id = "loginLink"})
-                </span>
-            </li>
-            @Html.Partial("_consumerBasket")
-        </ul>
-    }
-</div>
+}
+else
+{
+    
+        <li>
+            @Html.ActionLink("Реєстрація", "Register", "Account", null, new {id = "registerLink"})
+        </li>
+        <li>
+            @Html.ActionLink("Вхід", "Login", "Account", null, new {id = "loginLink"})
+        </li>
+    
+}

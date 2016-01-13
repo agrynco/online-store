@@ -1,108 +1,73 @@
-﻿html, body
+﻿* 
 {
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
+	margin: 0;
 }
 
-.requiredMark
-{
-    color: red;
-}
-
-.warning
-{
-    color: red !important;
-}
-
-.validation-summary-errors
-{
-    color: red;
-}
-
-.field-validation-error
-{
-    color: red;
-}
-
-.min-height
-{
-    height: 1px;
-}
-
-.min-width
-{
-    width: 1px;
-}
-
-.full-height
+html
 {
     height: 100%;
 }
 
-.full-width
-{
-    width: 100%;
-}
-
-.category-button
-{
-    width: 100px;
-}
-
-.full-size
+body 
 {
     height: 100%;
-    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
-.control-title
-{
-    white-space: nowrap;
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.row-space
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt 
 {
-    height: 10px;
+    white-space: normal;
 }
 
-.product-category-item
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea 
 {
-    display: block;
-    width: 220px;
-    height: 140px;
-    background-color: aliceblue;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
+    max-width: 280px;
 }
 
-.product-item
+.wrapper 
 {
-    display: block;
-    width: 220px;
-    height: 140px;
-    background-color: oldlace;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -7em;
 }
 
-#tableConsumerBasket th
+.footer, .push 
 {
-    font-weight: bold;
-    text-align: center;
+   height: 7em;
+   font-size: 11px;
 }
 
-#tableConsumerBasket td
+.table-container 
 {
-    padding-left: 5px;
-    padding-right: 5px;
+    display: table;
+    padding-bottom: 10px;
 }
 
-#tableConsumerBasket tfoot td
+.table-container .table-row 
 {
-    font-weight: bold;
-    font-style: italic;
+    height: 100%;
+    display: table-row;
 }
+
+.table-container .table-row .table-col 
+{
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+}
+
+
