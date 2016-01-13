@@ -42,20 +42,20 @@
 
 <div class="container table-container wrapper">
     <div class="row table-row">
-        <div class="col-md-3 table-col" style="background: #eeeeee; padding-left: 0; padding-right: 0">
-            @Html.Partial("_verticalCategorySelector")
+        <div class="col-md-3 table-col" style="background: lightgray; padding-left: 0; padding-right: 0">
+            @*@Html.Partial("_verticalCategorySelector")*@
+            @Html.Action("VerticalCategorySelector", "Categories")
         </div>
         <div class="col-md-6 table-col" style="background: white">
             @RenderBody()
         </div>
-        <div class="col-md-3 table-col" style="background: #eeeeee"></div>
+        <div class="col-md-3 table-col" style="background: lightgray"></div>
     </div>
     <div class="push">
     </div>
 </div>
 <div class="footer container">
     <hr/>
-    <p></p>
     <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
     <p>
         <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment

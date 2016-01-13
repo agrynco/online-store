@@ -1,5 +1,5 @@
 .sm-clean {
-  background: #eeeeee;
+  background: lightgray;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -151,7 +151,7 @@
   /* ...end */
   .sm-clean {
     padding: 0 10px;
-    background: #eeeeee;
+    background: lightgray;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     -ms-border-radius: 100px;
@@ -239,7 +239,7 @@
     color: #555555;
   }
   .sm-clean ul a:hover, .sm-clean ul a:focus, .sm-clean ul a:active, .sm-clean ul a.highlighted {
-    background: #eeeeee;
+    background: gray;
     color: #d23600;
   }
   .sm-clean ul a.current {
@@ -271,7 +271,7 @@
   }
   .sm-clean span.scroll-up:hover,
   .sm-clean span.scroll-down:hover {
-    background: #eeeeee;
+    background: lightgray;
   }
   .sm-clean span.scroll-up:hover span.scroll-up-arrow, .sm-clean span.scroll-up:hover span.scroll-down-arrow {
     border-color: transparent transparent #d23600 transparent;
@@ -345,7 +345,7 @@
     background: white;
   }
   .sm-clean.sm-vertical a.disabled {
-    background: #eeeeee;
+    background: lightgray;
   }
   .sm-clean.sm-vertical a span.sub-arrow {
     right: 8px;
@@ -363,7 +363,7 @@
     padding: 10px 20px;
   }
   .sm-clean.sm-vertical ul a:hover, .sm-clean.sm-vertical ul a:focus, .sm-clean.sm-vertical ul a:active, .sm-clean.sm-vertical ul a.highlighted {
-    background: #eeeeee;
+    background: lightgray;
   }
   .sm-clean.sm-vertical ul a.disabled {
     background: white;

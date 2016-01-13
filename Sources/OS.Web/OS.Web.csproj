@@ -256,6 +256,7 @@
     <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -267,6 +268,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\SystemInfoController.cs" />
+    <Compile Include="Controllers\VerticalCategorySelectorViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1136,6 +1138,7 @@
     <Content Include="Scripts\SmartMenus\LICENSE-MIT" />
     <Content Include="Scripts\SmartMenus\README.md" />
     <Content Include="Views\Shared\_verticalCategorySelector.cshtml" />
+    <Content Include="Views\Shared\_verticalCategorySelectorChildItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

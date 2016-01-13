@@ -1,0 +1,15 @@
+﻿@using OS.Web.Controllers
+@model List<VerticalCategorySelectorItemViewModel>
+
+@if (Model.Count > 0)
+{
+    <ul>
+        @foreach (VerticalCategorySelectorItemViewModel category in Model)
+        {
+            <li>
+                <a href="#">@category.Name</a>
+                @Html.Partial("_verticalCategorySelectorChildItems", category.ChildCategories)
+            </li>
+        }
+    </ul>
+}

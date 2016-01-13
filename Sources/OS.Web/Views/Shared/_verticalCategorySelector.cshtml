@@ -1,4 +1,7 @@
-﻿<!-- SmartMenus core CSS (required) -->
+﻿@using OS.Web.Controllers
+@model VerticalCategorySelectorViewModel
+
+<!-- SmartMenus core CSS (required) -->
 <link href="~/Scripts/SmartMenus/css/sm-core-css.css" rel="stylesheet" />
 
 <!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
@@ -45,61 +48,12 @@
 <nav role="navigation">
     <!-- Sample menu definition -->
     <ul id="main-menu" class="sm sm-clean sm-vertical">
-        <li><a href="">Home</a></li>
-        <li>
-            <a href="">About</a>
-            <ul role="group">
-                <li><a>Introduction to SmartMenus jQuery</a></li>
-                <li><a>Themes</a></li>
-                <li><a>The author</a></li>
-                <li>
-                    <a>The company</a>
-                    <ul role="group">
-                        <li><a>About Vadikom</a></li>
-                        <li><a>Projects</a></li>
-                        <li><a>Services</a></li>
-                        <li><a>Privacy policy</a></li>
-                    </ul>
-                </li>
-                <li><a>Old SmartMenus versions</a></li>
-            </ul>
-        </li>
-        <li><a>Download</a>
-            <ul>
-                <li>
-                    <a>item 1</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a>Support</a>
-            <ul role="group" >
-                <li><a>Premium support</a></li>
-                <li><a>Forums</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Sub test</a>
-            <ul role="group">
-                <li><a href="#">Dummy item</a></li>
-                <li><a href="#">Dummy item</a></li>
-                <li><a href="#" class="disabled">Disabled menu item</a></li>
-                <li><a href="#">Dummy item</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Mega menu</a>
-            <ul class="mega-menu" role="group">
-                <li>
-                    <!-- The mega drop down contents -->
-                    <div style="width:400px;max-width:100%;">
-                        <div style="padding:5px 24px;">
-                            <p>This is a mega drop down test. Just set the "mega-menu" class to the parent UL element to inform the SmartMenus script. It can contain <strong>any HTML</strong>.</p>
-                            <p>Just style the contents as you like (you may need to reset some SmartMenus inherited styles - e.g. for lists, links, etc.)</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
+        @foreach (VerticalCategorySelectorItemViewModel category in Model.Categories)
+        {
+            <li>
+                <a href="#">@category.Name</a>
+                @Html.Partial("_verticalCategorySelectorChildItems", category.ChildCategories)
+            </li>
+        }
     </ul>
 </nav>
