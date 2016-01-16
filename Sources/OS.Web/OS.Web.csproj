@@ -52,8 +52,8 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Elmah, Version=1.2.13605.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
@@ -65,8 +65,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
@@ -339,15 +339,14 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\FileSystemDeployment.pubxml" />
     <None Include="Properties\PublishProfiles\Production.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Images\minus_white.png" />
     <Content Include="Images\plus.png" />
     <Content Include="Scripts\application\products\consumerBasket.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jQuery-File-Upload\.jshintrc" />
     <Content Include="Scripts\jQuery-File-Upload\bower.json" />
     <Content Include="Scripts\jQuery-File-Upload\CONTRIBUTING.md" />
@@ -360,6 +359,7 @@
     <Content Include="Scripts\jQuery-File-Upload\server\php\files\.htaccess" />
     <Content Include="Scripts\jQuery-File-Upload\server\php\index.php" />
     <Content Include="Scripts\jQuery-File-Upload\server\php\UploadHandler.php" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jQuery-File-Upload\.gitignore" />
     <Content Include="Scripts\jQuery-File-Upload\angularjs.html" />
@@ -991,7 +991,6 @@
     <Content Include="Views\Stub\Index.cshtml" />
     <Content Include="Views\BaseLayout\Index.cshtml" />
     <Content Include="Views\SystemInfo\Index.cshtml" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Shared\_categoriesEditor.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
