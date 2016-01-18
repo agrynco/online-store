@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models;
+using OS.Web.Models.ProductViewModels;
 #endregion
 
 namespace OS.Web.Controllers
@@ -52,9 +53,15 @@ namespace OS.Web.Controllers
             return View("Index", viewModel);
         }
 
-        public ActionResult Details(int productId)
+
+        public ActionResult Details(int productId, int? categoryId)
         {
-            return View(_productsBL.GetById(productId));
+            ProductDetailsViewModel model = new ProductDetailsViewModel
+                {
+                    CategoryId = categoryId,
+                    Product = _productsBL.GetById(productId)
+            };
+            return View(model);
         }
     }
 }

@@ -6,7 +6,8 @@
     <div class="thumbnail">
         <a href="@Url.Action("Details", "Products", new
                          {
-                             productId = @Model.Id
+                             productId = @Model.Id,
+                             categoryId = @Model.Categories.First().Id
                          })">
 
             <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
