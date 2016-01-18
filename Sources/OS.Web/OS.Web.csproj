@@ -268,7 +268,6 @@
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
@@ -301,7 +300,7 @@
     <Compile Include="Models\ProductViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="OsSqlErrorLog.cs" />
-    <Compile Include="PrductDetailsNodeProvider.cs" />
+    <Compile Include="ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1011,7 +1010,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Shared\_horizontalCategorySelector.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
     <Content Include="Views\Shared\_topMenu.cshtml" />
     <Content Include="Views\ContactInfo\Index.cshtml" />
@@ -1041,7 +1039,6 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Shared\_accountLayout.cshtml" />
-    <Content Include="Views\Shared\_horizontalCategoryItem.cshtml" />
     <Content Include="Views\Administration\Home.cshtml" />
     <Content Include="Views\Shared\_adminLayout.cshtml" />
     <Content Include="Views\ProductCategories\Index.cshtml" />
@@ -1175,6 +1172,11 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\SiteMap\Index.cshtml" />
+    <Content Include="Views\Home\_productItem.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BootstrapSiteMapPathHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

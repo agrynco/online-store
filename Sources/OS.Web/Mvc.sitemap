@@ -4,7 +4,7 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
     <mvcSiteMapNode title="Головна" controller="Products" action="Index" key="Online Store">
-        <mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.PrductDetailsNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Контакти" controller="Contacts" action="Index" />
         <mvcSiteMapNode title="Про магазин" controller="About" action="Index" />
         <mvcSiteMapNode title="Карта сайту" controller="SiteMap" action="Index" />

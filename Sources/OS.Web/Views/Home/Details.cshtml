@@ -1,0 +1,40 @@
+﻿@using OS.Business.Domain
+@using OS.Web.Models.ProductViewModels
+@model ProductDetailsViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_publicLayout.cshtml";
+}
+
+<table class="full-size">
+    <tr class="min-height">
+        <td>
+            <h3>
+                @Model.Product.Name
+            </h3>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    @foreach (ProductPhoto productPhoto in Model.Product.Photos)
+                    {
+                        <a href="#" class="thumbnail">
+                            <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})"/>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div>
+                @Html.Raw(Model.Product.Description)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+@section scripts
+{
+
+}
+

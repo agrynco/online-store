@@ -6,12 +6,12 @@ using OS.Dependency;
 
 namespace OS.Web
 {
-    public class PrductDetailsNodeProvider : DynamicNodeProviderBase
+    public class ProductDetailsNodeProvider : DynamicNodeProviderBase
     {
         private readonly ProductCategoriesBL _productCategoriesBL;
         private readonly ProductsBL _productsBL;
 
-        public PrductDetailsNodeProvider()
+        public ProductDetailsNodeProvider()
         {
             _productCategoriesBL = DI.Resolve<ProductCategoriesBL>();
             _productsBL = DI.Resolve<ProductsBL>();
@@ -38,7 +38,7 @@ namespace OS.Web
                         Title = productCategory.Name,
                         Key = "ProductCategory_" + productCategory.Id,
                         Action = "ChangeCategory",
-                        Controller = "Products"
+                        Controller = "Home"
                 };
 
                 productCategoryNode.RouteValues.Add("categoryId", productCategory.Id);
@@ -56,7 +56,7 @@ namespace OS.Web
                             ParentKey = productCategoryNode.Key,
                             Title = product.Name,
                             Key = productCategoryNode.Key + "_Product_" + product.Id,
-                            Controller = "Products",
+                            Controller = "Home",
                             Action = "Details"
                         };
                     productNode.RouteValues.Add("productId", product.Id);
