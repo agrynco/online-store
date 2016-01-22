@@ -8,6 +8,9 @@
         <mvcSiteMapNode title="Контакти" controller="Contacts" action="Index" />
         <mvcSiteMapNode title="Про магазин" controller="About" action="Index" />
         <mvcSiteMapNode title="Карта сайту" controller="SiteMap" action="Index" />
+        <mvcSiteMapNode title="Вхід" controller="Account" action="Login" />
+        <mvcSiteMapNode title="Реєстрація" controller="Account" action="Register" />
+        
     </mvcSiteMapNode>
 
 </mvcSiteMap>

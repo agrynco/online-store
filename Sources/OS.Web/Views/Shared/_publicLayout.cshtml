@@ -3,45 +3,64 @@
     Layout = "_layout.cshtml";
 }
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink(ApplicationSettings.Instance.AppSettings.ApplicationName, "Index", "Home",
-                new { area = "" }, new { @class = "navbar-brand" })
-        </div>
-        <div class="navbar-collapse collapse row">
-            <ul class="nav navbar-nav navbar-left">
-                <li>@Html.ActionLink("Головна", "Index", "Home")</li>
-                <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
-                <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
-                <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form class="navbar-form" role="search">
-                        <div class="input-group" style="width: 250px;">
-                            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                            <span class="input-group-btn">
+@section topSection
+{
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(ApplicationSettings.Instance.AppSettings.ApplicationName, "Index", "Home",
+                    new {area = ""}, new {@class = "navbar-brand"})
+            </div>
+            <div class="navbar-collapse collapse row">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
+                    <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
+                    <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
+                    @try
+                    {
+                        if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("Адміністрування", "Index", "Production", null, new
+                                    {
+                                        style = "color: red;"
+                                    })</li>
+                        }
+                    }
+                    catch (NotImplementedException notImplementedException)
+                    {
+                        throw notImplementedException;
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form" role="search">
+                            <div class="input-group" style="width: 250px;">
+                                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                                <span class="input-group-btn">
                                 <button class="btn btn-danger" type="button">
                                     <span class="glyphicon glyphicon-search"></span>
                                 </button>
                             </span>
-                        </div>
-                    </form>
-                </li>
-                @Html.Partial("_loginPartial")
-                <li>@Html.Partial("_consumerBasket")</li>
-            </ul>
+                            </div>
+                        </form>
+                    </li>
+                    @Html.Partial("_loginPartial")
+
+                    <li>@Html.Partial("_consumerBasket")</li>
+
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+}
 
-<div class="container table-container wrapper">
+@section content
+{
     <div class="row table-row">
         <div class="col-md-3 table-col" style="background: lightgray; padding-left: 0; padding-right: 0">
             @Html.Action("VerticalCategorySelector", "Categories")
@@ -54,26 +73,27 @@
     </div>
     <div class="push">
     </div>
-</div>
-<div class="footer container">
-    <hr/>
-    <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
-    <p>
-        <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
-    </p>
-    <p>
-        <span>
-            <b>Client:</b>
-        </span>
-        <span id="browserInfo"></span>
-    </p>
-</div>
-
-@section scripts
-{
-    <script>
-        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
-    </script>
-
-    @RenderSection("scripts")
 }
+
+<div class="footer container">
+        <hr />
+        <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
+        <p>
+            <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
+        </p>
+        <p>
+            <span>
+                <b>Client:</b>
+            </span>
+            <span id="browserInfo"></span>
+        </p>
+    </div>
+
+    @section scripts
+{
+        <script>
+            document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+        </script>
+
+        @RenderSection("scripts")
+    }

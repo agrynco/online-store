@@ -2,68 +2,23 @@
     Layout = "_adminLayout.cshtml";
 }
 
-@section topSection
-{
-    @RenderSection("topSection", false)
-}
-
 @section content
 {
-    @{
-        string currentControllerName = (string) ViewContext.RouteData.Values["controller"];
-    }
+    <div class="panel panel-default">
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="#">Створити</a></li>
 
-    <table class="full-size">
-        <tr class="min-height">
-            <td>
-                <nav class="navbar navbar-link">
-                    @if (IsSectionDefined("actionsToolBar"))
-                    {
-                        @RenderSection("actionsToolBar")
-                    }
-                    else
-                    {
-                        <ul class="nav navbar-nav">
-                            <li class="active">
-                                @if (IsSectionDefined("creationAction"))
-                                {
-                                    @RenderSection("creationAction")
-                                }
-                                else
-                                {
-                                    @Html.ActionLink("Створити", "Create", currentControllerName)
-                                }
-                            </li>
-                            <li><a href="#">Видалити</a></li>
-                        </ul>
-                    }
-                </nav>
-            </td>
-        </tr>
-        <tr class="min-height">
-            <td>
-                @RenderSection("subAtionsToolBar", false)
-            </td>
-        </tr>
-        <tr class="min-height">
-            <td>
-                @RenderSection("content")
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-    </table>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Створити <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Категорію</a></li>
+                    <li><a href="#">Продукт</a></li>
+                </ul>
+            </li>
+
+            <li role="presentation"><a href="#">Видалити</a></li>
+        </ul>
+    </div>
 }
 
-@section scripts
-{
-    <script type="text/javascript">
-        function confirmDelete()
-        {
-            return confirm("Ви впевнені що хочете видалити елемент?");
-        }
-    </script>
-
-    @RenderSection("scripts", false)
-}
+@RenderBody()

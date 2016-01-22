@@ -7,16 +7,16 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
-@{
-    string bodyColor = Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin") ? "#d6c0c5;" : "lightgray";
-}
-
-<body style="background-color: @bodyColor">
+<body>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 
-@RenderBody()
+@RenderSection("topSection")
+
+<div class="container table-container wrapper">
+    @RenderSection("content")
+</div>
 
 @RenderSection("scripts")
 

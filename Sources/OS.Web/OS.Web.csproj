@@ -257,11 +257,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Administration\ContactInfoAdminController.cs" />
-    <Compile Include="Controllers\Administration\CountriesController.cs" />
     <Compile Include="Controllers\Administration\BaseAdminController.cs" />
-    <Compile Include="Controllers\Administration\AdministrationController.cs" />
-    <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
+    <Compile Include="Controllers\Administration\ProductionController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
@@ -1039,18 +1036,10 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Shared\_layout.cshtml" />
     <Content Include="Views\Shared\_accountLayout.cshtml" />
-    <Content Include="Views\Administration\Home.cshtml" />
     <Content Include="Views\Shared\_adminLayout.cshtml" />
-    <Content Include="Views\ProductCategories\Index.cshtml" />
-    <Content Include="Views\Shared\_adminListLayout.cshtml" />
-    <Content Include="Views\Shared\_adminEditLayout.cshtml" />
-    <Content Include="Views\ProductCategories\Edit.cshtml" />
     <Content Include="Views\Shared\_requiredMark.cshtml" />
-    <Content Include="Views\ProductCategories\_productCategoryItem.cshtml" />
     <Content Include="Views\Countries\Update.cshtml" />
-    <Content Include="Views\ProductCategories\_productItem.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\ProductCategories\ProductEdit.cshtml" />
     <Content Include="Views\Countries\ImportResult.cshtml" />
     <Content Include="Views\Countries\Index.cshtml" />
     <Content Include="Scripts\tinymce\.eslintrc" />
@@ -1177,6 +1166,8 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BootstrapSiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Production\Index.cshtml" />
+    <Content Include="Views\Shared\_adminListLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

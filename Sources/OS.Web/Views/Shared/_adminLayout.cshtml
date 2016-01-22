@@ -1,43 +1,44 @@
-﻿@{
-    Layout = "_mainLayout.cshtml";
+﻿@using OS.Configuration
+@{
+    Layout = "_layout.cshtml";
 }
 
 @section topSection
 {
-    @RenderSection("topSection", false)
-}
 
-@section topMenu
-{
-    <li>
-        @Html.ActionLink("Продукція", "Index", "ProductCategories")
-    </li>
-    <li>
-        @Html.ActionLink("Контакти", "Index", "ContactInfoAdmin")
-    </li>
-    <li>
-        @Html.ActionLink("Країни", "Index", "Countries")
-    </li>
-    <li>
-        <a>Замовлення</a>
-    </li>
-    <li>
-        <a>Користувачі</a>
-    </li>
-    <li>
-        @Html.ActionLink("Магазин", "Index", "Home", null, new
-            {
-                style = "color: lightgreen !important;"
-            })
-    </li>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(ApplicationSettings.Instance.AppSettings.ApplicationName, "Index", "Home",
+                    new {area = ""}, new {@class = "navbar-brand"})
+            </div>
+            <div class="navbar-collapse collapse row">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Продукція", "Index", "Production")</li>
+                    <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
+                    <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
+                </ul>
+
+                <div class="navbar-right" style="margin-right: 0 !important">
+                    <ul class="nav navbar-nav">
+                        @Html.Partial("_loginPartial")
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
 @section content
 {
-    @RenderSection("content")
+    @RenderSection("content")    
 }
 
 @section scripts
 {
-    @RenderSection("scripts", false)
 }
