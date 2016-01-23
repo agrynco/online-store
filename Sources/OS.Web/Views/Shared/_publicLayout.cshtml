@@ -71,29 +71,6 @@
         </div>
         @*<div class="col-md-3 table-col" style="background: lightgray"></div>*@
     </div>
-    <div class="push">
-    </div>
 }
 
-<div class="footer container">
-        <hr />
-        <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
-        <p>
-            <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
-        </p>
-        <p>
-            <span>
-                <b>Client:</b>
-            </span>
-            <span id="browserInfo"></span>
-        </p>
-    </div>
 
-    @section scripts
-{
-        <script>
-            document.getElementById("browserInfo").innerHTML = navigator.userAgent;
-        </script>
-
-        @RenderSection("scripts")
-    }

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using OS.Configuration
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -17,6 +18,27 @@
 <div class="container table-container wrapper">
     @RenderSection("content")
 </div>
+
+<div class="footer container">
+    <hr/>
+    <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
+    <p>
+        <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
+    </p>
+    <p>
+        <span>
+            <b>Client:</b>
+        </span>
+        <span id="browserInfo"></span>
+    </p>
+</div>
+
+@section scripts
+{
+    <script>
+        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+    </script>
+}
 
 @RenderSection("scripts")
 
