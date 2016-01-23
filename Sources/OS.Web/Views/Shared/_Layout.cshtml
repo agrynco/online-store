@@ -17,6 +17,9 @@
 
 <div class="container table-container wrapper">
     @RenderSection("content")
+
+    <div class="push">
+    </div>
 </div>
 
 <div class="footer container">
@@ -33,17 +36,10 @@
     </p>
 </div>
 
-@section scripts
-{
-    <script>
-        document.getElementById("browserInfo").innerHTML = navigator.userAgent;
-    </script>
-}
-
-@RenderSection("scripts")
-
 <script>
     document.getElementById("browserInfo").innerHTML = navigator.userAgent;
+
+    @RenderSection("scripts")
 </script>
 </body>
 </html>
