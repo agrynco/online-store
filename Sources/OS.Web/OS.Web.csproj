@@ -989,6 +989,8 @@
     <Content Include="Scripts\tinymce\tools\tasks\moxiezip.js" />
     <Content Include="Scripts\tinymce\tools\tasks\skin.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\ProductCategories\Index.cshtml" />
+    <Content Include="Views\ProductCategories\_productCategoryItem.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.ascx" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.ascx" />
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.ascx" />
@@ -1168,12 +1170,10 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BootstrapSiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\ProductCategories\Index.cshtml" />
     <Content Include="Views\Shared\_adminListLayout.cshtml" />
-    <Content Include="Views\ProductCategories\_productCategoryItem.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ProductCategoriesFilterViewModel.cshtml" />
-    <None Include="Views\ProductCategories\Edit.cshtml" />
     <Content Include="Views\Shared\_adminEditLayout.cshtml" />
+    <Content Include="Views\ProductCategories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
