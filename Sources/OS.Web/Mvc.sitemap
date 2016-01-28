@@ -10,7 +10,8 @@
         <mvcSiteMapNode title="Карта сайту" controller="SiteMap" action="Index" />
         <mvcSiteMapNode title="Вхід" controller="Account" action="Login" />
         <mvcSiteMapNode title="Реєстрація" controller="Account" action="Register" />
-        
+        <mvcSiteMapNode title="Категорії товару" controller="ProductCategories" action="Index">
+            <!--<mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>-->
+        </mvcSiteMapNode>
     </mvcSiteMapNode>
-
 </mvcSiteMap>

@@ -5,7 +5,6 @@
 
 @section topSection
 {
-
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -19,7 +18,7 @@
             </div>
             <div class="navbar-collapse collapse row">
                 <ul class="nav navbar-nav navbar-left">
-                    <li>@Html.ActionLink("Продукція", "Index", "Production")</li>
+                    <li>@Html.ActionLink("Продукція", "Index", "ProductCategories")</li>
                     <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
                     <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
                 </ul>
@@ -36,9 +35,12 @@
 
 @section content
 {
+    @Html.MvcSiteMap().SiteMapPath("BootstrapSiteMapPathHelperModel")
+
     @RenderSection("content")    
 }
 
 @section scripts
 {
+    @RenderSection("scripts", false)
 }

@@ -1,0 +1,44 @@
+﻿@using OS.Web.Models.ProductCategoryViewModels
+@model ProductCategoriesViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
+}
+
+@section filter
+{
+    @Html.EditorFor(x => x.Filter)
+}
+
+@section list
+{
+    @if (Model.Categories.Count > 0)
+    {
+        <div id="categories" class="row list-group">
+            @foreach (ProductCategoryListItemViewModel categoryListItemViewModel in Model.Categories)
+            {
+                @Html.Partial("_productCategoryItem", categoryListItemViewModel.ProductCategory)
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Ця категорія не містить категорій
+        </div>
+    }
+}
+
+@section scripts
+{
+    <script src="~/Scripts/application/ProductCategories/productCategoriesListController.js"></script>
+    <script type="text/javascript">
+        var enterTheCategoryCallBack = function(categoryId)
+        {
+            $("#@Html.IdFor(x => x.Filter.ParentId)").val(categoryId);
+            doSearch();
+        }
+
+        var productCategoriesListController = new ProductCategoriesListController(enterTheCategoryCallBack);
+    </script>
+}

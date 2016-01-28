@@ -54,6 +54,10 @@
     <Compile Include="Order.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="OrderStatusesHistoryItem.cs" />
+    <Compile Include="PagedEntityListResult.cs" />
+    <Compile Include="PagedIdentityListResult.cs" />
+    <Compile Include="PagedProductCategoryListResult.cs" />
+    <Compile Include="PaginationFilter.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="ProductCategoriesFilter.cs" />
     <Compile Include="OrderedProduct.cs" />

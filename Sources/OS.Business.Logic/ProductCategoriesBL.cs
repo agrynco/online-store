@@ -36,10 +36,16 @@ namespace OS.Business.Logic
             return _productCategoriesRepository.GetById(id);
         }
 
-        public IList<ProductCategory> SearchByFilter(ProductCategoriesFilter filter)
+        public PagedProductCategoryListResult SearchByFilter(ProductCategoriesFilter filter)
         {
-            return _productCategoriesRepository.SearchByFilter(filter);
-        } 
+            IQueryable<ProductCategory> query = _productCategoriesRepository.SearchByFilter(filter).OrderBy(entity => entity.Name);
+
+            PagedProductCategoryListResult result = new PagedProductCategoryListResult();
+            result.TotalRecords = query.Count();
+            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+
+            return result;
+        }
 
         public void Update(ProductCategory productCategory)
         {

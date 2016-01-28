@@ -25,7 +25,8 @@
                     {
                         if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
                         {
-                            <li>@Html.ActionLink("Адміністрування", "Index", "Production", null, new
+                            <li>
+                                @Html.ActionLink("Адміністрування", "Index", "ProductCategories", null, new
                                     {
                                         style = "color: red;"
                                     })</li>
