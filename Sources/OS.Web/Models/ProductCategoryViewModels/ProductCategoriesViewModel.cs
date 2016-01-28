@@ -13,10 +13,13 @@ namespace OS.Web.Models.ProductCategoryViewModels
         public ProductCategoriesViewModel()
         {
             Filter = new ProductCategoriesFilterViewModel();
+            PathToRoot = new List<ProductCategoryListItemViewModel>();
         }
 
         public ProductCategoriesFilterViewModel Filter { get; set; }
 
         public List<ProductCategoryListItemViewModel> Categories { get; set; }
+
+        public List<ProductCategoryListItemViewModel> PathToRoot { get; set; } 
     }
 }

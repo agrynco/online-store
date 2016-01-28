@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
@@ -15,25 +16,31 @@ namespace OS.Web.Controllers.Administration
             _productCategoriesBL = productCategoriesBL;
         }
 
-        public ActionResult Index(int? parentCategoryId, ProductCategoriesFilterViewModel filter)
+
+        public ActionResult Index(ProductCategoriesFilterViewModel filter)
         {
             ProductCategoriesViewModel model = new ProductCategoriesViewModel
                 {
                     Filter = filter
                 };
 
-            if (parentCategoryId.HasValue)
-            {
-                ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategoryName);
-                model.Filter.ParentCategoryName = _productCategoriesBL.GetById(parentCategoryId.Value).Name;
-            }
-
             if (ModelState.IsValid)
             {
+                if (filter.ParentId.HasValue)
+                {
+                    ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategoryName);
+                    model.Filter.ParentCategoryName = _productCategoriesBL.GetById(filter.ParentId.Value).Name;
+                    List<ProductCategory> parentCategories = _productCategoriesBL.GetParentCategories(filter.ParentId.Value);
+                    parentCategories.ForEach(category => model.PathToRoot.Insert(0, new ProductCategoryListItemViewModel
+                        {
+                            ProductCategory = category
+                        }));
+                }
+
                 ProductCategoriesFilter productCategoriesFilter = new ProductCategoriesFilter
                     {
                         IgnoreParentId = false,
-                        ParentId = parentCategoryId,
+                        ParentId = filter.ParentId,
                         Text = filter.Name
                     };
                 productCategoriesFilter.PaginationFilter.PageNumber = filter.PaginationFilter.PageNumber;

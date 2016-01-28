@@ -35,7 +35,14 @@
 
 @section content
 {
-    @Html.MvcSiteMap().SiteMapPath("BootstrapSiteMapPathHelperModel")
+    @if (!IsSectionDefined("breadcrumbs"))
+    {
+        @Html.MvcSiteMap().SiteMapPath("BootstrapSiteMapPathHelperModel")
+    }
+    else
+    {
+        @RenderSection("breadcrumbs")
+    }
 
     @RenderSection("content")    
 }
