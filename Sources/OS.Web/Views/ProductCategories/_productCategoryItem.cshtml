@@ -1,0 +1,50 @@
+﻿@using OS.Business.Domain
+@using OS.Common
+@model ProductCategory
+
+<div class="item col-xs-2 col-lg-2">
+    <div class="thumbnail">
+        <div class="group list-group-image product-category" style="width: 160px; height: 142px;">
+            <div style="float: right !important; margin: 4px;">
+                @Html.ActionLink(" ", "Delete", new
+                    {
+                        id = Model.Id
+                    }, new
+                        {
+                            @class = "glyphicon glyphicon-remove"
+                        })
+
+            </div>
+            <div style="float: right !important; margin: 4px;">
+                @Html.ActionLink(" ", "Edit", new
+                    {
+                        id = Model.Id
+                    }, new
+                        {
+                            @class = "glyphicon glyphicon-edit"
+                        })
+            </div>
+        </div>
+        <div class="caption">
+            <h5 class="group inner list-group-item-heading">
+                <a href="#" action="enter-category" param="@Model.Id">@Model.Name</a>
+            </h5>
+
+            @if (Model.Description != null)
+            {
+                <p class="group inner list-group-item-text">
+                    @{
+                        string description = Model.Description.Trunc(100);
+
+                        if (description.Length < Model.Description.Length)
+                        {
+                            description += "...";
+                        }
+                    }
+
+                    @description
+                </p>
+            }
+        </div>
+    </div>
+</div>

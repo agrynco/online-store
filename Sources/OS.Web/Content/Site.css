@@ -70,3 +70,34 @@ textarea
     vertical-align: top;
 }
 
+.product-category
+{
+    background-image: url("../Images/product-category.png")
+}
+
+.filter-col
+{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.form-group label
+{
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.row-centered 
+{
+    text-align:center;
+}
+
+.col-centered 
+{
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}

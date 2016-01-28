@@ -258,7 +258,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Administration\BaseAdminController.cs" />
-    <Compile Include="Controllers\Administration\ProductionController.cs" />
+    <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
@@ -277,26 +277,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
     <Compile Include="Models\ConsumerBasketViewModel.cs" />
     <Compile Include="Models\ContactInfoEditViewModel.cs" />
     <Compile Include="Models\EditOrderViewModel.cs" />
-    <Compile Include="Models\ProductCategoryViewModels\LevelUpProductCategoryViewModel.cs" />
-    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
-    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PaginationFilterViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryAutocompleteItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
-    <Compile Include="Models\ProductCategoryViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ProductInBasketViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductCreateOrEditViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="OsSqlErrorLog.cs" />
+    <Compile Include="ProductCategoryNodesProvider.cs" />
     <Compile Include="ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -344,6 +345,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\product-category.png" />
     <Content Include="Mvc.sitemap">
       <SubType>Designer</SubType>
     </Content>
@@ -354,6 +356,7 @@
     <None Include="Properties\PublishProfiles\Production.pubxml" />
     <Content Include="Images\minus_white.png" />
     <Content Include="Images\plus.png" />
+    <Content Include="Scripts\application\ProductCategories\productCategoriesListController.js" />
     <Content Include="Scripts\application\products\consumerBasket.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1013,7 +1016,6 @@
     <Content Include="Views\Stub\Index.cshtml" />
     <Content Include="Views\BaseLayout\Index.cshtml" />
     <Content Include="Views\SystemInfo\Index.cshtml" />
-    <Content Include="Views\Shared\_categoriesEditor.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Lockout.cshtml" />
@@ -1166,8 +1168,12 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BootstrapSiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Production\Index.cshtml" />
+    <Content Include="Views\ProductCategories\Index.cshtml" />
     <Content Include="Views\Shared\_adminListLayout.cshtml" />
+    <Content Include="Views\ProductCategories\_productCategoryItem.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProductCategoriesFilterViewModel.cshtml" />
+    <None Include="Views\ProductCategories\Edit.cshtml" />
+    <Content Include="Views\Shared\_adminEditLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

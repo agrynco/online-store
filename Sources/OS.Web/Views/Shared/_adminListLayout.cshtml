@@ -2,23 +2,84 @@
     Layout = "_adminLayout.cshtml";
 }
 
+
+@if (IsSectionDefined("substituteBreadcrumbs"))
+{
+    @section breadcrumbs
+    {
+        @RenderSection("substituteBreadcrumbs")
+    }
+}
+
 @section content
 {
     <div class="panel panel-default">
         <ul class="nav nav-pills">
-            <li role="presentation"><a href="#">Створити</a></li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Створити <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Категорію</a></li>
-                    <li><a href="#">Продукт</a></li>
-                </ul>
+            @if (IsSectionDefined("createToolBarItem"))
+            {
+                @RenderSection("createToolBarItem")
+            }
+            else
+            {
+                <li role="presentation">
+                    <a href="#">Створити</a>
+                </li>
+            }
+            <li role="presentation">
+                <a href="#">Видалити</a>
             </li>
 
-            <li role="presentation"><a href="#">Видалити</a></li>
+            @if (IsSectionDefined("filter"))
+            {
+                <li class="nav-divider"></li>
+                <li role="presentation">
+                    <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#filter-panel">
+                        <span class="glyphicon glyphicon-cog"></span>Фільтер
+                    </a>
+                </li>
+            }
+
         </ul>
     </div>
+
+    @if (IsSectionDefined("filter"))
+    {
+        string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
+        string listFilterFormName = "form-list-filter";
+
+        <div class="container">
+            <div class="row">
+                <div id="filter-panel" class="collapse in filter-panel" aria-expanded="true">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("Index", currentControllerName, FormMethod.Get, new
+                                {
+                                    id = listFilterFormName,
+                                    @class = "form-inline",
+                                    role = "form"
+                                }))
+                            {
+                                @RenderSection("filter")
+                                <div class="btn btn-primary" onclick="doSearch()">Шукати</div>
+
+                                <script type="text/javascript">
+                                    function doSearch()
+                                    {
+                                        $("#@listFilterFormName").submit();
+                                    }
+                                </script>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @RenderSection("list")
 }
 
-@RenderBody()
+@section scripts
+{
+    @RenderSection("scripts", false)
+}

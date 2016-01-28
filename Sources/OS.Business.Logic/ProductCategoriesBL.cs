@@ -26,6 +26,11 @@ namespace OS.Business.Logic
             return _productCategoriesRepository.SearchCategories(searchTerm).ToList();
         }
 
+        /// <summary>
+        /// Returns full path to the root
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns>List of the <see cref="ProductCategory"/>First category is on the upper level</returns>
         public List<ProductCategory> GetParentCategories(int categoryId)
         {
             return _productCategoriesRepository.GetParentCategories(categoryId).OrderBy(category => category.Name).ToList();
@@ -36,10 +41,16 @@ namespace OS.Business.Logic
             return _productCategoriesRepository.GetById(id);
         }
 
-        public IList<ProductCategory> SearchByFilter(ProductCategoriesFilter filter)
+        public PagedProductCategoryListResult SearchByFilter(ProductCategoriesFilter filter)
         {
-            return _productCategoriesRepository.SearchByFilter(filter);
-        } 
+            IQueryable<ProductCategory> query = _productCategoriesRepository.SearchByFilter(filter).OrderBy(entity => entity.Name);
+
+            PagedProductCategoryListResult result = new PagedProductCategoryListResult();
+            result.TotalRecords = query.Count();
+            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+
+            return result;
+        }
 
         public void Update(ProductCategory productCategory)
         {

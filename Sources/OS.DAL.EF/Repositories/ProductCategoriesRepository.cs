@@ -49,7 +49,7 @@ namespace OS.DAL.EF.Repositories
             return result;
         }
 
-        public IList<ProductCategory> SearchByFilter(ProductCategoriesFilter filter)
+        public IQueryable<ProductCategory> SearchByFilter(ProductCategoriesFilter filter)
         {
             IQueryable<ProductCategory> query = GetAll();
 
@@ -63,7 +63,7 @@ namespace OS.DAL.EF.Repositories
                 query = query.Where(category => category.Name.Contains(filter.Text));
             }
 
-            return query.ToList();
+            return query;
         }
     }
 }
