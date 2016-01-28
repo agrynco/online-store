@@ -2,7 +2,12 @@
 {
     public static class Constants
     {
-        public class RouteDataKeys
+        public static class TempDataKeys
+        {
+            public const string PRODUCT_CATEGORIES_FILTER_VIEW_MODEL = "ProductCategoriesFilterViewModel";
+        }
+
+        public static class RouteDataKeys
         {
             public const string CONTROLLER = "controller";
         }

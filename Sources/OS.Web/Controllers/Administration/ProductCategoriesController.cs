@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Domain;
@@ -19,6 +20,11 @@ namespace OS.Web.Controllers.Administration
 
         public ActionResult Index(ProductCategoriesFilterViewModel filter)
         {
+            if (TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] != null)
+            {
+                filter = (ProductCategoriesFilterViewModel)TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL];
+            }
+
             ProductCategoriesViewModel model = new ProductCategoriesViewModel
                 {
                     Filter = filter
@@ -43,8 +49,8 @@ namespace OS.Web.Controllers.Administration
                         ParentId = filter.ParentId,
                         Text = filter.Name
                     };
-                productCategoriesFilter.PaginationFilter.PageNumber = filter.PaginationFilter.PageNumber;
-                productCategoriesFilter.PaginationFilter.PageSize = filter.PaginationFilter.PageSize;
+                productCategoriesFilter.PaginationFilter.PageNumber = filter.PageNumber;
+                productCategoriesFilter.PaginationFilter.PageSize = filter.PageSize;
 
                 PagedProductCategoryListResult pagedProductCategoryListResult = _productCategoriesBL.SearchByFilter(productCategoriesFilter);
 
@@ -61,12 +67,59 @@ namespace OS.Web.Controllers.Administration
 
         public ActionResult Edit(int id)
         {
-            throw new System.NotImplementedException();
+            ProductCategory productCategory = _productCategoriesBL.GetById(id);
+            return View(new ProductCategoryCreateOrEditViewModel
+                {
+                    ParentId = productCategory.ParentId,
+                    Id = productCategory.Id,
+                    Name = productCategory.Name
+                });
+        }
+
+        [HttpPost]
+        public ActionResult Save(ProductCategoryCreateOrEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_productCategoriesBL.GetCategories(model.ParentId).Any(productCategory => productCategory.Name == model.Name && productCategory.Id != model.Id))
+                {
+                    ModelState.AddModelError("Name", "Така категорія вже існує");
+                }
+
+                if (ModelState.IsValid)
+                {
+                    ProductCategory productCategory;
+
+                    if (model.Id.HasValue)
+                    {
+                        productCategory = _productCategoriesBL.GetById(model.Id.Value);
+                        productCategory.Name = model.Name;
+
+                        _productCategoriesBL.Update(productCategory);
+                    }
+                    else
+                    {
+                        productCategory = new ProductCategory
+                            {
+                                ParentId = model.ParentId,
+                                Name = model.Name
+                            };
+                        _productCategoriesBL.Create(productCategory);
+                    }
+
+                    ProductCategoriesFilterViewModel filterViewModel = new ProductCategoriesFilterViewModel();
+                    filterViewModel.ParentId = model.ParentId;
+                    TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
+                    return RedirectToAction("Index", filterViewModel);
+                }
+            }
+
+            return View("Edit", model);
         }
 
         public ActionResult Delete(int id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
