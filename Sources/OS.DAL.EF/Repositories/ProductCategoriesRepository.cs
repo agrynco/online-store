@@ -65,5 +65,10 @@ namespace OS.DAL.EF.Repositories
 
             return query;
         }
+
+        public int? GetParentId(int id)
+        {
+            return GetById(id).ParentId;
+        }
     }
 }

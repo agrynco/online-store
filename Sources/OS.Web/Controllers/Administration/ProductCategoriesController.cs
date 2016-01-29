@@ -119,7 +119,13 @@ namespace OS.Web.Controllers.Administration
 
         public ActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            int? parentId = _productCategoriesBL.GetParentId(id);
+            _productCategoriesBL.Delete(id);
+
+            ProductCategoriesFilterViewModel filterViewModel = new ProductCategoriesFilterViewModel();
+            filterViewModel.ParentId = parentId;
+            TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
+            return RedirectToAction("Index", filterViewModel);
         }
 
         public ActionResult Create(int? parentcategoryid)

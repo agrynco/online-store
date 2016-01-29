@@ -10,5 +10,6 @@ namespace OS.DAL.Abstract
         IQueryable<ProductCategory> SearchCategories(string searchTerm);
         IList<ProductCategory> GetParentCategories(int categoryId);
         IQueryable<ProductCategory> SearchByFilter(ProductCategoriesFilter filter);
+        int? GetParentId(int id);
     }
 }

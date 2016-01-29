@@ -74,5 +74,10 @@ namespace OS.Business.Logic
                 product.Categories.Add(owner);
             }
         }
+
+        public int? GetParentId(int id)
+        {
+            return _productCategoriesRepository.GetParentId(id);
+        }
     }
 }
