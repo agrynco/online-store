@@ -101,3 +101,10 @@ textarea
     /* inline-block space fix */
     margin-right:-4px;
 }
+
+.os-item
+{
+    float: none !important;
+    display: inline-block;
+    vertical-align: top;
+}
