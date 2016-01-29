@@ -121,5 +121,13 @@ namespace OS.Web.Controllers.Administration
         {
             throw new NotImplementedException();
         }
+
+        public ActionResult Create(int? parentcategoryid)
+        {
+            return View("Edit", new ProductCategoryCreateOrEditViewModel
+                {
+                    ParentId = parentcategoryid
+                });
+        }
     }
 }

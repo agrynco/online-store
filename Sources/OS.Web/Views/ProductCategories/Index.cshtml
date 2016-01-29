@@ -26,6 +26,16 @@
     </ol>
 }
 
+@section createToolBarItem
+{
+<li role="presentation">
+    @Html.ActionLink("Створити", "Create", new
+        {
+            parentCategoryId = Model.Filter.ParentId
+        })
+</li>
+}
+
 @section filter
 {
     @Html.EditorFor(x => x.Filter)

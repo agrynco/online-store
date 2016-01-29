@@ -13,6 +13,10 @@
 
 @section content
 {
+    @{
+        string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
+    }
+
     <div class="panel panel-default">
         <ul class="nav nav-pills">
             @if (IsSectionDefined("createToolBarItem"))
@@ -22,7 +26,7 @@
             else
             {
                 <li role="presentation">
-                    <a href="#">Створити</a>
+                    @Html.ActionLink("Створити", "Create", currentControllerName)
                 </li>
             }
             <li role="presentation">
@@ -44,7 +48,6 @@
 
     @if (IsSectionDefined("filter"))
     {
-        string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
         string listFilterFormName = "form-list-filter";
 
         <div class="container">
