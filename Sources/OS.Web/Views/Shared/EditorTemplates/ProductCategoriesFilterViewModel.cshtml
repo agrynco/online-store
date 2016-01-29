@@ -22,3 +22,42 @@
             @class = "form-control input-sm",
         })
 </div>
+
+<script type="text/javascript">
+    function initCategoriesFilter(enterTheCategoryCallBack)
+    {
+        var tbxPrentCategoryName = $("#@Html.IdFor(x => x.ParentCategoryName)");
+        tbxPrentCategoryName.autocomplete(
+        {
+            source: "/api/categories/autocomplete",
+            minLength: 1,
+            create: function()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
+                {
+                    item.ParentCategories.push(item.Name);
+
+                    var fullPath = item.ParentCategories.join(" -> ");
+
+                    return $('<li>')
+                        .append('<a>' + fullPath.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                        .appendTo(ul);
+                };
+            },
+            select: function(event, ui)
+            {
+                enterTheCategoryCallBack(ui.item.Id);
+            }
+        });
+
+        tbxPrentCategoryName.focus(function()
+        {
+            $(this).select();
+        });
+
+        tbxPrentCategoryName.mouseup(function ()
+        {
+            $(this).select();
+        });
+    }
+</script>

@@ -9,7 +9,8 @@ namespace OS.Web
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery.cookie.js"));
+                        "~/Scripts/jquery.cookie.js",
+                        "~/Scripts/jquery-ui/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
