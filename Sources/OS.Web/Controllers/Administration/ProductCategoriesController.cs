@@ -31,9 +31,10 @@ namespace OS.Web.Controllers.Administration
 
             if (ModelState.IsValid)
             {
+                ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategoryName);
+                model.Filter.ParentCategoryName = string.Empty;
                 if (filter.ParentId.HasValue)
                 {
-                    ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategoryName);
                     model.Filter.ParentCategoryName = _productCategoriesBL.GetById(filter.ParentId.Value).Name;
                     List<ProductCategory> parentCategories = _productCategoriesBL.GetParentCategories(filter.ParentId.Value);
                     parentCategories.ForEach(category => model.PathToRoot.Insert(0, new ProductCategoryListItemViewModel
