@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Domain;
@@ -72,7 +71,8 @@ namespace OS.Web.Controllers.Administration
                 {
                     ParentId = productCategory.ParentId,
                     Id = productCategory.Id,
-                    Name = productCategory.Name
+                    Name = productCategory.Name,
+                    Description = productCategory.Description
                 });
         }
 
@@ -94,6 +94,7 @@ namespace OS.Web.Controllers.Administration
                     {
                         productCategory = _productCategoriesBL.GetById(model.Id.Value);
                         productCategory.Name = model.Name;
+                        productCategory.Description = model.Description;
 
                         _productCategoriesBL.Update(productCategory);
                     }
@@ -102,7 +103,8 @@ namespace OS.Web.Controllers.Administration
                         productCategory = new ProductCategory
                             {
                                 ParentId = model.ParentId,
-                                Name = model.Name
+                                Name = model.Name,
+                                Description = model.Description
                             };
                         _productCategoriesBL.Create(productCategory);
                     }
