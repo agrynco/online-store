@@ -84,5 +84,12 @@
 
 @section scripts
 {
+    <script type="text/javascript">
+        function confirmDelete()
+        {
+            return confirm("Ви впевнені що хочете видалити елемент?");
+        }
+    </script>
+
     @RenderSection("scripts", false)
 }
