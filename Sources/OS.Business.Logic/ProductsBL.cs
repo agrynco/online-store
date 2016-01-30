@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
@@ -9,8 +10,7 @@ namespace OS.Business.Logic
     {
         private readonly IProductsRepository _productsRepository;
         
-        public ProductsBL(IProductsRepository productsRepository, 
-            IProductCategoriesRepository productCategoriesRepository)
+        public ProductsBL(IProductsRepository productsRepository)
         {
             _productsRepository = productsRepository;
         }
@@ -38,6 +38,17 @@ namespace OS.Business.Logic
         public void Update(Product product)
         {
             _productsRepository.Update(product);
+        }
+
+        public PagedProductListResult Search(ProductsFilter filter)
+        {
+            IQueryable<Product> query = _productsRepository.SearchByFilter(filter).OrderBy(entity => entity.Name);
+
+            PagedProductListResult result = new PagedProductListResult();
+            result.TotalRecords = query.Count();
+            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+
+            return result;
         }
 
         public void Delete(int productId)

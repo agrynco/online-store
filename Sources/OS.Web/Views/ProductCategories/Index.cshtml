@@ -17,10 +17,10 @@
                 <a href="#" onclick="enterTheCategoryCallBack('@productCategoryListItemViewModel.ProductCategory.Id')">@productCategoryListItemViewModel.ProductCategory.Name</a>
             </li>
         }
-        @if (Model.Filter.ParentId.HasValue)
+        @if (Model.Filter.ParentCategory.Id.HasValue)
         {
             <li>
-                @Model.Filter.ParentCategoryName
+                @Model.Filter.ParentCategory.Name
             </li>
         }
     </ol>
@@ -31,7 +31,7 @@
 <li role="presentation">
     @Html.ActionLink("Створити", "Create", new
         {
-            parentCategoryId = Model.Filter.ParentId
+            parentCategoryId = Model.Filter.ParentCategory.Id
         })
 </li>
 }
@@ -66,12 +66,12 @@
     <script type="text/javascript">
         var enterTheCategoryCallBack = function(categoryId)
         {
-            $("#@Html.IdFor(x => x.Filter.ParentId)").val(categoryId);
+            $("#@Html.IdFor(x => x.Filter.ParentCategory.Id)").val(categoryId);
             doSearch();
         }
 
-        initCategoriesFilter(enterTheCategoryCallBack);
-
         var productCategoriesListController = new ProductCategoriesListController(enterTheCategoryCallBack);
+       
+        initAutocompleteCategoriesFilter(enterTheCategoryCallBack);
     </script>
 }

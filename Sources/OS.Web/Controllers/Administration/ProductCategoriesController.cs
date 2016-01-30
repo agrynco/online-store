@@ -31,12 +31,12 @@ namespace OS.Web.Controllers.Administration
 
             if (ModelState.IsValid)
             {
-                ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategoryName);
-                model.Filter.ParentCategoryName = string.Empty;
-                if (filter.ParentId.HasValue)
+                ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategory.Name);
+                model.Filter.ParentCategory.Name = string.Empty;
+                if (filter.ParentCategory.Id.HasValue)
                 {
-                    model.Filter.ParentCategoryName = _productCategoriesBL.GetById(filter.ParentId.Value).Name;
-                    List<ProductCategory> parentCategories = _productCategoriesBL.GetParentCategories(filter.ParentId.Value);
+                    model.Filter.ParentCategory.Name = _productCategoriesBL.GetById(filter.ParentCategory.Id.Value).Name;
+                    List<ProductCategory> parentCategories = _productCategoriesBL.GetParentCategories(filter.ParentCategory.Id.Value);
                     parentCategories.ForEach(category => model.PathToRoot.Insert(0, new ProductCategoryListItemViewModel
                         {
                             ProductCategory = category
@@ -46,8 +46,7 @@ namespace OS.Web.Controllers.Administration
                 ProductCategoriesFilter productCategoriesFilter = new ProductCategoriesFilter
                     {
                         IgnoreParentId = false,
-                        ParentId = filter.ParentId,
-                        Text = filter.Name
+                        ParentId = filter.ParentCategory.Id,
                     };
                 productCategoriesFilter.PaginationFilter.PageNumber = filter.PageNumber;
                 productCategoriesFilter.PaginationFilter.PageSize = filter.PageSize;
@@ -58,8 +57,6 @@ namespace OS.Web.Controllers.Administration
                     {
                         ProductCategory = entity
                     }).ToList();
-
-                return View(model);
             }
 
             return View(model);
@@ -111,7 +108,7 @@ namespace OS.Web.Controllers.Administration
                     }
 
                     ProductCategoriesFilterViewModel filterViewModel = new ProductCategoriesFilterViewModel();
-                    filterViewModel.ParentId = model.ParentId;
+                    filterViewModel.ParentCategory.Id = model.ParentId;
                     TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
                     return RedirectToAction("Index", filterViewModel);
                 }
@@ -126,7 +123,7 @@ namespace OS.Web.Controllers.Administration
             _productCategoriesBL.Delete(id);
 
             ProductCategoriesFilterViewModel filterViewModel = new ProductCategoriesFilterViewModel();
-            filterViewModel.ParentId = parentId;
+            filterViewModel.ParentCategory.Id = parentId;
             TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
             return RedirectToAction("Index", filterViewModel);
         }

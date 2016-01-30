@@ -35,5 +35,22 @@ namespace OS.DAL.EF.Repositories
         {
             return DbSet.Where(product => ids.Contains(product.Id));
         }
+
+        public IQueryable<Product> SearchByFilter(ProductsFilter filter)
+        {
+            IQueryable<Product> query = GetAll();
+
+            if (filter.ParentId.HasValue)
+            {
+                query = query.Where(product => product.Categories.Select(category => category.Id).Contains(filter.ParentId.Value));
+            }
+
+            if (!string.IsNullOrEmpty(filter.Text))
+            {
+                query = query.Where(product => product.Name.Contains(filter.Text));
+            }
+
+            return query;
+        }
     }
 }

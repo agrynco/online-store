@@ -1,20 +1,48 @@
-﻿@using OS.Business.Domain
-@using OS.Web.Models
-@model HomePageViewModel
+﻿@using OS.Web.Models.ProductViewModels
+@model ProductsViewModel
 
 @{
-    Layout = "../Shared/_publicLayout.cshtml";
+    Layout = "../Shared/_adminListLayout.cshtml";
 }
 
+@section substituteBreadcrumbs
+{
 
-<div id="products" class="row list-group">
-    @foreach (Product product in Model.Products)
+}
+
+@section filter
+{
+    @Html.EditorFor(x => x.Filter.Category, "_autocompleteCategorySelector")
+}
+
+@section list
+{
+    @if (Model.Products.Count > 0)
     {
-        @Html.Partial("_productItem", product)
+        <div id="products" class="row list-group">
+            @foreach (ProductListItemViewModel product in Model.Products)
+            {
+                @Html.Partial("_productItem", product.Product)
+            }
+        </div>
     }
-</div>
+    else
+    {
+        <div class="alert alert-info">
+            Ця категорія не містить категорій
+        </div>
+    }
 
+}
 
 @section scripts
 {
+    <script type="text/javascript">
+        var enterTheCategoryCallBack = function(categoryId)
+        {
+            $("#@Html.IdFor(x => x.Filter.Category.Id)").val(categoryId);
+            doSearch();
+        }
+        initAutocompleteCategoriesFilter(enterTheCategoryCallBack);
+    </script>
 }

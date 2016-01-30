@@ -1,0 +1,53 @@
+﻿@using OS.Web.Models.ProductCategoryViewModels
+@model AutoCompleteProductCategoryFilterItemViewModel
+
+<div class="form-group">
+    @Html.LabelFor(x => x.Name, new
+        {
+            @class = "filter-col"
+        })
+    @Html.TextBoxFor(x => x.Name, new
+        {
+            @class = "form-control input-sm",
+        })
+    @Html.HiddenFor(x => x.Id)
+</div>
+
+<script type="text/javascript">
+    function initAutocompleteCategoriesFilter(enterTheCategoryCallBack)
+    {
+        var tbxPrentCategoryName = $("#@Html.IdFor(x => x.Name)");
+        tbxPrentCategoryName.autocomplete(
+        {
+            source: "/api/categories/autocomplete",
+            minLength: 1,
+            create: function()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
+                {
+                    item.ParentCategories.push(item.Name);
+
+                    var fullPath = item.ParentCategories.join(" -> ");
+
+                    return $('<li>')
+                        .append('<a>' + fullPath.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                        .appendTo(ul);
+                };
+            },
+            select: function(event, ui)
+            {
+                enterTheCategoryCallBack(ui.item.Id);
+            }
+        });
+
+        tbxPrentCategoryName.focus(function()
+        {
+            $(this).select();
+        });
+
+        tbxPrentCategoryName.mouseup(function ()
+        {
+            $(this).select();
+        });
+    }
+</script>

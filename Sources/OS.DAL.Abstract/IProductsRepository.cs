@@ -10,5 +10,6 @@ namespace OS.DAL.Abstract
     {
         IQueryable<Product> Get(ProductsFilter filter);
         IQueryable<Product> GetByIds(IEnumerable<int> ids);
+        IQueryable<Product> SearchByFilter(ProductsFilter filter);
     }
 }
