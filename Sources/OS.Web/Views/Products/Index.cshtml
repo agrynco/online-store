@@ -22,7 +22,7 @@
         <div id="products" class="row list-group">
             @foreach (ProductListItemViewModel product in Model.Products)
             {
-                @Html.Partial("_productItem", product.Product)
+                @Html.Partial("_productItem", product)
             }
         </div>
     }

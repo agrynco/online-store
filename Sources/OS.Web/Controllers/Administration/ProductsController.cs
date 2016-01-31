@@ -20,6 +20,11 @@ namespace OS.Web.Controllers.Administration
 
         public ActionResult Index(ProductsFilterViewModel filter)
         {
+            if (TempData[Constants.TempDataKeys.PRODUCTS_FILTER_VIEW_MODEL] != null)
+            {
+                filter = (ProductsFilterViewModel) TempData[Constants.TempDataKeys.PRODUCTS_FILTER_VIEW_MODEL];
+            }
+
             ProductsViewModel model = new ProductsViewModel
                 {
                     Filter = filter
@@ -44,11 +49,22 @@ namespace OS.Web.Controllers.Administration
 
                 model.Products = pagedProductListResult.Entities.Select(entity => new ProductListItemViewModel
                     {
-                        Product = entity
+                        Product = entity,
+                        CategoryId = filter.Category.Id
                     }).ToList();
             }
 
             return View(model);
+        }
+
+        public ActionResult Delete(int id, int? categoryid)
+        {
+            _productsBL.Delete(id);
+
+            ProductsFilterViewModel filterViewModel = new ProductsFilterViewModel();
+            filterViewModel.Category.Id = categoryid;
+            TempData[Constants.TempDataKeys.PRODUCTS_FILTER_VIEW_MODEL] = filterViewModel;
+            return RedirectToAction("Index");
         }
     }
 }

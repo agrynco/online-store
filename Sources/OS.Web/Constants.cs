@@ -5,6 +5,7 @@
         public static class TempDataKeys
         {
             public const string PRODUCT_CATEGORIES_FILTER_VIEW_MODEL = "ProductCategoriesFilterViewModel";
+            public const string PRODUCTS_FILTER_VIEW_MODEL = "{FBD2BEDF-4AF9-458F-A949-ECA0EC98E72C}";
         }
 
         public static class RouteDataKeys

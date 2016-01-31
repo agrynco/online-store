@@ -5,5 +5,6 @@ namespace OS.Web.Models.ProductViewModels
     public class ProductListItemViewModel
     {
         public Product Product { get; set; }
+        public int? CategoryId { get; set; }
     }
 }
