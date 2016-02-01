@@ -66,5 +66,10 @@ namespace OS.Web.Controllers.Administration
             TempData[Constants.TempDataKeys.PRODUCTS_FILTER_VIEW_MODEL] = filterViewModel;
             return RedirectToAction("Index");
         }
+
+        public ActionResult Edit(int id, int? categoryId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -10,19 +10,41 @@
 
 
     @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post, new
-    {
-        @class = "form-horizontal", 
-        role = "form"
-    }))
+        {
+            @class = "form-horizontal",
+            role = "form"
+        }))
     {
         @RenderSection("editor")
 
-            <div class="row">
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <input type="submit" value="Зберегти" class="btn btn-default" />
-                    </div>
-                </div>
+        <div id="dialog-buttons" class="form-group" style="display: none">
+            <label class="col-md-2 control-label"></label>
+            <div class="col-md-6">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+                <span></span>
+                <input type="reset" class="btn btn-default" value="Відміна" onclick="goBack()">
             </div>
+        </div>
     }
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $().ready(function()
+        {
+            $("#dialog-buttons").detach().appendTo("#dialog-buttons-placeholder");
+            $("#dialog-buttons").show();
+        });
+
+        function goBack()
+        {
+            if (confirm("Ви впевненні що хочете відмінити редагуквання?") == true)
+            {
+                window.history.back();
+            }
+        }
+    </script>
+
+    @RenderSection("scripts", false)
 }
