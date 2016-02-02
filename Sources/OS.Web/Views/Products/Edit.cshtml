@@ -1,0 +1,107 @@
+﻿@using OS.Web.Models.ProductViewModels
+@model ProductCreateOrEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminEditLayout.cshtml";
+}
+
+@section editor
+{
+    <div class="row">
+        <div class="col-md-12">
+            <section id="category-editor">
+                <h4>
+                    @if (Model.Id.HasValue)
+                    {
+                        <text>
+                            Редагування
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            Створення
+                        </text>
+                    }
+                </h4>
+                <hr/>
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.Description, new
+                            {
+                                @class = "form-control",
+                                rows = 15
+                            })
+                        @Html.ValidationMessageFor(m => m.Description, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.BrandName, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.BrandName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.BrandName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CountryName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.CountryName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CountryName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="dialog-buttons-placeholder">
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init(
+        {
+            selector: "#@Html.IdFor(m => m.Description)"
+        });
+
+        $("#@Html.IdFor(m => m.BrandName)").autocomplete(
+        {
+            source: "/api/brands/autocomplete",
+            minLength: 1,
+            create: function ()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                {
+                    return $('<li>')
+                        .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                        .appendTo(ul);
+                };
+            }
+        });
+
+        $("#@Html.IdFor(m => m.CountryName)").autocomplete(
+        {
+            source: "/api/countries/autocomplete",
+            minLength: 1,
+            create: function ()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                {
+                    return $('<li>')
+                        .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                        .appendTo(ul);
+                };
+            }
+        });
+    </script>
+}

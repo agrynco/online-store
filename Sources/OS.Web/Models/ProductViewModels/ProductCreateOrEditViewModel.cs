@@ -1,5 +1,6 @@
 ﻿#region Usings
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 using OS.Business.Domain;
 #endregion
@@ -35,12 +36,16 @@ namespace OS.Web.Models.ProductViewModels
             set { Product.Id = value ?? 0; }
         }
 
+        public string Name { get; set; }
+        public string Description { get; set; }
+
         public Product Product { get; set; }
 
-        public int OwnerCategoryId { get; set; }
+        public int? OwnerCategoryId { get; set; }
 
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 
+        [Display(Name = "Бренд")]
         public string BrandName { get; set; }
         public string CountryName { get; set; }
 

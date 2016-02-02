@@ -20,7 +20,8 @@
             <div style="float: right !important; margin: 4px;">
                 @Html.ActionLink(" ", "Edit", new
                     {
-                        id = Model.Product.Id
+                        id = Model.Product.Id,
+                        categoryId = Model.CategoryId
                     }, new
                         {
                             @class = "glyphicon glyphicon-edit"

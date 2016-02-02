@@ -33,8 +33,15 @@
     <script type="text/javascript">
         $().ready(function()
         {
-            $("#dialog-buttons").detach().appendTo("#dialog-buttons-placeholder");
-            $("#dialog-buttons").show();
+            switch ($("#dialog-buttons-placeholder").length)
+            {
+                case 0:
+                    $("#dialog-buttons").show();
+
+                case 1:
+                    $("#dialog-buttons").detach().appendTo("#dialog-buttons-placeholder");
+                    $("#dialog-buttons").show();
+            }
         });
 
         function goBack()

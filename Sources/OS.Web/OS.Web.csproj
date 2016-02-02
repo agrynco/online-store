@@ -362,6 +362,7 @@
     <None Include="Properties\PublishProfiles\Production.pubxml" />
     <Content Include="Images\minus_white.png" />
     <Content Include="Images\plus.png" />
+    <Content Include="Scripts\application\log.js" />
     <Content Include="Scripts\application\ProductCategories\productCategoriesListController.js" />
     <Content Include="Scripts\application\products\consumerBasket.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1181,6 +1182,7 @@
     <Content Include="Views\Shared\_adminEditLayout.cshtml" />
     <Content Include="Views\ProductCategories\Edit.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\_autocompleteCategorySelector.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

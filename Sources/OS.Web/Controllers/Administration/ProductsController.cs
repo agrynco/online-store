@@ -69,7 +69,20 @@ namespace OS.Web.Controllers.Administration
 
         public ActionResult Edit(int id, int? categoryId)
         {
-            throw new System.NotImplementedException();
+            Product product = _productsBL.GetById(id);
+
+            ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel
+                {
+                    Name = product.Name,
+                    Description = product.Description,
+                    Product = product,
+                    Id = product.Id,
+                    BrandName = product.Brand.Name,
+                    CountryName = product.CountryProducer.Name,
+                    OwnerCategoryId = categoryId
+                };
+
+            return View(model);
         }
     }
 }
