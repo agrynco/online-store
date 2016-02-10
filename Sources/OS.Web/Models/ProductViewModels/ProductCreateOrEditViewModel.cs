@@ -43,12 +43,16 @@ namespace OS.Web.Models.ProductViewModels
 
         public int? OwnerCategoryId { get; set; }
 
+        [Display(Name = "Зображення для завантаження")]
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 
         [Display(Name = "Бренд")]
         public string BrandName { get; set; }
+
+        [Display(Name = "Краъна-виробник")]
         public string CountryName { get; set; }
 
+        [Display(Name = "Завантаженні зображення")]
         public List<ProductPhotoViewModel> ProductPhotoViewModels { get; set; }
     }
 }

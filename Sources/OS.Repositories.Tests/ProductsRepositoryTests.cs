@@ -24,7 +24,7 @@ namespace OS.Repositories.Tests
             List<Product> products = productsRepository.Get(filter).ToList();
 
             //Assert
-            Assert.That(products.Count, Is.EqualTo(1));
+            Assert.That(products.Count, Is.EqualTo(8));
         }
 
         [Test]

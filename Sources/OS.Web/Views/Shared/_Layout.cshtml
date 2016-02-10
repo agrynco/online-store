@@ -9,13 +9,13 @@
 </head>
 
 <body>
-
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/angular")
 
 @RenderSection("topSection")
 
-<div class="container table-container wrapper">
+<div class="container table-container wrapper" ng-app="uploadFilesApp">
     @RenderSection("content")
 
     <div class="push">

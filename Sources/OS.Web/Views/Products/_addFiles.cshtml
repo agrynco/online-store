@@ -1,0 +1,62 @@
+﻿@using OS.Web.Models.ProductViewModels
+@model ProductCreateOrEditViewModel
+
+<div class="form-group">
+    @Html.LabelFor(m => m.PostedProductPhotos, new {@class = "col-md-2 control-label"})
+    <div class="col-md-10">
+        <div ng-repeat="file in filesToUpload" class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Виберіть файл для завантаження" name="browse-file">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-open-file"></span>
+                        </button>
+                    </span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="removeFileUpload($index)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </span>
+                </div>
+                <input type="file" style="display: none" name="postedFiles" index="{{$index}}" onchange="angular.element(this).scope().fileNameChanged(this)"/>
+            </div>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-default btn-sm" ng-click="addFileUpload()">
+                <span class="glyphicon glyphicon-plus"></span>Додати зображення
+            </button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+        var uploadFilesApp = angular.module("uploadFilesApp", []);
+
+        uploadFilesApp.controller("uploadFilesController", function ($scope)
+        {
+            $scope.removeFileUpload = function (index)
+            {
+                $scope.filesToUpload.splice(index, 1);
+            };
+
+            $scope.addFileUpload = function ()
+            {
+                var index = $scope.filesToUpload.length;
+                $scope.filesToUpload.push(
+                {
+                    'Index': index
+                });
+            };
+
+            $scope.fileNameChanged = function (file)
+            {
+                var index = $(file).attr("index");
+                var fileName = file.files[0].name;
+                $("#file_" + index).text(fileName);
+            }
+
+            $scope.filesToUpload = new Array();
+        });
+</script>

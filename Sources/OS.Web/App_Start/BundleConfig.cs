@@ -13,6 +13,9 @@ namespace OS.Web
                         "~/Scripts/jquery-ui/jquery-ui.js",
                         "~/Scripts/application/log.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/Scripts/angular.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
