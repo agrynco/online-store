@@ -26,7 +26,7 @@ namespace OS.Web.Models.ProductViewModels
     {
         public ProductCreateOrEditViewModel()
         {
-            PostedProductPhotos = new List<HttpPostedFileBase>(new HttpPostedFileBase[5]);
+            PostedProductPhotos = new List<HttpPostedFileBase>();
             ProductPhotoViewModels = new List<ProductPhotoViewModel>();
         }
 
