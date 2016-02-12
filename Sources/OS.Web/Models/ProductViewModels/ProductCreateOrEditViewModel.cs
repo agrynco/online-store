@@ -36,7 +36,9 @@ namespace OS.Web.Models.ProductViewModels
             set { Product.Id = value ?? 0; }
         }
 
+        [Display(Name = "Назва товару")]
         public string Name { get; set; }
+        [Display(Name = "Опис")]
         public string Description { get; set; }
 
         public Product Product { get; set; }
@@ -49,7 +51,7 @@ namespace OS.Web.Models.ProductViewModels
         [Display(Name = "Бренд")]
         public string BrandName { get; set; }
 
-        [Display(Name = "Краъна-виробник")]
+        [Display(Name = "Країна-виробник")]
         public string CountryName { get; set; }
 
         [Display(Name = "Завантаженні зображення")]
