@@ -1,14 +1,22 @@
 ﻿@using OS.Web.Models.ProductViewModels
 @model ProductCreateOrEditViewModel
 
+@*@for (int i = 0; i < Model.PostedProductPhotos.Count; i++)*@
+@*{*@
+@*    <div>*@
+@*        @Html.IdFor(m => m.PostedProductPhotos[i])*@
+@*    </div>*@
+@*}*@
+
 <div class="form-group">
-    @Html.LabelFor(m => m.PostedProductPhotos, new { @class = "col-md-2 control-label" })
+    <label class = "col-md-2 control-label">Зображення для завантаження</label>
     <div class="col-md-10">
         <div ng-repeat="file in filesToUpload" class="row">
             <div class="col-md-12">
                 <div class="input-group" style="margin-bottom: 5px;">
-                    <input type="text" readonly="readonly" id="file_{{$index}}" ng-click="browseFile($index)"
-                           class="form-control" placeholder="Виберіть файл для завантаження" name="browse-file">
+                    <input type="text" readonly="readonly" ng-click="browseFile($index)"
+                           id="file-name-{{$index}}"
+                           class="form-control" placeholder="Виберіть файл для завантаження">
                     <span class="input-group-btn" ng-click="browseFile($index)">
                         <button class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-open-file"></span>
@@ -20,7 +28,7 @@
                         </button>
                     </span>
                 </div>
-                <input type="file" style="display: none" name="postedFiles" id="fileUpload_{{$index}}" index="{{$index}}" 
+                <input type="file" style="display: none" id="PostedProductPhotos_{{$index}}_" name="PostedProductPhotos[{{$index}}]" index="{{$index}}" 
                        onchange="angular.element(this).scope().fileNameChanged(this)" />
             </div>
         </div>
@@ -54,14 +62,14 @@
 
         $scope.browseFile = function(index)
         {
-            $("#fileUpload_" + index).click();
+            $("#PostedProductPhotos_" + index + "_").click();
         };
 
         $scope.fileNameChanged = function (file)
         {
             var index = $(file).attr("index");
             var fileName = file.files[0].name;
-            $("#file_" + index).val(fileName);
+            $("#file-name-" + index).val(fileName);
         }
 
         $scope.filesToUpload = new Array();

@@ -8,12 +8,12 @@
         string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
     }
 
-
     @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post, new
-        {
-            @class = "form-horizontal",
-            role = "form"
-        }))
+    {
+        @class = "form-horizontal",
+        role = "form",
+        enctype = "multipart/form-data"
+    }))
     {
         @RenderSection("editor")
 

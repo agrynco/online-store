@@ -30,12 +30,6 @@ namespace OS.Web.Models.ProductViewModels
             ProductPhotoViewModels = new List<ProductPhotoViewModel>();
         }
 
-        public override int? Id
-        {
-            get { return Product.Id == 0 ? (int?) null : Product.Id; }
-            set { Product.Id = value ?? 0; }
-        }
-
         [Display(Name = "Назва товару")]
         public string Name { get; set; }
         [Display(Name = "Опис")]
