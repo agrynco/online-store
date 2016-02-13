@@ -10,7 +10,7 @@
                              categoryId = @Model.Categories.First().Id
                          })">
 
-            <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+            @Html.Partial("_productListItemImage", Model)
             <div class="caption">
                 <h5 class="group inner list-group-item-heading">
                     @Model.Name

@@ -35,8 +35,6 @@ namespace OS.Web.Models.ProductViewModels
         [Display(Name = "Опис")]
         public string Description { get; set; }
 
-        public Product Product { get; set; }
-
         public int? OwnerCategoryId { get; set; }
 
         [Display(Name = "Зображення для завантаження")]

@@ -84,7 +84,6 @@ namespace OS.Web.Controllers.Administration
                 {
                     Name = product.Name,
                     Description = product.Description,
-                    Product = product,
                     Id = product.Id,
                     BrandName = product.Brand.Name,
                     CountryName = product.CountryProducer.Name,
@@ -109,10 +108,12 @@ namespace OS.Web.Controllers.Administration
                 else
                 {
                     target = new Product();
+                    ProductCategory owner = _productCategoriesBL.GetById(model.OwnerCategoryId.Value);
+                    _productCategoriesBL.Add(target, owner);
                 }
 
-                target.Name = model.Product.Name;
-                target.Description = model.Product.Description;
+                target.Name = model.Name;
+                target.Description = model.Description;
 
                 if (!string.IsNullOrEmpty(model.BrandName))
                 {
@@ -140,8 +141,6 @@ namespace OS.Web.Controllers.Administration
                     }
                 }
 
-                ProductCategory owner = _productCategoriesBL.GetById(model.OwnerCategoryId.Value);
-
                 foreach (HttpPostedFileBase postedFile in model.PostedProductPhotos)
                 {
                     if (postedFile != null)
@@ -158,8 +157,6 @@ namespace OS.Web.Controllers.Administration
                         target.Photos.Add(productPhoto);
                     }
                 }
-
-                _productCategoriesBL.Add(target, owner);
 
                 if (target.Id == 0)
                 {

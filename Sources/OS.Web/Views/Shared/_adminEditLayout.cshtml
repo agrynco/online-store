@@ -1,4 +1,7 @@
-﻿@{
+﻿@using OS.Web.Models
+@model BaseCreateOrEditViewModel
+
+@{
     Layout = "_adminLayout.cshtml";
 }
 
@@ -15,6 +18,8 @@
         enctype = "multipart/form-data"
     }))
     {
+        @Html.HiddenFor(m => m.Id)
+
         @RenderSection("editor")
 
         <div id="dialog-buttons" class="form-group" style="display: none">

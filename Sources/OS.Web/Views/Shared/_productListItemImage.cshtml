@@ -1,0 +1,15 @@
+﻿@using OS.Business.Domain
+@model Product
+    
+@{
+    string productImageSrc = "http://placehold.it/400x250/000/fff";
+    if (Model.Photos.Any())
+    {
+        productImageSrc = Url.Action("GetFileContent", "Files", new
+        {
+            id = Model.Photos.First().Id
+        });
+    }
+}
+
+<img class="group list-group-image" src="@productImageSrc" width="160" height="100" alt="" />
