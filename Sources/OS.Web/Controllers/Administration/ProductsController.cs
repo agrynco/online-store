@@ -15,16 +15,18 @@ namespace OS.Web.Controllers.Administration
         private readonly BrandsBL _brandsBL;
         private readonly CountriesBL _countriesBL;
         private readonly ContentContentTypesBL _contentContentTypesBL;
+        private readonly ProductPhotosBL _productPhotosBL;
 
         public ProductsController(ProductCategoriesBL productCategoriesBL,
             ProductsBL productsBL, BrandsBL brandsBL, CountriesBL countriesBL,
-            ContentContentTypesBL contentContentTypesBL)
+            ContentContentTypesBL contentContentTypesBL, ProductPhotosBL productPhotosBL)
         {
             _productCategoriesBL = productCategoriesBL;
             _productsBL = productsBL;
             _brandsBL = brandsBL;
             _countriesBL = countriesBL;
             _contentContentTypesBL = contentContentTypesBL;
+            _productPhotosBL = productPhotosBL;
         }
 
         public ActionResult Index(ProductsFilterViewModel filter)
@@ -90,6 +92,12 @@ namespace OS.Web.Controllers.Administration
                     OwnerCategoryId = categoryId
                 };
 
+            model.ProductPhotoViewModels.AddRange(product.Photos.Where(photo => !photo.IsDeleted).Select(photo => new ProductPhotoViewModel
+                {
+                    Id = photo.Id,
+                    FileName = photo.FileName
+                }));
+
             return View(model);
         }
 
@@ -104,6 +112,8 @@ namespace OS.Web.Controllers.Administration
                 if (model.Id.HasValue)
                 {
                     target = _productsBL.GetById(model.Id.Value);
+
+                    _productPhotosBL.Delete(model.ProductPhotoViewModels.Where(x => x.IsDeleted).Select(x => x.Id).ToArray());
                 }
                 else
                 {
@@ -149,7 +159,8 @@ namespace OS.Web.Controllers.Administration
                         {
                             Data = new byte[postedFile.InputStream.Length],
                             ContentContentType = _contentContentTypesBL.Get(postedFile.ContentType),
-                            FileName = postedFile.FileName
+                            FileName = postedFile.FileName,
+                            IsMain = false
                         };
 
                         postedFile.InputStream.Read(productPhoto.Data, 0, productPhoto.Data.Length);

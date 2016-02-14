@@ -1,0 +1,77 @@
+﻿@using OS.Web.Models.ProductViewModels
+@model ProductCreateOrEditViewModel
+
+<div class="form-group" id="upladedPhotos">
+    <label class="col-md-2 control-label">Завантаженні зображення</label>
+    <div class="col-md-10">
+        @for (int i = 0; i < Model.ProductPhotoViewModels.Count; i++)
+        {
+            <div class="os-item col-xs-2 col-lg-2" purpose="imageItem">
+                <div class="thumbnail">
+                    <div>
+                        <div style="float: right !important; margin: 4px;">
+                            <a class="glyphicon glyphicon-remove" actionName="deleteUploadedImage" target="@Html.IdFor(m => Model.ProductPhotoViewModels[i].IsDeleted)">
+                            </a>
+
+                          @Html.HiddenFor(m => Model.ProductPhotoViewModels[i].IsDeleted)
+                          @Html.HiddenFor(m => Model.ProductPhotoViewModels[i].Id)
+                        </div>
+                        <div style="float: right !important; margin: 4px;">
+                            @Html.CheckBoxFor(m => m.ProductPhotoViewModels[i].IsMain, new
+                                {
+                                    @class = "isMainSetter"
+                                })
+                        </div>
+                    </div>
+
+                    <img src="@Url.Action("GetFileContent", "Files", new
+                                  {
+                                      id = Model.ProductPhotoViewModels[i].Id
+                                  })" width="160px" height="100px"/>
+
+                </div>
+            </div>
+        }
+    </div>
+    <div></div>
+</div>
+
+<script type="text/javascript">
+    function UploadedPhotosController()
+    {
+        var $divUploadedPhotos;
+        var $isMainSetterCheckBoxes;
+
+        var init = function()
+        {
+            $divUploadedPhotos = $("#upladedPhotos");
+            $isMainSetterCheckBoxes = $divUploadedPhotos.find(".isMainSetter");
+
+            $isMainSetterCheckBoxes.click(function()
+            {
+                $isMainSetterCheckBoxes.each(function()
+                {
+                    $(this).prop("checked", false);
+                });
+
+                $(this).prop("checked", true);
+            });
+
+            $divUploadedPhotos.find("a[actionName='deleteUploadedImage']").click(function()
+            {
+                var $imageItem = $(this).closest("div[purpose='imageItem']");
+                $imageItem.hide();
+
+                $imageItem.find("#" + $(this).attr("target")).val(true);
+            });
+        };
+
+
+        init();
+    }
+
+    $().ready(function()
+    {
+        uploadedPhotosController = new UploadedPhotosController();
+    });
+</script>

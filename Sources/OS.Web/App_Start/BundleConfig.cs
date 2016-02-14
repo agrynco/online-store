@@ -30,6 +30,7 @@ namespace OS.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-switch.css",
                       "~/Content/site.css",
                       "~/Scripts/jquery-ui/jquery-ui.css"));
         }

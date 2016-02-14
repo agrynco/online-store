@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using AGrynCo.Lib;
 using OS.Business.Domain;
 #endregion
 
 namespace OS.Web.Models.ProductViewModels
 {
-    public class ProductPhotoViewModel
+    public class ProductPhotoViewModel : BaseClass
     {
         public int Id { get; set; }
 
@@ -20,6 +21,8 @@ namespace OS.Web.Models.ProductViewModels
         /// Defines is photo deleted during editing the <see cref="Product"/>
         /// </summary>
         public bool IsDeleted { get; set; }
+
+        public bool IsMain { get; set; }
     }
 
     public class ProductCreateOrEditViewModel : BaseCreateOrEditViewModel

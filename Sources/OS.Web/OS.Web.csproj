@@ -310,6 +310,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-switch.css" />
+    <Content Include="Content\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1915,6 +1917,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Products\_addFiles.cshtml" />
     <Content Include="Views\Shared\_productListItemImage.cshtml" />
+    <Content Include="Views\Products\_alreadyLoadedPhotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

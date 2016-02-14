@@ -9,7 +9,7 @@
 {
     @Html.HiddenFor(m => m.OwnerCategoryId)
 
-    <div class="row" ng-controller="uploadFilesController">
+    <div class="row">
         <div class="col-md-12">
             <section id="category-editor">
                 <h4>
@@ -26,31 +26,31 @@
                         </text>
                     }
                 </h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <hr/>
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.Description, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
                         @Html.TextAreaFor(m => m.Description, new
-                   {
-                       @class = "form-control",
-                       rows = 15
-                   })
-                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                            {
+                                @class = "form-control",
+                                rows = 15
+                            })
+                        @Html.ValidationMessageFor(m => m.Description, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.BrandName, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.BrandName, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.BrandName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.BrandName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.BrandName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.BrandName, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
@@ -60,6 +60,7 @@
                         @Html.ValidationMessageFor(m => m.CountryName, "", new {@class = "text-danger"})
                     </div>
                 </div>
+                @Html.Partial("_alreadyLoadedPhotos", Model)
                 @Html.Partial("_addFiles", Model)
                 <div id="dialog-buttons-placeholder">
                 </div>
@@ -82,9 +83,9 @@
         {
             source: "/api/brands/autocomplete",
             minLength: 1,
-            create: function ()
+            create: function()
             {
-                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
                 {
                     return $('<li>')
                         .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
@@ -97,9 +98,9 @@
         {
             source: "/api/countries/autocomplete",
             minLength: 1,
-            create: function ()
+            create: function()
             {
-                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
                 {
                     return $('<li>')
                         .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
