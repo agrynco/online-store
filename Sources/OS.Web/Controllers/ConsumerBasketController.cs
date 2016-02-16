@@ -31,10 +31,15 @@ namespace OS.Web.Controllers
             
                 List<Product> products = _productsBL.GetByIds(productInBasketViewModels.Select(x => x.Id));
 
-                consumerBasketViewModel.ProductToByDescriptors = products.Select(product => new ProductToBuyDescriptor
-                    {
-                        Product = product,
-                        Quantity = productInBasketViewModels.Single(x => x.Id == product.Id).Quantity
+                consumerBasketViewModel.ProductToByDescriptors = products.Select(product =>
+                {
+                    ProductInBasketViewModel productInBasketViewModel = productInBasketViewModels.Single(x => x.Id == product.Id);
+                    return new ProductToBuyDescriptor
+                        {
+                            Product = product,
+                            Quantity = productInBasketViewModel.Quantity,
+                            CategoryId = productInBasketViewModel.CategoryId
+                        };
                 }).ToList();
             }
             return View(consumerBasketViewModel);
