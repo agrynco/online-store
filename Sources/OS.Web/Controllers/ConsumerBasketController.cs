@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using OS.Business.Domain;
@@ -17,14 +18,17 @@ namespace OS.Web.Controllers
             _productsBL = productsBL;
         }
 
-        public ActionResult Index(string consumerBasketRawData)
+        public ActionResult Index()
         {
-            List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(consumerBasketRawData);
+            HttpCookie consumerBasketRawDataCookie = Request.Cookies["ConsumerBasket"];
 
             ConsumerBasketViewModel consumerBasketViewModel = new ConsumerBasketViewModel();
 
-            if (!string.IsNullOrEmpty(consumerBasketRawData))
+            if (consumerBasketRawDataCookie != null)
             {
+                List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(
+                    HttpContext.Server.UrlDecode(consumerBasketRawDataCookie.Value));
+            
                 List<Product> products = _productsBL.GetByIds(productInBasketViewModels.Select(x => x.Id));
 
                 consumerBasketViewModel.ProductToByDescriptors = products.Select(product => new ProductToBuyDescriptor
