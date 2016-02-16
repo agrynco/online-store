@@ -110,6 +110,8 @@ function ConsumerBasket()
 
     var init = function ()
     {
+        load();
+
         $(".btn-buy-product").click(function ()
         {
             var productId = parseInt($(this).attr("productId"));
@@ -136,10 +138,8 @@ function ConsumerBasket()
             updateUI();
         });
 
-        
+        updateUI();
     }
-
-    load();
+    
     init();
-    updateUI();
 }
