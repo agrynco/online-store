@@ -1,4 +1,4 @@
-function Product(id, price, quantity)
+function Product(id, price, quantity, categoryId)
 {
     if (id == undefined)
     {
@@ -18,6 +18,7 @@ function Product(id, price, quantity)
     this.id = id;
     this.price = price;
     this.quantity = quantity;
+    this.categoryId = categoryId;
 }
 
 function ConsumerBasket()
@@ -116,8 +117,9 @@ function ConsumerBasket()
         {
             var productId = parseInt($(this).attr("productId"));
             var productPrice = parseFloat($(this).attr("productPrice"));
+            var categoryId = parseInt($(this).attr("categoryId"));
 
-            add(new Product(productId, productPrice, 1));
+            add(new Product(productId, productPrice, 1, categoryId));
             $(this).hide();
             save();
             updateUI();

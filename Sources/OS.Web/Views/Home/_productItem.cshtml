@@ -2,12 +2,16 @@
 @using OS.Common
 @model Product
 
+@{
+    int categoryId = Model.Categories.First().Id;
+}
+
 <div class="os-item col-xs-3 col-lg-3">
     <div class="thumbnail">
         <a href="@Url.Action("Details", "Home", new
                          {
                              productId = @Model.Id,
-                             categoryId = @Model.Categories.First().Id
+                             categoryId = categoryId
                          })">
 
             @Html.Partial("_productListItemImage", Model)
@@ -35,7 +39,7 @@
                         </b>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <a class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Id" productPrice="@Model.Price">Купити</a>
+                        <a class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Id" categoryId="@categoryId" productPrice="@Model.Price">Купити</a>
                     </div>
                 </div>
             </div>

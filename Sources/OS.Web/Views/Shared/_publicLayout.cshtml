@@ -14,28 +14,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink(ApplicationSettings.Instance.AppSettings.ApplicationName, "Index", "Home",
-                    new { area = "" }, new { @class = "navbar-brand" })
+                    new {area = ""}, new {@class = "navbar-brand"})
             </div>
             <div class="navbar-collapse collapse row">
                 <ul class="nav navbar-nav navbar-left">
                     <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
                     <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
                     <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
-                    @try
+                    @if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
                     {
-                        if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
-                        {
-                            <li>
-                                @Html.ActionLink("Адміністрування", "Index", "ProductCategories", null, new
-                           {
-                               style = "color: red;"
-                           })
-                            </li>
-                        }
-                    }
-                    catch (NotImplementedException notImplementedException)
-                    {
-                        throw notImplementedException;
+                        <li>
+                            @Html.ActionLink("Адміністрування", "Index", "ProductCategories", null, new
+                                {
+                                    style = "color: red;"
+                                })
+                        </li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
