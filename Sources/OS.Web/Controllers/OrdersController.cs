@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -20,13 +19,13 @@ namespace OS.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Create()
         {
-            return View();
+            return View("Edit");
         }
 
         [HttpPost]
-        public ActionResult Edit(EditOrderViewModel model)
+        public ActionResult Create(EditOrderViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +56,7 @@ namespace OS.Web.Controllers
                 return RedirectToAction("OrderDetails");
             }
 
-            return View(model);
+            return View("Edit", model);
         }
 
         public ActionResult OrderDetails()

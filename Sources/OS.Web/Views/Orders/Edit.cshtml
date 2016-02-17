@@ -2,132 +2,73 @@
 @model EditOrderViewModel
 
 @{
-    Layout = "../Shared/_mainLayout.cshtml";
+    Layout = "../Shared/_publicLayout.cshtml";
 }
 
-@section content
-{
-    <table class="full-size">
-        <tr class="min-height">
-            <td>
-                <div class="row">
-                    <div class="col-md-8">
-                        <section>
-                            @using (Html.BeginForm("Edit", "Orders", FormMethod.Post, new
-                                {
-                                    id = "frmCreateOrder"
-                                }))
-                            {
-                                <h4>Замовлення</h4>
-                                <hr/>
-
-                                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-
-                                string labelsColClassName = "col-md-4 control-label";
-                                string controlsColClassName = "col-md-8";
-
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                @Html.LabelFor(m => m.FirstName, new {@class = labelsColClassName})
-                                                <div class="@controlsColClassName">
-                                                    @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
-                                                    @Html.ValidationMessageFor(m => m.FirstName, "", new {@class = "text-danger"})
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="row-space">
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                @Html.LabelFor(m => m.LastName, new {@class = labelsColClassName})
-                                                <div class="@controlsColClassName">
-                                                    @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
-                                                    @Html.ValidationMessageFor(m => m.LastName, "", new {@class = "text-danger"})
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="row-space">
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                @Html.LabelFor(m => m.MiddleName, new {@class = labelsColClassName})
-                                                <div class="@controlsColClassName">
-                                                    @Html.TextBoxFor(m => m.MiddleName, new {@class = "form-control"})
-                                                    @Html.ValidationMessageFor(m => m.MiddleName, "", new {@class = "text-danger"})
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="row-space">
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                @Html.LabelFor(m => m.Email, new {@class = labelsColClassName})
-                                                <div class="@controlsColClassName">
-                                                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
-                                                    @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="row-space">
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                @Html.LabelFor(m => m.PhoneNumber, new {@class = labelsColClassName})
-                                                <div class="@controlsColClassName">
-                                                    @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control"})
-                                                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new {@class = "text-danger"})
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="row-space">
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                                @Html.LabelFor(m => m.Comment, new {@class = labelsColClassName})
-                                                <div class="@controlsColClassName">
-                                                    @Html.TextAreaFor(m => m.Comment, new {@class = "form-control"})
-                                                    @Html.ValidationMessageFor(m => m.Comment, "", new {@class = "text-danger"})
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="row-space">
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">
-                                            <input type="submit" value="Підтвердити замовлення" class="btn btn-default"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            }
-                        </section>
+<div class="row">
+    <div class="col-md-12">
+        <section id="editOrder">
+            @using (Html.BeginForm("Create", "Orders", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                <h4>
+                    ОФормлення замовлення
+                </h4>
+                <hr/>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new {@class = "text-danger"})
                     </div>
                 </div>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-    </table>
-}
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.LastName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MiddleName, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.MiddleName, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.MiddleName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Comment, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(m => m.Comment, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Comment, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-4">
+                        <input type="submit" value="Зберегти" class="btn btn-primary" />
+                        <span></span>
+                        <input type="reset" class="btn btn-default" value="Відміна" onclick="goBack()">    
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
 
 @section scripts
 {
