@@ -33,16 +33,22 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
                     <li>
-                        <form class="navbar-form" role="search">
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Get, new
+                            {
+                                id = "searchForm",
+                                @class = "navbar-form",
+                                role = "search"
+                            }))
+                        {
                             <div class="input-group" style="width: 200px;">
-                                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                                <span class="input-group-btn">
+                                <input type="text" class="form-control" placeholder="Що ви бажаєте купити?" name="searchTerm" id="srch-term">
+                                <span class="input-group-btn" onclick="$('#searchForm').submit();">
                                     <button class="btn btn-danger" type="button">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
                             </div>
-                        </form>
+                        }
                     </li>
                     @Html.Partial("_loginPartial")
 

@@ -19,7 +19,7 @@ namespace OS.Web.Controllers
             _productsBL = productsBL;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
@@ -29,7 +29,10 @@ namespace OS.Web.Controllers
             }).ToList();
 
             viewModel.SelectedCategory = null;
-            viewModel.Products = _productsBL.Get(null);
+            viewModel.Products = _productsBL.Get(new ProductsFilter
+                {
+                    Text = searchTerm
+                });
 
             return View(viewModel);
         }
