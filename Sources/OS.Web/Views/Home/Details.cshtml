@@ -7,31 +7,44 @@
     Layout = "~/Views/Shared/_publicLayout.cshtml";
 }
 
-<table class="full-size">
-    <tr class="min-height">
-        <td>
-            <h3>
-                @Model.Product.Name
-            </h3>
-            <div class="row">
-                <div class="col-xs-6 col-md-3">
-                    @foreach (ProductPhoto productPhoto in Model.Product.Photos)
-                    {
-                        <a href="#" class="thumbnail">
-                            <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})"/>
-                        </a>
-                    }
+@{
+    ProductPhoto mainPhoto = Model.Product.Photos.SingleOrDefault(x => x.IsMain);
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @if (mainPhoto != null)
+        {
+            <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = mainPhoto.Id})"/>
+        }
+    </div>
+    <div class="col-md-8">
+        @Html.Raw(Model.Product.Description)
+    </div>
+</div>
+
+<div class="row" style="margin: 0">
+    <a class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Product.Id" categoryId="@Model.CategoryId" productPrice="@Model.Product.Price">Купити</a>
+</div>
+
+<div class="row" style="margin: 0">
+    <div id="productPhotos" class="row list-group">
+        @{
+            IEnumerable<ProductPhoto> restPhotos = Model.Product.Photos.Where(x => !x.IsMain && !x.IsDeleted).ToList();
+        }
+
+        @foreach (ProductPhoto productPhoto in restPhotos)
+        {
+            <div class="os-item col-xs-3 col-lg-3">
+                <div class="thumbnail">
+                    <a href="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})" target="_blank">
+                        <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = productPhoto.Id})" />
+                    </a>
                 </div>
             </div>
-            <div>
-                @Html.Raw(Model.Product.Description)
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-</table>
+        }
+    </div>
+</div>
 
 @section scripts
 {

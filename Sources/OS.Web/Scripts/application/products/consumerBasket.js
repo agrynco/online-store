@@ -29,7 +29,7 @@ function ConsumerBasket()
     var save = function ()
     {
         var productsToStore = JSON.stringify(_products);
-        $.cookie(_cookieKey, productsToStore);
+        $.cookie(_cookieKey, productsToStore, {path: "/"});
     }
 
     var indexOf = function (productId)

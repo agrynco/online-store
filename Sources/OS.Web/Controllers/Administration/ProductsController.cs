@@ -95,7 +95,8 @@ namespace OS.Web.Controllers.Administration
             model.ProductPhotoViewModels.AddRange(product.Photos.Where(photo => !photo.IsDeleted).Select(photo => new ProductPhotoViewModel
                 {
                     Id = photo.Id,
-                    FileName = photo.FileName
+                    FileName = photo.FileName,
+                    IsMain = photo.IsMain
                 }));
 
             return View(model);
@@ -147,9 +148,15 @@ namespace OS.Web.Controllers.Administration
                     }
                     catch (ThereIsNoCountryWithNameException)
                     {
-                        ModelState.AddModelError("CountryName", string.Format("Країна ім'ям '{0}' не існує", model.CountryName));
+                        ModelState.AddModelError("CountryName", string.Format("Країна з ім'ям '{0}' не існує", model.CountryName));
                     }
                 }
+
+                ProductPhotoViewModel mainPhotoViewModel = model.ProductPhotoViewModels.SingleOrDefault(x => x.IsMain);
+                target.Photos.ForEach((photo) =>
+                {
+                    photo.IsMain = mainPhotoViewModel != null && photo.Id == mainPhotoViewModel.Id;
+                });
 
                 foreach (HttpPostedFileBase postedFile in model.PostedProductPhotos)
                 {

@@ -19,7 +19,8 @@
                         <div style="float: right !important; margin: 4px;">
                             @Html.CheckBoxFor(m => m.ProductPhotoViewModels[i].IsMain, new
                                 {
-                                    @class = "isMainSetter"
+                                    @class = "isMainSetter",
+                                    @checked = Model.ProductPhotoViewModels[i].IsMain ? "checked" : ""
                                 })
                         </div>
                     </div>
