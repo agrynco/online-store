@@ -8,7 +8,7 @@
 
 @if (Model.Products.Count > 0)
 {
-    <div id="products" class="row list-group">
+    <div id="products" class="table-row list-group">
         @foreach (Product product in Model.Products)
         {
             @Html.Partial("_productItem", product)
