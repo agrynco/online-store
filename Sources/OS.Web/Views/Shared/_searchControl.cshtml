@@ -1,19 +1,27 @@
-﻿@{
-    string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
-}
-@using (Html.BeginForm("Search", currentControllerName, ViewContext.RouteData.Values, FormMethod.Get))
-{
-    <table class="full-width">
-        <tr>
-            <td style="padding-left: 5px">
-                @Html.TextBox("tbxSearch", "", new
-                    {
-                        @class = "form-control"
-                    })
-            </td>
-            <td width="1px" style="padding-left: 5px; padding-right: 5px">
-                <input type="submit" value="Шукати" class="btn-primary"/>
-            </td>
-        </tr>
-    </table>
-}
+﻿<form class="navbar-form" role="search">
+    <div class="input-group" style="width: 200px;">
+        <input type="text" id="tbSearchProducts" class="form-control" placeholder="Що ви бажаєте купити?" name="searchTerm" id="srch-term">
+        <span class="input-group-btn" onclick="$('#searchForm').submit();">
+            <button class="btn btn-danger" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $("#tbSearchProducts").autocomplete(
+       {
+           source: "/api/products/autocomplete",
+           minLength: 1,
+           create: function ()
+           {
+               $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+               {
+                   return $('<li>')
+                       .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                       .appendTo(ul);
+               };
+           }
+       });
+</script>

@@ -262,6 +262,7 @@
     <Compile Include="Controllers\Administration\ProductsController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
     <Compile Include="Controllers\Api\CountriesController.cs" />
+    <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
