@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web;
 using AGrynCo.Lib;
 using OS.Business.Domain;
+using OS.Web.Models.ProductCategoryViewModels;
 #endregion
 
 namespace OS.Web.Models.ProductViewModels
@@ -27,18 +28,25 @@ namespace OS.Web.Models.ProductViewModels
 
     public class ProductCreateOrEditViewModel : BaseCreateOrEditViewModel
     {
+        public ProductCreateOrEditViewModel(int? categoryId) : this()
+        {
+            CategorySelectorViewModel.Id = categoryId;
+        }
+
         public ProductCreateOrEditViewModel()
         {
             PostedProductPhotos = new List<HttpPostedFileBase>();
             ProductPhotoViewModels = new List<ProductPhotoViewModel>();
+            CategorySelectorViewModel = new AutoCompleteProductCategoryFilterItemViewModel();
         }
 
         [Display(Name = "Назва товару")]
         public string Name { get; set; }
+
         [Display(Name = "Опис")]
         public string Description { get; set; }
 
-        public int? OwnerCategoryId { get; set; }
+        public AutoCompleteProductCategoryFilterItemViewModel CategorySelectorViewModel { get; set; }
 
         [Display(Name = "Зображення для завантаження")]
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }

@@ -296,6 +296,7 @@
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryAutocompleteItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryListItemViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategorySelectorViewModel.cs" />
     <Compile Include="Models\ProductInBasketViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductsFilterViewModel.cs" />

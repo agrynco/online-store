@@ -78,6 +78,14 @@ namespace OS.Web.Controllers.Administration
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult Create(int? categoryId)
+        {
+            ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel(categoryId);
+
+            return View("Edit", model);
+        }
+
         public ActionResult Edit(int id, int? categoryId)
         {
             Product product = _productsBL.GetById(id);
@@ -88,9 +96,9 @@ namespace OS.Web.Controllers.Administration
                     Description = product.Description,
                     Id = product.Id,
                     BrandName = product.Brand.Name,
-                    CountryName = product.CountryProducer.Name,
-                    OwnerCategoryId = categoryId
+                    CountryName = product.CountryProducer.Name
                 };
+            model.CategorySelectorViewModel.Id = categoryId;
 
             model.ProductPhotoViewModels.AddRange(product.Photos.Where(photo => !photo.IsDeleted).Select(photo => new ProductPhotoViewModel
                 {
@@ -119,7 +127,7 @@ namespace OS.Web.Controllers.Administration
                 else
                 {
                     target = new Product();
-                    ProductCategory owner = _productCategoriesBL.GetById(model.OwnerCategoryId.Value);
+                    ProductCategory owner = _productCategoriesBL.GetById(model.CategorySelectorViewModel.Id.Value);
                     _productCategoriesBL.Add(target, owner);
                 }
 
@@ -153,7 +161,7 @@ namespace OS.Web.Controllers.Administration
                 }
 
                 ProductPhotoViewModel mainPhotoViewModel = model.ProductPhotoViewModels.SingleOrDefault(x => x.IsMain);
-                target.Photos.ForEach((photo) =>
+                target.Photos.ForEach(photo =>
                 {
                     photo.IsMain = mainPhotoViewModel != null && photo.Id == mainPhotoViewModel.Id;
                 });
@@ -189,7 +197,7 @@ namespace OS.Web.Controllers.Administration
                 {
                     return RedirectToAction("Index", new
                     {
-                        parentId = model.OwnerCategoryId
+                        parentId = model.CategorySelectorViewModel.Id
                     });
                 }
             }
