@@ -83,6 +83,12 @@ namespace OS.Web.Controllers.Administration
         {
             ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel(categoryId);
 
+            if (categoryId.HasValue)
+            {
+                model.CategorySelectorViewModel.Name = _productCategoriesBL.GetById(categoryId.Value).Name;
+                model.CategorySelectorViewModel.ParentCategories = _productCategoriesBL.GetParentCategories(categoryId.Value).Select(parentCategory => parentCategory.Name).ToArray();
+            }
+
             return View("Edit", model);
         }
 
@@ -98,7 +104,13 @@ namespace OS.Web.Controllers.Administration
                     BrandName = product.Brand.Name,
                     CountryName = product.CountryProducer.Name
                 };
+
             model.CategorySelectorViewModel.Id = categoryId;
+            if (categoryId.HasValue)
+            {
+                model.CategorySelectorViewModel.Name = _productCategoriesBL.GetById(categoryId.Value).Name;
+                model.CategorySelectorViewModel.ParentCategories = _productCategoriesBL.GetParentCategories(categoryId.Value).Select(parentCategory => parentCategory.Name).ToArray();
+            }
 
             model.ProductPhotoViewModels.AddRange(product.Photos.Where(photo => !photo.IsDeleted).Select(photo => new ProductPhotoViewModel
                 {

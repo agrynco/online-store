@@ -37,7 +37,7 @@ namespace OS.Web.Models.ProductViewModels
         {
             PostedProductPhotos = new List<HttpPostedFileBase>();
             ProductPhotoViewModels = new List<ProductPhotoViewModel>();
-            CategorySelectorViewModel = new AutoCompleteProductCategoryFilterItemViewModel();
+            CategorySelectorViewModel = new ProductCategoryAutocompleteItem();
         }
 
         [Display(Name = "Назва товару")]
@@ -46,7 +46,7 @@ namespace OS.Web.Models.ProductViewModels
         [Display(Name = "Опис")]
         public string Description { get; set; }
 
-        public AutoCompleteProductCategoryFilterItemViewModel CategorySelectorViewModel { get; set; }
+        public ProductCategoryAutocompleteItem CategorySelectorViewModel { get; set; }
 
         [Display(Name = "Зображення для завантаження")]
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }

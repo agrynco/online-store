@@ -33,7 +33,7 @@
                         @Html.HiddenFor(m => m.CategorySelectorViewModel.Id, new { @class = "form-control" })
                         <div>
                             <span id="pathToRoot">
-                                
+                                @string.Join(" : ", Model.CategorySelectorViewModel.ParentCategories)
                             </span>
                         </div>
                         <div>
