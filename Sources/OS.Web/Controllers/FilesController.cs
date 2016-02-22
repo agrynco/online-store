@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.UI;
 using OS.Business.Logic;
 using File = OS.Business.Domain.File;
 
@@ -13,6 +14,7 @@ namespace OS.Web.Controllers
             _filesBl = filesBL;
         }
 
+        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "id")]
         public ActionResult GetFileContent(int id)
         {
             File file = _filesBl.GetFile(id);

@@ -209,10 +209,8 @@ namespace OS.Web.Controllers.Administration
 
                 if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index", new
-                    {
-                        parentId = model.CategorySelectorViewModel.Id
-                    });
+                    TempData[Constants.TempDataKeys.PRODUCTS_FILTER_VIEW_MODEL] = new ProductsFilterViewModel(model.CategorySelectorViewModel.Id.Value);
+                    return RedirectToAction("Index");
                 }
             }
 
