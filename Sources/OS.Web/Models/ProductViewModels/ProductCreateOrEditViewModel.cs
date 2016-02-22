@@ -57,6 +57,11 @@ namespace OS.Web.Models.ProductViewModels
         [Display(Name = "Країна-виробник")]
         public string CountryName { get; set; }
 
+        [Display(Name = "Короткий опис")]
+        [MaxLength(100)]
+        [Required]
+        public string ShortDescription { get; set; }
+
         [Display(Name = "Завантаженні зображення")]
         public List<ProductPhotoViewModel> ProductPhotoViewModels { get; set; }
     }

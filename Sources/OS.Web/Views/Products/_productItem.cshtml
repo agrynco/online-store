@@ -1,5 +1,4 @@
-﻿@using OS.Common
-@using OS.Web.Models.ProductViewModels
+﻿@using OS.Web.Models.ProductViewModels
 @model ProductListItemViewModel
 
 <div class="os-item col-xs-2 col-lg-2">
@@ -34,16 +33,7 @@
                 @Model.Product.Name
             </h5>
             <p class="group inner list-group-item-text">
-                @{
-                    string description = Model.Product.Description.Trunc(100);
-
-                    if (description.Length < Model.Product.Description.Length)
-                    {
-                        description += "...";
-                    }
-                }
-
-                @description
+                @Model.Product.ShortDescription
             </p>
 
             <div class="row">

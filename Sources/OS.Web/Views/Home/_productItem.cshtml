@@ -20,16 +20,7 @@
                     @Model.Name
                 </h5>
                 <p class="group inner list-group-item-text">
-                    @{
-                        string description = Model.Description.Trunc(100);
-
-                        if (description.Length < Model.Description.Length)
-                        {
-                            description += "...";
-                        }
-                    }
-
-                    @description
+                    @Model.ShortDescription
                 </p>
 
                 <div class="row">

@@ -13,6 +13,9 @@ namespace OS.Business.Domain
             Photos = new List<ProductPhoto>();
         }
 
+        /// <summary>
+        /// May content HTML
+        /// </summary>
         [Display(Name = "Опис")]
         public string Description { get; set; }
 
@@ -28,5 +31,13 @@ namespace OS.Business.Domain
 
         [Display(Name = "Зображення")]
         public virtual List<ProductPhoto> Photos { get; set; }
+
+        /// <summary>
+        /// Short description of the Product. Should be as plain text
+        /// </summary>
+        [Display(Name = "Короткий опис")]
+        [MaxLength(100)]
+        [Required]
+        public string ShortDescription { get; set; }
     }
 }

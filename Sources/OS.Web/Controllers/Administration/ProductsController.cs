@@ -99,6 +99,7 @@ namespace OS.Web.Controllers.Administration
             ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel
                 {
                     Name = product.Name,
+                    ShortDescription = product.ShortDescription,
                     Description = product.Description,
                     Id = product.Id,
                     BrandName = product.Brand.Name,
@@ -145,6 +146,7 @@ namespace OS.Web.Controllers.Administration
 
                 target.Name = model.Name;
                 target.Description = model.Description;
+                target.ShortDescription = model.ShortDescription;
 
                 if (!string.IsNullOrEmpty(model.BrandName))
                 {
