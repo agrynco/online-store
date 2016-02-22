@@ -110,39 +110,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Migrations\0-19.sql" />
-    <Content Include="Migrations\0-18.sql" />
-    <Content Include="Migrations\0-17.sql" />
-    <Content Include="Migrations\0-16.sql" />
-    <Content Include="Migrations\0-15.sql" />
-    <Content Include="Migrations\0-14.sql" />
-    <Content Include="Migrations\0-13.sql" />
-    <Content Include="Migrations\0-12.sql" />
-    <Content Include="Migrations\0-11.sql" />
-    <Content Include="Migrations\0-10.sql" />
-    <Content Include="Migrations\0-33.sql" />
-    <Content Include="Migrations\0-32.sql" />
-    <Content Include="Migrations\0-31.sql" />
-    <Content Include="Migrations\0-30.sql" />
-    <Content Include="Migrations\0-29.sql" />
-    <Content Include="Migrations\0-28.sql" />
-    <Content Include="Migrations\0-27.sql" />
-    <Content Include="Migrations\0-26.sql" />
-    <Content Include="Migrations\0-25.sql" />
-    <Content Include="Migrations\0-24.sql" />
-    <Content Include="Migrations\0-23.sql" />
-    <Content Include="Migrations\0-22.sql" />
-    <Content Include="Migrations\0-21.sql" />
-    <Content Include="Migrations\0-20.sql" />
-    <Content Include="Migrations\0-9.sql" />
-    <Content Include="Migrations\0-8.sql" />
-    <Content Include="Migrations\0-7.sql" />
-    <Content Include="Migrations\0-6.sql" />
-    <Content Include="Migrations\0-5.sql" />
-    <Content Include="Migrations\0-4.sql" />
-    <Content Include="Migrations\0-3.sql" />
-    <Content Include="Migrations\0-2.sql" />
-    <Content Include="Migrations\0-1.sql" />
     <Content Include="Migrations\0-0.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
