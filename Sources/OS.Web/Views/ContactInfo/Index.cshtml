@@ -2,26 +2,13 @@
 @model ContactInfo
 
 @{
-    Layout = "../Shared/_mainLayout.cshtml";
+    Layout = "../Shared/_publicLayout.cshtml";
 }
 
-@section content
-{
-    <table class="full-size">
-        <tr class="min-height">
-            <td>
-                <h2>Контакти</h2>
-
-                @Html.Partial("_contactInfo", Model)
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-    </table>
-
-
-}
+<h4>Контакти</h4>
+<div class="col=col-md-12">
+    @Html.Partial("_contactInfo", Model)
+</div>
 
 @section scripts
 {

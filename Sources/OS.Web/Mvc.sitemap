@@ -16,6 +16,7 @@
         <mvcSiteMapNode title="Категорії товару" controller="ProductCategories" action="Index"/>
         <mvcSiteMapNode title="Додавання нового товару" controller="Products" action="Create"/>
         <mvcSiteMapNode title="Редагування товару" controller="Products" action="Edit"/>
+        <mvcSiteMapNode title="Контакти" controller="ContactInfo" action="Index"/>
         <!--<mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>-->
     </mvcSiteMapNode>
 
