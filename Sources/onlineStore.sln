@@ -32,8 +32,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUpdatesApplier", "DbUpdat
 	ProjectSection(SolutionItems) = preProject
 		..\Tools\DbUpdatesApplier\AGrynco.Lib.dll = ..\Tools\DbUpdatesApplier\AGrynco.Lib.dll
 		..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb = ..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb
-		..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe
-		..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe.config
 		..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe.config
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe
@@ -41,10 +39,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUpdatesApplier", "DbUpdat
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb
 		..\Tools\DbUpdatesApplier\DbVersioning.dll = ..\Tools\DbUpdatesApplier\DbVersioning.dll
 		..\Tools\DbUpdatesApplier\DbVersioning.pdb = ..\Tools\DbUpdatesApplier\DbVersioning.pdb
+		..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe
+		..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe.config
 		..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe.config
-		..\Tools\DbUpdatesApplier\qa.allvent.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\qa.allvent.com.ua_DbUpdateApplier.exe
-		..\Tools\DbUpdatesApplier\qa.allvent.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\qa.allvent.com.ua_DbUpdateApplier.exe.config
+		..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe
+		..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe.config
 		..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe.config
 	EndProjectSection
@@ -83,10 +83,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WE-Markdown.css = WE-Markdown.css
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qa.allvent.com.ua", "qa.allvent.com.ua", "{F8C7607E-6E94-4FD3-8A8F-58F5350E114C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qa.frezaopt.com.ua", "qa.frezaopt.com.ua", "{F8C7607E-6E94-4FD3-8A8F-58F5350E114C}"
 	ProjectSection(SolutionItems) = preProject
-		..\Configuration\qa.allvent.com.ua\appSettings.config = ..\Configuration\qa.allvent.com.ua\appSettings.config
-		..\Configuration\qa.allvent.com.ua\connectionStrings.config = ..\Configuration\qa.allvent.com.ua\connectionStrings.config
+		..\Configuration\qa.frezaopt.com.ua\appSettings.config = ..\Configuration\qa.frezaopt.com.ua\appSettings.config
+		..\Configuration\qa.frezaopt.com.ua\connectionStrings.config = ..\Configuration\qa.frezaopt.com.ua\connectionStrings.config
 	EndProjectSection
 EndProject
 Global
