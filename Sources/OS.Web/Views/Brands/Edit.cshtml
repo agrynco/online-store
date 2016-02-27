@@ -1,0 +1,43 @@
+﻿@using OS.Web.Models.BrandViewModels
+@model BrandCreateOrEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminEditLayout.cshtml";
+}
+
+@section editor
+{
+    <div class="row">
+        <div class="col-md-6">
+            <section>
+                <h4>
+                    @if (Model.Id.HasValue)
+                    {
+                        <text>
+                            Редагування
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            Створення
+                        </text>
+                    }
+                </h4>
+                <hr/>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div id="dialog-buttons-placeholder">
+                </div>
+            </section>
+        </div>
+    </div>
+}
