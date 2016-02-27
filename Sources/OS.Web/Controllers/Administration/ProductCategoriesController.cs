@@ -15,8 +15,7 @@ namespace OS.Web.Controllers.Administration
         {
             _productCategoriesBL = productCategoriesBL;
         }
-
-
+        
         public ActionResult Index(ProductCategoriesFilterViewModel filter)
         {
             if (TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] != null)

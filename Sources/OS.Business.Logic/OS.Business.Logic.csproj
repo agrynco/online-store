@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PagedBrandListResult.cs" />
     <Compile Include="PagedProductListResult.cs" />
     <Compile Include="UsersBL.cs" />
     <Compile Include="BrandsBL.cs" />

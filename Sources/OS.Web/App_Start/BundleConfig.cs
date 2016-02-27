@@ -11,7 +11,8 @@ namespace OS.Web
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.cookie.js",
                         "~/Scripts/jquery-ui/jquery-ui.js",
-                        "~/Scripts/application/log.js"));
+                        "~/Scripts/application/log.js",
+                        "~/Scripts/jquery.dataTables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js"));
@@ -32,7 +33,8 @@ namespace OS.Web
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-switch.css",
                       "~/Content/site.css",
-                      "~/Scripts/jquery-ui/jquery-ui.css"));
+                      "~/Scripts/jquery-ui/jquery-ui.css",
+                      "~/Content/css/jquery.dataTables.css"));
         }
     }
 }

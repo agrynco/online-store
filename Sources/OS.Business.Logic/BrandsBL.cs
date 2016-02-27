@@ -22,6 +22,27 @@ namespace OS.Business.Logic
             return _brandsRepository.GetAll().Where(brand => brand.Name.Contains(searchTerm)).ToList();
         }
 
+        public PagedBrandListResult Find(BrandsFilter filter)
+        {
+            IQueryable<Brand> query = _brandsRepository.GetAll().OrderBy(x => x.Name);
+
+            PagedBrandListResult result = new PagedBrandListResult();
+            if (filter != null && !string.IsNullOrEmpty(filter.SearchTerm))
+            {
+                query = query.Where(x => x.Name.Contains(filter.SearchTerm));
+            }
+
+            result.TotalRecords = query.Count();
+            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+
+            return result;
+        }
+
+        public Brand GetById(int id)
+        {
+            return _brandsRepository.GetById(id);
+        }
+
         public Brand GetByName(string name)
         {
             Brand result = _brandsRepository.GetAll().SingleOrDefault(brand => brand.Name == name);
@@ -32,6 +53,21 @@ namespace OS.Business.Logic
             }
 
             return result;
+        }
+
+        public void Update(Brand brand)
+        {
+            _brandsRepository.Update(brand);
+        }
+
+        public void Add(Brand brand)
+        {
+            _brandsRepository.Add(brand);
+        }
+
+        public void Delete(int id)
+        {
+            _brandsRepository.Delete(id);
         }
     }
 }
