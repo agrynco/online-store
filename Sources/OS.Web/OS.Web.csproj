@@ -310,7 +310,7 @@
     <Compile Include="ProductCategoryNodesProvider.cs" />
     <Compile Include="ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Scripts\datatables.translations\ukrainian.json" />
+    <Content Include="Scripts\datatables.translations\ukrainian.json" />
     <Compile Include="Startup.cs" />
     <Content Include="Views\Brands\Edit.cshtml" />
   </ItemGroup>
