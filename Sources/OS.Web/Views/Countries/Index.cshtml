@@ -1,10 +1,63 @@
-﻿@model dynamic
-
-@{
-    Layout = "~/Views/Shared/_adminLayout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
 }
 
-@section content
+@section list
 {
-    @Html.ActionLink("Оновити", "Update")
+    <table id="countries">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Назва</th>
+                <th>Назва (англ.)</th>
+                <th>ISO</th>
+                <th>Код телефону</th>
+                <th>"2-х" симв. код</th>
+                <th>"3-х" симв. код</th>
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Назва</th>
+                <th>Назва (англ.)</th>
+                <th>ISO</th>
+                <th>Код телефону</th>
+                <th>"2-х" симв. код</th>
+                <th>"3-х" симв. код</th>
+            </tr>
+        </tfoot>
+        <tbody></tbody>
+    </table>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $().ready(function()
+        {
+            $("#countries").DataTable({
+                ajax: "api/countries",
+                columns: [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "EnglishName" },
+                    { "data": "ISO" },
+                    { "data": "PhoneCode" },
+                    { "data": "TwoCharsCode" },
+                    { "data": "ThreeCharsCode" }
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 2, 3, 4, 5, 6],
+                        className: "min-width"
+                    }
+                ],
+                language: {
+                    url: "scripts/datatables.translations/ukrainian.json"
+                }
+            });
+        });
+    </script>
 }

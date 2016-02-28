@@ -98,5 +98,10 @@ namespace OS.Business.Logic
 
             return result;
         }
+
+        public List<Country> GetAll()
+        {
+            return _countriesRepository.GetAll().ToList();
+        }
     }
 }

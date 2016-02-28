@@ -19,6 +19,7 @@
         <mvcSiteMapNode title="Редагування товару" controller="Products" action="Edit"/>
         <mvcSiteMapNode title="Контакти" controller="ContactInfo" action="Index"/>
         <mvcSiteMapNode title="Бренди" controller="Brands" action="Index"/>
+        <mvcSiteMapNode title="Країни" controller="Countries" action="Index"/>
         <mvcSiteMapNode title="Створення бренду" controller="Brands" action="Create"/>
         <!--<mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>-->
     </mvcSiteMapNode>
