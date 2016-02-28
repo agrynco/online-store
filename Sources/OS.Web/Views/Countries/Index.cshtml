@@ -30,12 +30,41 @@
         </tfoot>
         <tbody></tbody>
     </table>
+
+    <div style="display: none" id="country-name-template">
+        <div class="presenter">
+            <div class="template-container">
+                <div class="country-name">
+                    <span class="name" onclick="toggleMode(this)" style="cursor: pointer;">
+                    </span>
+                </div>
+                <div class="country-name-editor" style="display: none">
+                    <input type="text" class="tbxName" />
+                    <input type="button" value="Зберегти" onclick="saveName(this)"/>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
 @section scripts
 {
     <script type="text/javascript">
-        $().ready(function()
+        function saveName(source)
+        {
+            toggleMode(source);
+        }
+
+        function toggleMode(source)
+        {
+            var template = $(source).closest("div[class='template-container']");
+            template.find(".country-name").toggle();
+            template.find(".country-name-editor").toggle();
+        }
+    </script>
+
+    <script type="text/javascript">
+        $().ready(function ()
         {
             $("#countries").DataTable({
                 ajax: "api/countries",
@@ -52,6 +81,18 @@
                     {
                         targets: [0, 2, 3, 4, 5, 6],
                         className: "min-width"
+                    },
+                    {
+                        targets: [1],
+                        render: function (data, type, row)
+                        {
+                            var template = $("#country-name-template").find(".presenter");
+                            
+                            var editor = template.clone();
+                            editor.find(".name").html(data);
+                            editor.find(".tbxName").attr("value", data);
+                            return editor.html();
+                        }
                     }
                 ],
                 language: {
