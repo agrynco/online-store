@@ -259,6 +259,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Administration\BaseAdminController.cs" />
     <Compile Include="Controllers\Administration\BrandsController.cs" />
+    <Compile Include="Controllers\Administration\CountriesController.cs" />
     <Compile Include="Controllers\Administration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\Administration\ProductsController.cs" />
     <Compile Include="Controllers\Api\BrandsController.cs" />
@@ -286,6 +287,7 @@
     <Compile Include="Models\BrandViewModels\BrandCreateOrEditViewModel.cs" />
     <Compile Include="Models\ConsumerBasketViewModel.cs" />
     <Compile Include="Models\ContactInfoEditViewModel.cs" />
+    <Compile Include="Models\CountryViewModel\CountryListViewModel.cs" />
     <Compile Include="Models\EditOrderViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
