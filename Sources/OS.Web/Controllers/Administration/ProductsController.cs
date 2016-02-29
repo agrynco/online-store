@@ -103,7 +103,8 @@ namespace OS.Web.Controllers.Administration
                     Description = product.Description,
                     Id = product.Id,
                     BrandName = product.Brand.Name,
-                    CountryName = product.CountryProducer.Name
+                    CountryName = product.CountryProducer.Name,
+                    Price = product.Price.ToString()
                 };
 
             model.CategorySelectorViewModel.Id = categoryId;
@@ -147,6 +148,7 @@ namespace OS.Web.Controllers.Administration
                 target.Name = model.Name;
                 target.Description = model.Description;
                 target.ShortDescription = model.ShortDescription;
+                target.Price = decimal.Parse(model.Price);
 
                 if (!string.IsNullOrEmpty(model.BrandName))
                 {
@@ -213,7 +215,7 @@ namespace OS.Web.Controllers.Administration
                     return RedirectToAction("Index");
                 }
             }
-
+            model.CategorySelectorViewModel.ParentCategories = _productCategoriesBL.GetParentCategories(model.CategorySelectorViewModel.Id.Value).Select(parentCategory => parentCategory.Name).ToArray();
             return View("Edit", model);
         }
     }

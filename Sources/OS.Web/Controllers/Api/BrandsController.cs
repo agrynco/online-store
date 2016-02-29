@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using OS.Business.Domain;
 using OS.Business.Logic;
 
 namespace OS.Web.Controllers.Api
@@ -19,6 +20,22 @@ namespace OS.Web.Controllers.Api
         public List<string> Get(string term)
         {
             return _brandsBL.Find(term).Select(brand => brand.Name).ToList();
-        } 
+        }
+
+        [Route("{id}")]
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            _brandsBL.Delete(id);
+        }
+
+        [Route]
+        public object Get()
+        {
+            return new
+                {
+                    data = _brandsBL.Find(new BrandsFilter()).Entities.Select(x => new object[] {x.Id, x.Name})
+                };
+        }
     }
 }
