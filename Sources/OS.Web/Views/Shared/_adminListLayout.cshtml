@@ -17,34 +17,41 @@
         string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
     }
 
-    <div class="panel panel-default">
-        <ul class="nav nav-pills">
-            @if (IsSectionDefined("createToolBarItem"))
-            {
-                @RenderSection("createToolBarItem")
-            }
-            else
-            {
+    @if (IsSectionDefined("toolBar"))
+    {
+        @RenderSection("toolBar")
+    }
+    else
+    {
+        <div class="panel panel-default">
+            <ul class="nav nav-pills">
+                @if (IsSectionDefined("createToolBarItem"))
+                {
+                    @RenderSection("createToolBarItem")
+                }
+                else
+                {
+                    <li role="presentation">
+                        @Html.ActionLink("Створити", "Create", currentControllerName)
+                    </li>
+                }
                 <li role="presentation">
-                    @Html.ActionLink("Створити", "Create", currentControllerName)
+                    <a href="#">Видалити</a>
                 </li>
-            }
-            <li role="presentation">
-                <a href="#">Видалити</a>
-            </li>
 
-            @if (IsSectionDefined("filter"))
-            {
-                <li class="nav-divider"></li>
-                <li role="presentation">
-                    <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#filter-panel">
-                        <span class="glyphicon glyphicon-cog"></span>Фільтер
-                    </a>
-                </li>
-            }
+                @if (IsSectionDefined("filter"))
+                {
+                    <li class="nav-divider"></li>
+                    <li role="presentation">
+                        <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#filter-panel">
+                            <span class="glyphicon glyphicon-cog"></span>Фільтер
+                        </a>
+                    </li>
+                }
 
-        </ul>
-    </div>
+            </ul>
+        </div>
+    }
 
     @if (IsSectionDefined("filter"))
     {
