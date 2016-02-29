@@ -41,7 +41,6 @@ namespace OS.DAL.EF
                 }
                 throw new DALException(errorMessage, ex);
             }
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -49,6 +48,16 @@ namespace OS.DAL.EF
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetAssembly(GetType()));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (!disposing)
+            {
+                return;
+            }
+
+            base.Dispose(disposing);
         }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
