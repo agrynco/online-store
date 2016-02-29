@@ -1,10 +1,124 @@
-﻿@model dynamic
-
-@{
-    Layout = "~/Views/Shared/_adminLayout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
 }
 
-@section content
+@section toolBar
+{}
+
+@section list
 {
-    @Html.ActionLink("Оновити", "Update")
+    <table id="countries">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Назва</th>
+            <th>Назва (англ.)</th>
+            <th>ISO</th>
+            <th>Код телефону</th>
+            <th>"2-х" симв. код</th>
+            <th>"3-х" симв. код</th>
+
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Назва</th>
+            <th>Назва (англ.)</th>
+            <th>ISO</th>
+            <th>Код телефону</th>
+            <th>"2-х" симв. код</th>
+            <th>"3-х" симв. код</th>
+        </tr>
+        </tfoot>
+        <tbody></tbody>
+    </table>
+
+    <div style="display: none" id="country-name-template">
+        <div class="presenter">
+            <div class="template-container">
+                <div class="country-name">
+                    <span class="name" onclick="toggleMode(this)" style="cursor: pointer;">
+                    </span>
+                </div>
+                <div class="country-name-editor" style="display: none">
+                    <input type="text" class="tbxName"/>
+                    <input type="button" class="btnSave" value="Зберегти" onclick="saveName(this)"/>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        var countriesDataTable;
+
+        function saveName(source)
+        {
+            var tbxName = $(source).closest("div[class='country-name-editor']").find(".tbxName");
+            $.ajax({
+                method: "PUT",
+                url: "api/countries/" + $(source).attr("countryId") + "?name=" + tbxName.val()
+            }).done(function()
+            {
+                $(source).closest("div[class='template-container']").find(".name").text(tbxName.val());
+                toggleMode(source);
+            });
+        }
+
+        function toggleMode(source)
+        {
+            var template = $(source).closest("div[class='template-container']");
+            template.find(".country-name").toggle();
+
+            var countryNameEditor = template.find(".country-name-editor");
+            countryNameEditor.toggle();
+
+            if ((countryNameEditor).is(":visible"))
+            {
+                var tbxName = countryNameEditor.find(".tbxName");
+                tbxName.select();
+            }
+        }
+
+        $().ready(function()
+        {
+            countriesDataTable = $("#countries").DataTable({
+                ajax: "api/countries",
+                columns: [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "EnglishName" },
+                    { "data": "ISO" },
+                    { "data": "PhoneCode" },
+                    { "data": "TwoCharsCode" },
+                    { "data": "ThreeCharsCode" }
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 2, 3, 4, 5, 6],
+                        className: "min-width"
+                    },
+                    {
+                        targets: [1],
+                        render: function(data, type, row)
+                        {
+                            var template = $("#country-name-template").find(".presenter");
+
+                            var editor = template.clone();
+                            editor.find(".name").html(data);
+                            editor.find(".tbxName").attr("value", data);
+                            editor.find(".btnSave").attr("countryId", row.Id);
+                            return editor.html();
+                        }
+                    }
+                ],
+                language: {
+                    url: "scripts/datatables.translations/ukrainian.json"
+                }
+            });
+        });
+    </script>
 }

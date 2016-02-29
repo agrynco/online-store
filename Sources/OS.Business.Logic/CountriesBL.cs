@@ -53,6 +53,12 @@ namespace OS.Business.Logic
 
             return result;
         }
+
+        public void Update(Country country)
+        {
+            _countriesRepository.Update(country);
+        }
+
         public UpdateCountriesResult UpdateCountries(List<Country> newCountries)
         {
             List<Country> existedCountries = _countriesRepository.GetAll().ToList();
@@ -87,6 +93,11 @@ namespace OS.Business.Logic
             return _countriesRepository.GetAll().Where(country => country.Name.Contains(nameSearchPattern)).ToList();
         }
 
+        public Country GetById(int id)
+        {
+            return _countriesRepository.GetById(id);
+        }
+
         public Country GetByName(string name)
         {
             Country result = _countriesRepository.GetAll().FirstOrDefault(country => country.Name == name);
@@ -97,6 +108,11 @@ namespace OS.Business.Logic
             }
 
             return result;
+        }
+
+        public List<Country> GetAll()
+        {
+            return _countriesRepository.GetAll().ToList();
         }
     }
 }
