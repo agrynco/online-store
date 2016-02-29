@@ -15,8 +15,7 @@ namespace OS.Web.Controllers.Administration
         {
             _productCategoriesBL = productCategoriesBL;
         }
-
-
+        
         public ActionResult Index(ProductCategoriesFilterViewModel filter)
         {
             if (TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] != null)
@@ -110,7 +109,11 @@ namespace OS.Web.Controllers.Administration
 
                     ProductCategoriesFilterViewModel filterViewModel = new ProductCategoriesFilterViewModel();
                     filterViewModel.ParentCategory.Id = model.ParentId;
-                    filterViewModel.ParentCategory.Name = _productCategoriesBL.GetById(model.ParentId.Value).Name;
+
+                    if (model.ParentId.HasValue)
+                    {
+                        filterViewModel.ParentCategory.Name = _productCategoriesBL.GetById(model.ParentId.Value).Name;
+                    }
 
                     TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
                     return RedirectToAction("Index", filterViewModel);

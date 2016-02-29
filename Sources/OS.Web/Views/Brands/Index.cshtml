@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
+}
+
+@section list
+{
+    <style>
+        .delete-column {
+            width: 1px;
+        }
+
+        .id-column {
+            width: 1px;
+        }
+    </style>
+
+    <table id="brands" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>
+                    Назва
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>
+                    Назва
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        var brandsTable;
+
+        function deleteBrand(id)
+        {
+            if (confirmDelete())
+            {
+                $.ajax({
+                    method: "DELETE",
+                    url: "api/brands/" + id
+                }).done(function (msg)
+                {
+                    brandsTable.ajax.reload();
+                });
+            }
+        };
+
+        $().ready(function ()
+        {
+            brandsTable = $("#brands").DataTable({
+                ajax: "api/brands",
+                language: {
+                    url: "scripts/datatables.translations/ukrainian.json"
+                },
+                columnDefs: [
+                {
+                    targets: [0],
+                    visible: true,
+                    className: "id-column"
+                },
+                {
+                    targets: [1],
+                    visible: true
+                },
+                {
+                    render: function (data, type, row)
+                    {
+                        return "<a href='#' onclick='deleteBrand(" + row[0] + ");'>Видалити</a>";
+                    },
+                    targets: [2],
+                    className: "delete-column"
+                }]
+            });
+        });
+    </script>
+}

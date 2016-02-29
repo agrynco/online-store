@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Brand.cs" />
+    <Compile Include="BrandsFilter.cs" />
     <Compile Include="Buyer.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderStatus.cs" />
