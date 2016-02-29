@@ -6,27 +6,27 @@
 {
     <table id="countries">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Назва</th>
-                <th>Назва (англ.)</th>
-                <th>ISO</th>
-                <th>Код телефону</th>
-                <th>"2-х" симв. код</th>
-                <th>"3-х" симв. код</th>
+        <tr>
+            <th>Id</th>
+            <th>Назва</th>
+            <th>Назва (англ.)</th>
+            <th>ISO</th>
+            <th>Код телефону</th>
+            <th>"2-х" симв. код</th>
+            <th>"3-х" симв. код</th>
 
-            </tr>
+        </tr>
         </thead>
         <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Назва</th>
-                <th>Назва (англ.)</th>
-                <th>ISO</th>
-                <th>Код телефону</th>
-                <th>"2-х" симв. код</th>
-                <th>"3-х" симв. код</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Назва</th>
+            <th>Назва (англ.)</th>
+            <th>ISO</th>
+            <th>Код телефону</th>
+            <th>"2-х" симв. код</th>
+            <th>"3-х" симв. код</th>
+        </tr>
         </tfoot>
         <tbody></tbody>
     </table>
@@ -39,8 +39,8 @@
                     </span>
                 </div>
                 <div class="country-name-editor" style="display: none">
-                    <input type="text" class="tbxName" />
-                    <input type="button" value="Зберегти" onclick="saveName(this)"/>
+                    <input type="text" class="tbxName"/>
+                    <input type="button" class="btnSave" value="Зберегти" onclick="saveName(this)"/>
                 </div>
             </div>
         </div>
@@ -50,23 +50,39 @@
 @section scripts
 {
     <script type="text/javascript">
+        var countriesDataTable;
+
         function saveName(source)
         {
-            toggleMode(source);
+            var tbxName = $(source).closest("div[class='country-name-editor']").find(".tbxName");
+            $.ajax({
+                method: "PUT",
+                url: "api/countries/" + $(source).attr("countryId") + "?name=" + tbxName.val()
+            }).done(function()
+            {
+                $(source).closest("div[class='template-container']").find(".name").text(tbxName.val());
+                toggleMode(source);
+            });
         }
 
         function toggleMode(source)
         {
             var template = $(source).closest("div[class='template-container']");
             template.find(".country-name").toggle();
-            template.find(".country-name-editor").toggle();
-        }
-    </script>
 
-    <script type="text/javascript">
-        $().ready(function ()
+            var countryNameEditor = template.find(".country-name-editor");
+            countryNameEditor.toggle();
+
+            if ((countryNameEditor).is(":visible"))
+            {
+                var tbxName = countryNameEditor.find(".tbxName");
+                tbxName.select();
+            }
+        }
+
+        $().ready(function()
         {
-            $("#countries").DataTable({
+            countriesDataTable = $("#countries").DataTable({
                 ajax: "api/countries",
                 columns: [
                     { "data": "Id" },
@@ -84,13 +100,14 @@
                     },
                     {
                         targets: [1],
-                        render: function (data, type, row)
+                        render: function(data, type, row)
                         {
                             var template = $("#country-name-template").find(".presenter");
-                            
+
                             var editor = template.clone();
                             editor.find(".name").html(data);
                             editor.find(".tbxName").attr("value", data);
+                            editor.find(".btnSave").attr("countryId", row.Id);
                             return editor.html();
                         }
                     }

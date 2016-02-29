@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models.CountryViewModel;
 
@@ -29,6 +30,14 @@ namespace OS.Web.Controllers.Api
                 {
                     data = _countriesBL.GetAll()
                 };
+        }
+
+        [Route("{id}")]
+        public void PutName(int id, string name)
+        {
+            Country country = _countriesBL.GetById(id);
+            country.Name = name;
+            _countriesBL.Update(country);
         }
     }
 }
