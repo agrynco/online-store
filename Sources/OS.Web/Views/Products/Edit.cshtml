@@ -109,7 +109,8 @@
     <script type="text/javascript">
         tinyMCE.init(
         {
-            selector: "#@Html.IdFor(m => m.Description)"
+            selector: "#@Html.IdFor(m => m.Description)",
+            entity_encoding: "raw"
         });
 
         $("#@Html.IdFor(m => m.BrandName)").autocomplete(
