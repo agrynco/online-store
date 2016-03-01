@@ -47,7 +47,8 @@ namespace OS.Web.Controllers
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
                 {
                     Id = productCategory.Id,
-                    Name = productCategory.Name
+                    Name = productCategory.Name,
+                    ProductsCount = productCategory.Products.Count
                 };
                 verticalCategorySelectorItemViewModels.Add(verticalCategorySelectorItemViewModel);
 
