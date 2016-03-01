@@ -33,7 +33,12 @@
                         @Html.HiddenFor(m => m.CategorySelectorViewModel.Id, new { @class = "form-control" })
                         <div>
                             <span id="pathToRoot">
-                                @string.Join(" : ", Model.CategorySelectorViewModel.ParentCategories)
+                                @if (Model.CategorySelectorViewModel.ParentCategories != null)
+                                {
+                                    <text>
+                                        @string.Join(" : ", Model.CategorySelectorViewModel.ParentCategories)
+                                    </text>
+                                }
                             </span>
                         </div>
                         <div>
@@ -43,10 +48,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
+                    @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -75,10 +80,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.CountryName, new {@class = "col-md-2 control-label"})
+                    @Html.LabelFor(m => m.CountryName, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.CountryName, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(m => m.CountryName, "", new {@class = "text-danger"})
+                        @Html.TextBoxFor(m => m.CountryName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CountryName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -144,8 +149,11 @@
     </script>
 
     <script type="text/javascript">
-        var tbxPrentCategoryName = $("#@Html.IdFor(m=> m.CategorySelectorViewModel.Name)");
-        tbxPrentCategoryName.autocomplete(
+        var $tbxPrentCategoryName = $("#@Html.IdFor(m => m.CategorySelectorViewModel.Name)");
+        var $pathToRoot = $("#pathToRoot");
+        var $categoryId = $("#@Html.IdFor(x => x.CategorySelectorViewModel.Id)");
+
+        $tbxPrentCategoryName.autocomplete(
         {
             source: "/api/categories/autocomplete",
             minLength: 1,
@@ -172,13 +180,18 @@
             },
             select: function (event, ui)
             {
-                $("#@Html.IdFor(x => x.CategorySelectorViewModel.Id)").val(ui.item.Id);
-                $("#@Html.IdFor(x => x.CategorySelectorViewModel.Name)").val(ui.item.Name);
-
-                $("#pathToRoot").text(ui.item.PathToRoot);
+                $categoryId.val(ui.item.Id);
+                $tbxPrentCategoryName.val(ui.item.Name);
+                $pathToRoot.text(ui.item.PathToRoot);
 
                 return false;
             }
+        });
+
+        $tbxPrentCategoryName.change(function()
+        {
+            $pathToRoot.text("");
+            $categoryId.val("");
         });
     </script>
 }
