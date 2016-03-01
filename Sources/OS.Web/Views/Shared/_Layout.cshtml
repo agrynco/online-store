@@ -24,16 +24,37 @@
 
 <div class="footer container">
     <hr/>
-    <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
-    <p>
-        <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
-    </p>
-    <p>
-        <span>
-            <b>Client:</b>
-        </span>
-        <span id="browserInfo"></span>
-    </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>&copy; @DateTime.Now.Year - @ApplicationSettings.Instance.AppSettings.ApplicationName</p>
+                <p>
+                    <b>Environment:</b> @ApplicationSettings.Instance.AppSettings.Environment
+                </p>
+                <p>
+                    <span>
+                        <b>Client:</b>
+                    </span>
+                    <span id="browserInfo"></span>
+                </p>
+            </div>
+            <div class="col-md-2 col-md-offset-4">
+                @{
+                    string mailToTemplate = "mailto:jgrynco@gmail.com?Subject={0}: [коротка інформація про {1}]&cc=agrynco@gmail.com";
+                    mailToTemplate += "&body=Тут максимально детально опишыть що саме Ви хочете. Не лінуйтеся і вкладіть картинки якщо це можливо";
+                }
+                <div class="row">
+                    <a href='@string.Format(mailToTemplate, "OS_B", "помилку")'>Повідомити про помилку</a>
+                </div>
+                <div class="row">
+                    <a href='@string.Format(mailToTemplate, "OS_Q", "запит")'>Запитати</a>
+                </div>
+                <div class="row">
+                    <a href='@string.Format(mailToTemplate, "OS_US", "додатковий функціонал")'>Замовити лодатковий функціонал</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
