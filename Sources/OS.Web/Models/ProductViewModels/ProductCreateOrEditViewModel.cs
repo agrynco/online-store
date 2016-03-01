@@ -41,6 +41,7 @@ namespace OS.Web.Models.ProductViewModels
         }
 
         [Display(Name = "Назва товару")]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string Name { get; set; }
 
         [Display(Name = "Опис")]
