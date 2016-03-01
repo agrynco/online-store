@@ -40,8 +40,9 @@ namespace OS.Web.Controllers
 
         private void AddChildCategories(List<VerticalCategorySelectorItemViewModel> verticalCategorySelectorItemViewModels, ProductCategory parentCategory)
         {
-
-            foreach (ProductCategory productCategory in parentCategory.ChildCategories)
+            List<ProductCategory> childCategories = _productCategoriesBL.GetCategories(parentCategory.Id);
+                
+            foreach (ProductCategory productCategory in childCategories)
             {
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
                 {
