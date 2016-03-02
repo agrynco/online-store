@@ -424,7 +424,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\FileSystemDeployment.pubxml" />
-    <None Include="Properties\PublishProfiles\qa.frezaopt.com.ua.pubxml" />
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
     <Content Include="Images\minus_white.png" />
     <Content Include="Images\plus.png" />
     <Content Include="Scripts\angular-animate.js" />
