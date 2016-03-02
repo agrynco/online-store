@@ -47,6 +47,7 @@ namespace OS.Web.Controllers.Administration
                     {
                         IgnoreParentId = false,
                         ParentId = filter.ParentCategory.Id,
+                        Text = filter.Name
                     };
                 productCategoriesFilter.PaginationFilter.PageNumber = filter.PageNumber;
                 productCategoriesFilter.PaginationFilter.PageSize = filter.PageSize;
