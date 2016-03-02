@@ -9,8 +9,10 @@
 
 @{
     ProductPhoto mainPhoto = Model.Product.Photos.SingleOrDefault(x => x.IsMain);
-}
 
+    mainPhoto = mainPhoto != null ? mainPhoto : Model.Product.Photos.FirstOrDefault();
+}
+  
 <div class="row">
     <div class="col-md-4">
         @if (mainPhoto != null)
