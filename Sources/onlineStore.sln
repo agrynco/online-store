@@ -19,7 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Configuration", "OS.Conf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{93842B83-B84C-4015-9C28-DD9B454D52B6}"
 	ProjectSection(SolutionItems) = preProject
+		..\Tools\_prepare-unit-tests_dbupdatesapplier.bat = ..\Tools\_prepare-unit-tests_dbupdatesapplier.bat
+		..\Tools\_setup_unit_tests.bat = ..\Tools\_setup_unit_tests.bat
 		..\Tools\apply_migrations.bat = ..\Tools\apply_migrations.bat
+		..\Tools\prepare_ci_env.bat = ..\Tools\prepare_ci_env.bat
 		..\Tools\prepare_dev_env.bat = ..\Tools\prepare_dev_env.bat
 		..\Tools\recreate_db.bat = ..\Tools\recreate_db.bat
 		..\Tools\setup_site.bat = ..\Tools\setup_site.bat
@@ -29,11 +32,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUpdatesApplier", "DbUpdat
 	ProjectSection(SolutionItems) = preProject
 		..\Tools\DbUpdatesApplier\AGrynco.Lib.dll = ..\Tools\DbUpdatesApplier\AGrynco.Lib.dll
 		..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb = ..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb
+		..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe
+		..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe.config
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe.config
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb
 		..\Tools\DbUpdatesApplier\DbVersioning.dll = ..\Tools\DbUpdatesApplier\DbVersioning.dll
 		..\Tools\DbUpdatesApplier\DbVersioning.pdb = ..\Tools\DbUpdatesApplier\DbVersioning.pdb
+		..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe
+		..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\frezaopt.com.ua_DbUpdateApplier.exe.config
+		..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe
+		..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe.config
+		..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe
+		..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\qa.frezaopt.com.ua_DbUpdateApplier.exe.config
 		..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\Tests_DbUpdateApplier.Console.exe.config
 	EndProjectSection
@@ -53,12 +64,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Common.Tests", "OS.Commo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{60A381A2-8DED-431B-924E-EB6A38B2A213}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qa.online-store.grynco.com.ua", "qa.online-store.grynco.com.ua", "{B8FE35C0-8651-49DC-9250-9F7BDBD01BFF}"
-	ProjectSection(SolutionItems) = preProject
-		..\Configuration\qa.online-store.grynco.com.ua\appSettings.config = ..\Configuration\qa.online-store.grynco.com.ua\appSettings.config
-		..\Configuration\qa.online-store.grynco.com.ua\connectionStrings.config = ..\Configuration\qa.online-store.grynco.com.ua\connectionStrings.config
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{C74110F1-9385-4E26-A490-D999CD81E9FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Business.Logic.Tests", "OS.Business.Logic.Tests\OS.Business.Logic.Tests.csproj", "{7B197038-72AA-4FB0-9DA5-186DCF118721}"
@@ -76,6 +81,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0A6D004-F007-4896-8656-3C3BC29072F6}"
 	ProjectSection(SolutionItems) = preProject
 		WE-Markdown.css = WE-Markdown.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qa.frezaopt.com.ua", "qa.frezaopt.com.ua", "{F8C7607E-6E94-4FD3-8A8F-58F5350E114C}"
+	ProjectSection(SolutionItems) = preProject
+		..\Configuration\qa.frezaopt.com.ua\appSettings.config = ..\Configuration\qa.frezaopt.com.ua\appSettings.config
+		..\Configuration\qa.frezaopt.com.ua\connectionStrings.config = ..\Configuration\qa.frezaopt.com.ua\connectionStrings.config
 	EndProjectSection
 EndProject
 Global
@@ -148,10 +159,10 @@ Global
 		{00F50C2E-2DB5-4E61-AFD8-411824DA2F8E} = {93842B83-B84C-4015-9C28-DD9B454D52B6}
 		{F7DE2B54-B47C-423B-8035-F8D3205917AA} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
 		{BCC4BDC9-2FF7-466E-9EEE-E3541B8B3DE1} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
-		{B8FE35C0-8651-49DC-9250-9F7BDBD01BFF} = {60A381A2-8DED-431B-924E-EB6A38B2A213}
 		{7B197038-72AA-4FB0-9DA5-186DCF118721} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
 		{CC5A58FA-5252-4294-9491-4618BBD425EB} = {60A381A2-8DED-431B-924E-EB6A38B2A213}
 		{2769A653-2C66-46E0-B1F2-9CF7799056A5} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
 		{78FD6BCF-B56F-4DC1-A55E-51956BB34F47} = {C74110F1-9385-4E26-A490-D999CD81E9FF}
+		{F8C7607E-6E94-4FD3-8A8F-58F5350E114C} = {60A381A2-8DED-431B-924E-EB6A38B2A213}
 	EndGlobalSection
 EndGlobal
