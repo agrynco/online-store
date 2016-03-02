@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Data.Entity;
 using System.Linq;
 using OS.Business.Domain;
@@ -19,6 +20,7 @@ namespace OS.DAL.EF.Core
 
         public TEntity Add(TEntity entity)
         {
+            entity.Created = DateTime.UtcNow;
             TEntity addedEntity = DbSet.Add(entity);
             EntityFrameworkDbContext.SaveChanges();
             return addedEntity;
@@ -36,7 +38,7 @@ namespace OS.DAL.EF.Core
             EntityFrameworkDbContext.SaveChanges();
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             DbSet.Attach(entity);
             EntityFrameworkDbContext.Entry(entity).State = EntityState.Modified;

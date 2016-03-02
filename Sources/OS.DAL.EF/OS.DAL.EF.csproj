@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\0-0.sql" />
+    <Content Include="Migrations\0-34.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
