@@ -27,7 +27,8 @@ namespace OS.Web.Controllers
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
                     {
                         Id = productCategory.Id,
-                        Name = productCategory.Name
+                        Name = productCategory.Name,
+                        ProductsCount = productCategory.Products.Count
                     };
                 model.Categories.Add(verticalCategorySelectorItemViewModel);
 
@@ -39,13 +40,15 @@ namespace OS.Web.Controllers
 
         private void AddChildCategories(List<VerticalCategorySelectorItemViewModel> verticalCategorySelectorItemViewModels, ProductCategory parentCategory)
         {
-
-            foreach (ProductCategory productCategory in parentCategory.ChildCategories)
+            List<ProductCategory> childCategories = _productCategoriesBL.GetCategories(parentCategory.Id);
+                
+            foreach (ProductCategory productCategory in childCategories)
             {
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
                 {
                     Id = productCategory.Id,
-                    Name = productCategory.Name
+                    Name = productCategory.Name,
+                    ProductsCount = productCategory.Products.Count
                 };
                 verticalCategorySelectorItemViewModels.Add(verticalCategorySelectorItemViewModel);
 

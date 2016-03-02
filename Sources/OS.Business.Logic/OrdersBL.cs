@@ -29,21 +29,18 @@ namespace OS.Business.Logic
     public class OrdersBL
     {
         private readonly IOrderedProductsRepository _orderedProductsRepository;
-        private readonly IProductsRepository _productsRepository;
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderStatusHistoryItemsRepository _orderStatusHistoryItemsRepository;
         private readonly IPersonsRepository _personsRepository;
 
         public OrdersBL(IPersonsRepository personsRepository, IOrdersRepository ordersRepository,
             IOrderStatusHistoryItemsRepository orderStatusHistoryItemsRepository,
-            IOrderedProductsRepository orderedProductsRepository,
-            IProductsRepository productsRepository)
+            IOrderedProductsRepository orderedProductsRepository)
         {
             _personsRepository = personsRepository;
             _ordersRepository = ordersRepository;
             _orderStatusHistoryItemsRepository = orderStatusHistoryItemsRepository;
             _orderedProductsRepository = orderedProductsRepository;
-            _productsRepository = productsRepository;
         }
 
         public Order CreateOrder(CreateOrderQuery createOrderQuery)
@@ -59,7 +56,6 @@ namespace OS.Business.Logic
 
             Order order = _ordersRepository.Add(new Order
                 {
-                    Created = DateTime.Now,
                     Person = person
                 });
 

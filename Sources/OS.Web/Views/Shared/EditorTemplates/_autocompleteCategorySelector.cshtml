@@ -6,12 +6,25 @@
         {
             @class = "filter-col"
         })
-    @Html.TextBoxFor(x => x.Name, new
-        {
-            @class = "form-control input-sm",
-        })
+    <div class="input-group">
+        @Html.TextBoxFor(x => x.Name, new
+            {
+                @class = "form-control",
+            })
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" id="dropDownCategory"><span class="glyphicon glyphicon-triangle-bottom"></span></button>
+        </span>
+    </div>
+
     @Html.HiddenFor(x => x.Id)
 </div>
+
+<script type="text/javascript">
+    $("#dropDownCategory").click(function()
+    {
+        $("#@Html.IdFor(x => x.Name)").autocomplete("search", "");
+    });
+</script>
 
 <script type="text/javascript">
     function initAutocompleteCategoriesFilter(enterTheCategoryCallBack)
@@ -20,7 +33,7 @@
         tbxPrentCategoryName.autocomplete(
         {
             source: "/api/categories/autocomplete",
-            minLength: 1,
+            minLength: 0,
             create: function()
             {
                 $(this).data('ui-autocomplete')._renderItem = function(ul, item)
@@ -45,7 +58,7 @@
             $(this).select();
         });
 
-        tbxPrentCategoryName.mouseup(function ()
+        tbxPrentCategoryName.mouseup(function()
         {
             $(this).select();
         });

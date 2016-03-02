@@ -7,8 +7,6 @@ namespace OS.Business.Domain
 {
     public class Order : IdentityEntity
     {
-        public DateTime Created { get; set; }
-
         public IList<OrderedProduct> OrderedProducts { get; set; }
 
         [NotMapped]

@@ -18,12 +18,12 @@ namespace OS.Business.Logic
 
         public List<ProductCategory> GetCategories(int? parentId)
         {
-            return _productCategoriesRepository.GetCategories(parentId).ToList();
+            return _productCategoriesRepository.GetCategories(parentId).OrderBy(x => x.Name).ToList();
         }
 
         public List<ProductCategory> SearchCategories(string searchTerm)
         {
-            return _productCategoriesRepository.SearchCategories(searchTerm).ToList();
+            return _productCategoriesRepository.SearchCategories(searchTerm).OrderBy(x => x.Name).ToList();
         }
 
         /// <summary>
