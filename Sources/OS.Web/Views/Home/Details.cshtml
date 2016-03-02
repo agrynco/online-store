@@ -12,13 +12,7 @@
 
     mainPhoto = mainPhoto != null ? mainPhoto : Model.Product.Photos.FirstOrDefault();
 }
-
-@{
-    string returnUrl = @Request.UrlReferrer != null ? Request.UrlReferrer.LocalPath : Url.Action("Index", "Home");
-}
-
-
-
+  
 <div class="row">
     <div class="col-md-4">
         @if (mainPhoto != null)
@@ -30,14 +24,12 @@
         @Html.Raw(Model.Product.Description)
     </div>
 </div>
-<div class="row">
-    <div class="col-md-8 col-md-offset-4">
-        <span class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Product.Id" categoryId="@Model.CategoryId" productPrice="@Model.Product.Price">Купити</span>
-        <a class="btn btn-default" href="@returnUrl">Повернутися до пошуку товарів</a>
-    </div>
+
+<div class="row" style="margin: 0">
+    <a class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Product.Id" categoryId="@Model.CategoryId" productPrice="@Model.Product.Price">Купити</a>
 </div>
 
-<div class="row" style="margin-left: 0; margin-right: 0; margin-top: 20px;">
+<div class="row" style="margin: 0">
     <div id="productPhotos" class="row list-group">
         @{
             IEnumerable<ProductPhoto> restPhotos = Model.Product.Photos.Where(x => !x.IsMain && !x.IsDeleted).ToList();
