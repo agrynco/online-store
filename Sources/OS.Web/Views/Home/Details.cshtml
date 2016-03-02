@@ -12,27 +12,27 @@
 
     mainPhoto = mainPhoto != null ? mainPhoto : Model.Product.Photos.FirstOrDefault();
 }
-
-@{
-    string returnUrl = @Request.UrlReferrer != null ? Request.UrlReferrer.LocalPath : Url.Action("Index", "Home");
-}
-
-
-
+  
 <div class="row">
     <div class="col-md-4">
         @if (mainPhoto != null)
         {
-            <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = mainPhoto.Id})" />
+            <img height="171" width="180" src="@Url.Action("GetFileContent", "Files", new {id = mainPhoto.Id})"/>
         }
     </div>
     <div class="col-md-8">
         @Html.Raw(Model.Product.Description)
     </div>
 </div>
+
+
+@{
+    string returnUrl = Request.UrlReferrer != null ? Request.UrlReferrer.LocalPath : Url.Action("Index", "Home");
+}
+
 <div class="row">
-    <div class="col-md-8 col-md-offset-4">
-        <span class="btn btn-success btn-buy-product" href="#" style="display: none" productId="@Model.Product.Id" categoryId="@Model.CategoryId" productPrice="@Model.Product.Price">Купити</span>
+    <div class="col-md-offset-4">
+        <span class="btn btn-success btn-buy-product" style="display: none" productId="@Model.Product.Id" categoryId="@Model.CategoryId" productPrice="@Model.Product.Price">Купити</span>    
         <a class="btn btn-default" href="@returnUrl">Повернутися до пошуку товарів</a>
     </div>
 </div>
