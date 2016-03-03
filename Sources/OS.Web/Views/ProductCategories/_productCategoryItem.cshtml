@@ -4,26 +4,32 @@
 
 <div class="os-item col-xs-2 col-lg-2">
     <div class="thumbnail">
-        <div class="group list-group-image product-category" style="width: 160px; height: 142px;">
-            <div style="float: right !important; margin: 4px;">
-                @Html.ActionLink(" ", "Delete", new
-                    {
-                        id = Model.Id
-                    }, new
+        <div class="group list-group-image" style="width: 160px; height: 142px; background-color: burlywood; border-radius: 5px">
+            <div class="row" style="margin: 0; padding: 5px;">
+                <div class="col-md-1 col-md-offset-7">
+                    @Html.ActionLink(" ", "Edit", new
                         {
-                            @class = "glyphicon glyphicon-remove",
-                            onclick = "return confirmDelete();"
-                        })
+                            id = Model.Id
+                        }, new
+                            {
+                                @class = "glyphicon glyphicon-edit"
+                            })
+                </div>
 
-            </div>
-            <div style="float: right !important; margin: 4px;">
-                @Html.ActionLink(" ", "Edit", new
-                    {
-                        id = Model.Id
-                    }, new
+                <div class="col-md-1">
+                    @Html.ActionLink(" ", "Delete", new
                         {
-                            @class = "glyphicon glyphicon-edit"
-                        })
+                            id = Model.Id
+                        }, new
+                            {
+                                @class = "glyphicon glyphicon-remove",
+                                onclick = "return confirmDelete();"
+                            })
+                </div>
+            </div>
+            <div class="row" style="margin: 0; padding: 5px;">
+                <label>Публікувати</label>
+                <input type="checkbox"/>
             </div>
         </div>
         <div class="caption">
