@@ -1,77 +1,99 @@
 ﻿@using OS.Web.Models.ProductCategoryViewModels
 @model ProductCategoriesViewModel
-
 @{
     Layout = "~/Views/Shared/_adminListLayout.cshtml";
 }
 
 @section substituteBreadcrumbs
 {
-    <ol class="breadcrumb">
-        <li>
-            <a href="#" onclick="enterTheCategoryCallBack('')">..</a>
-        </li>
-        @foreach (ProductCategoryListItemViewModel productCategoryListItemViewModel in Model.PathToRoot)
-        {
-            <li>
-                <a href="#" onclick="enterTheCategoryCallBack('@productCategoryListItemViewModel.ProductCategory.Id')">@productCategoryListItemViewModel.ProductCategory.Name</a>
-            </li>
-        }
-        @if (Model.Filter.ParentCategory.Id.HasValue)
-        {
-            <li>
-                @Model.Filter.ParentCategory.Name
-            </li>
-        }
-    </ol>
+    @if (Model.BreadCrumbItems.Count > 1)
+    {
+        <ol class="breadcrumb">
+            @foreach (ProductCategoriesBreadCrumbItem breadCrumbItem in Model.BreadCrumbItems)
+            {
+                <li>
+                    @Html.ActionLink(breadCrumbItem.Name, "Index", new
+               {
+                   parentId = breadCrumbItem.Id
+               })
+                </li>
+            }
+        </ol>
+    }
 }
 
 @section createToolBarItem
 {
-<li role="presentation">
-    @Html.ActionLink("Створити", "Create", new
-        {
-            parentCategoryId = Model.Filter.ParentCategory.Id
-        })
-</li>
-}
-
-@section filter
-{
-    @Html.EditorFor(x => x.Filter)
+    <li role="presentation">
+        @Html.ActionLink("Створити", "Create", new
+   {
+       parentCategoryId = Model.ParentCategoryId
+   })
+    </li>
 }
 
 @section list
 {
-    @if (Model.Categories.Count > 0)
-    {
-        <div id="categories" class="row list-group">
-            @foreach (ProductCategoryListItemViewModel categoryListItemViewModel in Model.Categories)
-            {
-                @Html.Partial("_productCategoryItem", categoryListItemViewModel.ProductCategory)
-            }
-        </div>
-    }
-    else
-    {
-        <div class="alert alert-info">
-            Ця категорія не містить категорій
-        </div>
-    }
+    <table id="categoriesTable" style="width: 100%">
+        <thead>
+            <tr>
+                <th class="min-width">
+                    Id
+                </th>
+                <th style="width: 25%">
+                    Назва
+                </th>
+                <th>
+                    Опис
+                </th>
+                <th class="min-width">
+                    Публікувати
+                </th>
+                <th class="min-width"></th>
+                <th class="min-width"></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Назва
+                </th>
+                <th>
+                    Опис
+                </th>
+                <th>
+                    Публікувати
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div id="deleteTeamplate" class="template">
+        <span class="btn btn-sm btn-default">Видалити</span>
+    </div>
+    <div id="editTeamplate" class="template">
+        <a class="btn btn-sm btn-default">Редагувати</a>
+    </div>
 }
 
 @section scripts
 {
     <script src="~/Scripts/application/ProductCategories/productCategoriesListController.js"></script>
-    <script type="text/javascript">
-        var enterTheCategoryCallBack = function(categoryId)
-        {
-            $("#@Html.IdFor(x => x.Filter.ParentCategory.Id)").val(categoryId);
-            doSearch();
-        }
 
-        var productCategoriesListController = new ProductCategoriesListController(enterTheCategoryCallBack);
-       
-        initAutocompleteCategoriesFilter(enterTheCategoryCallBack);
+    @{
+        string parentCategoryId = Model.ParentCategoryId.HasValue ? Model.ParentCategoryId.ToString() : "null";
+    }
+    <script type="text/javascript">
+        var productCategoriesListController = new ProductCategoriesListController(@parentCategoryId);
+
+        function deleteProductCategory(id)
+        {
+            productCategoriesListController.deleteRecord(id);
+        }
     </script>
 }

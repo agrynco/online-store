@@ -33,7 +33,7 @@ namespace OS.Business.Logic
         /// <returns>List of the <see cref="ProductCategory"/>First category is on the upper level</returns>
         public List<ProductCategory> GetParentCategories(int categoryId)
         {
-            return _productCategoriesRepository.GetParentCategories(categoryId).OrderBy(category => category.Name).ToList();
+            return _productCategoriesRepository.GetParentCategories(categoryId).ToList();
         }
 
         public ProductCategory GetById(int id)

@@ -295,7 +295,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PaginationFilterViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\AutoCompleteProductCategoryFilterItemViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesBreadCrumbItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesApiViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryAutocompleteItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
