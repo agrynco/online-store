@@ -20,8 +20,13 @@ namespace OS.DAL.EF.Repositories
 
         public override IQueryable<TEntity> GetAll()
         {
-            return base.GetAll().Where(entity => entity.IsDeleted == false);
+            return GetAll(false);
         }
+
+        public IQueryable<TEntity> GetAll(bool includeDeleted)
+        {
+            return base.GetAll().Where(entity => includeDeleted || entity.IsDeleted == false);
+        } 
 
         public override void Update(TEntity entity)
         {

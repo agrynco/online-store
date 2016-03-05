@@ -77,6 +77,7 @@
     <Compile Include="ContactInfoBLTests.cs" />
     <Compile Include="ContentContentTypesBLTests.cs" />
     <Compile Include="CountriesBLTests.cs" />
+    <Compile Include="ProductCategoriesBLTests.cs" />
     <Compile Include="ProductsBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

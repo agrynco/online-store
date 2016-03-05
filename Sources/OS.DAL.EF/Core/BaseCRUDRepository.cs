@@ -26,10 +26,12 @@ namespace OS.DAL.EF.Core
             return addedEntity;
         }
 
-        public void Delete(params TEntityId[] id)
+        public virtual void Delete(params TEntityId[] id)
         {
-            var entities = GetAll().Where(entity => id.Contains(entity.Id)).ToArray();
-            Delete(entities);
+            foreach (TEntityId entityId in id)
+            {
+                Delete(GetById(entityId));
+            }
         }
 
         public virtual void Delete(params TEntity[] entities)

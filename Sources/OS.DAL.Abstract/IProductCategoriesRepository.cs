@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
@@ -11,5 +12,6 @@ namespace OS.DAL.Abstract
         IList<ProductCategory> GetParentCategories(int categoryId);
         IQueryable<ProductCategory> SearchByFilter(ProductCategoriesFilter filter);
         int? GetParentId(int id);
+        void IterateFromDownToUp(int id, Action<ProductCategory> action);
     }
 }
