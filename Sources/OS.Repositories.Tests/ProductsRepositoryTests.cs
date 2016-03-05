@@ -17,14 +17,14 @@ namespace OS.Repositories.Tests
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
             {
-                Text = "об"
+                Text = "фре"
             };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
 
             //Assert
-            Assert.That(products.Count, Is.EqualTo(8));
+            Assert.That(products.Count, Is.EqualTo(23));
         }
 
         [Test]
@@ -34,14 +34,14 @@ namespace OS.Repositories.Tests
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
             {
-                ParentId = 5
+                ParentId = 54
             };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
 
             //Assert
-            Assert.That(products.Count, Is.EqualTo(1));
+            Assert.That(products.Count, Is.EqualTo(14));
         }
 
         [Test]
@@ -51,15 +51,15 @@ namespace OS.Repositories.Tests
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
             {
-                ParentId = 5,
-                Text = "об"
+                ParentId = 54,
+                Text = "Полотно СМТ JT12"
             };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
 
             //Assert
-            Assert.That(products.Count, Is.EqualTo(1));
+            Assert.That(products.Count, Is.EqualTo(2));
         }
     }
 }

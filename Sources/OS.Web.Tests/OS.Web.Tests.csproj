@@ -65,7 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoriesApiControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +75,14 @@
     <ProjectReference Include="..\OS.Business.Logic\OS.Business.Logic.csproj">
       <Project>{134e9999-4850-4f45-a283-fef73e1529f4}</Project>
       <Name>OS.Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.DAL.Abstract\OS.DAL.Abstract.csproj">
+      <Project>{7cdf2abb-f7d6-4ea9-90d9-e09eedf536a1}</Project>
+      <Name>OS.DAL.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OS.DAL.EF\OS.DAL.EF.csproj">
+      <Project>{2f563658-f7b6-45c1-8a4c-e52bfa45015b}</Project>
+      <Name>OS.DAL.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\OS.Dependency\OS.Dependency.csproj">
       <Project>{2d41701e-f0b7-49c0-83df-3ed824f7e8fa}</Project>
