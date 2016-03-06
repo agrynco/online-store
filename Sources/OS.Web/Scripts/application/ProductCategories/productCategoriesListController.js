@@ -29,7 +29,8 @@ function ProductCategoriesListController(parentCategoryId)
                 { data: "Id" },
                 { data: "Name" },
                 { data: "Description" },
-                { data: "Publish" }
+                { data: "Publish" },
+                { data: "IsDeleted" }
             ],
             columnDefs: [
                 {
@@ -40,7 +41,7 @@ function ProductCategoriesListController(parentCategoryId)
                     }
                 },
                 {
-                    targets: [3],
+                    targets: [3, 4],
                     render: function(data, type, row)
                     {
                         var $trueTemplate = $("#truePublishTemplate");
@@ -58,7 +59,7 @@ function ProductCategoriesListController(parentCategoryId)
 
                         return $editDom.html();
                     },
-                    targets: [4],
+                    targets: [5],
                     className: "delete-column"
                 },
                 {
@@ -70,7 +71,7 @@ function ProductCategoriesListController(parentCategoryId)
 
                         return $deleteDom.html();
                     },
-                    targets: [5],
+                    targets: [6],
                     className: "delete-column"
                 }
             ],
