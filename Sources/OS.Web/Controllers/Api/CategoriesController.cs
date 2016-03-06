@@ -74,7 +74,8 @@ namespace OS.Web.Controllers.Api
                     Id = x.Id,
                     Description = x.Description,
                     Name = x.Name,
-                    Publish = x.Publish
+                    Publish = x.Publish,
+                    IsDeleted = x.IsDeleted
                 };
         }
     }
