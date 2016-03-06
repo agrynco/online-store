@@ -3,30 +3,33 @@
 
 <div class="os-item col-xs-2 col-lg-2">
     <div class="thumbnail ">
-        <div>
-            <div style="float: right !important; margin: 4px;">
-                @Html.ActionLink(" ", "Delete", new
-                    {
-                        id = Model.Product.Id,
-                        categoryId = Model.CategoryId
-                    }, new
-                        {
-                            @class = "glyphicon glyphicon-remove",
-                            onclick = "return confirmDelete();"
-                        })
-
+        <div class="row">
+            <div class="col-md-2">
+                @Html.EditorFor(m => m.Product.Publish, "bool", new {disabled = true})
             </div>
-            <div style="float: right !important; margin: 4px;">
+            <div class="col-md-1 col-md-offset-5">
                 @Html.ActionLink(" ", "Edit", new
-                    {
-                        id = Model.Product.Id,
-                        categoryId = Model.CategoryId
-                    }, new
-                        {
-                            @class = "glyphicon glyphicon-edit"
-                        })
+               {
+                   id = Model.Product.Id,
+                   categoryId = Model.CategoryId
+               }, new
+               {
+                   @class = "glyphicon glyphicon-edit"
+               })
+            </div>
+            <div class="col-md-1">
+                @Html.ActionLink(" ", "Delete", new
+               {
+                   id = Model.Product.Id,
+                   categoryId = Model.CategoryId
+               }, new
+               {
+                   @class = "glyphicon glyphicon-remove",
+                   onclick = "return confirmDelete();"
+               })
             </div>
         </div>
+
         @Html.Partial("_productListItemImage", Model.Product)
         <div class="caption">
             <h5 class="group inner list-group-item-heading">
