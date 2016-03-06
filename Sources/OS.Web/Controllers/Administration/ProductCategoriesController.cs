@@ -63,7 +63,8 @@ namespace OS.Web.Controllers.Administration
                     ParentId = productCategory.ParentId,
                     Id = productCategory.Id,
                     Name = productCategory.Name,
-                    Description = productCategory.Description
+                    Description = productCategory.Description,
+                    Publish = productCategory.Publish
                 });
         }
 
@@ -86,6 +87,7 @@ namespace OS.Web.Controllers.Administration
                         productCategory = _productCategoriesBL.GetById(model.Id.Value);
                         productCategory.Name = model.Name;
                         productCategory.Description = model.Description;
+                        productCategory.Publish = model.Publish;
 
                         _productCategoriesBL.Update(productCategory);
                     }
@@ -95,7 +97,8 @@ namespace OS.Web.Controllers.Administration
                             {
                                 ParentId = model.ParentId,
                                 Name = model.Name,
-                                Description = model.Description
+                                Description = model.Description,
+                                Publish = model.Publish
                             };
                         _productCategoriesBL.Create(productCategory);
                     }

@@ -7,7 +7,7 @@ function ProductCategoriesListController(parentCategoryId)
         return "api/categories/" + parentCategoryId + "/subcategories";
     };
 
-    this.deleteRecord = function(id)
+    this.deleteRecord = function (id)
     {
         if (confirmDelete())
         {
@@ -21,7 +21,7 @@ function ProductCategoriesListController(parentCategoryId)
         }
     }
 
-    var init = function()
+    var init = function ()
     {
         $categoriesTable = $("#categoriesTable").DataTable({
             ajax: buildApiUrl(parentCategoryId),
@@ -32,25 +32,35 @@ function ProductCategoriesListController(parentCategoryId)
                 { data: "Publish" }
             ],
             columnDefs: [
-            {
-                targets: [1],
-                render: function(data, type, row)
                 {
-                    return '<a href="ProductCategories?parentId=' + row.Id + '">' + data + '</a>';
-                }
-            },
-            {
-                render: function (data, type, row)
-                {
-                    var $editTemplate = $("#editTeamplate");
-                    var $editDom = $editTemplate.clone();
-                    $editDom.find("a").attr("href", "ProductCategories/Edit/" + row.Id);
-
-                    return $editDom.html();
+                    targets: [1],
+                    render: function (data, type, row)
+                    {
+                        return '<a href="ProductCategories?parentId=' + row.Id + '">' + data + '</a>';
+                    }
                 },
-                targets: [4],
-                className: "delete-column"
-            },
+                {
+                    targets: [3],
+                    render: function(data, type, row)
+                    {
+                        var $trueTemplate = $("#truePublishTemplate");
+                        var $falseTemplate = $("#falsePublishTemplate");
+
+                        return data === true ? $trueTemplate.html() : $falseTemplate.html();
+                    }
+                },
+                {
+                    render: function (data, type, row)
+                    {
+                        var $editTemplate = $("#editTeamplate");
+                        var $editDom = $editTemplate.clone();
+                        $editDom.find("a").attr("href", "ProductCategories/Edit/" + row.Id);
+
+                        return $editDom.html();
+                    },
+                    targets: [4],
+                    className: "delete-column"
+                },
                 {
                     render: function (data, type, row)
                     {
@@ -63,7 +73,6 @@ function ProductCategoriesListController(parentCategoryId)
                     targets: [5],
                     className: "delete-column"
                 }
-
             ],
             order: [[1, "asc"]],
             language:
@@ -72,8 +81,8 @@ function ProductCategoriesListController(parentCategoryId)
             }
         });
     }
-    
-    $().ready(function()
+
+    $().ready(function ()
     {
         init();
     });

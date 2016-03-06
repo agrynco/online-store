@@ -1,4 +1,5 @@
-﻿@using OS.Web.Models.ProductCategoryViewModels
+﻿@using OS.Web.Models
+@using OS.Web.Models.ProductCategoryViewModels
 @model ProductCategoriesViewModel
 @{
     Layout = "~/Views/Shared/_adminListLayout.cshtml";
@@ -78,6 +79,25 @@
     </div>
     <div id="editTeamplate" class="template">
         <a class="btn btn-sm btn-default">Редагувати</a>
+    </div>
+    <div id="truePublishTemplate" class="">
+        @{
+            BoolViewModel enabled = new BoolViewModel
+                {
+                    Value = true
+                };
+        }
+
+        @Html.EditorFor(x => enabled.Value, "bool", new {disabled = true})
+    </div>
+    <div id="falsePublishTemplate" class="">
+        @{
+            BoolViewModel disabled = new BoolViewModel
+                {
+                    Value = false
+                };
+        }
+        @Html.EditorFor(x => disabled.Value, "bool", new {disabled = true})
     </div>
 }
 
