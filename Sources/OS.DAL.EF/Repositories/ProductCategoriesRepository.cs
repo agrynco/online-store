@@ -56,7 +56,12 @@ namespace OS.DAL.EF.Repositories
 
             if (!filter.IgnoreParentId)
             {
-                query = GetCategories(filter.ParentId);
+                query = query.Where(category => category.ParentId == filter.ParentId);
+            }
+
+            if (!filter.IncludeDeleted)
+            {
+                query = query.Where(category => !category.IsDeleted);
             }
 
             if (!string.IsNullOrEmpty(filter.Text))
