@@ -80,7 +80,7 @@
     <div id="editTeamplate" class="template">
         <a class="btn btn-sm btn-default">Редагувати</a>
     </div>
-    <div id="truePublishTemplate" class="">
+    <div id="truePublishTemplate" class="template">
         @{
             BoolViewModel enabled = new BoolViewModel
                 {
@@ -90,7 +90,7 @@
 
         @Html.EditorFor(x => enabled.Value, "bool", new {disabled = true})
     </div>
-    <div id="falsePublishTemplate" class="">
+    <div id="falsePublishTemplate" class="template">
         @{
             BoolViewModel disabled = new BoolViewModel
                 {
