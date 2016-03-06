@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
@@ -15,7 +16,7 @@ namespace OS.DAL.EF.Repositories
 
         public IQueryable<ProductCategory> GetCategories(int? parentId)
         {
-            return GetAll().Where(productCategory => productCategory.ParentId == parentId);
+            return GetAll(true).Where(productCategory => productCategory.ParentId == parentId);
         }
 
         public IQueryable<ProductCategory> SearchCategories(string searchTerm)
@@ -69,6 +70,17 @@ namespace OS.DAL.EF.Repositories
         public int? GetParentId(int id)
         {
             return GetById(id).ParentId;
+        }
+        
+        public void IterateFromDownToUp(int id, Action<ProductCategory> action)
+        {
+            List<ProductCategory> productCategories = GetCategories(id).ToList();
+            foreach (ProductCategory productCategory in productCategories)
+            {
+                IterateFromDownToUp(productCategory.Id, action);
+                action(productCategory);
+            }
+            action(GetById(id));
         }
     }
 }

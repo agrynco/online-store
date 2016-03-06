@@ -284,6 +284,7 @@
     <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
+    <Compile Include="Models\BoolViewModel.cs" />
     <Compile Include="Models\BrandViewModels\BrandCreateOrEditViewModel.cs" />
     <Compile Include="Models\ConsumerBasketViewModel.cs" />
     <Compile Include="Models\ContactInfoEditViewModel.cs" />
@@ -295,7 +296,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PaginationFilterViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\AutoCompleteProductCategoryFilterItemViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesBreadCrumbItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesFilterViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesApiViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryAutocompleteItem.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoryCreateOrEditViewModel.cs" />
@@ -312,6 +315,14 @@
     <Compile Include="ProductCategoryNodesProvider.cs" />
     <Compile Include="ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
+    <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
+    <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.css" />
+    <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.min.css" />
+    <Content Include="Scripts\bootstrap.toggle\js\bootstrap-toggle.js" />
+    <Content Include="Scripts\bootstrap.toggle\js\bootstrap-toggle.min.js" />
+    <Content Include="Scripts\bootstrap.toggle\js\bootstrap2-toggle.js" />
+    <Content Include="Scripts\bootstrap.toggle\js\bootstrap2-toggle.min.js" />
     <Content Include="Scripts\datatables.translations\ukrainian.json" />
     <Compile Include="Startup.cs" />
     <Content Include="Views\Brands\Edit.cshtml" />
@@ -497,6 +508,8 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\datatables.extensions\Responsive\Readme.md" />
+    <Content Include="Scripts\bootstrap.toggle\js\bootstrap-toggle.min.js.map" />
+    <Content Include="Scripts\bootstrap.toggle\js\bootstrap2-toggle.min.js.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1821,7 +1834,6 @@
     <Content Include="Scripts\tinymce\tools\tasks\skin.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\ProductCategories\Index.cshtml" />
-    <Content Include="Views\ProductCategories\_productCategoryItem.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.ascx" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.ascx" />
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.ascx" />
@@ -2011,6 +2023,7 @@
     <Content Include="Views\Shared\_productListItemImage.cshtml" />
     <Content Include="Views\Products\_alreadyLoadedPhotos.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\bool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

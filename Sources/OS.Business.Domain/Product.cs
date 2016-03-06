@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OS.Business.Domain
 {
-    public class Product : NamedEntity
+    public class Product : NamedPublishedEntity
     {
         public Product()
         {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
@@ -15,50 +16,41 @@ namespace OS.Web.Controllers.Administration
         {
             _productCategoriesBL = productCategoriesBL;
         }
-        
-        public ActionResult Index(ProductCategoriesFilterViewModel filter)
+
+        [System.Web.Mvc.HttpGet]
+        public ActionResult Index([FromUri] int? parentId)
         {
-            if (TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] != null)
+            object parentCategoryIdObject = TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_PARENT_ID];
+
+            int? parentCategoryId = (int?) parentCategoryIdObject ?? parentId;
+            
+
+            List<ProductCategory> parentCategories = new List<ProductCategory>();
+            if (parentCategoryId.HasValue)
             {
-                filter = (ProductCategoriesFilterViewModel)TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL];
-                ModelState.Clear();
+                parentCategories.AddRange(_productCategoriesBL.GetParentCategories(parentCategoryId.Value));
+                parentCategories.Add(_productCategoriesBL.GetById(parentCategoryId.Value));
             }
+
+            List<ProductCategoriesBreadCrumbItem> breadCrumbs = new List<ProductCategoriesBreadCrumbItem>(
+                parentCategories.Select(x => new ProductCategoriesBreadCrumbItem
+                    {
+                        Id = x.Id,
+                        Name = x.Name
+                    }));
+
+            ProductCategoriesBreadCrumbItem rootCategoriesBreadCrumbItem = new ProductCategoriesBreadCrumbItem
+                {
+                    Id = null,
+                    Name = ".."
+                };
+            breadCrumbs.Insert(0, rootCategoriesBreadCrumbItem);
 
             ProductCategoriesViewModel model = new ProductCategoriesViewModel
                 {
-                    Filter = filter
-                };
-
-            if (ModelState.IsValid)
-            {
-                ModelState.RemoveStateFor(filter, viewModel => filter.ParentCategory.Name);
-                model.Filter.ParentCategory.Name = string.Empty;
-                if (filter.ParentCategory.Id.HasValue)
-                {
-                    model.Filter.ParentCategory.Name = _productCategoriesBL.GetById(filter.ParentCategory.Id.Value).Name;
-                    List<ProductCategory> parentCategories = _productCategoriesBL.GetParentCategories(filter.ParentCategory.Id.Value);
-                    parentCategories.ForEach(category => model.PathToRoot.Insert(0, new ProductCategoryListItemViewModel
-                        {
-                            ProductCategory = category
-                        }));
-                }
-
-                ProductCategoriesFilter productCategoriesFilter = new ProductCategoriesFilter
-                    {
-                        IgnoreParentId = false,
-                        ParentId = filter.ParentCategory.Id,
-                        Text = filter.Name
-                    };
-                productCategoriesFilter.PaginationFilter.PageNumber = filter.PageNumber;
-                productCategoriesFilter.PaginationFilter.PageSize = filter.PageSize;
-
-                PagedProductCategoryListResult pagedProductCategoryListResult = _productCategoriesBL.SearchByFilter(productCategoriesFilter);
-
-                model.Categories = pagedProductCategoryListResult.Entities.Select(entity => new ProductCategoryListItemViewModel
-                    {
-                        ProductCategory = entity
-                    }).ToList();
-            }
+                    BreadCrumbItems = breadCrumbs,
+                    ParentCategoryId = parentCategoryId
+            };
 
             return View(model);
         }
@@ -71,11 +63,12 @@ namespace OS.Web.Controllers.Administration
                     ParentId = productCategory.ParentId,
                     Id = productCategory.Id,
                     Name = productCategory.Name,
-                    Description = productCategory.Description
+                    Description = productCategory.Description,
+                    Publish = productCategory.Publish
                 });
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Save(ProductCategoryCreateOrEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -94,6 +87,7 @@ namespace OS.Web.Controllers.Administration
                         productCategory = _productCategoriesBL.GetById(model.Id.Value);
                         productCategory.Name = model.Name;
                         productCategory.Description = model.Description;
+                        productCategory.Publish = model.Publish;
 
                         _productCategoriesBL.Update(productCategory);
                     }
@@ -103,7 +97,8 @@ namespace OS.Web.Controllers.Administration
                             {
                                 ParentId = model.ParentId,
                                 Name = model.Name,
-                                Description = model.Description
+                                Description = model.Description,
+                                Publish = model.Publish
                             };
                         _productCategoriesBL.Create(productCategory);
                     }
@@ -116,30 +111,19 @@ namespace OS.Web.Controllers.Administration
                         filterViewModel.ParentCategory.Name = _productCategoriesBL.GetById(model.ParentId.Value).Name;
                     }
 
-                    TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
-                    return RedirectToAction("Index", filterViewModel);
+                    TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_PARENT_ID] = model.ParentId;
+                    return RedirectToAction("Index");
                 }
             }
 
             return View("Edit", model);
         }
 
-        public ActionResult Delete(int id)
-        {
-            int? parentId = _productCategoriesBL.GetParentId(id);
-            _productCategoriesBL.Delete(id);
-
-            ProductCategoriesFilterViewModel filterViewModel = new ProductCategoriesFilterViewModel();
-            filterViewModel.ParentCategory.Id = parentId;
-            TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_FILTER_VIEW_MODEL] = filterViewModel;
-            return RedirectToAction("Index", filterViewModel);
-        }
-
-        public ActionResult Create(int? parentcategoryid)
+        public ActionResult Create(int? parentCategoryId)
         {
             return View("Edit", new ProductCategoryCreateOrEditViewModel
                 {
-                    ParentId = parentcategoryid
+                    ParentId = parentCategoryId
                 });
         }
     }

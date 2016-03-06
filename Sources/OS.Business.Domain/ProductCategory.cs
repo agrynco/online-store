@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OS.Business.Domain
 {
-    public class ProductCategory : NamedEntity
+    public class ProductCategory : NamedPublishedEntity
     {
         public ProductCategory()
         {
@@ -22,6 +22,6 @@ namespace OS.Business.Domain
 
         public virtual List<ProductCategory> ChildCategories { get; private set; }
 
-        public virtual List<Product> Products { get; private set; } 
+        public virtual List<Product> Products { get; private set; }
     }
 }
