@@ -17,12 +17,17 @@ namespace OS.Web.Controllers
         [ChildActionOnly]
         public ActionResult VerticalCategorySelector()
         {
-            List<ProductCategory> rootCategories = _productCategoriesBL.GetCategories(null);
+            PagedProductCategoryListResult rootCategories = _productCategoriesBL.SearchByFilter(new ProductCategoriesFilter
+                {
+                    ParentId = null,
+                    IgnoreParentId = false,
+                    IncludeDeleted = false
+                });
 
             VerticalCategorySelectorViewModel model = new VerticalCategorySelectorViewModel();
             model.Categories = new List<VerticalCategorySelectorItemViewModel>();
 
-            foreach (ProductCategory productCategory in rootCategories)
+            foreach (ProductCategory productCategory in rootCategories.Entities)
             {
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
                     {
@@ -40,9 +45,14 @@ namespace OS.Web.Controllers
 
         private void AddChildCategories(List<VerticalCategorySelectorItemViewModel> verticalCategorySelectorItemViewModels, ProductCategory parentCategory)
         {
-            List<ProductCategory> childCategories = _productCategoriesBL.GetCategories(parentCategory.Id);
+            PagedProductCategoryListResult childCategories = _productCategoriesBL.SearchByFilter(new ProductCategoriesFilter
+                {
+                    ParentId = parentCategory.Id,
+                    IgnoreParentId = false,
+                    IncludeDeleted = false
+                });
                 
-            foreach (ProductCategory productCategory in childCategories)
+            foreach (ProductCategory productCategory in childCategories.Entities)
             {
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
                 {
