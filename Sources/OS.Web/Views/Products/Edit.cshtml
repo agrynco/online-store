@@ -95,6 +95,13 @@
                 </div>
                 @Html.Partial("_alreadyLoadedPhotos", Model)
                 @Html.Partial("_addFiles", Model)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Publish, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10 checkbox">
+                        @Html.EditorFor(m => m.Publish, "bool")
+                    </div>
+                </div>
+
                 <div id="dialog-buttons-placeholder">
                 </div>
             </section>

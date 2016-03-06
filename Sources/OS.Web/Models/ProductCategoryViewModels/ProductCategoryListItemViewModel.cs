@@ -1,9 +1,11 @@
-﻿using OS.Business.Domain;
-
-namespace OS.Web.Models.ProductCategoryViewModels
+﻿namespace OS.Web.Models.ProductCategoryViewModels
 {
     public class ProductCategoryListItemViewModel
     {
-        public ProductCategory ProductCategory { get; set; }
+        public string Description { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int? ParentId { get; set; }
+        public bool Publish { get; set; }
     }
 }

@@ -10,10 +10,12 @@ namespace OS.Business.Logic
     public class ProductCategoriesBL
     {
         private readonly IProductCategoriesRepository _productCategoriesRepository;
+        private readonly IProductsRepository _productsRepository;
 
-        public ProductCategoriesBL(IProductCategoriesRepository productCategoriesRepository)
+        public ProductCategoriesBL(IProductCategoriesRepository productCategoriesRepository, IProductsRepository productsRepository)
         {
             _productCategoriesRepository = productCategoriesRepository;
+            _productsRepository = productsRepository;
         }
 
         public List<ProductCategory> GetCategories(int? parentId)
@@ -33,7 +35,7 @@ namespace OS.Business.Logic
         /// <returns>List of the <see cref="ProductCategory"/>First category is on the upper level</returns>
         public List<ProductCategory> GetParentCategories(int categoryId)
         {
-            return _productCategoriesRepository.GetParentCategories(categoryId).OrderBy(category => category.Name).ToList();
+            return _productCategoriesRepository.GetParentCategories(categoryId).ToList();
         }
 
         public ProductCategory GetById(int id)
@@ -62,9 +64,29 @@ namespace OS.Business.Logic
             _productCategoriesRepository.Add(productCategory);
         }
 
-        public void Delete(int categoryId)
+        public void Delete(int id)
         {
-            _productCategoriesRepository.Delete(categoryId);
+            _productCategoriesRepository.IterateFromDownToUp(id, category => _productCategoriesRepository.Delete(category.Id));
+        }
+
+        public void SetPublish(int id, bool publish)
+        {
+            _productCategoriesRepository.IterateFromDownToUp(id, category =>
+            {
+                List<Product> products = _productsRepository.Get(new ProductsFilter
+                    {
+                        ParentId = id
+                    }).ToList();
+
+                foreach (Product product in products)
+                {
+                    product.Publish = publish;
+                    _productsRepository.Update(product);
+                }
+
+                category.Publish = publish;
+                _productCategoriesRepository.Update(category);
+            });
         }
 
         public void Add(Product product, ProductCategory owner)
@@ -73,11 +95,6 @@ namespace OS.Business.Logic
             {
                 product.Categories.Add(owner);
             }
-        }
-
-        public int? GetParentId(int id)
-        {
-            return _productCategoriesRepository.GetParentId(id);
         }
     }
 }

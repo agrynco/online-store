@@ -40,5 +40,42 @@ namespace OS.Web.Controllers.Api
 
             return result;
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public void Delete(int id)
+        {
+            _productCategoriesBL.Delete(id);
+        }
+
+        [Route("{id}/subcategories")]
+        public ProductCategoriesApiViewModel GetChildCategories(int? id)
+        {
+            List<ProductCategory> productCategories = _productCategoriesBL.GetCategories(id);
+
+            ProductCategoriesApiViewModel apiViewModel = new ProductCategoriesApiViewModel();
+            apiViewModel.data.AddRange(productCategories.Select(BuildProductCategoryListItemViewModel));
+
+            if (id.HasValue)
+            {
+                List<ProductCategory> parentCategories = _productCategoriesBL.GetParentCategories(id.Value);
+                parentCategories.Add(_productCategoriesBL.GetById(id.Value));
+
+                apiViewModel.PathToRoot.AddRange(parentCategories.Select(BuildProductCategoryListItemViewModel));
+            }
+
+            return apiViewModel;
+        }
+
+        private static ProductCategoryListItemViewModel BuildProductCategoryListItemViewModel(ProductCategory x)
+        {
+            return new ProductCategoryListItemViewModel
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    Name = x.Name,
+                    Publish = x.Publish
+                };
+        }
     }
 }

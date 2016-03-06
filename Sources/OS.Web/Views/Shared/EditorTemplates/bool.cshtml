@@ -1,0 +1,17 @@
+﻿@model bool
+
+@{
+    Dictionary<string, object> htmlAttributes = new Dictionary<string, object>();
+    htmlAttributes.Add("data-toggle", "toggle");
+    htmlAttributes.Add("data-size", "mini");
+    htmlAttributes.Add("data-onstyle", "default");
+    htmlAttributes.Add("data-on", "Так");
+    htmlAttributes.Add("data-off", "Ні");
+
+    bool disabled = ViewData["disabled"] != null && (bool) ViewData["disabled"];
+    if (disabled)
+    {
+        htmlAttributes.Add("disabled", "true");
+    }
+}
+@Html.CheckBoxFor(m => Model, htmlAttributes)

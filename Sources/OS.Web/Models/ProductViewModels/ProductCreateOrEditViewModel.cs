@@ -70,5 +70,8 @@ namespace OS.Web.Models.ProductViewModels
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         [RegularExpression(@"^(\d{1,})(\.\d{1,2})?$", ErrorMessage = "Невірний формат")]
         public string Price { get; set; }
+
+        [Display(Name = "Публікувати")]
+        public bool Publish { get; set; }
     }
 }
