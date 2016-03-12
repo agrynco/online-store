@@ -71,6 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailTemplateProcessing\BaseEmailTemplateProcessor.cs" />
+    <Compile Include="EmailTemplateProcessing\EmailTemplateParameter.cs" />
+    <Compile Include="EmailTemplateProcessing\EmailTemplateParameterList.cs" />
+    <Compile Include="EmailTemplateProcessing\IEmailTemplateParameter.cs" />
+    <Compile Include="EmailTemplatesBL.cs" />
     <Compile Include="PagedBrandListResult.cs" />
     <Compile Include="PagedProductListResult.cs" />
     <Compile Include="UsersBL.cs" />
