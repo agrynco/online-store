@@ -4,8 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models;
+using OS.Web.Models.MailTempplateModels;
+using RazorEngine;
 
 namespace OS.Web.Controllers
 {
@@ -30,11 +33,11 @@ namespace OS.Web.Controllers
             if (ModelState.IsValid)
             {
                 HttpCookie consumerBasketRawDataCookie = Request.Cookies["ConsumerBasket"];
-                
+
                 List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(
                     HttpContext.Server.UrlDecode(consumerBasketRawDataCookie.Value));
 
-                _ordersBL.CreateOrder(new CreateOrderQuery
+                Order order = _ordersBL.CreateOrder(new CreateOrderQuery
                     {
                         Person = new CreateOrderQuery.AddPersonQuery
                             {
@@ -48,24 +51,39 @@ namespace OS.Web.Controllers
                             productInBasketViewModels.Select(
                                 p => new CreateOrderQuery.AddOrderedProductQuery
                                     {
-                                        ProductId  = p.Id,
+                                        ProductId = p.Id,
                                         Quantity = p.Quantity
                                     }).ToList())
                     });
-
-                return RedirectToAction("OrderDetails");
+                TempData[Constants.TempDataKeys.ORDER_ID] = order.Id;
+                return RedirectToAction("OrderDetails", new {orderId = order.Id});
             }
 
             return View("Edit", model);
         }
 
-        public ActionResult OrderDetails()
+        public ActionResult OrderDetails(int orderId)
         {
             HttpCookie cookie = new HttpCookie("ConsumerBasket");
             cookie.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Set(cookie);
 
-            return View();
+            if (TempData[Constants.TempDataKeys.ORDER_ID] != null)
+            {
+                orderId = (int) TempData[Constants.TempDataKeys.ORDER_ID];
+            }
+
+            Order order = _ordersBL.GetById(orderId);
+            OrderDetailsViewModel viewModel = new OrderDetailsViewModel
+                {
+                    Order = order
+                };
+
+            var template = System.IO.File.ReadAllText(HttpContext.Server.MapPath("~/Views/MailTemplates/OrderDetails.cshtml"));
+
+            string body = Razor.Parse(template, new OrderEmailTemplateViewModel {Order = order});
+
+            return View(viewModel);
         }
     }
 }

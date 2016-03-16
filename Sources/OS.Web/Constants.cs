@@ -6,6 +6,7 @@
         {
             public const string PRODUCT_CATEGORIES_PARENT_ID = "{AA8243D6-A3AB-4ECD-A584-5A5AF6F11527}";
             public const string PRODUCTS_FILTER_VIEW_MODEL = "{FBD2BEDF-4AF9-458F-A949-ECA0EC98E72C}";
+            public const string ORDER_ID = "{2B1D1171-F82E-4753-B4CC-A593D3FE70D2}";
         }
 
         public static class RouteDataKeys

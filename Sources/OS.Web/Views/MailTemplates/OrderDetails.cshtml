@@ -1,0 +1,41 @@
+﻿@using OS.Business.Domain
+@using OS.Web.Models.MailTempplateModels
+@model OrderEmailTemplateViewModel
+
+
+Номер замовлення @Model.Order.Id
+
+
+Замовленны наступны товари:
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Назва товару
+            </th>
+            <th>
+                Ціна на момент покупки
+            </th>
+            <th>
+                Кількість
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (OrderedProduct orderedProduct in Model.Order.OrderedProducts)
+        {
+            <tr>
+                <td>
+                    @orderedProduct.Product.Name
+                </td>
+                <td>
+                    @orderedProduct.PriceAtTheTimeOfPurchase
+                </td>
+                <td>
+                    @orderedProduct.Quantity
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

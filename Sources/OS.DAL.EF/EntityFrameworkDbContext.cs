@@ -72,6 +72,5 @@ namespace OS.DAL.EF
         public DbSet<ContactInfo> ContactInfos { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Person> Persons { get; set; }
-        public DbSet<EmailTemplate> EmailTemplates { get; set; }
     }
 }

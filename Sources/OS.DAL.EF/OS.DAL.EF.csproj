@@ -66,7 +66,6 @@
     <Compile Include="Core\BaseCRUDRepository.cs" />
     <Compile Include="EntityConfigurations\BuyerConfiguration.cs" />
     <Compile Include="EntityConfigurations\ContactInfoConfiguration.cs" />
-    <Compile Include="EntityConfigurations\EmailTemplateConfiguration.cs" />
     <Compile Include="EntityConfigurations\OrderConfiguration.cs" />
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="Repositories\BaseOnlineStoreCRUDRepository.cs" />

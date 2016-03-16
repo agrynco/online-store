@@ -1,0 +1,40 @@
+﻿@using OS.Business.Domain
+@model Order
+
+
+Номер замовлення @Model.Id
+
+
+Замовленні наступні товари:
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Назва товару
+            </th>
+            <th>
+                Ціна на момент покупки
+            </th>
+            <th>
+                Кількість
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (OrderedProduct orderedProduct in Model.OrderedProducts)
+        {
+            <tr>
+                <td>
+                    @orderedProduct.Product.Name
+                </td>
+                <td>
+                    @orderedProduct.PriceAtTheTimeOfPurchase
+                </td>
+                <td>
+                    @orderedProduct.Quantity
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using AGrynCo.Lib.ResourcesUtils;
 using OS.Business.Domain;
 using OS.DAL.Abstract;
+using RazorEngine;
 
 namespace OS.Business.Logic
 {
@@ -29,18 +31,20 @@ namespace OS.Business.Logic
     public class OrdersBL
     {
         private readonly IOrderedProductsRepository _orderedProductsRepository;
+        private readonly IProductsRepository _productsRepository;
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderStatusHistoryItemsRepository _orderStatusHistoryItemsRepository;
         private readonly IPersonsRepository _personsRepository;
 
         public OrdersBL(IPersonsRepository personsRepository, IOrdersRepository ordersRepository,
             IOrderStatusHistoryItemsRepository orderStatusHistoryItemsRepository,
-            IOrderedProductsRepository orderedProductsRepository)
+            IOrderedProductsRepository orderedProductsRepository, IProductsRepository productsRepository)
         {
             _personsRepository = personsRepository;
             _ordersRepository = ordersRepository;
             _orderStatusHistoryItemsRepository = orderStatusHistoryItemsRepository;
             _orderedProductsRepository = orderedProductsRepository;
+            _productsRepository = productsRepository;
         }
 
         public Order CreateOrder(CreateOrderQuery createOrderQuery)
@@ -71,12 +75,21 @@ namespace OS.Business.Logic
                 _orderedProductsRepository.Add(new OrderedProduct
                     {
                         ProductId = addOrderedProductQuery.ProductId,
+                        Product = _productsRepository.GetById(addOrderedProductQuery.ProductId),
                         Quantity = addOrderedProductQuery.Quantity,
                         OrderId = order.Id
                     });
             }
 
+            string template = ResourceReader.ReadAsString(GetType(), "OS.Business.Logic.EmailTemplates.OrderDetails.cshtml");
+            string body = Razor.Parse(template, order);
+
             return order;
+        }
+
+        public Order GetById(int id)
+        {
+            return _ordersRepository.GetById(id);
         }
     }
 }
