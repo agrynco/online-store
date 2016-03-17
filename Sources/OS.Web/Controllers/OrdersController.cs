@@ -79,10 +79,6 @@ namespace OS.Web.Controllers
                     Order = order
                 };
 
-            var template = System.IO.File.ReadAllText(HttpContext.Server.MapPath("~/Views/MailTemplates/OrderDetails.cshtml"));
-
-            string body = Razor.Parse(template, new OrderEmailTemplateViewModel {Order = order});
-
             return View(viewModel);
         }
     }

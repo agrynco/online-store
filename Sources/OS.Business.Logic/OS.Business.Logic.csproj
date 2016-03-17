@@ -127,8 +127,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\OS.Web\Views\MailTemplates\OrderDetails.cshtml">
+      <Link>EmailTemplates\OrderDetails.cshtml</Link>
+    </EmbeddedResource>
     <None Include="app.config" />
-    <EmbeddedResource Include="EmailTemplates\OrderDetails.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
