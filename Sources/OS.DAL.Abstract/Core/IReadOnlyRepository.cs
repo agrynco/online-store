@@ -7,7 +7,7 @@ using OS.Business.Domain;
 
 namespace OS.DAL.Abstract.Core
 {
-    public interface IReadOnlyRepository<TEntity, TEntityId> where TEntity : Entity<TEntityId>
+    public interface IReadOnlyRepository<TEntity, TEntityId> where TEntity : IEntity<TEntityId>
     {
         IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
