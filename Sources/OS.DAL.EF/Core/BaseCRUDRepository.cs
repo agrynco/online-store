@@ -1,7 +1,6 @@
 ﻿#region Usings
 using System;
 using System.Data.Entity;
-using System.Linq;
 using OS.Business.Domain;
 using OS.DAL.Abstract.Core;
 #endregion
@@ -10,7 +9,7 @@ namespace OS.DAL.EF.Core
 {
     public class BaseCRUDRepository<TDbContext, TEntity, TEntityId> : BaseReadOnlyRepository<TDbContext, TEntity, TEntityId>,
         ICRUDRepository<TEntity, TEntityId>
-        where TEntity : Entity<TEntityId>
+        where TEntity : class, IEntity<TEntityId>
         where TDbContext : DbContext
     {
         public BaseCRUDRepository(TDbContext entityFrameworkDbContext)

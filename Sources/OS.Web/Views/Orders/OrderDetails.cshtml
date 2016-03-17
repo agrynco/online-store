@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using OS.Web.Models
+@model OrderDetailsViewModel
 
 @{
     Layout = "../Shared/_publicLayout.cshtml";
@@ -7,7 +8,7 @@
 <h4>Замовлення</h4>
 <hr />
 
-Замовлення підтверджено
+Замовлення підтверджено. Номер замовлення @Model.Order.Id .
 
 @section scripts
 {}

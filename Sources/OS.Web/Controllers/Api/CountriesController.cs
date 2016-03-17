@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using OS.Business.Domain;
@@ -21,6 +22,13 @@ namespace OS.Web.Controllers.Api
         public List<string> Get(string term)
         {
             return _countriesBL.Find(term).Select(c => c.Name).ToList();
+        }
+
+        [Route("search")]
+        [HttpGet]
+        public List<string> Search(string term, [FromUri] Guid[] exclude, int take = 20)
+        {
+            throw new NotImplementedException();
         }
 
         [Route]

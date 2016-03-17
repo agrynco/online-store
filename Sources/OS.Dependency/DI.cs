@@ -1,10 +1,11 @@
 ﻿#region Usings
-using System.Diagnostics;
+using System.Net;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OS.Business.Domain;
 using OS.Business.Logic;
+using OS.Business.Logic.Mailing;
 using OS.Configuration;
 using OS.DAL.Abstract;
 using OS.DAL.EF;
@@ -21,6 +22,19 @@ namespace OS.Dependency
         private static bool _isConfigured;
         private static readonly Lifestyle _LIFE_STYLE = HttpContext.Current != null ? new WebRequestLifestyle() : Lifestyle.Singleton;
 
+        public static Container Container
+        {
+            get
+            {
+                if (!_isConfigured)
+                {
+                    throw new OnlineStoreDependencyException("No one of methods \"Configure\" was called");
+                }
+
+                return _container;
+            }
+        }
+
         public static void Configure()
         {
             Container container = new Container();
@@ -32,9 +46,9 @@ namespace OS.Dependency
             _container = container;
             _isConfigured = true;
 
-            container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(_container.GetInstance<EntityFrameworkDbContext>()));
+            _container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(_container.GetInstance<EntityFrameworkDbContext>()));
 
-            container.Register(() => new EntityFrameworkDbContext(ApplicationSettings.Instance.DbSettings.ApplicationConnectionString), _LIFE_STYLE);
+            _container.Register(() => new EntityFrameworkDbContext(ApplicationSettings.Instance.DbSettings.ApplicationConnectionString), _LIFE_STYLE);
 
             Register<IProductCategoriesRepository, ProductCategoriesRepository>();
             Register<IOnlineStoreDbContext, OnlineStoreDbContext>();
@@ -56,7 +70,7 @@ namespace OS.Dependency
             Register<ContentsBl>();
 
             Register<IContentTypesRepository, ContentTypesRepository>();
-            
+
             Register<IContentContentTypesRepository, ContentContentTypesRepository>();
             Register<ContentContentTypesBL>();
 
@@ -74,6 +88,18 @@ namespace OS.Dependency
             Register<IOrderStatusHistoryItemsRepository, OrderStatusHistoryItemsRepository>();
 
             Register<IOrderedProductsRepository, OrderedProductsRepository>();
+
+            Register<IUsersRepository, UsersRepository>();
+
+            _container.Register<IMailService>(() => new MailService(
+                ApplicationSettings.Instance.MailServiceSettings.Host,
+                ApplicationSettings.Instance.MailServiceSettings.Port,
+                ApplicationSettings.Instance.MailServiceSettings.EnableSsl,
+                new NetworkCredential
+                    {
+                        UserName = ApplicationSettings.Instance.MailServiceSettings.FromAddress,
+                        Password = ApplicationSettings.Instance.MailServiceSettings.FromPassword
+                    }), _LIFE_STYLE);
         }
 
         public static void Register<TImplementation>()
@@ -82,8 +108,8 @@ namespace OS.Dependency
             Container.Register<TImplementation>(_LIFE_STYLE);
         }
 
-        private static void Register<TService, TImplementation>() 
-            where TService : class 
+        private static void Register<TService, TImplementation>()
+            where TService : class
             where TImplementation : class, TService
         {
             Container.Register<TService, TImplementation>(_LIFE_STYLE);
@@ -97,19 +123,6 @@ namespace OS.Dependency
             }
 
             return _container.GetInstance<T>();
-        }
-
-        public static Container Container
-        {
-            get
-            {
-                if (!_isConfigured)
-                {
-                    throw new OnlineStoreDependencyException("No one of methods \"Configure\" was called");
-                }
-
-                return _container;
-            }
         }
     }
 }

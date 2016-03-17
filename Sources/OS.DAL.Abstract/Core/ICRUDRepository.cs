@@ -4,7 +4,7 @@ using OS.Business.Domain;
 
 namespace OS.DAL.Abstract.Core
 {
-    public interface ICRUDRepository<TEntity, TEntityId> : IReadOnlyRepository<TEntity, TEntityId> where TEntity : Entity<TEntityId>
+    public interface ICRUDRepository<TEntity, TEntityId> : IReadOnlyRepository<TEntity, TEntityId> where TEntity : IEntity<TEntityId>
     {
         TEntity Add(TEntity entity);
         void Delete(params TEntityId[] id);

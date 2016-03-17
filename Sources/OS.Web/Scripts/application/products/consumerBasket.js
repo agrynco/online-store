@@ -123,6 +123,7 @@ function ConsumerBasket()
             $(this).hide();
             save();
             updateUI();
+            return false;
         });
 
         $("#consumerBasketLink").click(function ()

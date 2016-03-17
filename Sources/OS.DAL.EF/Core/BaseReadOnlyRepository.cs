@@ -10,7 +10,7 @@ using OS.DAL.Abstract.Core;
 namespace OS.DAL.EF.Core
 {
     public class BaseReadOnlyRepository<TDbContext, TEntity, TEntityId> : BaseRepository<TDbContext>, IReadOnlyRepository<TEntity, TEntityId>
-        where TEntity : Entity<TEntityId>
+        where TEntity : class, IEntity<TEntityId>
         where TDbContext : DbContext
     {
         public BaseReadOnlyRepository(TDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
