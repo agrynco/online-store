@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
@@ -7,7 +6,12 @@ namespace OS.Business.Domain
 {
     public class Order : IdentityEntity
     {
-        public IList<OrderedProduct> OrderedProducts { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUserId { get; set; }
+        public virtual IList<OrderedProduct> OrderedProducts { get; set; }
+
+        public virtual IList<OrderStatusHistoryItem> OrderStatusesHistory { get; set; }
+        public virtual Person Person { get; set; }
 
         [NotMapped]
         public OrderStatus? Status
@@ -19,10 +23,8 @@ namespace OS.Business.Domain
             }
         }
 
-        public IList<OrderStatusHistoryItem> OrderStatusesHistory { get; set; }
+        public decimal TotalAmount { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
-        public string ApplicationUserId { get; set; }
-        public Person Person { get; set; }
+        public string AdditionalComment { get; set; }
     }
 }

@@ -1,0 +1,118 @@
+﻿@using OS.Business.Domain
+@model Order
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<h3>Номер замовлення @Model.Id</h3> <br />
+
+Замовленні наступні товари:
+
+<table border="1" class="full-width">
+    <thead>
+        <tr>
+            <th>
+                Назва товару
+            </th>
+            <th>
+                Ціна на момент покупки
+            </th>
+            <th>
+                Кількість
+            </th>
+            <th>
+                Сума
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (OrderedProduct orderedProduct in Model.OrderedProducts)
+        {
+            <tr>
+                <td>
+                    @orderedProduct.Product.Name
+                </td>
+                <td>
+                    @orderedProduct.PriceAtTheTimeOfPurchase
+                </td>
+                <td>
+                    @orderedProduct.Quantity
+                </td>
+                <td>
+                    @{
+                        decimal amount = orderedProduct.Quantity * orderedProduct.PriceAtTheTimeOfPurchase;
+                    }
+                    @amount
+                </td>
+
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="3" align="right">Всього до сплати</th>
+            <th>@Model.TotalAmount</th>
+        </tr>
+    </tfoot>
+</table>
+
+<br/>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th colspan="2">
+                Вказані наступні контактні дані
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th align="left">
+                Ім'я
+            </th>
+            <td>
+                @Model.Person.FirstName
+            </td>
+        </tr>
+        <tr>
+            <th align="left">
+                Прізвище
+            </th>
+            <td>
+                @Model.Person.LastName
+            </td>
+        </tr>
+        <tr>
+            <th align="left">
+                По-батькові
+            </th>
+            <td>
+                @Model.Person.MiddleName
+            </td>
+        </tr>
+        <tr>
+            <th align="left">
+                Електрона пошта
+            </th>
+            <td>
+                @Model.Person.Email
+            </td>
+        </tr>
+        <tr>
+            <th align="left">
+                Телефон
+            </th>
+            <td>
+                @Model.Person.PhoneNumber
+            </td>
+        </tr>
+        <tr>
+            <th align="left">
+                Додатковий коментар
+            </th>
+            <td>
+                @Model.AdditionalComment
+            </td>
+        </tr>
+    </tbody>
+</table>

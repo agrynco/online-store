@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AGrynCo.Lib, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AGrynco.Lib.dll.0.0.20\lib\net46\AGrynCo.Lib.dll</HintPath>
+      <HintPath>..\packages\AGrynco.Lib.dll.0.0.22\lib\net45\AGrynCo.Lib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -75,6 +75,10 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.7.7.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.7.7\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
@@ -293,7 +297,9 @@
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\HorizontalCategoryItemViewModel.cs" />
     <Compile Include="Models\HorizontalCategorySelectorViewModel.cs" />
+    <Compile Include="Models\MailTempplateModels\OrderEmailTemplateViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderDetailsViewModel.cs" />
     <Compile Include="Models\PaginationFilterViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\AutoCompleteProductCategoryFilterItemViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModels\ProductCategoriesBreadCrumbItem.cs" />
@@ -2024,6 +2030,7 @@
     <Content Include="Views\Products\_alreadyLoadedPhotos.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\bool.cshtml" />
+    <Content Include="Views\MailTemplates\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
