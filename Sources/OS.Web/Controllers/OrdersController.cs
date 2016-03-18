@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models;
-using OS.Web.Models.MailTempplateModels;
-using RazorEngine;
+using Recaptcha.Web;
+using Recaptcha.Web.Mvc;
 
 namespace OS.Web.Controllers
 {
@@ -30,6 +30,20 @@ namespace OS.Web.Controllers
         [HttpPost]
         public ActionResult Create(EditOrderViewModel model)
         {
+            RecaptchaVerificationHelper recaptchaHelper = this.GetRecaptchaVerificationHelper();
+            if (string.IsNullOrEmpty(recaptchaHelper.Response))
+            {
+                ModelState.AddModelError("", "Captcha відповідь не може бути пустою.");
+                return View("Edit", model);
+            }
+
+            RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
+            if (recaptchaResult != RecaptchaVerificationResult.Success)
+            {
+                ModelState.AddModelError("", "Невірна captcha відповідь.");
+                return View("Edit", model);
+            }
+
             if (ModelState.IsValid)
             {
                 HttpCookie consumerBasketRawDataCookie = Request.Cookies["ConsumerBasket"];
