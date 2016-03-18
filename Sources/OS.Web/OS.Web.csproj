@@ -81,6 +81,10 @@
       <HintPath>..\packages\RazorEngine.3.7.7\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Recaptcha.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=171a6ec5fa4b1644, processorArchitecture=MSIL">
+      <HintPath>..\packages\RecaptchaNet.2.1.0\lib\net451\Recaptcha.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
       <Private>True</Private>
@@ -321,6 +325,7 @@
     <Compile Include="ProductCategoryNodesProvider.cs" />
     <Compile Include="ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.css" />
