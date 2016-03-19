@@ -73,5 +73,10 @@ namespace OS.Web.Models.ProductViewModels
 
         [Display(Name = "Публікувати")]
         public bool Publish { get; set; }
+
+        [Display(Name = "Код товару")]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
+        [MaxLength(25)]
+        public string Code { get; set; }
     }
 }

@@ -37,8 +37,8 @@ namespace OS.Business.Domain
         /// Short description of the Product. Should be as plain text
         /// </summary>
         [Display(Name = "Короткий опис")]
-        [MaxLength(100)]
-        [Required]
         public string ShortDescription { get; set; }
+
+        public string Code { get; set; }
     }
 }
