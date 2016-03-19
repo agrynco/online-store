@@ -52,5 +52,10 @@ namespace OS.DAL.EF.Repositories
 
             return query;
         }
+
+        public Product GetByCode(string code)
+        {
+            return GetAll().SingleOrDefault(entity => entity.Code == code);
+        }
     }
 }
