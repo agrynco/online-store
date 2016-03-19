@@ -56,5 +56,10 @@ namespace OS.Business.Logic
             Product product = _productsRepository.GetById(productId);
             _productsRepository.Delete(product);
         }
+
+        public Product GetByCode(string code)
+        {
+            return _productsRepository.GetByCode(code);
+        }
     }
 }
