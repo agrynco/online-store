@@ -143,6 +143,14 @@ namespace OS.Web.Controllers.Administration
             {
                 Product target = GetProductToBeSaved(model);
 
+                Product byCode = _productsBL.GetByCode(model.Code);
+
+                if (byCode != null && byCode.Id != target.Id)
+                {
+                    ModelState.AddModelError("Code", "Введений код належить іншому продукту");
+                    return View("Edit", model);
+                }
+
                 target.Categories.Clear();
                 target.Categories.Add(_productCategoriesBL.GetById(model.CategorySelectorViewModel.Id.Value));
 
