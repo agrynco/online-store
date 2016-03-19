@@ -14,6 +14,14 @@ namespace OS.DAL.EF.EntityConfigurations
                     {
                         IsUnique = true
                     }));
+
+            Property(p => p.ShortDescription).IsRequired().HasMaxLength(100);
+
+            Property(p => p.Code).IsRequired().HasMaxLength(25).HasColumnAnnotation(IndexAnnotation.AnnotationName,
+                new IndexAnnotation(new IndexAttribute("UK_ProductCode")
+                {
+                    IsUnique = true
+                }));
         }
     }
 }
