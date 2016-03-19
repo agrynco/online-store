@@ -21,7 +21,14 @@
         }
     </div>
     <div class="col-md-8">
-        @Html.Raw(Model.Product.Description)
+        <div class="row" style="padding-bottom: 10px; vertical-align: middle">
+            <span class="product-code-block">
+                <span class="product-code-lable">Код товару: </span><span class="product-code" style="vertical-align: middle">@Model.Product.Code</span>
+            </span>
+        </div>
+        <div class="row">
+            @Html.Raw(Model.Product.Description)
+        </div>
     </div>
 </div>
 
