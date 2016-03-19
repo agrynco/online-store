@@ -109,7 +109,8 @@ namespace OS.Web.Controllers.Administration
                     BrandName = product.Brand.Name,
                     CountryName = product.CountryProducer.Name,
                     Price = product.Price.ToString(),
-                    Publish = product.Publish
+                    Publish = product.Publish,
+                    Code = product.Code
                 };
 
             model.CategorySelectorViewModel.Id = categoryId;
@@ -150,6 +151,7 @@ namespace OS.Web.Controllers.Administration
                 target.ShortDescription = model.ShortDescription;
                 target.Price = decimal.Parse(model.Price);
                 target.Publish = model.Publish;
+                target.Code = model.Code;
                 
                 ProcessBrand(model, target);
                 ProcessCountry(model, target);
