@@ -12,6 +12,7 @@ namespace OS.Business.Logic.Tests
         public void Get_ShouldReturnNotNull()
         {
             //Arrange
+            ResetDataBase();
             ContactInfoBL contactInfoBl = DI.Resolve<ContactInfoBL>();
 
             //Act
