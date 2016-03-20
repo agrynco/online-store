@@ -12,5 +12,6 @@
         public bool IgnoreParentId { get; set; }
         public bool IncludeDeleted { get; set; }
         public PaginationFilter PaginationFilter { get; private set; }
+        public bool? Publish { get; set; }
     }
 }

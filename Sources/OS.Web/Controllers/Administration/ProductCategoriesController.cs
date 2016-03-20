@@ -87,9 +87,12 @@ namespace OS.Web.Controllers.Administration
                         productCategory = _productCategoriesBL.GetById(model.Id.Value);
                         productCategory.Name = model.Name;
                         productCategory.Description = model.Description;
-                        productCategory.Publish = model.Publish;
-
+                        
                         _productCategoriesBL.Update(productCategory);
+                        if (productCategory.Publish != model.Publish)
+                        {
+                            _productCategoriesBL.SetPublish(productCategory.Id, model.Publish);
+                        }
                     }
                     else
                     {

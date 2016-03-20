@@ -56,7 +56,7 @@ namespace OS.Web.Controllers.Administration
                 productsFilter.PaginationFilter.PageNumber = filter.PageNumber;
                 productsFilter.PaginationFilter.PageSize = filter.PageSize;
 
-                PagedProductListResult pagedProductListResult = _productsBL.Search(productsFilter);
+                PagedProductListResult pagedProductListResult = _productsBL.Get(productsFilter);
 
                 model.Products = pagedProductListResult.Entities.Select(entity => new ProductListItemViewModel
                     {

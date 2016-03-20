@@ -31,8 +31,9 @@ namespace OS.Web.Controllers
             viewModel.SelectedCategory = null;
             viewModel.Products = _productsBL.Get(new ProductsFilter
                 {
-                    Text = searchTerm
-                });
+                    Text = searchTerm,
+                    Publish = true
+                }).Entities;
 
             return View(viewModel);
         }
@@ -50,8 +51,9 @@ namespace OS.Web.Controllers
             viewModel.SelectedCategory = _productCategoriesBL.GetById(categoryId);
             viewModel.Products = _productsBL.Get(new ProductsFilter
             {
-                ParentId = categoryId
-            });
+                ParentId = categoryId,
+                Publish = true
+            }).Entities;
 
             return View("Index", viewModel);
         }
