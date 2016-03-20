@@ -61,5 +61,22 @@ namespace OS.Repositories.Tests
             //Assert
             Assert.That(products.Count, Is.EqualTo(2));
         }
+
+        [Test]
+        public void GetProducts_OnlyPublish()
+        {
+            //Arrange
+            ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
+            ProductsFilter filter = new ProductsFilter
+            {
+                Publish = true
+            };
+
+            //Act
+            List<Product> products = productsRepository.Get(filter).ToList();
+
+            //Assert
+            Assert.That(products.Count, Is.EqualTo(36));
+        }
     }
 }

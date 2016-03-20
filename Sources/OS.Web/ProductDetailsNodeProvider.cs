@@ -47,7 +47,7 @@ namespace OS.Web
                 List<Product> products = _productsBL.Get(new ProductsFilter
                     {
                         ParentId = productCategory.Id
-                    });
+                    }).Entities;
 
                 foreach (Product product in products)
                 {

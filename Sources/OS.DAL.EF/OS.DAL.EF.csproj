@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\0-0.sql" />
+    <Content Include="Migrations\0-38.sql" />
     <Content Include="Migrations\0-37.sql" />
     <Content Include="Migrations\0-36.sql" />
     <Content Include="Migrations\0-35.sql" />
