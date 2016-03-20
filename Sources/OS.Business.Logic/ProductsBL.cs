@@ -15,9 +15,15 @@ namespace OS.Business.Logic
             _productsRepository = productsRepository;
         }
 
-        public List<Product> Get(ProductsFilter filter)
+        public PagedProductListResult Get(ProductsFilter filter)
         {
-            return _productsRepository.Get(filter).ToList();
+            IQueryable<Product> query = _productsRepository.Get(filter).OrderBy(entity => entity.Name);
+
+            PagedProductListResult result = new PagedProductListResult();
+            result.TotalRecords = query.Count();
+            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+
+            return result;
         }
 
         public void Create(Product product)
@@ -38,17 +44,6 @@ namespace OS.Business.Logic
         public void Update(Product product)
         {
             _productsRepository.Update(product);
-        }
-
-        public PagedProductListResult Search(ProductsFilter filter)
-        {
-            IQueryable<Product> query = _productsRepository.SearchByFilter(filter).OrderBy(entity => entity.Name);
-
-            PagedProductListResult result = new PagedProductListResult();
-            result.TotalRecords = query.Count();
-            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
-
-            return result;
         }
 
         public void Delete(int productId)

@@ -69,6 +69,11 @@ namespace OS.DAL.EF.Repositories
                 query = query.Where(category => category.Name.Contains(filter.Text));
             }
 
+            if (filter.Publish.HasValue)
+            {
+                query = query.Where(category => category.Publish == filter.Publish.Value);
+            }
+
             return query;
         }
 

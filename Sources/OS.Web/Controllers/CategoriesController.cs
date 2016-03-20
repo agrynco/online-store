@@ -21,7 +21,8 @@ namespace OS.Web.Controllers
                 {
                     ParentId = null,
                     IgnoreParentId = false,
-                    IncludeDeleted = false
+                    IncludeDeleted = false,
+                    Publish = true
                 });
 
             VerticalCategorySelectorViewModel model = new VerticalCategorySelectorViewModel();
@@ -49,7 +50,8 @@ namespace OS.Web.Controllers
                 {
                     ParentId = parentCategory.Id,
                     IgnoreParentId = false,
-                    IncludeDeleted = false
+                    IncludeDeleted = false,
+                    Publish = true
                 });
                 
             foreach (ProductCategory productCategory in childCategories.Entities)
