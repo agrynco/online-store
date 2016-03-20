@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace OS.Business.Domain
+﻿namespace OS.Business.Domain
 {
     public class ProductsFilter
     {
@@ -13,5 +11,7 @@ namespace OS.Business.Domain
         public string Text { get; set; }
 
         public PaginationFilter PaginationFilter { get; private set; }
+
+        public bool? Publish { get; set; }
     }
 }
