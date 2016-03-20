@@ -91,7 +91,7 @@ namespace OS.Web.Controllers.Administration
                         _productCategoriesBL.Update(productCategory);
                         if (productCategory.Publish != model.Publish)
                         {
-                            _productCategoriesBL.SetPublish(productCategory.Id, productCategory.Publish);
+                            _productCategoriesBL.SetPublish(productCategory.Id, model.Publish);
                         }
                     }
                     else
