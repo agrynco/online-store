@@ -20,7 +20,7 @@ namespace OS.Web.Controllers.Api
         [Route("autocomplete")]
         public List<string> Get(string term)
         {
-            return _productsBL.Search(new ProductsFilter
+            return _productsBL.Get(new ProductsFilter
                 {
                     Text = term
                 }).Entities.Select(x => x.Name).ToList();
