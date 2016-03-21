@@ -276,6 +276,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotFoundController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
@@ -1865,7 +1866,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
     <Content Include="Views\ContactInfo\Index.cshtml" />
@@ -2037,6 +2037,9 @@
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\bool.cshtml" />
     <Content Include="Views\MailTemplates\OrderDetails.cshtml" />
+    <Content Include="Views\Shared\_errorLayout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
