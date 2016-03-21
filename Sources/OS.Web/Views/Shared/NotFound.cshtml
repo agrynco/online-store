@@ -1,0 +1,19 @@
+﻿@model string
+
+@{
+    Layout = "_errorLayout.cshtml";
+}
+
+<div class="alert alert-warning" style="margin-top: 20px;">
+        <h1 style="color: #d9534f">
+            Помилка сервера
+        </h1>
+    <p>
+        Сторінка @Request.Params["aspxerrorpath"] не знайдена
+    </p>
+
+    @if (ViewBag.ReferrerUrl != null)
+    {
+        <p>Поверрнутися на <a href="@ViewBag.ReferrerUrl">попередню сторінку</a>.</p>
+    }
+</div>
