@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
@@ -21,6 +22,7 @@ namespace OS.Web.Controllers
 
         public ActionResult Index(string searchTerm)
         {
+            throw new NotImplementedException();
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
             {
