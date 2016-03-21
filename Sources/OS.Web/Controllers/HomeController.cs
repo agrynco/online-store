@@ -22,7 +22,6 @@ namespace OS.Web.Controllers
 
         public ActionResult Index(string searchTerm)
         {
-            throw new NotImplementedException();
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
             {
