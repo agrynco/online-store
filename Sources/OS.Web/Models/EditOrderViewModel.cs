@@ -17,6 +17,7 @@ namespace OS.Web.Models
 
         [Required]
         [Display(Name = "Електрона пошта")]
+        [RegularExpression(Constants.RegularExpressions.EMAIL, ErrorMessage = "Невірний формат")]
         public string Email { get; set; }
 
         [Required]
