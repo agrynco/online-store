@@ -25,7 +25,7 @@ namespace OS.Web.Models
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Додатковий коментар")]
-        public string Comment { get; set; }
+        public string AdditionalComment { get; set; }
 
     }
 }
