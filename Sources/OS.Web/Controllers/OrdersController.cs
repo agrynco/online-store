@@ -67,7 +67,8 @@ namespace OS.Web.Controllers
                                     {
                                         ProductId = p.Id,
                                         Quantity = p.Quantity
-                                    }).ToList())
+                                    }).ToList()),
+                        AdditionalComment = model.AdditionalComment
                     });
                 TempData[Constants.TempDataKeys.ORDER_ID] = order.Id;
                 return RedirectToAction("OrderDetails", new {orderId = order.Id});
