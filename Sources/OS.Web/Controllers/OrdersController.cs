@@ -44,10 +44,14 @@ namespace OS.Web.Controllers
                 return View("Edit", model);
             }
 
+            HttpCookie consumerBasketRawDataCookie = Request.Cookies["ConsumerBasket"];
+            if (consumerBasketRawDataCookie == null)
+            {
+                ModelState.AddModelError("", "Не вибрано жодного товару для покупки");
+            }
+
             if (ModelState.IsValid)
             {
-                HttpCookie consumerBasketRawDataCookie = Request.Cookies["ConsumerBasket"];
-
                 List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(
                     HttpContext.Server.UrlDecode(consumerBasketRawDataCookie.Value));
 

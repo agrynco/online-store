@@ -5,100 +5,107 @@
     Layout = "../Shared/_publicLayout.cshtml";
 }
 
+@if (Model.ProductToByDescriptors != null && Model.ProductToByDescriptors.Count > 0)
+{
+    <style>
+        #tableConsumerBasket tbody > tr > td {
+            vertical-align: middle;
+        }
 
-<table class="full-size">
-    <tr class="min-height">
-        <td>
-            <h2>Корзина</h2>
-        </td>
-    </tr>
-    <tr class="min-height">
-        <td>
-            <table id="tableConsumerBasket" class="full-width" border="1">
-                <thead>
+        #tableConsumerBasket thead > tr > th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .form-control.quantity {
+            width: 50px;
+        }
+    </style>
+
+    <table id="tableConsumerBasket" class="table table-hover table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                <th class="min-width">Код товару</th>
+                <th>Назва товару</th>
+                <th class="min-width" style="text-align: right">Ціна</th>
+                <th width="50px">Кількість</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
+            {
                 <tr>
-                    <th width="100px">Код товару</th>
-                    <th>Назва товару</th>
-                    <th width="100px">Ціна</th>
-                    <th width="50px">Кількість</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if (Model.ProductToByDescriptors != null && Model.ProductToByDescriptors.Count > 0)
-                {
-                    for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
-                    {
-                        <tr>
-                            <td>@Model.ProductToByDescriptors[i].Product.Code</td>
-                            <td>
-                                @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Name,
-                                    "Details", "Home", new
-                                        {
-                                            productId = Model.ProductToByDescriptors[i].Product.Id,
-                                            categoryId = Model.ProductToByDescriptors[i].CategoryId
-                                        }, null)
-
-                            </td>
-                            <td>@Model.ProductToByDescriptors[i].Product.Price</td>
-                            <td>
-                                <table width="150px">
-                                    <tr>
-                                        <td>
-                                            <a href="#" class="quantity-changer" diff="-1" productId="@Model.ProductToByDescriptors[i].Product.Id">
-                                                <img src="~/Images/minus_white.png"/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
-                                                {
-                                                    @class = "form-control quantity",
-                                                    productId = @Model.ProductToByDescriptors[i].Product.Id
-                                                })
-                                        </td>
-                                        <td>
-                                            <a href="#" class="quantity-changer" diff="1" productId="@Model.ProductToByDescriptors[i].Product.Id">
-                                                <img src="~/Images/plus.png"/>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="4">
-                            Корзина пуста
-                        </td>
-                    </tr>
-                }
-
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td colspan="3" class="text-right">
-                        Всього
+                    <td style="text-align: center">
+                        @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Code,
+                        "Details", "Home", new
+                        {
+                            productId = Model.ProductToByDescriptors[i].Product.Id,
+                            categoryId = Model.ProductToByDescriptors[i].CategoryId
+                        }, null)
                     </td>
-                    <td id="basketTotalAmount">
-                        0
+                    <td>
+                        @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Name,
+                        "Details", "Home", new
+                        {
+                            productId = Model.ProductToByDescriptors[i].Product.Id,
+                            categoryId = Model.ProductToByDescriptors[i].CategoryId
+                        }, null)
+
+                    </td>
+                    <td style="text-align: right">@Model.ProductToByDescriptors[i].Product.Price</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <a href="#" class="quantity-changer" diff="-1" productId="@Model.ProductToByDescriptors[i].Product.Id">
+                                        <img src="~/Images/minus_white.png" />
+                                    </a>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
+                                       {
+                                           @class = "form-control quantity",
+                                           productId = @Model.ProductToByDescriptors[i].Product.Id
+                                       })
+                                </td>
+                                <td>
+                                    <a href="#" class="quantity-changer" diff="1" productId="@Model.ProductToByDescriptors[i].Product.Id">
+                                        <img src="~/Images/plus.png" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="4" align="center">
-                        <input type="hidden" id="consumerBasketRawData" name="consumerBasketRawData"/>
-                        @Html.ActionLink("Оформити замовлення", "Create", "Orders")
-                    </td>
-                </tr>
-                </tfoot>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-</table>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right" style="font-style: italic; font-weight: bold">
+                    Всього
+                </td>
+                <td id="basketTotalAmount" style="text-align: center; font-style: italic; font-weight: bold">
+                    0
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center">
+                    <input type="hidden" id="consumerBasketRawData" name="consumerBasketRawData" />
+                    @Html.ActionLink("Оформити замовлення", "Create", "Orders", new
+                       {
+                           @class = "btn btn-primary"
+                       })
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        Не вибрано жодного товару для покупки
+    </div>
+}
 
 @section scripts
 {
