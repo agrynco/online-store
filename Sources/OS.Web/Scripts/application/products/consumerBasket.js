@@ -141,6 +141,15 @@ function ConsumerBasket()
             updateUI();
         });
 
+        $(".quantity").change(function()
+        {
+            var index = indexOf(parseInt($(this).attr("productId")));
+            var currentInputValue = parseInt($(this).val());
+            _products[index].quantity = currentInputValue;
+            save();
+            updateUI();
+        });
+
         updateUI();
     }
     

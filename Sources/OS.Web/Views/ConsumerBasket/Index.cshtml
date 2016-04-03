@@ -18,7 +18,7 @@
         }
 
         .form-control.quantity {
-            width: 50px;
+            width: 75px;
         }
     </style>
 
@@ -28,7 +28,7 @@
                 <th class="min-width">Код товару</th>
                 <th>Назва товару</th>
                 <th class="min-width" style="text-align: right">Ціна</th>
-                <th width="50px">Кількість</th>
+                <th width="75px">Кількість</th>
             </tr>
         </thead>
         <tbody>
@@ -65,7 +65,10 @@
                                     @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
                                        {
                                            @class = "form-control quantity",
-                                           productId = @Model.ProductToByDescriptors[i].Product.Id
+                                           productId = @Model.ProductToByDescriptors[i].Product.Id,
+                                           type = "number",
+                                           min = "0",
+                                           max = "1000"
                                        })
                                 </td>
                                 <td>
