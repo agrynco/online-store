@@ -53,14 +53,16 @@ namespace OS.Web.Models.ProductViewModels
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 
         [Display(Name = "Бренд")]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string BrandName { get; set; }
 
         [Display(Name = "Країна-виробник")]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string CountryName { get; set; }
 
         [Display(Name = "Короткий опис")]
         [MaxLength(100)]
-        [Required]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string ShortDescription { get; set; }
 
         [Display(Name = "Завантаженні зображення")]
