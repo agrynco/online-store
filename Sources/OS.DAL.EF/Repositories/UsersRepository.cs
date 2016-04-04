@@ -5,7 +5,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class UsersRepository : BaseOnlineStoreCRUDRepository<ApplicationUser, string>, IUsersRepository
+    public class UsersRepository : OnlineStoreCrudRepository<ApplicationUser, string>, IUsersRepository
     {
         public UsersRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
