@@ -69,7 +69,7 @@ namespace OS.Business.Logic
         public void Delete(int productId)
         {
             Product product = _productsRepository.GetById(productId);
-            _productsRepository.Delete(product);
+            _productsRepository.Delete(false, product);
         }
 
         public Product GetByCode(string code)
