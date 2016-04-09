@@ -10,5 +10,11 @@ namespace OS.Business.Domain
         public DateTime? Created { get; set; }
         public DateTime? Updated { get; set; }
         public DateTime? Deleted { get; set; }
+
+        object IEntity.Id
+        {
+            get { return Id; }
+            set { Id = (string) value; }
+        }
     }
 }

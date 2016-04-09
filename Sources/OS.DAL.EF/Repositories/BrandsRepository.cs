@@ -3,7 +3,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class BrandsRepository : BaseOnlineStoreCRUDRepository<Brand>, IBrandsRepository
+    public class BrandsRepository : OnlineStoreCrudRepository<Brand>, IBrandsRepository
     {
         public BrandsRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

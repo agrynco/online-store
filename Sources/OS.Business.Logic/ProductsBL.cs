@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
+using OS.Business.Logic.Exceptions;
 using OS.DAL.Abstract;
 
 namespace OS.Business.Logic
@@ -9,10 +10,12 @@ namespace OS.Business.Logic
     public class ProductsBL
     {
         private readonly IProductsRepository _productsRepository;
-        
-        public ProductsBL(IProductsRepository productsRepository)
+        private readonly IProductPhotosRepository _productPhotosRepository;
+
+        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository)
         {
             _productsRepository = productsRepository;
+            _productPhotosRepository = productPhotosRepository;
         }
 
         public PagedProductListResult Get(ProductsFilter filter)
@@ -24,6 +27,23 @@ namespace OS.Business.Logic
             result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
 
             return result;
+        }
+
+        public Product GetByName(string name)
+        {
+            return _productsRepository.GetByName(name);
+        }
+
+        public void DeletePermanently(int productId)
+        {
+            Product product = _productsRepository.GetById(productId);
+            if (!product.IsDeleted)
+            {
+                throw new CanNotDeletePermanentlyNotMarkedToDeleteException(product);
+            }
+
+            _productPhotosRepository.Delete(true, product.Photos.ToArray());
+            _productsRepository.Delete(true, productId);
         }
 
         public void Create(Product product)
@@ -49,7 +69,7 @@ namespace OS.Business.Logic
         public void Delete(int productId)
         {
             Product product = _productsRepository.GetById(productId);
-            _productsRepository.Delete(product);
+            _productsRepository.Delete(false, product);
         }
 
         public Product GetByCode(string code)

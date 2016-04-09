@@ -69,7 +69,7 @@
     <Compile Include="EntityConfigurations\OrderConfiguration.cs" />
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
-    <Compile Include="Repositories\BaseOnlineStoreCRUDRepository.cs" />
+    <Compile Include="Repositories\OnlineStoreCrudRepository.cs" />
     <Compile Include="Core\BaseReadOnlyRepository.cs" />
     <Compile Include="Core\BaseRepository.cs" />
     <Compile Include="EntityConfigurations\BrandConfiguration.cs" />

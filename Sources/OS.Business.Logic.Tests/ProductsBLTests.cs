@@ -22,5 +22,18 @@ namespace OS.Business.Logic.Tests
             bool isDeleted = EntityFrameworkDbContext.Products.Where(product => product.Id == 1).Select(product => product.IsDeleted).Single();
             Assert.That(isDeleted, Is.True);
         }
+
+        [Test]
+        public void DeletePermanently()
+        {
+            //Arrange
+            ResetDataBase();
+            ProductsBL productsBL = DI.Resolve<ProductsBL>();
+
+            //Act
+            productsBL.DeletePermanently(1);
+
+            //Asserts
+        }
     }
 }

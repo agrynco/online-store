@@ -3,7 +3,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class CountriesRepository : BaseOnlineStoreCRUDRepository<Country>, ICountriesRepository
+    public class CountriesRepository : OnlineStoreCrudRepository<Country>, ICountriesRepository
     {
         public CountriesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
