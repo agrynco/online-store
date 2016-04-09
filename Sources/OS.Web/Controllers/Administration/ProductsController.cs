@@ -139,8 +139,26 @@ namespace OS.Web.Controllers.Administration
                 ModelState.AddModelError("CategorySelectorViewModel.Name", "Вказана неіснуюча категорія");
             }
 
+            Product alreadyExistedProduct = _productsBL.GetByName(model.Name);
+
+            if (alreadyExistedProduct != null)
+            {
+                if (!alreadyExistedProduct.IsDeleted)
+                {
+                    ModelState.AddModelError("Name", "Продукт з таким іменем вже існує");
+                }
+            }
+
             if (ModelState.IsValid)
             {
+                if (alreadyExistedProduct != null)
+                {
+                    if (alreadyExistedProduct.IsDeleted)
+                    {
+                        _productsBL.DeletePermanently(alreadyExistedProduct.Id);
+                    }
+                }
+
                 Product target = GetProductToBeSaved(model);
 
                 Product byCode = _productsBL.GetByCode(model.Code);

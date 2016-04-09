@@ -66,7 +66,7 @@ namespace OS.Business.Logic
 
         public void Delete(int id)
         {
-            _productCategoriesRepository.IterateFromDownToUp(id, category => _productCategoriesRepository.Delete(category.Id));
+            _productCategoriesRepository.IterateFromDownToUp(id, category => _productCategoriesRepository.Delete(false, category.Id));
         }
 
         public void SetPublish(int id, bool publish)

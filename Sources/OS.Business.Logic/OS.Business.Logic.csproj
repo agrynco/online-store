@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailTemplatesBL.cs" />
+    <Compile Include="Exceptions\CanNotDeletePermanentlyNotMarkedToDeleteException.cs" />
     <Compile Include="Mailing\IMailService.cs" />
     <Compile Include="Mailing\MailService.cs" />
     <Compile Include="PagedBrandListResult.cs" />

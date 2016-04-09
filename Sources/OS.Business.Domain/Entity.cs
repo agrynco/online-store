@@ -2,7 +2,12 @@
 
 namespace OS.Business.Domain
 {
-    public interface IEntity<TId>
+    public interface IEntity
+    {
+        object Id { get; set; }    
+    }
+
+    public interface IEntity<TId> : IEntity
     {
         TId Id { get; set; }
         bool IsDeleted { get; set; }
@@ -18,5 +23,11 @@ namespace OS.Business.Domain
         public DateTime? Created { get; set; }
         public DateTime? Updated { get; set; }
         public DateTime? Deleted { get; set; }
+
+        object IEntity.Id
+        {
+            get { return Id; }
+            set { Id = (TId) value; }
+        }
     }
 }

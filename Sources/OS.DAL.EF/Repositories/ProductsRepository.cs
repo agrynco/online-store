@@ -5,7 +5,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class ProductsRepository : BaseOnlineStoreCRUDRepository<Product>, IProductsRepository
+    public class ProductsRepository : OnlineStoreCrudRepository<Product>, IProductsRepository
     {
         public ProductsRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
@@ -44,6 +44,11 @@ namespace OS.DAL.EF.Repositories
         public Product GetByCode(string code)
         {
             return GetAll().SingleOrDefault(entity => entity.Code == code);
+        }
+
+        public Product GetByName(string name)
+        {
+            return GetAll(true).SingleOrDefault(entity => entity.Name == name);
         }
     }
 }
