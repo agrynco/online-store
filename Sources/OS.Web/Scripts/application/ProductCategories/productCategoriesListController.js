@@ -41,7 +41,7 @@ function ProductCategoriesListController(parentCategoryId)
                     }
                 },
                 {
-                    targets: [3, 4],
+                    targets: [3],
                     render: function(data, type, row)
                     {
                         var $trueTemplate = $("#truePublishTemplate");
@@ -59,7 +59,7 @@ function ProductCategoriesListController(parentCategoryId)
 
                         return $editDom.html();
                     },
-                    targets: [5],
+                    targets: [4],
                     className: "delete-column"
                 },
                 {
@@ -71,7 +71,7 @@ function ProductCategoriesListController(parentCategoryId)
 
                         return $deleteDom.html();
                     },
-                    targets: [6],
+                    targets: [5],
                     className: "delete-column"
                 }
             ],
