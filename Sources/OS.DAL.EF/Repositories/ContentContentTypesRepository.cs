@@ -4,7 +4,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class ContentContentTypesRepository : BaseOnlineStoreCRUDRepository<ContentContentType>, IContentContentTypesRepository
+    public class ContentContentTypesRepository : OnlineStoreCrudRepository<ContentContentType>, IContentContentTypesRepository
     {
         public ContentContentTypesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
