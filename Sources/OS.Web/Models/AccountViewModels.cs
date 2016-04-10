@@ -64,7 +64,7 @@ namespace OS.Web.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [EmailAddress]
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
