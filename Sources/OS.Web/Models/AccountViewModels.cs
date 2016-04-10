@@ -5,7 +5,7 @@ namespace OS.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
     }
@@ -25,10 +25,10 @@ namespace OS.Web.Models
 
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         public string Provider { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [Display(Name = "Код")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -41,7 +41,7 @@ namespace OS.Web.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
     }
@@ -69,7 +69,7 @@ namespace OS.Web.Models
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
@@ -83,12 +83,12 @@ namespace OS.Web.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [EmailAddress]
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
@@ -104,7 +104,7 @@ namespace OS.Web.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [EmailAddress]
         [Display(Name = "Електронна пошта")]
         public string Email { get; set; }
