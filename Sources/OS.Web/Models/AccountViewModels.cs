@@ -50,7 +50,7 @@ namespace OS.Web.Models
     {
         [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [Display(Name = "Електронна пошта")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Невірний формат")]
         public string Email { get; set; }
 
         [Required]
