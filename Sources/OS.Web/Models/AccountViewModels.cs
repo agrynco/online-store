@@ -48,7 +48,7 @@ namespace OS.Web.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Constants.ValidationMessages.REQUIRED)]
         [Display(Name = "Електронна пошта")]
         [EmailAddress]
         public string Email { get; set; }
