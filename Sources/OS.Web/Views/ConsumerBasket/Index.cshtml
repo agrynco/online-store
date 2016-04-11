@@ -34,7 +34,7 @@
         <tbody>
             @for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
             {
-                <tr>
+                <tr class="ordered-product-row" productId="@Model.ProductToByDescriptors[i].Product.Id">
                     <td style="text-align: center">
                         @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Code,
                         "Details", "Home", new

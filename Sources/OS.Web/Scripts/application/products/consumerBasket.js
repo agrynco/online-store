@@ -101,11 +101,24 @@ function ConsumerBasket()
 
     var changeQuantityOn = function(productId, difference)
     {
-        var product = _products[indexOf(productId)];
+        var index = indexOf(productId);
+        var product = _products[index];
         product.quantity = product.quantity + difference;
         if (product.quantity < 0)
         {
             product.quantity = 0;
+        }
+
+        if (product.quantity === 0)
+        {
+            if (confirm("Ви впевненні що хочете відмовитися від покупки товару?") === true)
+            {
+                $(".ordered-product-row[productId='" + product.id + "']").remove();
+                _products.splice(index, 1);
+            } else
+            {
+                product.quantity = 1;
+            }
         }
     }
 
