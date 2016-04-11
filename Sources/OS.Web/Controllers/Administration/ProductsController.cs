@@ -141,7 +141,7 @@ namespace OS.Web.Controllers.Administration
 
             Product alreadyExistedProduct = _productsBL.GetByName(model.Name);
 
-            if (alreadyExistedProduct != null)
+            if (alreadyExistedProduct != null && model.Id.HasValue && model.Id.Value != alreadyExistedProduct.Id)
             {
                 if (!alreadyExistedProduct.IsDeleted)
                 {
@@ -151,7 +151,7 @@ namespace OS.Web.Controllers.Administration
 
             if (ModelState.IsValid)
             {
-                if (alreadyExistedProduct != null)
+                if (alreadyExistedProduct != null && model.Id.HasValue && model.Id.Value != alreadyExistedProduct.Id)
                 {
                     if (alreadyExistedProduct.IsDeleted)
                     {
