@@ -74,6 +74,17 @@ function ConsumerBasket()
         {
             $(el).val(_products[indexOf(parseInt($(el).attr("productId")))].quantity);
         });
+
+        if (_products.length > 0)
+        {
+
+            $("#no-products-to-buy").hide();
+            $("#tableConsumerBasket").show();
+        } else
+        {
+            $("#tableConsumerBasket").hide();
+            $("#no-products-to-buy").show();
+        }
     }
 
     var add = function (product)
@@ -101,11 +112,24 @@ function ConsumerBasket()
 
     var changeQuantityOn = function(productId, difference)
     {
-        var product = _products[indexOf(productId)];
+        var index = indexOf(productId);
+        var product = _products[index];
         product.quantity = product.quantity + difference;
         if (product.quantity < 0)
         {
             product.quantity = 0;
+        }
+
+        if (product.quantity === 0)
+        {
+            if (confirm("Ви впевненні що хочете відмовитися від покупки товару?") === true)
+            {
+                $(".ordered-product-row[productId='" + product.id + "']").remove();
+                _products.splice(index, 1);
+            } else
+            {
+                product.quantity = 1;
+            }
         }
     }
 
@@ -146,6 +170,8 @@ function ConsumerBasket()
             var index = indexOf(parseInt($(this).attr("productId")));
             var currentInputValue = parseInt($(this).val());
             _products[index].quantity = currentInputValue;
+            changeQuantityOn(_products[index].id, 0);
+
             save();
             updateUI();
         });
