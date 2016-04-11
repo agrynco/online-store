@@ -13,6 +13,11 @@ namespace OS.Web.Models
 
     public class ConsumerBasketViewModel
     {
-        public IList<ProductToBuyDescriptor> ProductToByDescriptors { get; set; }
+        public ConsumerBasketViewModel()
+        {
+            ProductToByDescriptors = new List<ProductToBuyDescriptor>();
+        }
+
+        public List<ProductToBuyDescriptor> ProductToByDescriptors { get; private set; }
     }
 }
