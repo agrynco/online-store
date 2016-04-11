@@ -74,6 +74,17 @@ function ConsumerBasket()
         {
             $(el).val(_products[indexOf(parseInt($(el).attr("productId")))].quantity);
         });
+
+        if (_products.length > 0)
+        {
+
+            $("#no-products-to-buy").hide();
+            $("#tableConsumerBasket").show();
+        } else
+        {
+            $("#tableConsumerBasket").hide();
+            $("#no-products-to-buy").show();
+        }
     }
 
     var add = function (product)
@@ -159,6 +170,8 @@ function ConsumerBasket()
             var index = indexOf(parseInt($(this).attr("productId")));
             var currentInputValue = parseInt($(this).val());
             _products[index].quantity = currentInputValue;
+            changeQuantityOn(_products[index].id, 0);
+
             save();
             updateUI();
         });
