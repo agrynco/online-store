@@ -31,7 +31,7 @@ namespace OS.Web.Controllers
             
                 List<Product> products = _productsBL.GetByIds(productInBasketViewModels.Select(x => x.Id));
 
-                consumerBasketViewModel.ProductToByDescriptors = products.Select(product =>
+                consumerBasketViewModel.ProductToByDescriptors.AddRange(products.Select(product =>
                 {
                     ProductInBasketViewModel productInBasketViewModel = productInBasketViewModels.Single(x => x.Id == product.Id);
                     return new ProductToBuyDescriptor
@@ -40,8 +40,9 @@ namespace OS.Web.Controllers
                             Quantity = productInBasketViewModel.Quantity,
                             CategoryId = productInBasketViewModel.CategoryId
                         };
-                }).ToList();
+                }));
             }
+            
             return View(consumerBasketViewModel);
         }
     }

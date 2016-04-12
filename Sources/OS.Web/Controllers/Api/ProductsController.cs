@@ -25,5 +25,14 @@ namespace OS.Web.Controllers.Api
                     Text = term
                 }).Entities.Select(x => x.Name).ToList();
         }
+
+        [HttpPut]
+        [Route("{id}/publish/{value}")]
+        public void SetPublish([FromUri] int id, [FromUri] bool value)
+        {
+            Product product = _productsBL.GetById(id);
+            product.Publish = value;
+            _productsBL.Update(product);
+        }
     }
 }

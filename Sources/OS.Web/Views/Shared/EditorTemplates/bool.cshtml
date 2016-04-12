@@ -8,10 +8,17 @@
     htmlAttributes.Add("data-on", "Так");
     htmlAttributes.Add("data-off", "Ні");
 
-    bool disabled = ViewData["disabled"] != null && (bool) ViewData["disabled"];
+    object disabledViewData = ViewData["disabled"];
+    bool disabled = disabledViewData != null && (bool) disabledViewData;
     if (disabled)
     {
         htmlAttributes.Add("disabled", "true");
+    }
+
+    object onchangeViewData = ViewData["onchange"];
+    if (onchangeViewData != null)
+    {
+        htmlAttributes.Add("onchange", onchangeViewData);
     }
 }
 @Html.CheckBoxFor(m => Model, htmlAttributes)
