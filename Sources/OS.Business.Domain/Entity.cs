@@ -9,7 +9,7 @@ namespace OS.Business.Domain
 
     public interface IEntity<TId> : IEntity
     {
-        TId Id { get; set; }
+        new TId Id { get; set; }
         bool IsDeleted { get; set; }
         DateTime? Created { get; set; }
         DateTime? Updated { get; set; }

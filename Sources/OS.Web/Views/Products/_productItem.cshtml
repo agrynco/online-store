@@ -5,28 +5,32 @@
     <div class="thumbnail ">
         <div class="row">
             <div class="col-md-2">
-                @Html.EditorFor(m => m.Product.Publish, "bool", new {disabled = true})
+                @Html.EditorFor(m => m.Product.Publish, "bool", new
+                    {
+                        //disabled = true,
+                        onchange = "setPublish(this, " + Model.Product.Id + ")"
+                    })
             </div>
             <div class="col-md-1 col-md-offset-5">
                 @Html.ActionLink(" ", "Edit", new
-               {
-                   id = Model.Product.Id,
-                   categoryId = Model.CategoryId
-               }, new
-               {
-                   @class = "glyphicon glyphicon-edit"
-               })
+                    {
+                        id = Model.Product.Id,
+                        categoryId = Model.CategoryId
+                    }, new
+                        {
+                            @class = "glyphicon glyphicon-edit"
+                        })
             </div>
             <div class="col-md-1">
                 @Html.ActionLink(" ", "Delete", new
-               {
-                   id = Model.Product.Id,
-                   categoryId = Model.CategoryId
-               }, new
-               {
-                   @class = "glyphicon glyphicon-remove",
-                   onclick = "return confirmDelete();"
-               })
+                    {
+                        id = Model.Product.Id,
+                        categoryId = Model.CategoryId
+                    }, new
+                        {
+                            @class = "glyphicon glyphicon-remove",
+                            onclick = "return confirmDelete();"
+                        })
             </div>
         </div>
 

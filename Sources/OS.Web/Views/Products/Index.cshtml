@@ -49,5 +49,14 @@
             doSearch();
         }
         initAutocompleteCategoriesFilter(enterTheCategoryCallBack);
+
+        function setPublish(sender, productId)
+        {
+            var currentValue = $(sender).closest("div").hasClass("off");
+            $.ajax({
+                method: "PUT",
+                url: "api/products/" + productId + "/publish/" + !currentValue
+            });
+        }
     </script>
 }
