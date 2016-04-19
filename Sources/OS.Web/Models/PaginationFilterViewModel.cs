@@ -5,7 +5,7 @@
         public PaginationFilterViewModel()
         {
             PageNumber = 0;
-            PageSize = 20;
+            PageSize = int.MaxValue;
         }
 
         public int PageNumber { get; set; } 
