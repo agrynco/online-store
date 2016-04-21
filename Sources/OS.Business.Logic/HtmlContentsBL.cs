@@ -20,7 +20,7 @@ namespace OS.Business.Logic
                 throw new ArgumentNullException(nameof(htmlContent));
             }
 
-            if (_htmlContentsRepository.GetByCode(htmlContent.Code) == null)
+            if (htmlContent.Id == 0)
             {
                 _htmlContentsRepository.Add(htmlContent);
             }
@@ -33,6 +33,11 @@ namespace OS.Business.Logic
         public HtmlContent GetByCode(HtmlContentCode htmlContentCode)
         {
             return _htmlContentsRepository.GetByCode(htmlContentCode);
+        }
+
+        public HtmlContent GetById(int id)
+        {
+            return _htmlContentsRepository.GetById(id);
         }
     }
 }

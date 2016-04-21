@@ -4,6 +4,7 @@ namespace OS.Web.Models.HtmlContentViewModels
 {
     public class HtmlContentCreateOrEditViewModel : BaseCreateOrEditViewModel
     {
-        public HtmlContent HtmlContent { get; set; }
+        public string Text { get; set; }
+        public HtmlContentCode Code { get; set; }
     }
 }

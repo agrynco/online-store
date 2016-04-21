@@ -17,27 +17,51 @@ namespace OS.Web.Controllers
 
         public ActionResult Edit(HtmlContentCode htmlContentCode)
         {
+            HtmlContentCreateOrEditViewModel model;
+
             HtmlContent htmlContent = _htmlContentsBL.GetByCode(htmlContentCode);
-            if (htmlContent == null)
+
+            if (htmlContent != null)
             {
-                htmlContent = new HtmlContent
+                model = new HtmlContentCreateOrEditViewModel
+                    {
+                        Text = htmlContent.Text,
+                        Code = htmlContent.Code,
+                        Id = htmlContent.Id == 0 ? (int?) null : htmlContent.Id
+                    };
+            }
+            else
+            {
+                model = new HtmlContentCreateOrEditViewModel
                     {
                         Code = htmlContentCode
                     };
             }
 
-            return View(new HtmlContentCreateOrEditViewModel
-                {
-                    HtmlContent = htmlContent,
-                    Id = htmlContent.Id
-                });
+            return View(model);
         }
 
         public ActionResult Save(HtmlContentCreateOrEditViewModel model)
         {
-            _htmlContentsBL.Update(model.HtmlContent);
+            if (ModelState.IsValid)
+            {
+                HtmlContent htmlContent;
+                if (model.Id.HasValue)
+                {
+                    htmlContent = _htmlContentsBL.GetById(model.Id.Value);
+                }
+                else
+                {
+                    htmlContent = new HtmlContent();
+                }
 
-            return RedirectToAction("Edit", model.HtmlContent.Code);
+                htmlContent.Code = model.Code;
+                htmlContent.Text = model.Text;
+                _htmlContentsBL.Update(htmlContent);
+
+                model.Id = htmlContent.Id;
+            }
+            return View("Edit", model);
         }
     }
 }

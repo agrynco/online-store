@@ -102,6 +102,7 @@ namespace OS.Dependency
                     }), _LIFE_STYLE);
 
             Register<IHtmlContentsRepository, HtmlContentsRepository>();
+            Register<HtmlContentsBL>();
         }
 
         public static void Register<TImplementation>()
