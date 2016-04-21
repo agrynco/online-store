@@ -41,6 +41,7 @@ namespace OS.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public ActionResult Save(HtmlContentCreateOrEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -61,6 +62,8 @@ namespace OS.Web.Controllers
 
                 model.Id = htmlContent.Id;
             }
+
+            ModelState.Clear();
             return View("Edit", model);
         }
     }
