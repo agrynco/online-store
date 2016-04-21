@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Controllers.Administration;
@@ -42,6 +43,7 @@ namespace OS.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Save(HtmlContentCreateOrEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -62,9 +64,14 @@ namespace OS.Web.Controllers
 
                 model.Id = htmlContent.Id;
             }
-
-            ModelState.Clear();
-            return View("Edit", model);
+            
+            switch (model.Code)
+            {
+                case HtmlContentCode.About:
+                    return RedirectToAction("Index", "About");
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
