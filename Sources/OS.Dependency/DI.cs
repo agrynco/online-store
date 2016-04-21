@@ -100,6 +100,9 @@ namespace OS.Dependency
                         UserName = ApplicationSettings.Instance.MailServiceSettings.FromAddress,
                         Password = ApplicationSettings.Instance.MailServiceSettings.FromPassword
                     }), _LIFE_STYLE);
+
+            Register<IHtmlContentsRepository, HtmlContentsRepository>();
+            Register<HtmlContentsBL>();
         }
 
         public static void Register<TImplementation>()
