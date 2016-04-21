@@ -1,11 +1,32 @@
-﻿@using OS.Web.Models
-@model HorizontalCategorySelectorViewModel
+﻿@using OS.Business.Domain
+@model HtmlContent
 
 @{
     Layout = "../Shared/_publicLayout.cshtml";
 }
 
+@if (Model == null)
+{
+    <div class="alert alert-info">
+        <div class="row">
+            <div class="col-md-10" style="vertical-align: middle">
+                Немає даних
+            </div>
+            <div class="col-md-2">
+                @if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
+                {
+                    <div style="float: right">
+                        <span class="btn btn-danger">@Html.ActionLink("Редагувати", "Edit", "HtmlContents", new
+                                                {
+                                                    HtmlContentCode = HtmlContentCode.About
+                                                }, null)</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
 @section scripts
 {
-    
 }

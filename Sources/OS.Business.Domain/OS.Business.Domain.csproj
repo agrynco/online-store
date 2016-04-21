@@ -52,6 +52,8 @@
     <Compile Include="Brand.cs" />
     <Compile Include="BrandsFilter.cs" />
     <Compile Include="Buyer.cs" />
+    <Compile Include="HtmlContent.cs" />
+    <Compile Include="HtmlContentCode.cs" />
     <Compile Include="IPublishedEntity.cs" />
     <Compile Include="NamedPublishedEntity.cs" />
     <Compile Include="Order.cs" />
