@@ -22,6 +22,20 @@ namespace OS.DAL.EF
             Database.Log = message => Debug.WriteLine(message);
         }
 
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<ContactInfo> ContactInfos { get; set; }
+        public DbSet<ContentContentType> ContentContentTypes { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<ContentType> ContentTypes { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductPhoto> ProductPhotos { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<HtmlContent> HtmlContents { get; set; }
+
         public override int SaveChanges()
         {
             try
@@ -59,18 +73,5 @@ namespace OS.DAL.EF
 
             base.Dispose(disposing);
         }
-
-        public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Brand> Brands { get; set; }
-        public DbSet<ProductPhoto> ProductPhotos { get; set; }
-        public DbSet<File> Files { get; set; } 
-        public DbSet<Content> Contents { get; set; }
-        public DbSet<ContentType> ContentTypes { get; set; }
-        public DbSet<ContentContentType> ContentContentTypes { get; set; }
-        public DbSet<ContactInfo> ContactInfos { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Person> Persons { get; set; }
     }
 }

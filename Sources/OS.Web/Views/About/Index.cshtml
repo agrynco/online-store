@@ -1,11 +1,38 @@
-﻿@using OS.Web.Models
-@model HorizontalCategorySelectorViewModel
+﻿@using OS.Business.Domain
+@model HtmlContent
 
 @{
     Layout = "../Shared/_publicLayout.cshtml";
 }
 
+
+@if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
+{
+    <div>
+        <a href='@Url.Action("Edit", "HtmlContents", new
+                     {
+                        HtmlContentCode = HtmlContentCode.About
+                     })'>
+            <span class="glyphicon glyphicon-edit">
+            </span>
+        </a>
+    </div>
+}
+@if (Model == null)
+{
+    <div class="alert alert-info">
+        <div class="row">
+            <div class="col-md-10" style="vertical-align: middle">
+                Немає даних
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Raw(HttpUtility.HtmlDecode(Model.Text))
+}
+
 @section scripts
 {
-    
 }
