@@ -19,17 +19,7 @@
             </div>
             <div class="navbar-collapse collapse row">
                 <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        @Html.ActionLink("Контакти", "Index", "HtmlContents", new
-                            {
-                                htmlContentCode = HtmlContentCode.Contacts
-                            }, null)
-                    </li>
-                    <li>@Html.ActionLink("Про магазин", "Index", "HtmlContents", new
-                            {
-                                htmlContentCode = HtmlContentCode.About
-                            }, null)
-                    </li>
+                    @Html.Partial("_commonMenuItems")
                     <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
                     @if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
                     {
@@ -48,7 +38,6 @@
                     @Html.Partial("_loginPartial")
 
                     <li>@Html.Partial("_consumerBasket")</li>
-
                 </ul>
             </div>
         </div>

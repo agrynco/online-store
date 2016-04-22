@@ -24,18 +24,7 @@
                     <li>@Html.ActionLink("Бренди", "Index", "Brands")</li>
                     <li>@Html.ActionLink("Країни", "Index", "Countries")</li>
 
-                    <li>
-                        @Html.ActionLink("Контакти", "Index", "HtmlContents", new
-                            {
-                                htmlContentCode = HtmlContentCode.Contacts
-                            }, null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Про магазин", "Index", "HtmlContents", new
-                            {
-                                htmlContentCode = HtmlContentCode.About
-                            }, null)
-                    </li>
+                    @Html.Partial("_commonMenuItems")
                 </ul>
 
                 <div class="navbar-right" style="margin-right: 15px;">
