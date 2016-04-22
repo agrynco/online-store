@@ -74,7 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactInfoBLTests.cs" />
     <Compile Include="ContentContentTypesBLTests.cs" />
     <Compile Include="CountriesBLTests.cs" />
     <Compile Include="MailServiceTests.cs" />

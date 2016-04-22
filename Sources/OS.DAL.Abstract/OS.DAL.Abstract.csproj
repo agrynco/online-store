@@ -64,7 +64,6 @@
     <Compile Include="IHtmlContentsRepository.cs" />
     <Compile Include="IUsersRepository.cs" />
     <Compile Include="IBrandsRepository.cs" />
-    <Compile Include="IContactInfosRepository.cs" />
     <Compile Include="IContentContentTypesRepository.cs" />
     <Compile Include="IContentsRepository.cs" />
     <Compile Include="IContentTypesRepository.cs" />

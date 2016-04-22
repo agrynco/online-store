@@ -228,6 +228,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
+    <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsEditNodeProvider.cs" />
+    <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlAboutEditNodeProvider.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -279,25 +282,22 @@
     <Compile Include="Controllers\HtmlContentsController.cs" />
     <Compile Include="Controllers\NotFoundController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
-    <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SiteMapController.cs" />
-    <Compile Include="Controllers\StubController.cs" />
     <Compile Include="Controllers\SystemInfoController.cs" />
     <Compile Include="Controllers\VerticalCategorySelectorViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlAboutNodeProvider.cs" />
     <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
     <Compile Include="Models\BoolViewModel.cs" />
     <Compile Include="Models\BrandViewModels\BrandCreateOrEditViewModel.cs" />
     <Compile Include="Models\ConsumerBasketViewModel.cs" />
-    <Compile Include="Models\ContactInfoEditViewModel.cs" />
     <Compile Include="Models\CountryViewModel\CountryListViewModel.cs" />
     <Compile Include="Models\EditOrderViewModel.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
@@ -325,8 +325,7 @@
     <Compile Include="Models\ProductViewModels\ProductsViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
     <Compile Include="OsSqlErrorLog.cs" />
-    <Compile Include="ProductCategoryNodesProvider.cs" />
-    <Compile Include="ProductDetailsNodeProvider.cs" />
+    <Compile Include="SiteMapNodeProviders\ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
@@ -1870,11 +1869,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_searchControl.cshtml" />
-    <Content Include="Views\ContactInfo\Index.cshtml" />
-    <Content Include="Views\Stub\Index.cshtml" />
     <Content Include="Views\BaseLayout\Index.cshtml" />
     <Content Include="Views\SystemInfo\Index.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Lockout.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
@@ -1975,9 +1971,6 @@
     <Content Include="Scripts\tinymce\tests\js\qunit\QUnit.LICENSE" />
     <Content Include="Scripts\tinymce\tools\antlib\ant-contrib.zip" />
     <Content Include="Views\Shared\EditorTemplates\_productPhotos.cshtml" />
-    <Content Include="Views\ContactInfoAdmin\Index.cshtml" />
-    <Content Include="Views\Shared\_contactInfo.cshtml" />
-    <Content Include="Views\ContactInfoAdmin\Edit.cshtml" />
     <Content Include="Views\Products\_productItem.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Shared\_consumerBasket.cshtml" />
@@ -2043,6 +2036,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\HtmlContents\Edit.cshtml" />
+    <Content Include="Views\HtmlContents\Index.cshtml" />
+    <Content Include="Views\Shared\_commonMenuItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -2097,7 +2092,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>30298</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

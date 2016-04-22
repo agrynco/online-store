@@ -4,7 +4,7 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
     <mvcSiteMapNode title="Головна" controller="Home" action="Index" key="Online Store" visibility="true">
-        <mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.ProductDetailsNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Контакти" controller="Contacts" action="Index" />
         <mvcSiteMapNode title="Про магазин" controller="About" action="Index" />
         <mvcSiteMapNode title="Карта сайту" controller="SiteMap" action="Index" />
@@ -21,7 +21,10 @@
         <mvcSiteMapNode title="Бренди" controller="Brands" action="Index"/>
         <mvcSiteMapNode title="Країни" controller="Countries" action="Index"/>
         <mvcSiteMapNode title="Створення бренду" controller="Brands" action="Create"/>
-        <!--<mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>-->
+        <mvcSiteMapNode title="Про магазин" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlAboutNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Про магазин" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlAboutEditNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsEditNodeProvider, OS.Web"/>
     </mvcSiteMapNode>
 
 </mvcSiteMap>
