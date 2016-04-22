@@ -67,7 +67,6 @@
     <Compile Include="ProductCategoriesFilter.cs" />
     <Compile Include="OrderedProduct.cs" />
     <Compile Include="ProductsFilter.cs" />
-    <Compile Include="ContactInfo.cs" />
     <Compile Include="Content.cs" />
     <Compile Include="ContentContentType.cs" />
     <Compile Include="ContentEnum.cs" />

@@ -65,7 +65,6 @@
   <ItemGroup>
     <Compile Include="Core\BaseCRUDRepository.cs" />
     <Compile Include="EntityConfigurations\BuyerConfiguration.cs" />
-    <Compile Include="EntityConfigurations\ContactInfoConfiguration.cs" />
     <Compile Include="EntityConfigurations\OrderConfiguration.cs" />
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="Repositories\HtmlContentsRepository.cs" />
@@ -80,7 +79,6 @@
     <Compile Include="EntityFrameworkDbContext.cs" />
     <Compile Include="OnlineStoreDbContext.cs" />
     <Compile Include="Repositories\BrandsRepository.cs" />
-    <Compile Include="Repositories\ContactInfosRepository.cs" />
     <Compile Include="Repositories\ContentContentTypesRepository.cs" />
     <Compile Include="Repositories\ContentsRepository.cs" />
     <Compile Include="Repositories\ContentTypesRepository.cs" />
@@ -113,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\0-0.sql" />
+    <Content Include="Migrations\0-40.sql" />
     <Content Include="Migrations\0-39.sql" />
     <Content Include="Migrations\0-38.sql" />
     <Content Include="Migrations\0-37.sql" />

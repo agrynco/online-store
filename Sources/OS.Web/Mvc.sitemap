@@ -21,7 +21,10 @@
         <mvcSiteMapNode title="Бренди" controller="Brands" action="Index"/>
         <mvcSiteMapNode title="Країни" controller="Countries" action="Index"/>
         <mvcSiteMapNode title="Створення бренду" controller="Brands" action="Create"/>
-        <!--<mvcSiteMapNode title="Деталі продукту" dynamicNodeProvider="OS.Web.ProductDetailsNodeProvider, OS.Web"/>-->
+        <mvcSiteMapNode title="Про магазин" dynamicNodeProvider="OS.Web.HtmlAboutNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Про магазин" dynamicNodeProvider="OS.Web.HtmlAboutEditNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Контакти" key="Contacts" dynamicNodeProvider="OS.Web.HtmlContactsNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.HtmlContactsEditNodeProvider, OS.Web"/>
     </mvcSiteMapNode>
 
 </mvcSiteMap>
