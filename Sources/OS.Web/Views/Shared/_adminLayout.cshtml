@@ -1,4 +1,5 @@
-﻿@using OS.Configuration
+﻿@using OS.Business.Domain
+@using OS.Configuration
 @{
     Layout = "_layout.cshtml";
 }
@@ -23,8 +24,7 @@
                     <li>@Html.ActionLink("Бренди", "Index", "Brands")</li>
                     <li>@Html.ActionLink("Країни", "Index", "Countries")</li>
 
-                    <li>@Html.ActionLink("Контакти", "Index", "ContactInfo")</li>
-                    <li>@Html.ActionLink("Про магазин", "Index", "About")</li>
+                    @Html.Partial("_commonMenuItems")
                 </ul>
 
                 <div class="navbar-right" style="margin-right: 15px;">
@@ -48,7 +48,7 @@
         @RenderSection("breadcrumbs")
     }
 
-    @RenderSection("content")    
+    @RenderSection("content")
 }
 
 @section scripts
