@@ -23,7 +23,6 @@ namespace OS.DAL.EF
         }
 
         public DbSet<Brand> Brands { get; set; }
-        public DbSet<ContactInfo> ContactInfos { get; set; }
         public DbSet<ContentContentType> ContentContentTypes { get; set; }
         public DbSet<Content> Contents { get; set; }
         public DbSet<ContentType> ContentTypes { get; set; }

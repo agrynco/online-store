@@ -4,7 +4,7 @@ using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Dependency;
 
-namespace OS.Web
+namespace OS.Web.SiteMapNodeProviders
 {
     public class ProductDetailsNodeProvider : DynamicNodeProviderBase
     {

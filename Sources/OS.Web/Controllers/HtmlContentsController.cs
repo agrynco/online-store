@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Controllers.Administration;
@@ -42,6 +41,17 @@ namespace OS.Web.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        public ActionResult Index(HtmlContentCode htmlContentCode)
+        {
+            HtmlContent htmlContent = _htmlContentsBL.GetByCode(htmlContentCode) ?? new HtmlContent
+                {
+                    Code = htmlContentCode
+                };
+
+            return View(htmlContent);
+        }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Save(HtmlContentCreateOrEditViewModel model)
@@ -64,14 +74,11 @@ namespace OS.Web.Controllers
 
                 model.Id = htmlContent.Id;
             }
-            
-            switch (model.Code)
-            {
-                case HtmlContentCode.About:
-                    return RedirectToAction("Index", "About");
-                default:
-                    throw new NotImplementedException();
-            }
+
+            return RedirectToAction("Index", new
+                {
+                    htmlContentCode = model.Code
+                });
         }
     }
 }

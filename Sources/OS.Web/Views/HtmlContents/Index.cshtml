@@ -11,14 +11,14 @@
     <div>
         <a href='@Url.Action("Edit", "HtmlContents", new
                      {
-                        HtmlContentCode = HtmlContentCode.About
+                        HtmlContentCode = Model.Code
                      })'>
             <span class="glyphicon glyphicon-edit">
             </span>
         </a>
     </div>
 }
-@if (Model == null)
+@if (Model.Id == 0)
 {
     <div class="alert alert-info">
         <div class="row">
