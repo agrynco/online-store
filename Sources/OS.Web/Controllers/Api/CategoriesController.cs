@@ -51,7 +51,7 @@ namespace OS.Web.Controllers.Api
         [Route("{id}/subcategories")]
         public ProductCategoriesApiViewModel GetChildCategories(int? id)
         {
-            List<ProductCategory> productCategories = _productCategoriesBL.GetCategories(id);
+            List<ProductCategory> productCategories = _productCategoriesBL.GetCategories(id).Where(entity => !entity.IsDeleted).ToList();
 
             ProductCategoriesApiViewModel apiViewModel = new ProductCategoriesApiViewModel();
             apiViewModel.data.AddRange(productCategories.Select(BuildProductCategoryListItemViewModel));
