@@ -31,6 +31,11 @@ namespace OS.DAL.EF.Repositories
                 {
                     query = query.Where(product => product.Publish == filter.Publish.Value);
                 }
+
+                if (filter.IsDeleted.HasValue)
+                {
+                    query = query.Where(product => product.IsDeleted == filter.IsDeleted.Value);
+                }
             }
 
             return query;

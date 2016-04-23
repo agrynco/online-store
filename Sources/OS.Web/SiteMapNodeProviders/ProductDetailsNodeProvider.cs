@@ -28,9 +28,14 @@ namespace OS.Web.SiteMapNodeProviders
 
         private void ProcessCategory(List<DynamicNode> nodes, string parentKey, int? parentCategoryId)
         {
-            List<ProductCategory> productCategories = _productCategoriesBL.GetCategories(parentCategoryId);
+            PagedProductCategoryListResult pagedProductCategoryListResult = _productCategoriesBL.SearchByFilter(new ProductCategoriesFilter(int.MaxValue)
+                {
+                    Publish = true,
+                    IncludeDeleted = false,
+                    ParentId = parentCategoryId
+                });
 
-            foreach (ProductCategory productCategory in productCategories)
+            foreach (ProductCategory productCategory in pagedProductCategoryListResult.Entities)
             {
                 DynamicNode productCategoryNode = new DynamicNode
                     {
@@ -46,7 +51,8 @@ namespace OS.Web.SiteMapNodeProviders
 
                 List<Product> products = _productsBL.Get(new ProductsFilter
                     {
-                        ParentId = productCategory.Id
+                        ParentId = productCategory.Id,
+                        Publish = true
                     }).Entities;
 
                 foreach (Product product in products)
