@@ -110,16 +110,25 @@ function ConsumerBasket()
         }
     }
 
+    var getNormalizedProductQuantiy = function(quantity)
+    {
+        if (quantity < globalSettings.consumerBasket.minProducts)
+        {
+            return globalSettings.consumerBasket.minProducts;
+        }
+        if (quantity > globalSettings.consumerBasket.maxProducts)
+        {
+            return globalSettings.consumerBasket.maxProducts;
+        }
+        return quantity;
+    }
+
     var changeQuantityOn = function(productId, difference)
     {
         var index = indexOf(productId);
         var product = _products[index];
-        product.quantity = product.quantity + difference;
-        if (product.quantity < 0)
-        {
-            product.quantity = 0;
-        }
-
+        product.quantity = getNormalizedProductQuantiy(product.quantity + difference);
+        
         if (product.quantity === 0)
         {
             if (confirm("Ви впевненні що хочете відмовитися від покупки товару?") === true)
