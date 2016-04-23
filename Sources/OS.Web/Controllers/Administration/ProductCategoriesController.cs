@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models.ProductCategoryViewModels;
@@ -23,7 +24,7 @@ namespace OS.Web.Controllers.Administration
             object parentCategoryIdObject = TempData[Constants.TempDataKeys.PRODUCT_CATEGORIES_PARENT_ID];
 
             int? parentCategoryId = (int?) parentCategoryIdObject ?? parentId;
-            
+
 
             List<ProductCategory> parentCategories = new List<ProductCategory>();
             if (parentCategoryId.HasValue)
@@ -50,7 +51,7 @@ namespace OS.Web.Controllers.Administration
                 {
                     BreadCrumbItems = breadCrumbs,
                     ParentCategoryId = parentCategoryId
-            };
+                };
 
             return View(model);
         }
@@ -69,6 +70,7 @@ namespace OS.Web.Controllers.Administration
         }
 
         [System.Web.Mvc.HttpPost]
+        [SiteMapCacheRelease]
         public ActionResult Save(ProductCategoryCreateOrEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -87,7 +89,7 @@ namespace OS.Web.Controllers.Administration
                         productCategory = _productCategoriesBL.GetById(model.Id.Value);
                         productCategory.Name = model.Name;
                         productCategory.Description = model.Description;
-                        
+
                         _productCategoriesBL.Update(productCategory);
                         if (productCategory.Publish != model.Publish)
                         {
@@ -122,6 +124,7 @@ namespace OS.Web.Controllers.Administration
             return View("Edit", model);
         }
 
+        [SiteMapCacheRelease]
         public ActionResult Create(int? parentCategoryId)
         {
             return View("Edit", new ProductCategoryCreateOrEditViewModel
