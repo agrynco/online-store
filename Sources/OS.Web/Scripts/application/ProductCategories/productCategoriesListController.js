@@ -7,19 +7,30 @@ function ProductCategoriesListController(parentCategoryId)
         return "api/categories/" + parentCategoryId + "/subcategories";
     };
 
-    this.deleteRecord = function (id)
+    this.deleteRecord = function(id)
     {
         if (confirmDelete())
         {
             $.ajax({
                 method: "DELETE",
                 url: "api/categories/" + id
-            }).done(function (msg)
+            }).done(function(msg)
             {
                 $categoriesTable.ajax.reload();
             });
         }
-    }
+    };
+
+    var togglePublish = function($sender, productCategoryId)
+    {
+        $.ajax({
+            method: "PUT",
+            url: "api/categories/" + productCategoryId + "/togglePublish"
+        }).fail(function()
+        {
+            $categoriesTable.ajax.reload();
+        });
+    };
 
     var init = function ()
     {
@@ -44,10 +55,17 @@ function ProductCategoriesListController(parentCategoryId)
                     targets: [3],
                     render: function(data, type, row)
                     {
-                        var $trueTemplate = $("#truePublishTemplate");
-                        var $falseTemplate = $("#falsePublishTemplate");
-
-                        return data === true ? $trueTemplate.html() : $falseTemplate.html();
+                        var $publishSwitcherTemplate = $("#publishSwitcherTemplate");
+                        return $publishSwitcherTemplate.html();
+                    },
+                    createdCell: function(td, cellData, rowData, row, col)
+                    {
+                        var $publishSwitcher = $(td).find(".publishSwitcher");
+                        $publishSwitcher.bootstrapToggle(cellData === true ? "on" : "off").attr("productCategoryId", rowData.Id);
+                        $publishSwitcher.change(function()
+                        {
+                            togglePublish($(this), $(this).attr("productCategoryId"));
+                        });
                     }
                 },
                 {
