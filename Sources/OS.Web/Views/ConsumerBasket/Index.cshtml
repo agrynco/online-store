@@ -7,16 +7,19 @@
 
 
 <style>
-    #tableConsumerBasket tbody > tr > td {
+    #tableConsumerBasket tbody > tr > td
+    {
         vertical-align: middle;
     }
 
-    #tableConsumerBasket thead > tr > th {
+    #tableConsumerBasket thead > tr > th
+    {
         text-align: center;
         vertical-align: middle;
     }
 
-    .form-control.quantity {
+    .form-control.quantity
+    {
         width: 75px;
     }
 </style>
@@ -31,74 +34,74 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
-            {
-            <tr class="ordered-product-row" productId="@Model.ProductToByDescriptors[i].Product.Id">
-                <td style="text-align: center">
-                    @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Code,
-                        "Details", "Home", new
+    @for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
+    {
+        <tr class="ordered-product-row" productId="@Model.ProductToByDescriptors[i].Product.Id">
+            <td style="text-align: center">
+                @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Code,
+                    "Details", "Home", new
                         {
                             productId = Model.ProductToByDescriptors[i].Product.Id,
                             categoryId = Model.ProductToByDescriptors[i].CategoryId
                         }, null)
-                </td>
-                <td>
-                    @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Name,
-                        "Details", "Home", new
+            </td>
+            <td>
+                @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Name,
+                    "Details", "Home", new
                         {
                             productId = Model.ProductToByDescriptors[i].Product.Id,
                             categoryId = Model.ProductToByDescriptors[i].CategoryId
                         }, null)
 
-                </td>
-                <td style="text-align: right">@Model.ProductToByDescriptors[i].Product.Price</td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                <a href="#" class="quantity-changer" diff="-1" productId="@Model.ProductToByDescriptors[i].Product.Id">
-                                    <img src="~/Images/minus_white.png" />
-                                </a>
-                            </td>
-                            <td>
-                                @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
+            </td>
+            <td style="text-align: right">@Model.ProductToByDescriptors[i].Product.Price</td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <a href="#" class="quantity-changer" diff="-1" productId="@Model.ProductToByDescriptors[i].Product.Id">
+                                <img src="~/Images/minus_white.png"/>
+                            </a>
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
                                {
                                    @class = "form-control quantity",
                                    productId = @Model.ProductToByDescriptors[i].Product.Id,
                                    type = "number",
-                                   min = "0",
-                                   max = "1000"
+                                   min = Constants.ConsumerBasket.MIN_COUNT,
+                                   max = Constants.ConsumerBasket.MAX_COUNT
                                })
-                            </td>
-                            <td>
-                                <a href="#" class="quantity-changer" diff="1" productId="@Model.ProductToByDescriptors[i].Product.Id">
-                                    <img src="~/Images/plus.png" />
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        }
+                        </td>
+                        <td>
+                            <a href="#" class="quantity-changer" diff="1" productId="@Model.ProductToByDescriptors[i].Product.Id">
+                                <img src="~/Images/plus.png"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    }
     </tbody>
     <tfoot>
-        <tr>
-            <td colspan="3" class="text-right" style="font-style: italic; font-weight: bold">
-                Всього
-            </td>
-            <td id="basketTotalAmount" style="text-align: center; font-style: italic; font-weight: bold">
-                0
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4" style="text-align: center">
-                <input type="hidden" id="consumerBasketRawData" name="consumerBasketRawData" />
-                @Html.ActionLink("Оформити замовлення", "Create", "Orders", null, new
-               {
-                   @class = "btn btn-primary"
-               })
-            </td>
-        </tr>
+    <tr>
+        <td colspan="3" class="text-right" style="font-style: italic; font-weight: bold">
+            Всього
+        </td>
+        <td id="basketTotalAmount" style="text-align: center; font-style: italic; font-weight: bold">
+            0
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" style="text-align: center">
+            <input type="hidden" id="consumerBasketRawData" name="consumerBasketRawData"/>
+            @Html.ActionLink("Оформити замовлення", "Create", "Orders", null, new
+                {
+                    @class = "btn btn-primary"
+                })
+        </td>
+    </tr>
     </tfoot>
 </table>
 

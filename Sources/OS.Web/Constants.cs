@@ -38,5 +38,11 @@
         {
             public const string REQUIRED = "Поле {0} обов'язкове";
         }
+
+        public static class ConsumerBasket
+        {
+            public const int MAX_COUNT = 1000;
+            public const int MIN_COUNT = 0;
+        }
     }
 }

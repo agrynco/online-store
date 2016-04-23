@@ -14,6 +14,16 @@
 @Scripts.Render("~/bundles/angular")
 @Scripts.Render("~/bundles/jqueryval")
 
+<script type="text/javascript">
+    var globalSettings = {
+        consumerBasket: {
+            maxProducts: parseInt("@Constants.ConsumerBasket.MAX_COUNT"), // paseInt because of otherwise warning about syntaxis error in editor
+            minProducts: parseInt("@Constants.ConsumerBasket.MIN_COUNT")  // paseInt because of otherwise warning about syntaxis error in editor
+        }
+    };
+</script>
+
+
 @RenderSection("topSection")
 
 <div class="container table-container wrapper">
