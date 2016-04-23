@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Business.Logic.Exceptions;
@@ -68,6 +69,7 @@ namespace OS.Web.Controllers.Administration
             return View(model);
         }
 
+        [SiteMapCacheRelease]
         public ActionResult Delete(int id, int? categoryid)
         {
             _productsBL.Delete(id);
@@ -79,6 +81,7 @@ namespace OS.Web.Controllers.Administration
         }
 
         [HttpGet]
+        [SiteMapCacheRelease]
         public ActionResult Create(int? categoryId)
         {
             ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel(categoryId);
@@ -132,6 +135,7 @@ namespace OS.Web.Controllers.Administration
 
         [HttpPost]
         [ValidateInput(false)]
+        [SiteMapCacheRelease]
         public ActionResult Save(ProductCreateOrEditViewModel model)
         {
             if (!model.CategorySelectorViewModel.Id.HasValue)
