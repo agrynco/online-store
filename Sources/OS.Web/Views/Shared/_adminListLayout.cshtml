@@ -35,9 +35,17 @@
                         @Html.ActionLink("Створити", "Create", currentControllerName)
                     </li>
                 }
-                <li role="presentation">
-                    <a href="#">Видалити</a>
-                </li>
+
+                @if (IsSectionDefined("deleteToolBarItem"))
+                {
+                    @RenderSection("deleteToolBarItem")
+                }
+                else
+                {
+                    <li role="presentation">
+                        <a href="#">Видалити</a>
+                    </li>
+                }
 
                 @if (IsSectionDefined("filter"))
                 {
