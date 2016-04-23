@@ -2,7 +2,7 @@
 @model VerticalCategorySelectorItemViewModel
 <div>
     <span>
-        @Html.ActionLink(string.Format("{0} ({1})", Model.Name, Model.ProductsCount), "ChangeCategory", "Home", new
+        @Html.ActionLink(Model.Name, "ChangeCategory", "Home", new
             {
                 categoryId = Model.Id
             }, null)
