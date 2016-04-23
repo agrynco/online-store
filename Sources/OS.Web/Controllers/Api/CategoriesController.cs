@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Web.Models.ProductCategoryViewModels;
@@ -81,6 +82,7 @@ namespace OS.Web.Controllers.Api
 
         [HttpPut]
         [Route("{id}/togglePublish")]
+        [SiteMapCacheRelease]
         public void TogglePublish(int id)
         {
             ProductCategory productCategory = _productCategoriesBL.GetById(id);
