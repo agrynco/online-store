@@ -78,5 +78,13 @@ namespace OS.Web.Controllers.Api
                     IsDeleted = x.IsDeleted
                 };
         }
+
+        [HttpPut]
+        [Route("{id}/togglePublish")]
+        public void TogglePublish(int id)
+        {
+            ProductCategory productCategory = _productCategoriesBL.GetById(id);
+            _productCategoriesBL.SetPublish(id, !productCategory.Publish);
+        }
     }
 }
