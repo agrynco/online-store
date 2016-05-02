@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using OS.Business.Domain;
 using OS.DAL.Abstract;
@@ -41,9 +42,19 @@ namespace OS.DAL.EF.Repositories
             return query;
         }
 
+        public override IQueryable<Product> GetAll()
+        {
+            return base.GetAll().Include(product => product.MetaData);
+        }
+
+        public override Product GetById(int id)
+        {
+            return GetAll(true).SingleOrDefault(product => product.Id == id);
+        }
+
         public IQueryable<Product> GetByIds(IEnumerable<int> ids)
         {
-            return DbSet.Where(product => ids.Contains(product.Id));
+            return DbSet.Where(product => ids.Contains(product.Id)).Include(product => product.MetaData);
         }
 
         public Product GetByCode(string code)

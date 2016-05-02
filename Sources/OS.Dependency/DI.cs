@@ -54,6 +54,7 @@ namespace OS.Dependency
             Register<IOnlineStoreDbContext, OnlineStoreDbContext>();
             Register<ProductCategoriesBL>();
 
+            Register<IProductMetaDataRepository, ProductMetaDataRepository>();
             Register<IProductsRepository, ProductsRepository>();
             Register<ProductsBL>();
 

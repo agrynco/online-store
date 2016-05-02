@@ -3,6 +3,19 @@
     Layout = "_layout.cshtml";
 }
 
+@if (IsSectionDefined("substituteTitleTag"))
+{
+    @section titleTag
+    { 
+        @RenderSection("substituteTitleTag")
+    }
+}
+
+@section SeoMetaTags
+{
+    @RenderSection("SeoMetaTags", false)
+}
+
 @section topSection
 {
     <div class="navbar navbar-inverse navbar-fixed-top">
