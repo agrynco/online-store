@@ -228,6 +228,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsEditNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlAboutEditNodeProvider.cs" />
@@ -2038,6 +2039,7 @@
     <Content Include="Views\HtmlContents\Edit.cshtml" />
     <Content Include="Views\HtmlContents\Index.cshtml" />
     <Content Include="Views\Shared\_commonMenuItems.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

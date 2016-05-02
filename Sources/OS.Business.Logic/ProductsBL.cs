@@ -11,11 +11,14 @@ namespace OS.Business.Logic
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IProductPhotosRepository _productPhotosRepository;
+        private readonly IProductMetaDataRepository _metaDataRepository;
 
-        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository)
+        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository,
+            IProductMetaDataRepository metaDataRepository)
         {
             _productsRepository = productsRepository;
             _productPhotosRepository = productPhotosRepository;
+            _metaDataRepository = metaDataRepository;
         }
 
         public PagedProductListResult Get(ProductsFilter filter)
