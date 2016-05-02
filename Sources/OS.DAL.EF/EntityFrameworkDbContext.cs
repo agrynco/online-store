@@ -28,12 +28,13 @@ namespace OS.DAL.EF
         public DbSet<ContentType> ContentTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<File> Files { get; set; }
+        public DbSet<HtmlContent> HtmlContents { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductMetaData> ProductMetaData { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<HtmlContent> HtmlContents { get; set; }
 
         public override int SaveChanges()
         {
