@@ -11,12 +11,12 @@ namespace OS.Web.Models.ProductViewModels
 {
     public class ProductPhotoViewModel : BaseClass
     {
-        public int Id { get; set; }
-
         /// <summary>
         /// <see cref="File.FileName"/>
         /// </summary>
         public string FileName { get; set; }
+
+        public int Id { get; set; }
 
         /// <summary>
         /// Defines is photo deleted during editing the <see cref="Product"/>
@@ -38,47 +38,50 @@ namespace OS.Web.Models.ProductViewModels
             PostedProductPhotos = new List<HttpPostedFileBase>();
             ProductPhotoViewModels = new List<ProductPhotoViewModel>();
             CategorySelectorViewModel = new ProductCategoryAutocompleteItem();
+            MetaDataViewModel = new ProductMetaDataViewModel();
         }
-
-        [Display(Name = "Назва товару")]
-        [Required(ErrorMessage = "Поле {0} обов'язкове")]
-        public string Name { get; set; }
-
-        [Display(Name = "Опис")]
-        public string Description { get; set; }
-
-        public ProductCategoryAutocompleteItem CategorySelectorViewModel { get; set; }
-
-        [Display(Name = "Зображення для завантаження")]
-        public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 
         [Display(Name = "Бренд")]
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string BrandName { get; set; }
 
+        public ProductCategoryAutocompleteItem CategorySelectorViewModel { get; set; }
+
+        [Display(Name = "Код товару")]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
+        [MaxLength(25)]
+        public string Code { get; set; }
+
         [Display(Name = "Країна-виробник")]
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string CountryName { get; set; }
 
-        [Display(Name = "Короткий опис")]
-        [MaxLength(100)]
-        [Required(ErrorMessage = "Поле {0} обов'язкове")]
-        public string ShortDescription { get; set; }
+        [Display(Name = "Опис")]
+        public string Description { get; set; }
 
-        [Display(Name = "Завантаженні зображення")]
-        public List<ProductPhotoViewModel> ProductPhotoViewModels { get; set; }
+        public ProductMetaDataViewModel MetaDataViewModel { get; set; }
+
+        [Display(Name = "Назва товару")]
+        [Required(ErrorMessage = "Поле {0} обов'язкове")]
+        public string Name { get; set; }
+
+        [Display(Name = "Зображення для завантаження")]
+        public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 
         [Display(Name = "Ціна (грн.)")]
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         [RegularExpression(@"^(\d{1,})(\.\d{1,2})?$", ErrorMessage = "Невірний формат")]
         public string Price { get; set; }
 
+        [Display(Name = "Завантаженні зображення")]
+        public List<ProductPhotoViewModel> ProductPhotoViewModels { get; set; }
+
         [Display(Name = "Публікувати")]
         public bool Publish { get; set; }
 
-        [Display(Name = "Код товару")]
+        [Display(Name = "Короткий опис")]
+        [MaxLength(100)]
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
-        [MaxLength(25)]
-        public string Code { get; set; }
+        public string ShortDescription { get; set; }
     }
 }

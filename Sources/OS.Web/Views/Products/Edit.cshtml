@@ -9,7 +9,6 @@
 {
     <div class="row">
         <div class="col-md-12">
-            <section id="category-editor">
                 <h4>
                     @if (Model.Id.HasValue)
                     {
@@ -24,24 +23,24 @@
                         </text>
                     }
                 </h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <hr/>
+            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Code, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Code, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Code, new
                            {
                                @class = "form-control",
                                maxlength = 25
                            })
-                        @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Code, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.CategorySelectorViewModel.Name, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.CategorySelectorViewModel.Name, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.HiddenFor(m => m.CategorySelectorViewModel.Id, new { @class = "form-control" })
+                    @Html.HiddenFor(m => m.CategorySelectorViewModel.Id, new {@class = "form-control"})
                         <div>
                             <span id="pathToRoot">
                                 @if (Model.CategorySelectorViewModel.ParentCategories != null)
@@ -53,69 +52,82 @@
                             </span>
                         </div>
                         <div>
-                            @Html.TextBoxFor(m => m.CategorySelectorViewModel.Name, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.CategorySelectorViewModel.Name, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.CategorySelectorViewModel.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.CategorySelectorViewModel.Name, "", new {@class = "text-danger"})
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.ShortDescription, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.ShortDescription, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.ShortDescription, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.ShortDescription, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.ShortDescription, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Description, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
                         @Html.TextAreaFor(m => m.Description, new
                    {
                        @class = "form-control",
                        rows = 15
                    })
-                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Description, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.BrandName, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.BrandName, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.BrandName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.BrandName, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.BrandName, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.BrandName, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.CountryName, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.CountryName, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.CountryName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.CountryName, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.CountryName, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.CountryName, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Price, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.Price, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.Price, "", new {@class = "text-danger"})
                     </div>
                 </div>
                 @Html.Partial("_alreadyLoadedPhotos", Model)
                 @Html.Partial("_addFiles", Model)
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Publish, new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.Publish, new {@class = "col-md-2 control-label"})
                     <div class="col-md-10 checkbox">
                         @Html.EditorFor(m => m.Publish, "bool")
                     </div>
                 </div>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>
+                Метадані
+            </h4>
+            <hr />
+
+            @Html.EditorFor(m => m.MetaDataViewModel.Author, "Product/string")
+            @Html.EditorFor(m => m.MetaDataViewModel.Copyright, "Product/string")
+            @Html.EditorFor(m => m.MetaDataViewModel.Description, "Product/string")
+            @Html.EditorFor(m => m.MetaDataViewModel.Keywords, "Product/string")
 
                 <div id="dialog-buttons-placeholder">
                 </div>
-            </section>
         </div>
     </div>
 }

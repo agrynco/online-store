@@ -3,7 +3,18 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>@ViewBag.Title</title>
+
+    @if (IsSectionDefined("titleTag"))
+    {
+        @RenderSection("titleTag")
+    }
+    else
+    {
+        <title>@ApplicationSettings.Instance.AppSettings.ApplicationName</title>
+    }
+
+    @RenderSection("SeoMetaTags", false)
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>

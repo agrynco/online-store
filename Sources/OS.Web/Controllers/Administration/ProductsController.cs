@@ -116,6 +116,14 @@ namespace OS.Web.Controllers.Administration
                     Code = product.Code
                 };
 
+            if (product.MetaData != null)
+            {
+                model.MetaDataViewModel.Author = product.MetaData.Author;
+                model.MetaDataViewModel.Copyright = product.MetaData.Copyright;
+                model.MetaDataViewModel.Description = product.MetaData.Description;
+                model.MetaDataViewModel.Keywords = product.MetaData.Keywords;
+            }
+
             model.CategorySelectorViewModel.Id = categoryId;
             if (categoryId.HasValue)
             {
@@ -186,6 +194,7 @@ namespace OS.Web.Controllers.Administration
                 ProcessBrand(model, target);
                 ProcessCountry(model, target);
                 ProcessPhotos(model, target);
+                ProcessMetadata(model.MetaDataViewModel, target);
 
                 if (target.Id == 0)
                 {
@@ -208,6 +217,29 @@ namespace OS.Web.Controllers.Administration
             }
 
             return View("Edit", model);
+        }
+
+        private void ProcessMetadata(ProductMetaDataViewModel metaDataViewModel, Product target)
+        {
+            if (!string.IsNullOrEmpty(metaDataViewModel.Author) ||
+                !string.IsNullOrEmpty(metaDataViewModel.Copyright) ||
+                !string.IsNullOrEmpty(metaDataViewModel.Description) ||
+                !string.IsNullOrEmpty(metaDataViewModel.Keywords))
+            {
+                if (target.MetaData == null)
+                {
+                    target.MetaData = new ProductMetaData();
+                }
+
+                target.MetaData.Author = metaDataViewModel.Author;
+                target.MetaData.Copyright = metaDataViewModel.Copyright;
+                target.MetaData.Description = metaDataViewModel.Description;
+                target.MetaData.Keywords = metaDataViewModel.Keywords;
+            }
+            else
+            {
+                target.MetaData = null;
+            }
         }
 
         private Product GetProductToBeSaved(ProductCreateOrEditViewModel model)

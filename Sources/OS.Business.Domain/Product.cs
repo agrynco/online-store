@@ -40,5 +40,7 @@ namespace OS.Business.Domain
         public string ShortDescription { get; set; }
 
         public string Code { get; set; }
+
+        public virtual ProductMetaData MetaData { get; set; }
     }
 }
