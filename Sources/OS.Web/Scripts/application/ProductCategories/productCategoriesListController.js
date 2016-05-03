@@ -36,6 +36,7 @@ function ProductCategoriesListController(parentCategoryId)
     {
         $categoriesTable = $("#categoriesTable").DataTable({
             ajax: buildApiUrl(parentCategoryId),
+            rowReorder: true,
             columns: [
                 { data: "Id" },
                 { data: "Name" },
@@ -98,6 +99,11 @@ function ProductCategoriesListController(parentCategoryId)
             {
                 url: "scripts/datatables.translations/ukrainian.json"
             }
+        });
+
+        $categoriesTable.on("row-reorder", function(e, diff, edit)
+        {
+            alert(diff);
         });
     }
 
