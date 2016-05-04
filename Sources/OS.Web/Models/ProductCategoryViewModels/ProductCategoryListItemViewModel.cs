@@ -8,5 +8,7 @@
         public int? ParentId { get; set; }
         public bool Publish { get; set; }
         public bool IsDeleted { get; set; }
+
+        public int Order { get; set; }
     }
 }

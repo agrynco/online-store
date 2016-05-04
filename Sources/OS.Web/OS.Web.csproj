@@ -228,6 +228,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ProductCategoryViewModels\ProductCategoryReorderingData.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsEditNodeProvider.cs" />

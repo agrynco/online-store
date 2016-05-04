@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -68,15 +69,16 @@ namespace OS.Web.Controllers.Api
             return apiViewModel;
         }
 
-        private static ProductCategoryListItemViewModel BuildProductCategoryListItemViewModel(ProductCategory x)
+        private static ProductCategoryListItemViewModel BuildProductCategoryListItemViewModel(ProductCategory productCategory)
         {
             return new ProductCategoryListItemViewModel
                 {
-                    Id = x.Id,
-                    Description = x.Description,
-                    Name = x.Name,
-                    Publish = x.Publish,
-                    IsDeleted = x.IsDeleted
+                    Id = productCategory.Id,
+                    Description = productCategory.Description,
+                    Name = productCategory.Name,
+                    Publish = productCategory.Publish,
+                    IsDeleted = productCategory.IsDeleted,
+                    Order = productCategory.Order
                 };
         }
 
@@ -87,6 +89,13 @@ namespace OS.Web.Controllers.Api
         {
             ProductCategory productCategory = _productCategoriesBL.GetById(id);
             _productCategoriesBL.SetPublish(id, !productCategory.Publish);
+        }
+
+        [HttpPost]
+        [Route("{parentId}/reorder")]
+        public void Reorder([FromUri] int? parentId, [FromBody] ProductCategoryReorderItem[] data)
+        {
+            throw new NotImplementedException();
         }
     }
 }
