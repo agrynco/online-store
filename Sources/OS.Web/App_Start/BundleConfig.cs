@@ -13,6 +13,7 @@ namespace OS.Web
                         "~/Scripts/jquery-ui/jquery-ui.js",
                         "~/Scripts/application/log.js",
                         "~/Scripts/jquery.dataTables.js",
+                        "~/Scripts/datatables.extensions/RowReorder-1.1.1/js/dataTables.rowReorder.js",
                         "~/Scripts/bootstrap.toggle/js/bootstrap-toggle.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -36,6 +37,7 @@ namespace OS.Web
                       "~/Content/site.css",
                       "~/Scripts/jquery-ui/jquery-ui.css",
                       "~/Content/css/jquery.dataTables.css",
+                      "~/Scripts/datatables.extensions/RowReorder-1.1.1/css/rowReorder.bootstrap.css",
                       "~/Scripts/bootstrap.toggle/css/bootstrap-toggle.css"));
         }
     }
