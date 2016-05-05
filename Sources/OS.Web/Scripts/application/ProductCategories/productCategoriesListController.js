@@ -136,7 +136,6 @@ function ProductCategoriesListController(parentCategoryId)
                     $categoriesTable.ajax.reload();
                 }).fail(function(a, b, c)
                 {
-                    debugger;
                 });
             }
         });

@@ -10,7 +10,7 @@ namespace OS.DAL.EF.EntityConfigurations
         public ProductCategoryConfiguration()
         {
             const string UK_PRODUCTCATEGORY_PARENT_ID_NAME = "UK_PRODUCTCATEGORY_PARENT_ID_NAME";
-            const string UK_PRODUCTCATEGORY_PARENT_ID_ORDER = "UK_PRODUCTCATEGORY_PARENT_ID_ORDER";
+            const string UK_PRODUCTCATEGORY_PARENT_ID_ORDER_DELETED = "UK_PRODUCTCATEGORY_PARENT_ID_ORDER_DELETED";
             Property(p => p.ParentId).HasColumnAnnotation(IndexAnnotation.AnnotationName,
                 new IndexAnnotation(new[]
                     {
@@ -18,7 +18,7 @@ namespace OS.DAL.EF.EntityConfigurations
                             {
                                 IsUnique = true
                             },
-                        new IndexAttribute(UK_PRODUCTCATEGORY_PARENT_ID_ORDER, 1)
+                        new IndexAttribute(UK_PRODUCTCATEGORY_PARENT_ID_ORDER_DELETED, 1)
                             {
                                 IsUnique = true
                             }
@@ -31,7 +31,12 @@ namespace OS.DAL.EF.EntityConfigurations
                 }));
 
             Property(p => p.Order).IsRequired().HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                new IndexAnnotation(new IndexAttribute(UK_PRODUCTCATEGORY_PARENT_ID_ORDER, 2)
+                new IndexAnnotation(new IndexAttribute(UK_PRODUCTCATEGORY_PARENT_ID_ORDER_DELETED, 2)
+                {
+                    IsUnique = true,
+                }));
+            Property(p => p.IsDeleted).IsRequired().HasColumnAnnotation(IndexAnnotation.AnnotationName,
+                new IndexAnnotation(new IndexAttribute(UK_PRODUCTCATEGORY_PARENT_ID_ORDER_DELETED, 3)
                 {
                     IsUnique = true,
                 }));

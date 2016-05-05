@@ -1,5 +1,4 @@
 ﻿#region Usings
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -93,9 +92,9 @@ namespace OS.Web.Controllers.Api
 
         [HttpPost]
         [Route("{parentId}/reorder")]
-        public void Reorder([FromUri] int? parentId, [FromBody] ProductCategoryReorderItem[] data)
+        public void Reorder([FromUri] int? parentId, [FromBody] ProductCategoryReorderInfo[] data)
         {
-            throw new NotImplementedException();
+            _productCategoriesBL.Reorder(parentId, data);
         }
     }
 }

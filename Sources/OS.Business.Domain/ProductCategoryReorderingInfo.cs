@@ -1,7 +1,7 @@
-﻿namespace OS.Web.Models.ProductCategoryViewModels
+﻿namespace OS.Business.Domain
 {
 
-    public class ProductCategoryReorderItem
+    public class ProductCategoryReorderInfo
     {
         public int OldOrder { get; set; }
         public int NewOrder { get; set; }
