@@ -17,7 +17,6 @@
         public PaginationFilter PaginationFilter { get; }
         public int? ParentId { get; set; }
         public bool? Publish { get; set; }
-
         public string Text { get; set; }
     }
 }

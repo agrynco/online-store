@@ -50,6 +50,11 @@ namespace OS.DAL.EF.Repositories
             return result;
         }
 
+        public IList<ProductCategory> GetCategories(int? parentId, int[] orders, bool isDeleted)
+        {
+            return GetCategories(parentId).Where(category => category.IsDeleted == isDeleted && orders.Contains(category.Order)).ToList();
+        }
+
         public IQueryable<ProductCategory> SearchByFilter(ProductCategoriesFilter filter)
         {
             IQueryable<ProductCategory> query = GetAll();
@@ -81,7 +86,7 @@ namespace OS.DAL.EF.Repositories
         {
             return GetById(id).ParentId;
         }
-        
+
         public void IterateFromDownToUp(int id, Action<ProductCategory> action)
         {
             List<ProductCategory> productCategories = GetCategories(id).ToList();
@@ -91,6 +96,12 @@ namespace OS.DAL.EF.Repositories
                 action(productCategory);
             }
             action(GetById(id));
+        }
+
+        public int GetMaxOrder(int? parentId, bool isDeleted)
+        {
+            ProductCategory productCategory = GetAll(true).Where(category => category.ParentId == parentId && category.IsDeleted == isDeleted).OrderByDescending(category => category.Order).FirstOrDefault();
+            return productCategory == null ? 0 : productCategory.Order;
         }
     }
 }

@@ -61,6 +61,8 @@ namespace OS.Business.Logic
 
         public void Create(ProductCategory productCategory)
         {
+            int maxOrder = _productCategoriesRepository.GetMaxOrder(productCategory.ParentId, false);
+            productCategory.Order = maxOrder + 1;
             _productCategoriesRepository.Add(productCategory);
         }
 
@@ -75,7 +77,10 @@ namespace OS.Business.Logic
 
                 products.ForEach(product => _productsRepository.Delete(false, product));
 
-                _productCategoriesRepository.Delete(false, category.Id);
+                int maxOrder = _productCategoriesRepository.GetMaxOrder(category.ParentId, true);
+                category.Order = maxOrder + 1;
+
+                _productCategoriesRepository.Delete(false, category);
             });
         }
 
@@ -104,6 +109,35 @@ namespace OS.Business.Logic
             if (!product.Categories.Contains(owner))
             {
                 product.Categories.Add(owner);
+            }
+        }
+
+        public void Reorder(int? parentId, ProductCategoryReorderInfo[] productCategoryReorderInfos)
+        {
+            IList<ProductCategory> productCategories = _productCategoriesRepository.GetCategories(parentId, productCategoryReorderInfos.Select(x => x.OldOrder).ToArray(), false);
+
+            List<ProductCategoryReorderInfo2Category> categoryReorderInfo2CategoryMappings = productCategories.Select(c => new ProductCategoryReorderInfo2Category
+                {
+                    CategoryReorderInfo = productCategoryReorderInfos.Single(x => x.OldOrder == c.Order),
+                    ProductCategory = c
+                }).ToList();
+
+            ShiftOrdersOutOfLastOrder(parentId, false, productCategories);
+
+            foreach (ProductCategoryReorderInfo2Category productCategoryReorderInfo2Category in categoryReorderInfo2CategoryMappings)
+            {
+                productCategoryReorderInfo2Category.ProductCategory.Order = productCategoryReorderInfo2Category.CategoryReorderInfo.NewOrder;
+                _productCategoriesRepository.Update(productCategoryReorderInfo2Category.ProductCategory);
+            }
+        }
+
+        private void ShiftOrdersOutOfLastOrder(int? parentId, bool isDeleted, IList<ProductCategory> productCategories)
+        {
+            int maxOrder = _productCategoriesRepository.GetMaxOrder(parentId, isDeleted);
+            for (int i = 0; i < productCategories.Count; i++)
+            {
+                productCategories[i].Order = maxOrder + 1 + i;
+                _productCategoriesRepository.Update(productCategories[i]);
             }
         }
     }
