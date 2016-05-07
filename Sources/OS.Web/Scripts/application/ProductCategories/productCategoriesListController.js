@@ -37,6 +37,7 @@ function ProductCategoriesListController(parentCategoryId)
         $categoriesTable = $("#categoriesTable").DataTable({
             ajax: buildApiUrl(parentCategoryId),
             columns: [
+                { data: "Order" , className: "reorder" },
                 { data: "Id" },
                 { data: "Name" },
                 { data: "Description" },
@@ -44,15 +45,23 @@ function ProductCategoriesListController(parentCategoryId)
                 { data: "IsDeleted" }
             ],
             columnDefs: [
+                
                 {
                     targets: [1],
+                    render: function(data, type, row)
+                    {
+                        return data;
+                    }
+                },
+                {
+                    targets: [2],
                     render: function (data, type, row)
                     {
                         return '<a href="ProductCategories?parentId=' + row.Id + '">' + data + '</a>';
                     }
                 },
                 {
-                    targets: [3],
+                    targets: [4],
                     render: function(data, type, row)
                     {
                         var $publishSwitcherTemplate = $("#publishSwitcherTemplate");
@@ -77,7 +86,7 @@ function ProductCategoriesListController(parentCategoryId)
 
                         return $editDom.html();
                     },
-                    targets: [4],
+                    targets: [5],
                     className: "delete-column"
                 },
                 {
@@ -89,14 +98,45 @@ function ProductCategoriesListController(parentCategoryId)
 
                         return $deleteDom.html();
                     },
-                    targets: [5],
+                    targets: [6],
                     className: "delete-column"
                 }
             ],
-            order: [[1, "asc"]],
+            rowReorder: {
+                dataSrc: "Order"
+            },
             language:
             {
                 url: "scripts/datatables.translations/ukrainian.json"
+            }
+        });
+
+        $categoriesTable.on("row-reorder", function(e, diff, edit)
+        {
+            var ordersData = [];
+
+            for (var i = 0; i < diff.length; i++)
+            {
+                ordersData.push( {
+                    OldOrder: diff[i].oldData,
+                    NewOrder: diff[i].newData
+                });
+            }
+
+            if (diff.length > 0)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "api/categories/" + parentCategoryId + "/reorder",
+                    dataType: "json",
+                    contentType: 'application/json',
+                    data: JSON.stringify(ordersData)
+                }).done(function (msg)
+                {
+                    $categoriesTable.ajax.reload();
+                }).fail(function(a, b, c)
+                {
+                });
             }
         });
     }

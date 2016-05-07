@@ -13,14 +13,16 @@ namespace OS.Business.Domain
             Products = new List<Product>();
         }
 
-        public virtual ProductCategory Parent { get; set; }
-
-        public int? ParentId { get; set; }
+        public virtual List<ProductCategory> ChildCategories { get; private set; }
 
         [MaxLength(1024)]
         public string Description { get; set; }
 
-        public virtual List<ProductCategory> ChildCategories { get; private set; }
+        public int Order { get; set; }
+
+        public virtual ProductCategory Parent { get; set; }
+
+        public int? ParentId { get; set; }
 
         public virtual List<Product> Products { get; private set; }
     }
