@@ -1,4 +1,5 @@
 ﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using OS.Business.Domain;
@@ -79,9 +80,10 @@ namespace OS.Business.Logic
 
                 int maxOrder = _productCategoriesRepository.GetMaxOrder(category.ParentId, true);
                 category.Order = maxOrder + 1;
-                _productCategoriesRepository.Update(category);
+                category.IsDeleted = true;
+                category.Deleted = DateTime.UtcNow;
 
-                _productCategoriesRepository.Delete(false, category);
+                _productCategoriesRepository.Update(category);
             });
         }
 
