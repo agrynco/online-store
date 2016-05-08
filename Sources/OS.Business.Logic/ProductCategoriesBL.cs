@@ -49,7 +49,7 @@ namespace OS.Business.Logic
 
             PagedProductCategoryListResult result = new PagedProductCategoryListResult();
             result.TotalRecords = query.Count();
-            result.Entities.AddRange(query.Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+            result.Entities.AddRange(query.OrderBy(category => category.Order).Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
 
             return result;
         }
@@ -79,6 +79,7 @@ namespace OS.Business.Logic
 
                 int maxOrder = _productCategoriesRepository.GetMaxOrder(category.ParentId, true);
                 category.Order = maxOrder + 1;
+                _productCategoriesRepository.Update(category);
 
                 _productCategoriesRepository.Delete(false, category);
             });
