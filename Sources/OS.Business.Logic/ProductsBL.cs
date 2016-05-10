@@ -82,7 +82,7 @@ namespace OS.Business.Logic
             if (productViewingInfo != null)
             {
                 productViewingInfo.Count++;
-                productViewingInfo.UserId = applicationUser != null ? applicationUser.Id : null;
+                productViewingInfo.User = applicationUser;
                 _productViewingInfosRepository.Update(productViewingInfo);
             }
             else
@@ -92,7 +92,7 @@ namespace OS.Business.Logic
                         UserHostAddress = userHostAddress,
                         ProductId = id,
                         Count = 1,
-                        UserId  = applicationUser != null ? applicationUser.Id : null
+                        User = applicationUser
                 };
 
                 _productViewingInfosRepository.Add(productViewingInfo);
