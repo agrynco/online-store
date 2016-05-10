@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNet.Identity;
 using OS.Business.Domain;
 using OS.Business.Logic.Exceptions;
 using OS.DAL.Abstract;
@@ -11,14 +11,19 @@ namespace OS.Business.Logic
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IProductPhotosRepository _productPhotosRepository;
-        private readonly IProductMetaDataRepository _metaDataRepository;
+        private readonly IUserHostAddressesRepository _userHostAddressesRepository;
+        private readonly IProductViewingInfosRepository _productViewingInfosRepository;
+        private readonly IUserStore<ApplicationUser> _usersStore;
 
-        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository,
-            IProductMetaDataRepository metaDataRepository)
+        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository, 
+            IUserHostAddressesRepository userHostAddressesRepository, IProductViewingInfosRepository productViewingInfosRepository,
+            IUserStore<ApplicationUser> usersStore)
         {
             _productsRepository = productsRepository;
             _productPhotosRepository = productPhotosRepository;
-            _metaDataRepository = metaDataRepository;
+            _userHostAddressesRepository = userHostAddressesRepository;
+            _productViewingInfosRepository = productViewingInfosRepository;
+            _usersStore = usersStore;
         }
 
         public PagedProductListResult Get(ProductsFilter filter)
@@ -56,6 +61,43 @@ namespace OS.Business.Logic
 
         public Product GetById(int id)
         {
+            return _productsRepository.GetById(id);
+        }
+
+        public Product GetById(int id, string userName, string ipAddress)
+        {
+            UserHostAddress userHostAddress = _userHostAddressesRepository.GetByUserHostAddress(ipAddress);
+            if (userHostAddress == null)
+            {
+                userHostAddress = new UserHostAddress
+                    {
+                        IpAddress = ipAddress
+                    };
+                userHostAddress = _userHostAddressesRepository.Add(userHostAddress);
+            }
+
+            ApplicationUser applicationUser = !string.IsNullOrEmpty(userName) ? _usersStore.FindByNameAsync(userName).Result : null;
+
+            ProductViewingInfo productViewingInfo = _productViewingInfosRepository.Get(id, userHostAddress.Id);
+            if (productViewingInfo != null)
+            {
+                productViewingInfo.Count++;
+                productViewingInfo.UserId = applicationUser != null ? applicationUser.Id : null;
+                _productViewingInfosRepository.Update(productViewingInfo);
+            }
+            else
+            {
+                productViewingInfo = new ProductViewingInfo
+                    {
+                        UserHostAddress = userHostAddress,
+                        ProductId = id,
+                        Count = 1,
+                        UserId  = applicationUser != null ? applicationUser.Id : null
+                };
+
+                _productViewingInfosRepository.Add(productViewingInfo);
+            }
+
             return _productsRepository.GetById(id);
         }
 

@@ -64,7 +64,7 @@ namespace OS.Web.Controllers
             ProductDetailsViewModel model = new ProductDetailsViewModel
             {
                 CategoryId = categoryId,
-                Product = _productsBL.GetById(productId)
+                Product = _productsBL.GetById(productId, Request.IsAuthenticated ? User.Identity.Name : null, Request.UserHostAddress)
             };
             return View("Details", model);
         }
