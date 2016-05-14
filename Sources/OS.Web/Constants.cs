@@ -44,5 +44,10 @@
             public const int MAX_COUNT = 1000;
             public const int MIN_COUNT = 0;
         }
+
+        public static class Scripts
+        {
+            public const string SMART_MENU = "~/Scripts/SmartMenus";
+        }
     }
 }

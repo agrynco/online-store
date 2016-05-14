@@ -228,6 +228,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Administration\StatisticsController.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsEditNodeProvider.cs" />
@@ -2067,6 +2068,8 @@
     <Content Include="Views\HtmlContents\Index.cshtml" />
     <Content Include="Views\Shared\_commonMenuItems.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
