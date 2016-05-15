@@ -25,6 +25,7 @@
         <mvcSiteMapNode title="Про магазин" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlAboutEditNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsEditNodeProvider, OS.Web"/>
+        <mvcSiteMapNode title="Частота перегляду продукції" controller="Statistics" action="ProductViewFrequency"/>
     </mvcSiteMapNode>
 
 </mvcSiteMap>

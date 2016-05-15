@@ -15,6 +15,8 @@ namespace OS.Web
                         "~/Scripts/jquery.dataTables.js",
                         "~/Scripts/datatables.extensions/RowReorder-1.1.1/js/dataTables.rowReorder.js",
                         "~/Scripts/bootstrap.toggle/js/bootstrap-toggle.js"));
+            bundles.Add(new ScriptBundle(Constants.Bundles.MOMENT).Include(
+                "~/Scripts/moment-with-locales.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js"));
@@ -31,6 +33,8 @@ namespace OS.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle(Constants.Bundles.SMART_MENU).Include("~/Scripts/SmartMenus/jquery.smartmenus.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-switch.css",
@@ -38,7 +42,8 @@ namespace OS.Web
                       "~/Scripts/jquery-ui/jquery-ui.css",
                       "~/Content/css/jquery.dataTables.css",
                       "~/Scripts/datatables.extensions/RowReorder-1.1.1/css/rowReorder.bootstrap.css",
-                      "~/Scripts/bootstrap.toggle/css/bootstrap-toggle.css"));
+                      "~/Scripts/bootstrap.toggle/css/bootstrap-toggle.css",
+                      "~/Scripts/SmartMenus/css/sm-core-css.css"));
         }
     }
 }
