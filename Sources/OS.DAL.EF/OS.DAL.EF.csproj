@@ -67,8 +67,12 @@
     <Compile Include="EntityConfigurations\BuyerConfiguration.cs" />
     <Compile Include="EntityConfigurations\OrderConfiguration.cs" />
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
+    <Compile Include="EntityConfigurations\ProductViewingInfoConfiguration.cs" />
+    <Compile Include="EntityConfigurations\UserHostAddressConfiguration.cs" />
     <Compile Include="Repositories\HtmlContentsRepository.cs" />
     <Compile Include="Repositories\ProductMetaDataRepository.cs" />
+    <Compile Include="Repositories\ProductViewingInfosRepository.cs" />
+    <Compile Include="Repositories\UserHostAddressesRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="Repositories\OnlineStoreCrudRepository.cs" />
     <Compile Include="Core\BaseReadOnlyRepository.cs" />
@@ -112,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\0-0.sql" />
+    <Content Include="Migrations\0-44.sql" />
     <Content Include="Migrations\0-43.sql" />
     <Content Include="Migrations\0-42.sql" />
     <Content Include="Migrations\0-41.sql" />

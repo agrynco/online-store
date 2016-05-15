@@ -62,10 +62,11 @@ namespace OS.Web.Controllers
         [Route("categories/{categoryId:int}/products/{productId:int}")]
         public ActionResult Details(int productId, int categoryId)
         {
+            ViewData["category"] = categoryId;
             ProductDetailsViewModel model = new ProductDetailsViewModel
             {
                 CategoryId = categoryId,
-                Product = _productsBL.GetById(productId)
+                Product = _productsBL.GetById(productId, Request.IsAuthenticated ? User.Identity.Name : null, Request.UserHostAddress)
             };
             return View("Details", model);
         }

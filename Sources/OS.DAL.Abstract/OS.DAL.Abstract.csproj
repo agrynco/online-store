@@ -63,6 +63,8 @@
     <Compile Include="Exceptions\ThereIsNoEntityException.cs" />
     <Compile Include="IHtmlContentsRepository.cs" />
     <Compile Include="IProductMetaDataRepository.cs" />
+    <Compile Include="IProductViewingInfosRepository.cs" />
+    <Compile Include="IUserHostAddressesRepository.cs" />
     <Compile Include="IUsersRepository.cs" />
     <Compile Include="IBrandsRepository.cs" />
     <Compile Include="IContentContentTypesRepository.cs" />

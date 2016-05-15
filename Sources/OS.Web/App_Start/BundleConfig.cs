@@ -31,6 +31,8 @@ namespace OS.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle(Constants.Scripts.SMART_MENU).Include("~/Scripts/SmartMenus/jquery.smartmenus.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-switch.css",
@@ -38,7 +40,8 @@ namespace OS.Web
                       "~/Scripts/jquery-ui/jquery-ui.css",
                       "~/Content/css/jquery.dataTables.css",
                       "~/Scripts/datatables.extensions/RowReorder-1.1.1/css/rowReorder.bootstrap.css",
-                      "~/Scripts/bootstrap.toggle/css/bootstrap-toggle.css"));
+                      "~/Scripts/bootstrap.toggle/css/bootstrap-toggle.css",
+                      "~/Scripts/SmartMenus/css/sm-core-css.css"));
         }
     }
 }

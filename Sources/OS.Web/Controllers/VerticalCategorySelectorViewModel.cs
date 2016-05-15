@@ -13,6 +13,7 @@ namespace OS.Web.Controllers
 
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<VerticalCategorySelectorItemViewModel> ChildCategories { get; set; }
         public bool Selected { get; set; }
     }
 
