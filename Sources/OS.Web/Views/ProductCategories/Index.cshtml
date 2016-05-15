@@ -5,31 +5,14 @@
     Layout = "~/Views/Shared/_adminListLayout.cshtml";
 }
 
-@section substituteBreadcrumbs
-{
-    @if (Model.BreadCrumbItems.Count > 1)
-    {
-        <ol class="breadcrumb">
-            @foreach (ProductCategoriesBreadCrumbItem breadCrumbItem in Model.BreadCrumbItems)
-            {
-                <li>
-                    @Html.ActionLink(breadCrumbItem.Name, "Index", new
-               {
-                   parentId = breadCrumbItem.Id
-               })
-                </li>
-            }
-        </ol>
-    }
-}
 
 @section createToolBarItem
 {
     <li role="presentation">
         @Html.ActionLink("Створити", "Create", new
-   {
-       parentCategoryId = Model.ParentCategoryId
-   })
+            {
+                parentCategoryId = Model.ParentCategoryId
+            })
     </li>
 }
 
@@ -40,46 +23,46 @@
 {
     <table id="categoriesTable" style="width: 100%">
         <thead>
-        <tr>
-            <th class="min-width">
-                Order
-            </th>
-            <th class="min-width">
-                Id
-            </th>
-            <th style="width: 25%">
-                Назва
-            </th>
-            <th>
-                Опис
-            </th>
-            <th class="min-width">
-                Публікувати
-            </th>
-            <th class="min-width"></th>
-            <th class="min-width"></th>
-        </tr>
+            <tr>
+                <th class="min-width">
+                    Order
+                </th>
+                <th class="min-width">
+                    Id
+                </th>
+                <th style="width: 25%">
+                    Назва
+                </th>
+                <th>
+                    Опис
+                </th>
+                <th class="min-width">
+                    Публікувати
+                </th>
+                <th class="min-width"></th>
+                <th class="min-width"></th>
+            </tr>
         </thead>
         <tfoot>
-        <tr>
-            <th>
-                Order
-            </th>
-            <th>
-                Id
-            </th>
-            <th>
-                Назва
-            </th>
-            <th>
-                Опис
-            </th>
-            <th>
-                Публікувати
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>
+                    Order
+                </th>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Назва
+                </th>
+                <th>
+                    Опис
+                </th>
+                <th>
+                    Публікувати
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
         </tfoot>
     </table>
 
@@ -89,7 +72,7 @@
     <div id="editTeamplate" class="template">
         <a class="btn btn-sm btn-default">Редагувати</a>
     </div>
-    
+
     <div id="publishSwitcherTemplate" class="template">
         <input class="publishSwitcher" type="checkbox" data-size="mini"/>
     </div>

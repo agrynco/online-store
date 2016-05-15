@@ -1,11 +1,18 @@
 ﻿@using OS.Web.Controllers
 @model VerticalCategorySelectorItemViewModel
-<div>
-    <span>
-        @Html.ActionLink(Model.Name, "ChangeCategory", "Home", new
-            {
-                categoryId = Model.Id
-            }, null)
-    </span>
+@{
+    string itemClasses = "";
+    if (Model.Selected)
+    {
+        itemClasses += " selected";
+    }
 
-</div>
+}
+@Html.ActionLink(Model.Name, "ChangeCategory", "Home", new
+{
+    categoryId = Model.Id
+}, new
+{
+    @class = itemClasses
+})
+    

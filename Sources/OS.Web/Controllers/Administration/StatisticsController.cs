@@ -2,9 +2,9 @@
 
 namespace OS.Web.Controllers.Administration
 {
-    public class CountriesController : BaseAdminController
+    public class StatisticsController : BaseAdminController
     {
-        public ActionResult Index()
+        public ActionResult ProductViewFrequency()
         {
             return View();
         }

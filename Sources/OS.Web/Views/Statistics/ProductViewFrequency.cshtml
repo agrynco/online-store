@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+@section content
+{
+    <table id="productViewFrequencyTable">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                Товар
+            </th>
+            <th>
+                Кількість переглядів
+            </th>
+            <th>
+                Переглянуто з
+            </th>
+            <th>
+                Дата останнього перегляду
+            </th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>#</th>
+            <th>
+                Товар
+            </th>
+            <th>
+                Кількість переглядів
+            </th>
+            <th>
+                Переглянуто з
+            </th>
+            <th>
+                Дата останнього перегляду
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        var $productViewFrequencyTable;
+        $().ready(function()
+        {
+            $productViewFrequencyTable = $("#productViewFrequencyTable").DataTable({
+                ajax: "/api/statistics/products/vewfrequency",
+                language: {
+                    url: "/scripts/datatables.translations/ukrainian.json"
+                },
+                columns: [
+                    { data: "ProductId" },
+                    { data: "ProductName" },
+                    { data: "ViewCount" },
+                    { data: "IpAddress" },
+                    { data: "LastViewDate" }
+                ],
+                order: [[2, "desc"]],
+                columnDefs: [
+                    {
+                        targets: [0],
+                        visible: false
+                    },
+                    {
+                        type: "html-num",
+                        targets: [1],
+                        render: function(data, type, row)
+                        {
+                            return "<a href=/Products/Edit/" + row.ProductId + "/>" + data + "</a>";
+                        }
+                    },
+                    {
+                        targets: [2],
+                        render: function(data, type, row)
+                        {
+                            return data;
+                        }
+                    },
+                    {
+                        targets: [3],
+                        render: function(data, type, row)
+                        {
+                            return data;
+                        }
+                    },
+                    {
+                        targets: [4],
+                        render: function(data, type, row)
+                        {
+                            moment.locale("uk");
+                            var momentDate = moment(data);
+                            return momentDate.format("l") + " " + momentDate.format("LT");
+                        }
+                    }
+                ]
+            });
+
+            
+        });
+    </script>
+}

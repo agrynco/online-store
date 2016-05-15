@@ -44,5 +44,11 @@
             public const int MAX_COUNT = 1000;
             public const int MIN_COUNT = 0;
         }
+
+        public static class Bundles
+        {
+            public const string SMART_MENU = "~/Bundles/SmartMenus";
+            public const string MOMENT = "~/bundles/moment";
+        }
     }
 }
