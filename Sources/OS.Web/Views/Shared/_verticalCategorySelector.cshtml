@@ -10,29 +10,11 @@
 <!-- #main-menu config - instance specific stuff not covered in the theme -->
 <!-- Put this in an external stylesheet if you want the media query to work in IE8 (e.g. where the rest of your page styles are) -->
 <style type="text/css">
-    @@media (min-width: 768px) {
-        #main-menu {
-            float: left;
-            position: relative;
-            /*z-index: 9999;*/
-            width: 100%;
-        }
-
-            #main-menu ul {
-                width: 12em; /* fixed width only please - you can use the "subMenusMinWidth"/"subMenusMaxWidth" script options to override this if you like */
-            }
-    }
 </style>
 
-<!-- Respond.js for IE8 support of media queries -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-<!-- jQuery -->
-<!-- SmartMenus jQuery plugin -->
 <script src="~/Scripts/SmartMenus/jquery.smartmenus.js"></script>
 
-<!-- SmartMenus jQuery init -->
+
 <script type="text/javascript">
     $(function ()
     {
@@ -41,13 +23,20 @@
             mainMenuSubOffsetY: -8,
             subMenusSubOffsetX: 1,
             subMenusSubOffsetY: -8,
-            subIndicators: true
+            subIndicators: true,
+            keepHighlighted: true,
+            hideOnClick: false,
+            markCurrentItem: true,
+            markCurrentTree: false
         });
+
+        $('#main-menu').smartmenus("itemActivate", $("a.current"));
+        $("a.selected").focus();
+        //$("a.menu-item").unbind("click");
     });
 </script>
 
 <nav role="navigation">
-    <!-- Sample menu definition -->
     <ul id="main-menu" class="sm sm-vertical sm-mint">
         @foreach (VerticalCategorySelectorItemViewModel category in Model.Categories)
         {

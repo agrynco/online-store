@@ -41,6 +41,7 @@ namespace OS.Web.Controllers
         [Route("categories/{categoryId:int}")]
         public ActionResult ChangeCategory(int categoryId)
         {
+            TempData["CategoryId"] = categoryId;
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
             {
