@@ -4,7 +4,7 @@ namespace OS.Web.Controllers.Administration
 {
     public class StatisticsController : BaseAdminController
     {
-        public ActionResult Index()
+        public ActionResult ProductViewFrequency()
         {
             return View();
         }

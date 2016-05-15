@@ -229,7 +229,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
+    <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
+    <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsEditNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlAboutEditNodeProvider.cs" />
@@ -366,6 +368,10 @@
     <Content Include="Scripts\datatables.extensions\RowReorder-1.1.1\License.txt" />
     <Content Include="Scripts\datatables.translations\ukrainian.json" />
     <Compile Include="Startup.cs" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Views\Brands\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2068,7 +2074,7 @@
     <Content Include="Views\HtmlContents\Index.cshtml" />
     <Content Include="Views\Shared\_commonMenuItems.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
-    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Statistics\ProductViewFrequency.cshtml" />
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>

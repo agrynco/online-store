@@ -22,7 +22,13 @@
                     <li>@Html.ActionLink("Товари", "Index", "Products")</li>
                     <li>@Html.ActionLink("Бренди", "Index", "Brands")</li>
                     <li>@Html.ActionLink("Країни", "Index", "Countries")</li>
-                    <li>@Html.ActionLink("Статистика", "Index", "Statistics")</li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Статистика <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Частота перегляду продукції", "ProductViewFrequency", "Statistics")
+                            </li>
+                        </ul>
+                    </li>
 
                     @Html.Partial("_commonMenuItems")
                 </ul>

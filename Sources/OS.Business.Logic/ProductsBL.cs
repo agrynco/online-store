@@ -101,6 +101,11 @@ namespace OS.Business.Logic
             return _productsRepository.GetById(id);
         }
 
+        public List<ProductViewingInfo> GetProductViewingInfos()
+        {
+            return _productViewingInfosRepository.GetAll().ToList();
+        }
+
         public List<Product> GetByIds(IEnumerable<int> ids)
         {
             return _productsRepository.GetByIds(ids).ToList();

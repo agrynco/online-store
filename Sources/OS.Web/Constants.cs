@@ -45,9 +45,10 @@
             public const int MIN_COUNT = 0;
         }
 
-        public static class Scripts
+        public static class Bundles
         {
-            public const string SMART_MENU = "~/Scripts/SmartMenus";
+            public const string SMART_MENU = "~/Bundles/SmartMenus";
+            public const string MOMENT = "~/bundles/moment";
         }
     }
 }
