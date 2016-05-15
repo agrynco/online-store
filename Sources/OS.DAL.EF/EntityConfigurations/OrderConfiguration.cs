@@ -5,13 +5,6 @@ using OS.Business.Domain;
 
 namespace OS.DAL.EF.EntityConfigurations
 {
-    public class OrderConfiguration : EntityTypeConfiguration<Order>
-    {
-        public OrderConfiguration()
-        {
-        }
-    }
-
     public class HtmlContentConfiguration : EntityTypeConfiguration<HtmlContent>
     {
         public HtmlContentConfiguration()

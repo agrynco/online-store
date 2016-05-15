@@ -35,6 +35,8 @@ namespace OS.DAL.EF
         public DbSet<ProductMetaData> ProductMetaData { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductViewingInfo> ProductViewingInfos { get; set; }
+        public DbSet<UserHostAddress> UserHostAddresses { get; set; }
 
         public override int SaveChanges()
         {

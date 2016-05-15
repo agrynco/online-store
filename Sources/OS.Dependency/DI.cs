@@ -46,7 +46,7 @@ namespace OS.Dependency
             _container = container;
             _isConfigured = true;
 
-            _container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(_container.GetInstance<EntityFrameworkDbContext>()));
+            _container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(_container.GetInstance<EntityFrameworkDbContext>()), _LIFE_STYLE);
 
             _container.Register(() => new EntityFrameworkDbContext(ApplicationSettings.Instance.DbSettings.ApplicationConnectionString), _LIFE_STYLE);
 
@@ -88,6 +88,9 @@ namespace OS.Dependency
             Register<IOrderedProductsRepository, OrderedProductsRepository>();
 
             Register<IUsersRepository, UsersRepository>();
+
+            Register<IUserHostAddressesRepository, UserHostAddressesRepository>();
+            Register<IProductViewingInfosRepository, ProductViewingInfosRepository>();
 
             _container.Register<IMailService>(() => new MailService(
                 ApplicationSettings.Instance.MailServiceSettings.Host,
