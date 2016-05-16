@@ -9,7 +9,7 @@ using OS.Web.Models.CountryViewModel;
 namespace OS.Web.Controllers.Api
 {
     [RoutePrefix("api/countries")]
-    public class CountriesController : ApiController
+    public class CountriesController : BaseApiController
     {
         private readonly CountriesBL _countriesBL;
 

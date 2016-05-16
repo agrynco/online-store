@@ -11,7 +11,7 @@ using OS.Web.Models.ProductCategoryViewModels;
 namespace OS.Web.Controllers.Api
 {
     [RoutePrefix("api/categories")]
-    public class CategoriesController : ApiController
+    public class CategoriesController : BaseApiController
     {
         private readonly ProductCategoriesBL _productCategoriesBL;
 
