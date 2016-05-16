@@ -229,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
+    <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />

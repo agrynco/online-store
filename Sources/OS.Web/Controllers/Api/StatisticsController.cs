@@ -8,7 +8,7 @@ using OS.Web.Models.Statistics;
 namespace OS.Web.Controllers.Api
 {
     [RoutePrefix("api/statistics")]
-    public class StatisticsController : ApiController
+    public class StatisticsController : BaseApiController
     {
         private readonly ProductsBL _productsBL;
 

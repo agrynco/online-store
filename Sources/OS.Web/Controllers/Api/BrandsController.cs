@@ -7,7 +7,7 @@ using OS.Business.Logic;
 namespace OS.Web.Controllers.Api
 {
     [RoutePrefix("api/brands")]
-    public class BrandsController : ApiController
+    public class BrandsController : BaseApiController
     {
         private readonly BrandsBL _brandsBL;
 
