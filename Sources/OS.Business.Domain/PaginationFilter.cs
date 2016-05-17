@@ -5,6 +5,7 @@
         public PaginationFilter()
         {
             PageSize = int.MaxValue;
+            PageNumber = 1;
         }
 
         public int PageNumber { get; set; }

@@ -8,6 +8,8 @@
 
 @if (Model.Products.Count > 0)
 {
+    @Html.Pager(Model.PaginationFilterViewModel, i => Html.ActionLink(i.ToString(), "Index", new {pageNumber = i}) )
+
     <div id="products" class="table-row list-group">
         @foreach (Product product in Model.Products)
         {
