@@ -231,6 +231,7 @@
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
@@ -297,7 +298,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlAboutNodeProvider.cs" />
-    <Compile Include="HtmlExtensions.cs" />
+    <Compile Include="ModelStateExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseCreateOrEditViewModel.cs" />
     <Compile Include="Models\BoolViewModel.cs" />
@@ -332,6 +333,7 @@
     <Compile Include="OsSqlErrorLog.cs" />
     <Compile Include="SiteMapNodeProviders\ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="HtmlTemplates\paginationTemplate.html" />
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
@@ -2077,6 +2079,7 @@
     <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
     <Content Include="Views\Statistics\ProductViewFrequency.cshtml" />
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
+    <Content Include="Views\Home\_pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

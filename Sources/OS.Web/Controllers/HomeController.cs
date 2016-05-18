@@ -19,7 +19,7 @@ namespace OS.Web.Controllers
             _productsBL = productsBL;
         }
 
-        public ActionResult Index(string searchTerm)
+        public ActionResult Index(string searchTerm, int? pageNumber)
         {
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
@@ -29,11 +29,22 @@ namespace OS.Web.Controllers
             }).ToList();
 
             viewModel.SelectedCategory = null;
-            viewModel.Products = _productsBL.Get(new ProductsFilter
+            ProductsFilter productsFilter = new ProductsFilter
                 {
                     Text = searchTerm,
                     Publish = true
-                }).Entities;
+                };
+            productsFilter.PaginationFilter.PageNumber = pageNumber == null ? 1 : pageNumber.Value;
+            productsFilter.PaginationFilter.PageSize = 20;
+
+            PagedProductListResult pagedProductListResult = _productsBL.Get(productsFilter);
+            viewModel.Products = pagedProductListResult.Entities;
+            viewModel.PaginationFilterViewModel = new PaginationFilterViewModel
+                {
+                    PageNumber = productsFilter.PaginationFilter.PageNumber,
+                    TotalRecords = pagedProductListResult.TotalRecords,
+                    PageSize = productsFilter.PaginationFilter.PageSize,
+                };
 
             return View(viewModel);
         }
