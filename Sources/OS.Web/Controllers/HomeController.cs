@@ -19,20 +19,28 @@ namespace OS.Web.Controllers
             _productsBL = productsBL;
         }
 
-        public ActionResult Index(string searchTerm, int? pageNumber)
+        public ActionResult Index(string searchTerm, int? parentId, int? pageNumber)
+        {
+            HomePageViewModel viewModel = BuildHomePageViewModel(searchTerm, parentId, pageNumber);
+
+            return View(viewModel);
+        }
+
+        private HomePageViewModel BuildHomePageViewModel(string searchTerm, int? parentId, int? pageNumber)
         {
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
-            {
-                ProductCategory = productCategory,
-                IsSelected = false
-            }).ToList();
+                {
+                    ProductCategory = productCategory,
+                    IsSelected = false
+                }).ToList();
 
             viewModel.SelectedCategory = null;
             ProductsFilter productsFilter = new ProductsFilter
                 {
                     Text = searchTerm,
-                    Publish = true
+                    Publish = true,
+                    ParentId = parentId
                 };
             productsFilter.PaginationFilter.PageNumber = pageNumber == null ? 1 : pageNumber.Value;
             productsFilter.PaginationFilter.PageSize = 20;
@@ -45,29 +53,13 @@ namespace OS.Web.Controllers
                     TotalRecords = pagedProductListResult.TotalRecords,
                     PageSize = productsFilter.PaginationFilter.PageSize,
                 };
-
-            return View(viewModel);
+            return viewModel;
         }
 
         [Route("categories/{categoryId:int}")]
         public ActionResult ChangeCategory(int categoryId)
         {
-            TempData["CategoryId"] = categoryId;
-            HomePageViewModel viewModel = new HomePageViewModel();
-            viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
-            {
-                ProductCategory = productCategory,
-                IsSelected = productCategory.Id == categoryId
-            }).ToList();
-
-            viewModel.SelectedCategory = _productCategoriesBL.GetById(categoryId);
-            viewModel.Products = _productsBL.Get(new ProductsFilter
-            {
-                ParentId = categoryId,
-                Publish = true
-            }).Entities;
-
-            return View("Index", viewModel);
+            return View("Index", BuildHomePageViewModel(null, categoryId, null));
         }
 
         [Route("categories/{categoryId:int}/products/{productId:int}")]

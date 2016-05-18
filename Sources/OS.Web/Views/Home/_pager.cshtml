@@ -4,5 +4,5 @@
 <div style="margin-left: 15px;">
     @Html.Pager(Model, i => Html.ActionLink(i.ToString(), "Index", new { pageNumber = i }),
             Model.PageNumber > 1 ? () => Html.ActionLink("«", "Index", new { pageNumber = Model.PageNumber - 1 }) : (Func<MvcHtmlString>) null ,
-            Model.PageNumber < Model.GetPagesCount() ?  () => Html.ActionLink("»", "Index", new { pageNumber = Model.PageNumber + 1 }) : (Func<MvcHtmlString>) null)
+            Model.PageNumber < Model.GetPagesCount() ? () => Html.ActionLink("»", "Index", new { pageNumber = Model.PageNumber + 1 }) : (Func<MvcHtmlString>) null)
 </div>
