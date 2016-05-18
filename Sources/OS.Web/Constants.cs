@@ -50,5 +50,10 @@
             public const string SMART_MENU = "~/Bundles/SmartMenus";
             public const string MOMENT = "~/bundles/moment";
         }
+
+        public static class ViewData
+        {
+            public const string PAGE_ITEM_BUILDER = "PageItemBuilder";
+        }
     }
 }
