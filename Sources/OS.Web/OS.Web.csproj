@@ -2079,6 +2079,7 @@
     <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
     <Content Include="Views\Statistics\ProductViewFrequency.cshtml" />
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
+    <Content Include="Views\Home\_pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
