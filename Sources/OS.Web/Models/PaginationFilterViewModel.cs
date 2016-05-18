@@ -1,4 +1,6 @@
-﻿namespace OS.Web.Models
+﻿using System;
+
+namespace OS.Web.Models
 {
     public class PaginationFilterViewModel
     {
@@ -6,6 +8,11 @@
         {
             PageNumber = 0;
             PageSize = int.MaxValue;
+        }
+
+        public int GetPagesCount()
+        {
+            return (int)Math.Ceiling((double)TotalRecords / PageSize);
         }
 
         public int PageNumber { get; set; } 

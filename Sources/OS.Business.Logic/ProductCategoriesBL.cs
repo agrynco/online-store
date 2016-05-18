@@ -50,7 +50,7 @@ namespace OS.Business.Logic
 
             PagedProductCategoryListResult result = new PagedProductCategoryListResult();
             result.TotalRecords = query.Count();
-            result.Entities.AddRange(query.OrderBy(category => category.Order).Skip(filter.PaginationFilter.PageNumber * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+            result.Entities.AddRange(query.OrderBy(category => category.Order).Skip((filter.PaginationFilter.PageNumber - 1)* filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
 
             return result;
         }

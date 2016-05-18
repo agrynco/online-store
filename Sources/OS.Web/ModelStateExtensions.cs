@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace OS.Web
 {
-    public static class HtmlExtensions
+    public static class ModelStateExtensions
     {
         public static void RemoveStateFor<TModel, TProperty>(this ModelStateDictionary modelState, TModel model,
             Expression<Func<TModel, TProperty>> expression)
