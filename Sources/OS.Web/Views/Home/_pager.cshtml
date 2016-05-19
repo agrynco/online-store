@@ -1,8 +1,23 @@
 ﻿@using OS.Web.Models
-@model PaginationFilterViewModel
+@model HomePagePaginationFilterViewModel
 
 <div style="margin-left: 15px;">
-    @Html.Pager(Model, i => Html.ActionLink(i.ToString(), "Index", new { pageNumber = i }),
-            Model.PageNumber > 1 ? () => Html.ActionLink("«", "Index", new { pageNumber = Model.PageNumber - 1 }) : (Func<MvcHtmlString>) null ,
-            Model.PageNumber < Model.GetPagesCount() ? () => Html.ActionLink("»", "Index", new { pageNumber = Model.PageNumber + 1 }) : (Func<MvcHtmlString>) null)
+    @Html.Pager(Model, i => Html.ActionLink(i.ToString(), "Index", new
+        {
+            pageNumber = i,
+            parentCategoryId = Model.ParentCategoryId,
+            searchTerm = Model.SearchTerm
+        }),
+        Model.PageNumber > 1 ? () => Html.ActionLink("«", "Index", new
+            {
+                pageNumber = Model.PageNumber - 1,
+                parentCategoryId = Model.ParentCategoryId,
+                searchTerm = Model.SearchTerm
+            }) : (Func<MvcHtmlString>) null,
+        Model.PageNumber < Model.GetPagesCount() ? () => Html.ActionLink("»", "Index", new
+            {
+                pageNumber = Model.PageNumber + 1,
+                parentCategoryId = Model.ParentCategoryId,
+                searchTerm = Model.SearchTerm
+            }) : (Func<MvcHtmlString>) null)
 </div>

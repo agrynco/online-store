@@ -6,13 +6,12 @@
     {
         itemClasses += " selected";
     }
-
 }
-@Html.ActionLink(Model.Name, "ChangeCategory", "Home", new
-{
-    categoryId = Model.Id
-}, new
-{
-    @class = itemClasses
-})
+@Html.ActionLink(Model.Name, "Index", "Home", new
+    {
+        parentCategoryId = Model.Id
+    }, new
+        {
+            @class = itemClasses
+        })
     
