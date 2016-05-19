@@ -5,11 +5,10 @@
 
 @if (IsSectionDefined("substituteTitleTag"))
 {
-    @section titleTag
-    { 
-        @RenderSection("substituteTitleTag")
-    }
-}
+@section titleTag
+{
+    @RenderSection("substituteTitleTag")
+}}
 
 @section SeoMetaTags
 {
@@ -71,7 +70,15 @@
 
         </div>
         <div class="col-md-10 table-col" style="background: white; padding: 10px;">
-            @Html.MvcSiteMap().SiteMapPath("BootstrapSiteMapPathHelperModel")
+            @if (IsSectionDefined("breadcrumbs"))
+            {
+                @RenderSection("breadcrumbs")
+            }
+            else
+            {
+                @Html.MvcSiteMap().SiteMapPath("BootstrapSiteMapPathHelperModel")
+            }
+
             @RenderBody()
         </div>
         @*<div class="col-md-3 table-col" style="background: lightgray"></div>*@

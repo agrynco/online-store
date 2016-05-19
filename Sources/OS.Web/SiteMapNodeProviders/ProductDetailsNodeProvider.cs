@@ -42,11 +42,11 @@ namespace OS.Web.SiteMapNodeProviders
                         ParentKey = parentKey,
                         Title = productCategory.Name,
                         Key = "ProductCategory_" + productCategory.Id,
-                        Action = "ChangeCategory",
+                        Action = "Index",
                         Controller = "Home"
-                };
+                    };
 
-                productCategoryNode.RouteValues.Add("categoryId", productCategory.Id);
+                productCategoryNode.RouteValues.Add("parentCategoryId", productCategory.Id);
                 nodes.Add(productCategoryNode);
 
                 List<Product> products = _productsBL.Get(new ProductsFilter
