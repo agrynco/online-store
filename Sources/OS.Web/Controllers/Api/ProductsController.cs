@@ -16,6 +16,7 @@ namespace OS.Web.Controllers.Api
             _productsBL = productsBL;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("autocomplete")]
         public List<string> Get(string term)
