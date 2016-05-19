@@ -12,31 +12,52 @@
     <title>@ApplicationSettings.Instance.AppSettings.ApplicationName - @Model.Product.Name</title>
 }
 
+@section breadcrumbs
+{
+    <ol class="breadcrumb">
+        <li>
+            @Html.ActionLink("Головна", "Index")
+        </li>
+        @foreach (ProductCategory category in Model.ParentCategories)
+        {
+            <li>
+                @Html.ActionLink(category.Name, "Index", new
+                    {
+                        parentCategoryId = Model.CategoryId
+                    }, null)
+            </li>
+        }
+        <li>
+            @Model.Product.Name
+        </li>
+    </ol>
+
+}
+
 @if (Model.Product.MetaData != null)
 {
-    @section SeoMetaTags
+@section SeoMetaTags
+{
+    @if (!string.IsNullOrEmpty(Model.Product.MetaData.Keywords))
     {
-        @if (!string.IsNullOrEmpty(Model.Product.MetaData.Keywords))
-        {
-            <meta name="keywords" content="@Model.Product.MetaData.Keywords"/>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.Product.MetaData.Description))
-        {
-            <meta name="description" content="@Model.Product.MetaData.Description"/>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.Product.MetaData.Author))
-        {
-            <meta name="author" content="@Model.Product.MetaData.Author"/>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.Product.MetaData.Copyright))
-        {
-            <meta name="copyright" content="@Model.Product.MetaData.Copyright" />
-        }
+        <meta name="keywords" content="@Model.Product.MetaData.Keywords"/>
     }
-}
+
+    @if (!string.IsNullOrEmpty(Model.Product.MetaData.Description))
+    {
+        <meta name="description" content="@Model.Product.MetaData.Description"/>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Product.MetaData.Author))
+    {
+        <meta name="author" content="@Model.Product.MetaData.Author"/>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Product.MetaData.Copyright))
+    {
+        <meta name="copyright" content="@Model.Product.MetaData.Copyright"/>
+    }
+}}
 
 
 @{

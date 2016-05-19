@@ -17,38 +17,34 @@ namespace OS.Configuration
             MailServiceSettings = new MailServiceSettingsContainer();
         }
 
-        public DbSettingsContainer DbSettings { get; private set; }
         public ApplicationSettingsContainer AppSettings { get; private set; }
-        public TestsSettingsContainer TestsSettings { get; private set; }
+
+        public DbSettingsContainer DbSettings { get; private set; }
 
         public MailServiceSettingsContainer MailServiceSettings { get; private set; }
+        public TestsSettingsContainer TestsSettings { get; private set; }
 
         public class ApplicationSettingsContainer : BaseClass
         {
-            public ApplicationEnvironment Environment
-            {
-                get { return SettingsManager.Instance.GetAppSetting<ApplicationEnvironment>("ApplicationEnvironment"); }
-            }
-
             public string ApplicationName
             {
                 get { return SettingsManager.Instance.GetAppSetting("ApplicationName", "Online Store"); }
+            }
+
+            public int DefaultPageSize
+            {
+                get { return SettingsManager.Instance.GetAppSetting("DefaultPageSize", 50); }
+            }
+
+            public ApplicationEnvironment Environment
+            {
+                get { return SettingsManager.Instance.GetAppSetting<ApplicationEnvironment>("ApplicationEnvironment"); }
             }
         }
 
         public class MailServiceSettingsContainer : BaseClass
         {
             private const string _SETTINGS_PREFFIX = "MailServer_";
-
-            public string Host
-            {
-                get { return SettingsManager.Instance.GetAppSetting(_SETTINGS_PREFFIX + "Host"); }
-            }
-
-            public int Port
-            {
-                get { return SettingsManager.Instance.GetAppSetting<int>(_SETTINGS_PREFFIX + "Port"); }
-            }
 
             public bool EnableSsl
             {
@@ -63,6 +59,16 @@ namespace OS.Configuration
             public string FromPassword
             {
                 get { return SettingsManager.Instance.GetAppSetting(_SETTINGS_PREFFIX + "FromPassword"); }
+            }
+
+            public string Host
+            {
+                get { return SettingsManager.Instance.GetAppSetting(_SETTINGS_PREFFIX + "Host"); }
+            }
+
+            public int Port
+            {
+                get { return SettingsManager.Instance.GetAppSetting<int>(_SETTINGS_PREFFIX + "Port"); }
             }
         }
 
