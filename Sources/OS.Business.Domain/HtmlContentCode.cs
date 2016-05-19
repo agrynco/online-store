@@ -3,6 +3,7 @@
     public enum HtmlContentCode
     {
         About = 1,
-        Contacts    
+        Contacts,
+        Delivery
     }
 }
