@@ -1,17 +1,18 @@
-﻿<a href="@Url.Action("Index", "ConsumerBasket")" id="consumerBasketLink" class="">Корзина
+﻿<a class="top-menu-item" href="@Url.Action("Index", "ConsumerBasket")" id="consumerBasketLink" class="">
+    Корзина
     <span id="basketCounter" class="badge">
         0
     </span>
 </a>
-
 
 <script src="~/Scripts/application/products/consumerBasket.js"></script>
 
 <script type="text/javascript">
     var consumerBasket;
 
-    $().ready(function ()
-    {
-        consumerBasket = new ConsumerBasket();
-    });
+    $()
+        .ready(function()
+        {
+            consumerBasket = new ConsumerBasket();
+        });
 </script>
