@@ -26,13 +26,13 @@ function ConsumerBasket()
     var _cookieKey = "ConsumerBasket";
     var _products = new Array();
 
-    var save = function ()
+    var save = function()
     {
         var productsToStore = JSON.stringify(_products);
-        $.cookie(_cookieKey, productsToStore, {path: "/"});
+        $.cookie(_cookieKey, productsToStore, { path: "/" });
     }
 
-    var indexOf = function (productId)
+    var indexOf = function(productId)
     {
         for (var i = 0; i < _products.length; i++)
         {
@@ -44,7 +44,7 @@ function ConsumerBasket()
         return -1;
     }
 
-    var contains = function (productId)
+    var contains = function(productId)
     {
         return indexOf(productId) !== -1;
     }
@@ -63,21 +63,22 @@ function ConsumerBasket()
     {
         $("#basketCounter").html(_products.length);
         $("#basketTotalAmount").html(getTotalAmount());
-        $(".btn-buy-product").each(function(index, el)
-        {
-            if (contains(parseInt($(el).attr("productId"))) === false)
+        $(".btn-buy-product")
+            .each(function(index, el)
             {
-                $(el).show();
-            }
-        });
-        $(".quantity").each(function(index, el)
-        {
-            $(el).val(_products[indexOf(parseInt($(el).attr("productId")))].quantity);
-        });
+                if (contains(parseInt($(el).attr("productId"))) === false)
+                {
+                    $(el).show();
+                }
+            });
+        $(".quantity")
+            .each(function(index, el)
+            {
+                $(el).val(_products[indexOf(parseInt($(el).attr("productId")))].quantity);
+            });
 
         if (_products.length > 0)
         {
-
             $("#no-products-to-buy").hide();
             $("#tableConsumerBasket").show();
         } else
@@ -87,7 +88,7 @@ function ConsumerBasket()
         }
     }
 
-    var add = function (product)
+    var add = function(product)
     {
         if (indexOf(product.id) !== -1)
         {
@@ -97,13 +98,13 @@ function ConsumerBasket()
         _products.push(product);
     }
 
-    var load = function ()
+    var load = function()
     {
         var consumerBasketCookie = $.cookie(_cookieKey);
         if (consumerBasketCookie != undefined)
         {
             var storedProducts = JSON.parse(consumerBasketCookie.toString());
-            storedProducts.forEach(function (product)
+            storedProducts.forEach(function(product)
             {
                 add(new Product(parseInt(product.id), parseFloat(product.price), parseInt(product.quantity)));
             });
@@ -128,7 +129,7 @@ function ConsumerBasket()
         var index = indexOf(productId);
         var product = _products[index];
         product.quantity = getNormalizedProductQuantiy(product.quantity + difference);
-        
+
         if (product.quantity === 0)
         {
             if (confirm("Ви впевненні що хочете відмовитися від покупки товару?") === true)
@@ -142,51 +143,55 @@ function ConsumerBasket()
         }
     }
 
-    var init = function ()
+    var init = function()
     {
         load();
 
-        $(".btn-buy-product").click(function ()
-        {
-            var productId = parseInt($(this).attr("productId"));
-            var productPrice = parseFloat($(this).attr("productPrice"));
-            var categoryId = parseInt($(this).attr("categoryId"));
+        $(".btn-buy-product")
+            .click(function()
+            {
+                var productId = parseInt($(this).attr("productId"));
+                var productPrice = parseFloat($(this).attr("productPrice"));
+                var categoryId = parseInt($(this).attr("categoryId"));
 
-            add(new Product(productId, productPrice, 1, categoryId));
-            $(this).hide();
-            save();
-            updateUI();
-            return false;
-        });
+                add(new Product(productId, productPrice, 1, categoryId));
+                $(this).hide();
+                save();
+                updateUI();
+                return true;
+            });
 
-        $("#consumerBasketLink").click(function ()
-        {
-            $("#consumerBasketRawData").val(JSON.stringify(_products));
-            $("#frmConsumerBasket").submit();
-        });
+        $("#consumerBasketLink")
+            .click(function()
+            {
+                $("#consumerBasketRawData").val(JSON.stringify(_products));
+                $("#frmConsumerBasket").submit();
+            });
 
-        $(".quantity-changer").click(function ()
-        {
-            var productId = parseInt($(this).attr("productId"));
-            var diff = parseInt($(this).attr("diff"));
-            changeQuantityOn(productId, diff);
-            save();
-            updateUI();
-        });
+        $(".quantity-changer")
+            .click(function()
+            {
+                var productId = parseInt($(this).attr("productId"));
+                var diff = parseInt($(this).attr("diff"));
+                changeQuantityOn(productId, diff);
+                save();
+                updateUI();
+            });
 
-        $(".quantity").change(function()
-        {
-            var index = indexOf(parseInt($(this).attr("productId")));
-            var currentInputValue = parseInt($(this).val());
-            _products[index].quantity = currentInputValue;
-            changeQuantityOn(_products[index].id, 0);
+        $(".quantity")
+            .change(function()
+            {
+                var index = indexOf(parseInt($(this).attr("productId")));
+                var currentInputValue = parseInt($(this).val());
+                _products[index].quantity = currentInputValue;
+                changeQuantityOn(_products[index].id, 0);
 
-            save();
-            updateUI();
-        });
+                save();
+                updateUI();
+            });
 
         updateUI();
     }
-    
+
     init();
 }
