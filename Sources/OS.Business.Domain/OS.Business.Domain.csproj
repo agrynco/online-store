@@ -52,6 +52,8 @@
     <Compile Include="Brand.cs" />
     <Compile Include="BrandsFilter.cs" />
     <Compile Include="Buyer.cs" />
+    <Compile Include="Currency.cs" />
+    <Compile Include="CurrencyRate.cs" />
     <Compile Include="HtmlContent.cs" />
     <Compile Include="HtmlContentCode.cs" />
     <Compile Include="IPublishedEntity.cs" />

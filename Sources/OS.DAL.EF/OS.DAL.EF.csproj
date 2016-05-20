@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Core\BaseCRUDRepository.cs" />
     <Compile Include="EntityConfigurations\BuyerConfiguration.cs" />
+    <Compile Include="EntityConfigurations\CurrencyConfiguration.cs" />
     <Compile Include="EntityConfigurations\OrderConfiguration.cs" />
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="EntityConfigurations\ProductViewingInfoConfiguration.cs" />
@@ -116,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\0-0.sql" />
+    <Content Include="Migrations\0-45.sql" />
     <Content Include="Migrations\0-44.sql" />
     <Content Include="Migrations\0-43.sql" />
     <Content Include="Migrations\0-42.sql" />
