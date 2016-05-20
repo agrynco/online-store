@@ -26,19 +26,19 @@
 
 <table id="tableConsumerBasket" class="table table-hover table-condensed table-striped table-bordered" style="display: none">
     <thead>
-        <tr>
-            <th class="min-width">Код товару</th>
-            <th>Назва товару</th>
-            <th class="min-width" style="text-align: right">Ціна</th>
-            <th width="75px">Кількість</th>
-        </tr>
+    <tr>
+        <th class="min-width">Код товару</th>
+        <th>Назва товару</th>
+        <th class="min-width" style="text-align: right">Ціна</th>
+        <th width="75px">Кількість</th>
+    </tr>
     </thead>
     <tbody>
     @for (int i = 0; i < Model.ProductToByDescriptors.Count; i++)
     {
         <tr class="ordered-product-row" productId="@Model.ProductToByDescriptors[i].Product.Id">
             <td style="text-align: center">
-                @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Code,
+                @Html.ActionLink(Model.ProductToByDescriptors[i].Product.Code,
                     "Details", "Home", new
                         {
                             productId = Model.ProductToByDescriptors[i].Product.Id,
@@ -46,7 +46,7 @@
                         }, null)
             </td>
             <td>
-                @Html.ActionLink(@Model.ProductToByDescriptors[i].Product.Name,
+                @Html.ActionLink(Model.ProductToByDescriptors[i].Product.Name,
                     "Details", "Home", new
                         {
                             productId = Model.ProductToByDescriptors[i].Product.Id,
@@ -64,14 +64,14 @@
                             </a>
                         </td>
                         <td>
-                            @Html.TextBoxFor(x => @Model.ProductToByDescriptors[i].Quantity, new
-                               {
-                                   @class = "form-control quantity",
-                                   productId = @Model.ProductToByDescriptors[i].Product.Id,
-                                   type = "number",
-                                   min = Constants.ConsumerBasket.MIN_COUNT,
-                                   max = Constants.ConsumerBasket.MAX_COUNT
-                               })
+                            @Html.TextBoxFor(x => Model.ProductToByDescriptors[i].Quantity, new
+                                {
+                                    @class = "form-control quantity",
+                                    productId = Model.ProductToByDescriptors[i].Product.Id,
+                                    type = "number",
+                                    min = Constants.ConsumerBasket.MIN_COUNT,
+                                    max = Constants.ConsumerBasket.MAX_COUNT
+                                })
                         </td>
                         <td>
                             <a href="#" class="quantity-changer" diff="1" productId="@Model.ProductToByDescriptors[i].Product.Id">
@@ -96,6 +96,11 @@
     <tr>
         <td colspan="4" style="text-align: center">
             <input type="hidden" id="consumerBasketRawData" name="consumerBasketRawData"/>
+            @if (Model.AfterBuy.HasValue && Model.AfterBuy.Value)
+            {
+                <span class="btn btn-primary" onclick="window.history.back()">Продовжити покупки</span>
+            }
+
             @Html.ActionLink("Оформити замовлення", "Create", "Orders", null, new
                 {
                     @class = "btn btn-primary"
