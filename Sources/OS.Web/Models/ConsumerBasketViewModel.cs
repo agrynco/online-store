@@ -5,10 +5,9 @@ namespace OS.Web.Models
 {
     public class ProductToBuyDescriptor
     {
+        public int CategoryId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
-
-        public int CategoryId { get; set; }
     }
 
     public class ConsumerBasketViewModel
@@ -17,6 +16,8 @@ namespace OS.Web.Models
         {
             ProductToByDescriptors = new List<ProductToBuyDescriptor>();
         }
+
+        public bool? AfterBuy { get; set; }
 
         public List<ProductToBuyDescriptor> ProductToByDescriptors { get; private set; }
     }
