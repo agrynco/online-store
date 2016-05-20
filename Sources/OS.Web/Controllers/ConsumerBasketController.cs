@@ -18,17 +18,18 @@ namespace OS.Web.Controllers
             _productsBL = productsBL;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(bool? afterBuy)
         {
             HttpCookie consumerBasketRawDataCookie = Request.Cookies["ConsumerBasket"];
 
             ConsumerBasketViewModel consumerBasketViewModel = new ConsumerBasketViewModel();
+            consumerBasketViewModel.AfterBuy = afterBuy;
 
             if (consumerBasketRawDataCookie != null)
             {
                 List<ProductInBasketViewModel> productInBasketViewModels = JsonConvert.DeserializeObject<List<ProductInBasketViewModel>>(
                     HttpContext.Server.UrlDecode(consumerBasketRawDataCookie.Value));
-            
+
                 List<Product> products = _productsBL.GetByIds(productInBasketViewModels.Select(x => x.Id));
 
                 consumerBasketViewModel.ProductToByDescriptors.AddRange(products.Select(product =>
@@ -42,7 +43,7 @@ namespace OS.Web.Controllers
                         };
                 }));
             }
-            
+
             return View(consumerBasketViewModel);
         }
     }

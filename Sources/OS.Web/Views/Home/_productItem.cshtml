@@ -8,10 +8,9 @@
 <div class="os-item col-xs-3 col-lg-3">
     <div class="thumbnail">
         <a href="@Url.Action("Details", "Home", new
-                         {
-                             productId = @Model.Id,
-                             categoryId = categoryId
-                         })">
+                     {
+                         productId = Model.Id, categoryId
+                     })">
 
             @Html.Partial("_productListItemImage", Model)
             <div class="caption">
@@ -29,7 +28,16 @@
                         </b>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <span class="btn btn-success btn-buy-product" style="display: none" productId="@Model.Id" categoryId="@categoryId" productPrice="@Model.Price">Купити</span>
+                        @Html.ActionLink("Купити", "Index", "ConsumerBasket", new {afterBuy = true}, new
+                            {
+                                @class = "btn btn-success btn-buy-product",
+                                style = "display: none",
+                                productId = Model.Id, categoryId,
+                                productPrice = Model.Price
+                            })
+
+                        @*<span class="btn btn-success btn-buy-product" style="display: none" productId="@Model.Id" 
+                              categoryId="@categoryId" productPrice="@Model.Price">Купити</span>*@
                     </div>
                 </div>
             </div>
