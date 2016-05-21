@@ -25,6 +25,7 @@ namespace OS.Business.Domain
         public virtual Country CountryProducer { get; set; }
 
         public virtual Currency CurrencyOfThePrice { get; set; }
+        public int CurrencyOfThePriceId { get; set; }
 
         /// <summary>
         /// May content HTML
@@ -38,6 +39,8 @@ namespace OS.Business.Domain
         public virtual List<ProductPhoto> Photos { get; set; }
 
         public decimal Price { get; set; }
+
+        public decimal PriceInTheMainCurrency { get; set; }
 
         /// <summary>
         /// Short description of the Product. Should be as plain text
