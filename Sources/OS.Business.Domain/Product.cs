@@ -24,8 +24,9 @@ namespace OS.Business.Domain
         [Display(Name = "Країна-виробник")]
         public virtual Country CountryProducer { get; set; }
 
+        public int CurrencyIdOfThePrice { get; set; }
+
         public virtual Currency CurrencyOfThePrice { get; set; }
-        public int CurrencyOfThePriceId { get; set; }
 
         /// <summary>
         /// May content HTML

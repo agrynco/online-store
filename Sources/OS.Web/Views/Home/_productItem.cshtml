@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                         <b>
-                            @Model.Price
+                            @Model.PriceInTheMainCurrency
                         </b>
                     </div>
                     <div class="col-xs-12 col-md-6">
@@ -33,11 +33,8 @@
                                 @class = "btn btn-success btn-buy-product",
                                 style = "display: none",
                                 productId = Model.Id, categoryId,
-                                productPrice = Model.Price
+                                productPrice = Model.PriceInTheMainCurrency
                             })
-
-                        @*<span class="btn btn-success btn-buy-product" style="display: none" productId="@Model.Id" 
-                              categoryId="@categoryId" productPrice="@Model.Price">Купити</span>*@
                     </div>
                 </div>
             </div>
