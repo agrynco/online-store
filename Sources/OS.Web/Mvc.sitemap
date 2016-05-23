@@ -14,7 +14,7 @@
         <mvcSiteMapNode title="Замовлення" controller="Orders" action="Create" />
         <mvcSiteMapNode title="Деталі замовлення" controller="Orders" action="OrderDetails" />
         <mvcSiteMapNode title="Категорії товару" controller="ProductCategories" action="Index"/>
-        <mvcSiteMapNode title="Продукти" controller="Products" action="Index"/>
+        <mvcSiteMapNode title="Товари" controller="Products" action="Index"/>
         <mvcSiteMapNode title="Додавання нового товару" controller="Products" action="Create"/>
         <mvcSiteMapNode title="Редагування товару" controller="Products" action="Edit"/>
         <mvcSiteMapNode title="Контакти" controller="ContactInfo" action="Index"/>
@@ -26,6 +26,7 @@
         <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsEditNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Частота перегляду продукції" controller="Statistics" action="ProductViewFrequency"/>
+        <mvcSiteMapNode title="Валюта" controller="Currencies" action="Index"/>
     </mvcSiteMapNode>
 
 </mvcSiteMap>
