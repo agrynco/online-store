@@ -16,9 +16,9 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                Text = "фре"
-            };
+                {
+                    Text = "фре"
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
@@ -33,9 +33,9 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                ParentId = 54
-            };
+                {
+                    ParentId = 54
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
@@ -50,10 +50,10 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                ParentId = 54,
-                Text = "Полотно СМТ JT12"
-            };
+                {
+                    ParentId = 54,
+                    Text = "Полотно СМТ JT12"
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
@@ -68,9 +68,9 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                Publish = true
-            };
+                {
+                    Publish = true
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();

@@ -56,6 +56,12 @@ namespace OS.Web.Models.ProductViewModels
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         public string CountryName { get; set; }
 
+        public List<Currency> Currencies { get; set; }
+
+        [Required]
+        [Display(Name = "Валюта ціни")]
+        public int? CurrencyIdOfThePrice { get; set; }
+
         [Display(Name = "Опис")]
         public string Description { get; set; }
 
@@ -72,6 +78,8 @@ namespace OS.Web.Models.ProductViewModels
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         [RegularExpression(@"^(\d{1,})(\.\d{1,2})?$", ErrorMessage = "Невірний формат")]
         public string Price { get; set; }
+
+        public decimal PriceInTheMainCurrency { get; set; }
 
         [Display(Name = "Завантаженні зображення")]
         public List<ProductPhotoViewModel> ProductPhotoViewModels { get; set; }

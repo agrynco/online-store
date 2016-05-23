@@ -228,8 +228,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Administration\CurrenciesController.cs" />
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\CurrenciesController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
@@ -336,6 +338,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="HtmlTemplates\paginationTemplate.html" />
     <Content Include="RecaptchaNet.Readme.txt" />
+    <Content Include="Scripts\application\Currencies\currenciesListController.js" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.css" />
@@ -2081,6 +2084,8 @@
     <Content Include="Views\Statistics\ProductViewFrequency.cshtml" />
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
     <Content Include="Views\Home\_pager.cshtml" />
+    <Content Include="Views\Currencies\_listHeaders.cshtml" />
+    <None Include="Views\Currencies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

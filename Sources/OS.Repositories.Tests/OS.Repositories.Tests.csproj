@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="BaseDbIntegrationTestFixture.cs" />
     <Compile Include="BaseReadonlyRepositoryTests.cs" />
+    <Compile Include="CurrencyRatesRepositoryReadOnlyTests.cs" />
     <Compile Include="ProductCategoriesRepositoryReadOnlyTests.cs" />
     <Compile Include="ProductsRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

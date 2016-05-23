@@ -92,6 +92,11 @@ namespace OS.Dependency
             Register<IUserHostAddressesRepository, UserHostAddressesRepository>();
             Register<IProductViewingInfosRepository, ProductViewingInfosRepository>();
 
+            Register<ICurrenciesRepository, CurrenciesRepository>();
+            Register<CurrenciesBL>();
+
+            Register<ICurrencyRatesRepository, CurrencyRatesRepository>();
+
             _container.Register<IMailService>(() => new MailService(
                 ApplicationSettings.Instance.MailServiceSettings.Host,
                 ApplicationSettings.Instance.MailServiceSettings.Port,

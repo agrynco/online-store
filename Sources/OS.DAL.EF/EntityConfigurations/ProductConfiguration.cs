@@ -19,9 +19,11 @@ namespace OS.DAL.EF.EntityConfigurations
 
             Property(p => p.Code).IsRequired().HasMaxLength(25).HasColumnAnnotation(IndexAnnotation.AnnotationName,
                 new IndexAnnotation(new IndexAttribute("UK_ProductCode")
-                {
-                    IsUnique = true
-                }));
+                    {
+                        IsUnique = true
+                    }));
+
+            HasRequired(p => p.CurrencyOfThePrice).WithMany().HasForeignKey(p => p.CurrencyIdOfThePrice);
         }
     }
 }
