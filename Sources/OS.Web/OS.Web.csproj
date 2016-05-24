@@ -234,6 +234,7 @@
     <Compile Include="Controllers\Api\CurrenciesController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Models\CurrencyViewModels\CurrencyCreateOrEditViewModel.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
@@ -2085,7 +2086,10 @@
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
     <Content Include="Views\Home\_pager.cshtml" />
     <Content Include="Views\Currencies\_listHeaders.cshtml" />
+    <Content Include="Views\Currencies\Edit.cshtml" />
     <None Include="Views\Currencies\Index.cshtml" />
+    <Content Include="Views\Shared\_editBtnTemplate.cshtml" />
+    <Content Include="Views\Shared\_editorHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

@@ -21,7 +21,11 @@ function CurrenciesListController(parentCategoryId)
                         targets: [7],
                         render: function(data, type, row)
                         {
-                            return "Редагувати";
+                            var $editTemplate = $("#editTeamplate");
+                            var $editDom = $editTemplate.clone();
+                            $editDom.find("a").attr("href", "currencies/edit/" + row.Id);
+
+                            return $editDom.html();
                         }
                     },
                     {
