@@ -24,5 +24,21 @@ namespace OS.Repositories.Tests
             //Asserts
             Assert.That(currencyRate.Id, Is.EqualTo(3));
         }
+
+        [Test]
+        public void GetActualRate_2()
+        {
+            //Arrange
+            ResetDataBase();
+
+            DateTime date = DateTime.Now;
+            ICurrencyRatesRepository currencyRatesRepository = DI.Resolve<ICurrencyRatesRepository>();
+
+            //Act
+            CurrencyRate currencyRate = currencyRatesRepository.GetActualRate(3, date);
+
+            //Asserts
+            Assert.That(currencyRate.Id, Is.EqualTo(1));
+        }
     }
 }

@@ -18,5 +18,25 @@ namespace OS.Business.Logic
         {
             return _currenciesRepository.GetAll(false).ToList();
         }
+
+        public Currency Get(int id)
+        {
+            return _currenciesRepository.GetById(id);
+        }
+
+        public void Update(Currency currency)
+        {
+            _currenciesRepository.Update(currency);
+        }
+
+        public void Add(Currency currency)
+        {
+            _currenciesRepository.Add(currency);
+        }
+
+        public Currency GetMainCurrency()
+        {
+            return _currenciesRepository.GetMainCurrency();
+        }
     }
 }

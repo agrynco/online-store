@@ -8,8 +8,14 @@ using OS.Dependency;
 namespace OS.Repositories.Tests
 {
     [TestFixture]
-    public class ProductsRepositoryReadOnlyTests : BaseReadonlyRepositoryTests
+    public class ProductsRepositoryReadOnlyTests : BaseDbIntegrationTestFixture
     {
+        [SetUp]
+        public void Setup()
+        {
+            ResetDataBase();
+        }
+
         [Test]
         public void GeProducts_ByName()
         {
@@ -77,6 +83,19 @@ namespace OS.Repositories.Tests
 
             //Assert
             Assert.That(products.Count, Is.EqualTo(36));
+        }
+
+        [Test]
+        public void UpdatePricesInMainCurrency()
+        {
+            //Arrange
+            ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
+
+            //Act
+            int count = productsRepository.UpdatePricesInMainCurrency();
+
+            //Assert
+            Assert.That(count, Is.EqualTo(1));
         }
     }
 }

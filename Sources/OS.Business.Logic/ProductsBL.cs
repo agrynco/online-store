@@ -136,6 +136,7 @@ namespace OS.Business.Logic
 
         public void Update(Product product)
         {
+            product.PriceInTheMainCurrency = CalculatePriceInTheMainCurrency(product.CurrencyIdOfThePrice, product.Price);
             _productsRepository.Update(product);
         }
 
