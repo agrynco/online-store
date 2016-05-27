@@ -39,11 +39,20 @@ namespace OS.DAL.EF.Core
             EntityFrameworkDbContext.SaveChanges();
         }
 
-        public virtual void Update(TEntity entity)
+        public void Update(TEntity entity)
+        {
+            Update(entity, true);
+        }
+
+        public virtual void Update(TEntity entity, bool save = true)
         {
             DbSet.Attach(entity);
             EntityFrameworkDbContext.Entry(entity).State = EntityState.Modified;
-            EntityFrameworkDbContext.SaveChanges();
+
+            if (save)
+            {
+                EntityFrameworkDbContext.SaveChanges();
+            }
         }
     }
 }

@@ -5,6 +5,9 @@
     Layout = "_adminLayout.cshtml";
 }
 
+@section breadcrumbs
+{}
+
 @section content
 {
     @{
@@ -12,11 +15,11 @@
     }
 
     @using (Html.BeginForm("Save", currentControllerName, ViewContext.RouteData.Values, FormMethod.Post, new
-    {
-        @class = "form-horizontal",
-        role = "form",
-        enctype = "multipart/form-data"
-    }))
+        {
+            @class = "form-horizontal",
+            role = "form",
+            enctype = "multipart/form-data"
+        }))
     {
         @Html.HiddenFor(m => m.Id)
 
@@ -25,7 +28,7 @@
         <div id="dialog-buttons" class="form-group" style="display: none">
             <label class="col-md-2 control-label"></label>
             <div class="col-md-6">
-                <input type="submit" value="Зберегти" class="btn btn-primary" />
+                <input type="submit" value="Зберегти" class="btn btn-primary"/>
                 <span></span>
                 <input type="reset" class="btn btn-default" value="Відміна" onclick="goBack()">
             </div>
@@ -36,18 +39,19 @@
 @section scripts
 {
     <script type="text/javascript">
-        $().ready(function()
-        {
-            switch ($("#dialog-buttons-placeholder").length)
+        $()
+            .ready(function()
             {
-                case 0:
-                    $("#dialog-buttons").show();
-                    break;
-                case 1:
-                    $("#dialog-buttons").detach().appendTo("#dialog-buttons-placeholder");
-                    $("#dialog-buttons").show();
-            }
-        });
+                switch ($("#dialog-buttons-placeholder").length)
+                {
+                    case 0:
+                        $("#dialog-buttons").show();
+                        break;
+                    case 1:
+                        $("#dialog-buttons").detach().appendTo("#dialog-buttons-placeholder");
+                        $("#dialog-buttons").show();
+                }
+            });
 
         function goBack()
         {
@@ -57,6 +61,6 @@
             }
         }
     </script>
-    
+
     @RenderSection("scripts", false)
 }

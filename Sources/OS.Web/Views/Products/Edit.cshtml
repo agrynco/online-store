@@ -9,40 +9,25 @@
 {
     <div class="row">
         <div class="col-md-12">
-                <h4>
-                    @if (Model.Id.HasValue)
-                    {
-                        <text>
-                            Редагування
-                        </text>
-                    }
-                    else
-                    {
-                        <text>
-                            Створення
-                        </text>
-                    }
-                </h4>
-            <hr/>
-            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+            @Html.Partial("_editorHeader", Model)
 
-                <div class="form-group">
+            <div class="form-group">
                 @Html.LabelFor(m => m.Code, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Code, new
-                           {
-                               @class = "form-control",
-                               maxlength = 25
-                           })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Code, new
+                        {
+                            @class = "form-control",
+                            maxlength = 25
+                        })
                     @Html.ValidationMessageFor(m => m.Code, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.CategorySelectorViewModel.Name, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
+                <div class="col-md-10">
                     @Html.HiddenFor(m => m.CategorySelectorViewModel.Id, new {@class = "form-control"})
-                        <div>
-                            <span id="pathToRoot">
+                    <div>
+                        <span id="pathToRoot">
                                 @if (Model.CategorySelectorViewModel.ParentCategories != null)
                                 {
                                     <text>
@@ -50,68 +35,78 @@
                                     </text>
                                 }
                             </span>
-                        </div>
-                        <div>
+                    </div>
+                    <div>
                         @Html.TextBoxFor(m => m.CategorySelectorViewModel.Name, new {@class = "form-control"})
                         @Html.ValidationMessageFor(m => m.CategorySelectorViewModel.Name, "", new {@class = "text-danger"})
-                        </div>
                     </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Name, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
+                <div class="col-md-10">
                     @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
                     @Html.ValidationMessageFor(m => m.Name, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.ShortDescription, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
+                <div class="col-md-10">
                     @Html.TextBoxFor(m => m.ShortDescription, new {@class = "form-control"})
                     @Html.ValidationMessageFor(m => m.ShortDescription, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Description, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(m => m.Description, new
-                   {
-                       @class = "form-control",
-                       rows = 15
-                   })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Description, new
+                        {
+                            @class = "form-control",
+                            rows = 15
+                        })
                     @Html.ValidationMessageFor(m => m.Description, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.BrandName, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
+                <div class="col-md-10">
                     @Html.TextBoxFor(m => m.BrandName, new {@class = "form-control"})
                     @Html.ValidationMessageFor(m => m.BrandName, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.CountryName, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
+                <div class="col-md-10">
                     @Html.TextBoxFor(m => m.CountryName, new {@class = "form-control"})
                     @Html.ValidationMessageFor(m => m.CountryName, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CurrencyIdOfThePrice, new {@class = "col-md-2 control-label"})
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.CurrencyIdOfThePrice, Model.Currencies.Select(x => new SelectListItem
+                        {
+                            Value = x.Id.ToString(),
+                            Text = x.Name
+                        }), new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.Price, "", new {@class = "text-danger"})
+                </div>
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Price, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
+                <div class="col-md-10">
                     @Html.TextBoxFor(m => m.Price, new {@class = "form-control"})
                     @Html.ValidationMessageFor(m => m.Price, "", new {@class = "text-danger"})
-                    </div>
                 </div>
-                @Html.Partial("_alreadyLoadedPhotos", Model)
-                @Html.Partial("_addFiles", Model)
-                <div class="form-group">
+            </div>
+            @Html.Partial("_alreadyLoadedPhotos", Model)
+            @Html.Partial("_addFiles", Model)
+            <div class="form-group">
                 @Html.LabelFor(m => m.Publish, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10 checkbox">
-                        @Html.EditorFor(m => m.Publish, "bool")
-                    </div>
+                <div class="col-md-10 checkbox">
+                    @Html.EditorFor(m => m.Publish, "bool")
                 </div>
-            
+            </div>
         </div>
     </div>
     <div class="row">
@@ -119,15 +114,15 @@
             <h4>
                 Метадані
             </h4>
-            <hr />
+            <hr/>
 
-            @Html.EditorFor(m => m.MetaDataViewModel.Author, "Product/string")
-            @Html.EditorFor(m => m.MetaDataViewModel.Copyright, "Product/string")
-            @Html.EditorFor(m => m.MetaDataViewModel.Description, "Product/string")
-            @Html.EditorFor(m => m.MetaDataViewModel.Keywords, "Product/string")
+            @Html.EditorFor(m => m.MetaDataViewModel.Author)
+            @Html.EditorFor(m => m.MetaDataViewModel.Copyright)
+            @Html.EditorFor(m => m.MetaDataViewModel.Description)
+            @Html.EditorFor(m => m.MetaDataViewModel.Keywords)
 
-                <div id="dialog-buttons-placeholder">
-                </div>
+            <div id="dialog-buttons-placeholder">
+            </div>
         </div>
     </div>
 }
@@ -143,37 +138,39 @@
             entity_encoding: "raw"
         });
 
-        $("#@Html.IdFor(m => m.BrandName)").autocomplete(
-        {
-            source: "/api/brands/autocomplete",
-            minLength: 1,
-            create: function ()
+        $("#@Html.IdFor(m => m.BrandName)")
+            .autocomplete(
             {
-                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                source: "/api/brands/autocomplete",
+                minLength: 1,
+                create: function()
                 {
-                    return $('<li>')
-                        .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
-                        .appendTo(ul);
-                };
-            }
-        });
+                    $(this).data('ui-autocomplete')._renderItem = function(ul, item)
+                    {
+                        return $('<li>')
+                            .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                            .appendTo(ul);
+                    };
+                }
+            });
 
-        $("#@Html.IdFor(m => m.CountryName)").autocomplete(
-        {
-            source: "/api/countries/autocomplete",
-            minLength: 1,
-            create: function ()
+        $("#@Html.IdFor(m => m.CountryName)")
+            .autocomplete(
             {
-                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                source: "/api/countries/autocomplete",
+                minLength: 1,
+                create: function()
                 {
-                    return $('<li>')
-                        .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
-                        .appendTo(ul);
-                };
-            }
-        });
+                    $(this).data('ui-autocomplete')._renderItem = function(ul, item)
+                    {
+                        return $('<li>')
+                            .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                            .appendTo(ul);
+                    };
+                }
+            });
 
-        var enterTheCategoryCallBack = function (categoryId)
+        var enterTheCategoryCallBack = function(categoryId)
         {
             $("#@Html.IdFor(x => x.CategorySelectorViewModel.Id)").val(categoryId);
         }
@@ -188,9 +185,9 @@
         {
             source: "/api/categories/autocomplete",
             minLength: 1,
-            create: function ()
+            create: function()
             {
-                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item)
                 {
                     var separator = " : ";
 
@@ -209,7 +206,7 @@
                         .appendTo(ul);
                 };
             },
-            select: function (event, ui)
+            select: function(event, ui)
             {
                 $categoryId.val(ui.item.Id);
                 $tbxPrentCategoryName.val(ui.item.Name);

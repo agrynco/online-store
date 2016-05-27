@@ -1,0 +1,32 @@
+﻿@model dynamic
+
+@{
+
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
+}
+
+@section deleteToolBarItem
+{}
+
+@section list
+{
+    <table id="currenciesTable" style="width: 100%">
+        <thead>
+        @Html.Partial("_listHeaders")
+        </thead>
+        <tfoot>
+        @Html.Partial("_listHeaders")
+        </tfoot>
+    </table>
+
+    @Html.Partial("_editBtnTemplate")
+}
+
+@section scripts
+{
+    <script src="~/Scripts/application/Currencies/currenciesListController.js"></script>
+
+    <script type="text/javascript">
+        var currenciesListController = new CurrenciesListController();
+    </script>
+}

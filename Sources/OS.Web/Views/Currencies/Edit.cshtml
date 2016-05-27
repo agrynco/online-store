@@ -1,0 +1,40 @@
+﻿@using OS.Web.Models.CurrencyViewModels
+@model CurrencyCreateOrEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminEditLayout.cshtml";
+}
+
+@section editor
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("_editorHeader", Model)
+
+            @Html.EditorFor(m => m.Name)
+            @Html.EditorFor(m => m.Symbol)
+            @Html.EditorFor(m => m.CodeISO)
+            @Html.EditorFor(m => m.HexSymbol)
+            @Html.EditorFor(m => m.Code, "int")
+            <div class="form-group">
+                @Html.LabelFor(m => m.IsMain, new {@class = "col-md-2 control-label"})
+                <div class="col-md-10 checkbox">
+                    @Html.EditorFor(m => m.IsMain, "bool")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CountryId, new {@class = "col-md-2 control-label"})
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.CountryId, Model.Countries.Select(x => new SelectListItem
+                        {
+                            Value = x.Id.ToString(),
+                            Text = x.Name
+                        }), new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.CountryId, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

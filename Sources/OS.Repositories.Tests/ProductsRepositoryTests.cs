@@ -8,17 +8,23 @@ using OS.Dependency;
 namespace OS.Repositories.Tests
 {
     [TestFixture]
-    public class ProductsRepositoryReadOnlyTests : BaseReadonlyRepositoryTests
+    public class ProductsRepositoryReadOnlyTests : BaseDbIntegrationTestFixture
     {
+        [SetUp]
+        public void Setup()
+        {
+            ResetDataBase();
+        }
+
         [Test]
         public void GeProducts_ByName()
         {
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                Text = "фре"
-            };
+                {
+                    Text = "фре"
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
@@ -33,9 +39,9 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                ParentId = 54
-            };
+                {
+                    ParentId = 54
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
@@ -50,10 +56,10 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                ParentId = 54,
-                Text = "Полотно СМТ JT12"
-            };
+                {
+                    ParentId = 54,
+                    Text = "Полотно СМТ JT12"
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
@@ -68,15 +74,28 @@ namespace OS.Repositories.Tests
             //Arrange
             ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
             ProductsFilter filter = new ProductsFilter
-            {
-                Publish = true
-            };
+                {
+                    Publish = true
+                };
 
             //Act
             List<Product> products = productsRepository.Get(filter).ToList();
 
             //Assert
             Assert.That(products.Count, Is.EqualTo(36));
+        }
+
+        [Test]
+        public void UpdatePricesInMainCurrency()
+        {
+            //Arrange
+            ProductsRepository productsRepository = DI.Resolve<ProductsRepository>();
+
+            //Act
+            int count = productsRepository.UpdatePricesInMainCurrency();
+
+            //Assert
+            Assert.That(count, Is.EqualTo(1));
         }
     }
 }
