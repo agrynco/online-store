@@ -18,7 +18,6 @@ namespace OS.Web.Controllers
         public ActionResult VerticalCategorySelector()
         {
             int? categoryId = null;
-            int? parentCategoryId = null;
             if (TempData["CategoryId"] != null)
             {
                 categoryId = (int) TempData["CategoryId"];
@@ -42,7 +41,7 @@ namespace OS.Web.Controllers
                         Id = productCategory.Id,
                         Name = productCategory.Name,
                         Selected = productCategory.Id == categoryId
-                };
+                    };
                 model.Categories.Add(verticalCategorySelectorItemViewModel);
 
                 AddChildCategories(verticalCategorySelectorItemViewModel.ChildCategories, productCategory, categoryId);
@@ -51,7 +50,7 @@ namespace OS.Web.Controllers
             return PartialView("_verticalCategorySelector", model);
         }
 
-        private void AddChildCategories(List<VerticalCategorySelectorItemViewModel> verticalCategorySelectorItemViewModels, 
+        private void AddChildCategories(List<VerticalCategorySelectorItemViewModel> verticalCategorySelectorItemViewModels,
             ProductCategory parentCategory, int? categoryId)
         {
             PagedProductCategoryListResult childCategories = _productCategoriesBL.SearchByFilter(new ProductCategoriesFilter
@@ -61,15 +60,15 @@ namespace OS.Web.Controllers
                     IncludeDeleted = false,
                     Publish = true
                 });
-                
+
             foreach (ProductCategory productCategory in childCategories.Entities)
             {
                 VerticalCategorySelectorItemViewModel verticalCategorySelectorItemViewModel = new VerticalCategorySelectorItemViewModel
-                {
-                    Id = productCategory.Id,
-                    Name = productCategory.Name,
-                    Selected = productCategory.Id == categoryId
-                };
+                    {
+                        Id = productCategory.Id,
+                        Name = productCategory.Name,
+                        Selected = productCategory.Id == categoryId
+                    };
                 verticalCategorySelectorItemViewModels.Add(verticalCategorySelectorItemViewModel);
 
                 AddChildCategories(verticalCategorySelectorItemViewModel.ChildCategories, productCategory, categoryId);
