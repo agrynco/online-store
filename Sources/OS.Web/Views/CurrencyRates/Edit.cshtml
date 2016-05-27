@@ -1,0 +1,32 @@
+﻿@using OS.Web.Models.CurrencyRateViewModels
+@model CurrencyRateCreateOrEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminEditLayout.cshtml";
+}
+
+@section editor
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("_editorHeader", Model)
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CurrencyId, new {@class = "col-md-2 control-label"})
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.CurrencyId, Model.Currencies.Select(x => new SelectListItem
+                        {
+                            Value = x.Id.ToString(),
+                            Text = x.Name
+                        }), new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.CurrencyId, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+            @Html.EditorFor(m => m.Rate, "decimal")
+        </div>
+    </div>
+}
+
+

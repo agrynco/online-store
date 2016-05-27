@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CurrenciesBL.cs" />
+    <Compile Include="CurrencyRatesBL.cs" />
     <Compile Include="EmailTemplatesBL.cs" />
     <Compile Include="Exceptions\CanNotDeletePermanentlyNotMarkedToDeleteException.cs" />
     <Compile Include="HtmlContentsBL.cs" />
