@@ -92,7 +92,7 @@ namespace OS.Business.Logic
                         OrderId = order.Id,
                         PriceAtTheTimeOfPurchase = product.PriceInTheMainCurrency
                     });
-                order.TotalAmount += product.Price * addOrderedProductQuery.Quantity;
+                order.TotalAmount += product.PriceInTheMainCurrency * addOrderedProductQuery.Quantity;
             }
 
             _ordersRepository.Update(order);
