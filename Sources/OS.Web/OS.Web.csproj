@@ -230,11 +230,14 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="Controllers\Administration\CurrenciesController.cs" />
+    <Compile Include="Controllers\Administration\CurrencyRatesController.cs" />
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\CurrenciesController.cs" />
+    <Compile Include="Controllers\Api\CurrencyRatesController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Models\CurrencyRateViewModels\CurrencyRateCreateOrEditViewModel.cs" />
     <Compile Include="Models\CurrencyViewModels\CurrencyCreateOrEditViewModel.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
@@ -341,6 +344,7 @@
     <EmbeddedResource Include="HtmlTemplates\paginationTemplate.html" />
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\application\Currencies\currenciesListController.js" />
+    <Content Include="Scripts\application\CurrencyRates\currencRatesListController.js" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.css" />
@@ -2092,6 +2096,10 @@
     <Content Include="Views\Shared\_editorHeader.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\int.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\string.cshtml" />
+    <Content Include="Views\CurrencyRates\Index.cshtml" />
+    <Content Include="Views\CurrencyRates\_listHeaders.cshtml" />
+    <Content Include="Views\CurrencyRates\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\decimal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

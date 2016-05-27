@@ -27,6 +27,7 @@
         <mvcSiteMapNode title="Контакти" dynamicNodeProvider="OS.Web.SiteMapNodeProviders.HtmlContentNodeProviders.HtmlContactsEditNodeProvider, OS.Web"/>
         <mvcSiteMapNode title="Частота перегляду продукції" controller="Statistics" action="ProductViewFrequency"/>
         <mvcSiteMapNode title="Валюта" key="Currencies" controller="Currencies" action="Index"/>
+        <mvcSiteMapNode title="Курс валюти" controller="CurrencyRates" action="Index"/>
     </mvcSiteMapNode>
 
 </mvcSiteMap>

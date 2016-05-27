@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_adminListLayout.cshtml";
+}
+
+@section deleteToolBarItem
+{}
+
+@section list
+{
+    <table id="currencyRatesTable" style="width: 100%">
+        <thead>
+        @Html.Partial("_listHeaders")
+        </thead>
+        <tfoot>
+        @Html.Partial("_listHeaders")
+        </tfoot>
+    </table>
+
+    @Html.Partial("_editBtnTemplate")
+}
+
+@section scripts
+{
+    <script src="~/Scripts/application/CurrencyRates/currencRatesListController.js"></script>
+
+    <script type="text/javascript">
+        var currencRatesListController = new CurrencRatesListController();
+    </script>
+}
