@@ -88,6 +88,7 @@ namespace OS.Web.Controllers.Administration
         public ActionResult Create(int? categoryId)
         {
             ProductCreateOrEditViewModel model = new ProductCreateOrEditViewModel(categoryId);
+            model.Currencies = _currenciesBL.GetAll();
 
             if (categoryId.HasValue)
             {
