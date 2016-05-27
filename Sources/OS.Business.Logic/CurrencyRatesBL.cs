@@ -9,10 +9,12 @@ namespace OS.Business.Logic
     public class CurrencyRatesBL
     {
         private readonly ICurrencyRatesRepository _currencyRatesRepository;
+        private readonly IProductsRepository _productsRepository;
 
-        public CurrencyRatesBL(ICurrencyRatesRepository currencyRatesRepository)
+        public CurrencyRatesBL(ICurrencyRatesRepository currencyRatesRepository, IProductsRepository productsRepository)
         {
             _currencyRatesRepository = currencyRatesRepository;
+            _productsRepository = productsRepository;
         }
 
         public List<CurrencyRate> GetAll()
@@ -28,13 +30,17 @@ namespace OS.Business.Logic
         public CurrencyRate Update(CurrencyRate currencyRate)
         {
             _currencyRatesRepository.Update(currencyRate);
+            _productsRepository.UpdatePricesInMainCurrency();
             return currencyRate;
         }
 
         public CurrencyRate Add(CurrencyRate currencyRate)
         {
             currencyRate.DateOfRate = DateTime.Now;
-            return _currencyRatesRepository.Add(currencyRate);
+            CurrencyRate rate = _currencyRatesRepository.Add(currencyRate);
+            _productsRepository.UpdatePricesInMainCurrency();
+
+            return rate;
         }
     }
 }
