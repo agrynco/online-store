@@ -10,5 +10,6 @@ namespace OS.DAL.Abstract.Core
         void Delete(params TEntityId[] id);
         void Delete(params TEntity[] entities);
         void Update(TEntity entity);
+        void Update(TEntity entity, bool save);
     }
 }

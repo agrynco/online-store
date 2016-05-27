@@ -14,9 +14,9 @@ namespace OS.DAL.EF.Repositories
         public CurrencyRate GetActualRate(int currencyId, DateTime date)
         {
             return (from currencyRate in DbSet
-                where currencyRate.CurrencyId == currencyId && currencyRate.DateOfRate < date
-                orderby currencyRate.DateOfRate descending
-                select currencyRate).FirstOrDefault();
+                where currencyRate.DateOfRate ==
+                      (from currencyRate1 in DbSet where currencyRate1.DateOfRate <= date && currencyRate1.CurrencyId == currencyId select currencyRate1).Max(currencyRate1 => currencyRate1.DateOfRate)
+                select currencyRate).SingleOrDefault();
         }
     }
 }

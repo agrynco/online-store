@@ -11,16 +11,29 @@ namespace OS.Business.Logic.Tests
     public class CountriesBLTests
     {
         [Test]
+        public void GetOnlineCountries_ShouldReturn246()
+        {
+            //Arrange
+            CountriesBL countriesBL = new CountriesBL(null);
+
+            //Act
+            List<Country> onlineCountries = countriesBL.GetOnlineCountries();
+
+            //Assert
+            Assert.That(onlineCountries.Count, Is.EqualTo(246));
+        }
+
+        [Test]
         public void UpdateCountries_AllZerro()
         {
             //Arrange
             var countriesRepository = new Mock<ICountriesRepository>();
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>().AsQueryable());
-            countriesRepository.Setup(r => r.Update(It.IsAny<Country>())).Callback((Country country) => {});
-            countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => {});
-            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => {});
+            countriesRepository.Setup(r => r.Update(It.IsAny<Country>())).Callback((Country country) => { });
+            countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => { });
+            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => { });
             countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>().AsQueryable());
-            
+
             CountriesBL countriesBL = new CountriesBL(countriesRepository.Object);
 
             //Act
@@ -45,7 +58,7 @@ namespace OS.Business.Logic.Tests
             CountriesBL countriesBL = new CountriesBL(countriesRepository.Object);
 
             //Act
-            UpdateCountriesResult updateCountriesResult = countriesBL.UpdateCountries(new List<Country>(new []
+            UpdateCountriesResult updateCountriesResult = countriesBL.UpdateCountries(new List<Country>(new[]
                 {
                     new Country
                         {
@@ -56,37 +69,6 @@ namespace OS.Business.Logic.Tests
             //Assert
             Assert.That(updateCountriesResult.Created.Count, Is.EqualTo(1));
             Assert.That(updateCountriesResult.Updated.Count, Is.EqualTo(0));
-            Assert.That(updateCountriesResult.Deleted.Count, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void UpdateCountries_OneToUpdate()
-        {
-            //Arrange
-            var countriesRepository = new Mock<ICountriesRepository>();
-            countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => { });
-            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => { });
-            countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>(new[]
-                {
-                    new Country
-                        {
-                            EnglishName = "Some Country"
-                        }
-                }).AsQueryable());
-            CountriesBL countriesBL = new CountriesBL(countriesRepository.Object);
-
-            //Act
-            UpdateCountriesResult updateCountriesResult = countriesBL.UpdateCountries(new List<Country>(new []
-                {
-                    new Country
-                        {
-                            EnglishName = "Some Country"
-                        }
-                }));
-
-            //Assert
-            Assert.That(updateCountriesResult.Created.Count, Is.EqualTo(0));
-            Assert.That(updateCountriesResult.Updated.Count, Is.EqualTo(1));
             Assert.That(updateCountriesResult.Deleted.Count, Is.EqualTo(0));
         }
 
@@ -114,16 +96,34 @@ namespace OS.Business.Logic.Tests
         }
 
         [Test]
-        public void GetOnlineCountries_ShouldReturn246()
+        public void UpdateCountries_OneToUpdate()
         {
             //Arrange
-            CountriesBL countriesBL = new CountriesBL(null);
+            var countriesRepository = new Mock<ICountriesRepository>();
+            countriesRepository.Setup(r => r.Add(It.IsAny<Country>())).Callback((Country country) => { });
+            countriesRepository.Setup(r => r.Delete(It.IsAny<Country>())).Callback((Country[] countries) => { });
+            countriesRepository.Setup(r => r.GetAll()).Returns(new List<Country>(new[]
+                {
+                    new Country
+                        {
+                            EnglishName = "Some Country"
+                        }
+                }).AsQueryable());
+            CountriesBL countriesBL = new CountriesBL(countriesRepository.Object);
 
             //Act
-            List<Country> onlineCountries = countriesBL.GetOnlineCountries();
+            UpdateCountriesResult updateCountriesResult = countriesBL.UpdateCountries(new List<Country>(new[]
+                {
+                    new Country
+                        {
+                            EnglishName = "Some Country"
+                        }
+                }));
 
             //Assert
-            Assert.That(onlineCountries.Count, Is.EqualTo(246));
+            Assert.That(updateCountriesResult.Created.Count, Is.EqualTo(0));
+            Assert.That(updateCountriesResult.Updated.Count, Is.EqualTo(1));
+            Assert.That(updateCountriesResult.Deleted.Count, Is.EqualTo(0));
         }
     }
 }

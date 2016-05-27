@@ -53,6 +53,11 @@ namespace OS.Business.Logic
             return CalculatePriceInTheMainCurrency(currencyIdOfThePrice, price, DateTime.Now);
         }
 
+        public void UpdatePricesInMainCurrency()
+        {
+            _productsRepository.UpdatePricesInMainCurrency();
+        }
+
         public decimal CalculatePriceInTheMainCurrency(int currencyIdOfThePrice, decimal price, DateTime date)
         {
             Currency mainCurrency = _currenciesRepository.GetMainCurrency();

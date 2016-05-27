@@ -2081,7 +2081,6 @@
     <Content Include="Views\HtmlContents\Edit.cshtml" />
     <Content Include="Views\HtmlContents\Index.cshtml" />
     <Content Include="Views\Shared\_commonMenuItems.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
     <Content Include="Views\Statistics\ProductViewFrequency.cshtml" />
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
     <Content Include="Views\Home\_pager.cshtml" />
@@ -2090,10 +2089,13 @@
     <None Include="Views\Currencies\Index.cshtml" />
     <Content Include="Views\Shared\_editBtnTemplate.cshtml" />
     <Content Include="Views\Shared\_editorHeader.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\int.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\string.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\EditorTemplates\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
