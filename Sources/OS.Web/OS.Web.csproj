@@ -228,6 +228,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationContext.cs" />
     <Compile Include="Controllers\Administration\CurrenciesController.cs" />
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />

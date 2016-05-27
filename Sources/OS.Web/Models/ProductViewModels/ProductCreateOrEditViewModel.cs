@@ -74,7 +74,7 @@ namespace OS.Web.Models.ProductViewModels
         [Display(Name = "Зображення для завантаження")]
         public List<HttpPostedFileBase> PostedProductPhotos { get; set; }
 
-        [Display(Name = "Ціна (грн.)")]
+        [Display(Name = "Ціна")]
         [Required(ErrorMessage = "Поле {0} обов'язкове")]
         [RegularExpression(@"^(\d{1,})(\.\d{1,2})?$", ErrorMessage = "Невірний формат")]
         public string Price { get; set; }

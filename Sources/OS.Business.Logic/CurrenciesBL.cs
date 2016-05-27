@@ -33,5 +33,10 @@ namespace OS.Business.Logic
         {
             _currenciesRepository.Add(currency);
         }
+
+        public Currency GetMainCurrency()
+        {
+            return _currenciesRepository.GetMainCurrency();
+        }
     }
 }

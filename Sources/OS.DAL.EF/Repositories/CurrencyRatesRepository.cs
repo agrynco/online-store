@@ -15,7 +15,9 @@ namespace OS.DAL.EF.Repositories
         {
             return (from currencyRate in DbSet
                 where currencyRate.DateOfRate ==
-                      (from currencyRate1 in DbSet where currencyRate1.DateOfRate <= date && currencyRate1.CurrencyId == currencyId select currencyRate1).Max(currencyRate1 => currencyRate1.DateOfRate)
+                      (from maxCurrencyRate in DbSet
+                          where currencyRate.CurrencyId == currencyId && maxCurrencyRate.DateOfRate <= date
+                          select maxCurrencyRate).Max(maxCurrencyRate => maxCurrencyRate.DateOfRate)
                 select currencyRate).SingleOrDefault();
         }
     }
