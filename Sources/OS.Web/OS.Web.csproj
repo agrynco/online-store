@@ -2091,7 +2091,6 @@
     <Content Include="Views\Home\_pager.cshtml" />
     <Content Include="Views\Currencies\_listHeaders.cshtml" />
     <Content Include="Views\Currencies\Edit.cshtml" />
-    <None Include="Views\Currencies\Index.cshtml" />
     <Content Include="Views\Shared\_editBtnTemplate.cshtml" />
     <Content Include="Views\Shared\_editorHeader.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\int.cshtml" />
@@ -2100,6 +2099,7 @@
     <Content Include="Views\CurrencyRates\_listHeaders.cshtml" />
     <Content Include="Views\CurrencyRates\Edit.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\decimal.cshtml" />
+    <Content Include="Views\Currencies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
