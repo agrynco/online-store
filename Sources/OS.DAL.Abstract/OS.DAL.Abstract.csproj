@@ -61,6 +61,8 @@
     <Compile Include="Core\IReadOnlyRepository.cs" />
     <Compile Include="Exceptions\DALException.cs" />
     <Compile Include="Exceptions\ThereIsNoEntityException.cs" />
+    <Compile Include="ICurrenciesRepository.cs" />
+    <Compile Include="ICurrencyRatesRepository.cs" />
     <Compile Include="IHtmlContentsRepository.cs" />
     <Compile Include="IProductMetaDataRepository.cs" />
     <Compile Include="IProductViewingInfosRepository.cs" />

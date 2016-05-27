@@ -27,6 +27,8 @@ namespace OS.DAL.EF
         public DbSet<Content> Contents { get; set; }
         public DbSet<ContentType> ContentTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
+        public DbSet<CurrencyRate> CurrencyRates { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<HtmlContent> HtmlContents { get; set; }
         public DbSet<Order> Orders { get; set; }

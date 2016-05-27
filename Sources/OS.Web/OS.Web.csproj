@@ -228,10 +228,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationContext.cs" />
+    <Compile Include="Controllers\Administration\CurrenciesController.cs" />
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\CurrenciesController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Models\CurrencyViewModels\CurrencyCreateOrEditViewModel.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
@@ -336,6 +340,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="HtmlTemplates\paginationTemplate.html" />
     <Content Include="RecaptchaNet.Readme.txt" />
+    <Content Include="Scripts\application\Currencies\currenciesListController.js" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.css" />
@@ -2077,14 +2082,21 @@
     <Content Include="Views\HtmlContents\Edit.cshtml" />
     <Content Include="Views\HtmlContents\Index.cshtml" />
     <Content Include="Views\Shared\_commonMenuItems.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Product\string.cshtml" />
     <Content Include="Views\Statistics\ProductViewFrequency.cshtml" />
     <Content Include="Views\Shared\_statisticsAdminLayout.cshtml" />
     <Content Include="Views\Home\_pager.cshtml" />
+    <Content Include="Views\Currencies\_listHeaders.cshtml" />
+    <Content Include="Views\Currencies\Edit.cshtml" />
+    <None Include="Views\Currencies\Index.cshtml" />
+    <Content Include="Views\Shared\_editBtnTemplate.cshtml" />
+    <Content Include="Views\Shared\_editorHeader.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\int.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\string.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\EditorTemplates\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

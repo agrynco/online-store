@@ -10,7 +10,9 @@ namespace OS.DAL.Abstract
     {
         IQueryable<Product> Get(ProductsFilter filter);
         IQueryable<Product> GetByIds(IEnumerable<int> ids);
+
         Product GetByCode(string code);
         Product GetByName(string name);
+        int UpdatePricesInMainCurrency();
     }
 }

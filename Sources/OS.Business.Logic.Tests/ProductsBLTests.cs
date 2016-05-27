@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using OS.Dependency;
 using OS.Repositories.Tests;
@@ -8,6 +9,34 @@ namespace OS.Business.Logic.Tests
     [TestFixture]
     public class ProductsBLTests : BaseDbIntegrationTestFixture
     {
+        [Test]
+        public void CalculatePriceInTheMainCurrency()
+        {
+            //Arrange
+            ResetDataBase();
+            ProductsBL productsBL = DI.Resolve<ProductsBL>();
+
+            //Act
+            decimal actual = productsBL.CalculatePriceInTheMainCurrency(3, 100, new DateTime(2016, 5, 5));
+
+            //Assert
+            Assert.That(actual, Is.EqualTo(2564));
+        }
+
+        [Test]
+        public void CalculatePriceInTheMainCurrency_WithMainCurrency()
+        {
+            //Arrange
+            ResetDataBase();
+            ProductsBL productsBL = DI.Resolve<ProductsBL>();
+
+            //Act
+            decimal actual = productsBL.CalculatePriceInTheMainCurrency(1, 100);
+
+            //Assert
+            Assert.That(actual, Is.EqualTo(100));
+        }
+
         [Test]
         public void Delete_ShouldUnassignFromCtegories()
         {

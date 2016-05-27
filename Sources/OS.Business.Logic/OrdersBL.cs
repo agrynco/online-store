@@ -36,12 +36,12 @@ namespace OS.Business.Logic
     public class OrdersBL
     {
         private readonly IMailService _mailService;
-        private readonly IUsersRepository _usersRepository;
         private readonly IOrderedProductsRepository _orderedProductsRepository;
         private readonly IOrdersRepository _ordersRepository;
         private readonly IOrderStatusHistoryItemsRepository _orderStatusHistoryItemsRepository;
         private readonly IPersonsRepository _personsRepository;
         private readonly IProductsRepository _productsRepository;
+        private readonly IUsersRepository _usersRepository;
 
         public OrdersBL(IPersonsRepository personsRepository, IOrdersRepository ordersRepository,
             IOrderStatusHistoryItemsRepository orderStatusHistoryItemsRepository,
@@ -90,7 +90,7 @@ namespace OS.Business.Logic
                         Product = product,
                         Quantity = addOrderedProductQuery.Quantity,
                         OrderId = order.Id,
-                        PriceAtTheTimeOfPurchase = product.Price
+                        PriceAtTheTimeOfPurchase = product.PriceInTheMainCurrency
                     });
                 order.TotalAmount += product.Price * addOrderedProductQuery.Quantity;
             }

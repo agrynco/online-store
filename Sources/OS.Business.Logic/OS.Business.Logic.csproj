@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrenciesBL.cs" />
     <Compile Include="EmailTemplatesBL.cs" />
     <Compile Include="Exceptions\CanNotDeletePermanentlyNotMarkedToDeleteException.cs" />
     <Compile Include="HtmlContentsBL.cs" />

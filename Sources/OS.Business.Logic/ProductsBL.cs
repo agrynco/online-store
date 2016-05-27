@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Identity;
@@ -9,21 +10,26 @@ namespace OS.Business.Logic
 {
     public class ProductsBL
     {
-        private readonly IProductsRepository _productsRepository;
+        private readonly ICurrenciesRepository _currenciesRepository;
+        private readonly ICurrencyRatesRepository _currencyRatesRepository;
         private readonly IProductPhotosRepository _productPhotosRepository;
-        private readonly IUserHostAddressesRepository _userHostAddressesRepository;
+        private readonly IProductsRepository _productsRepository;
         private readonly IProductViewingInfosRepository _productViewingInfosRepository;
+        private readonly IUserHostAddressesRepository _userHostAddressesRepository;
         private readonly IUserStore<ApplicationUser> _usersStore;
 
-        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository, 
+        public ProductsBL(IProductsRepository productsRepository, IProductPhotosRepository productPhotosRepository,
             IUserHostAddressesRepository userHostAddressesRepository, IProductViewingInfosRepository productViewingInfosRepository,
-            IUserStore<ApplicationUser> usersStore)
+            IUserStore<ApplicationUser> usersStore, ICurrenciesRepository currenciesRepository,
+            ICurrencyRatesRepository currencyRatesRepository)
         {
             _productsRepository = productsRepository;
             _productPhotosRepository = productPhotosRepository;
             _userHostAddressesRepository = userHostAddressesRepository;
             _productViewingInfosRepository = productViewingInfosRepository;
             _usersStore = usersStore;
+            _currenciesRepository = currenciesRepository;
+            _currencyRatesRepository = currencyRatesRepository;
         }
 
         public PagedProductListResult Get(ProductsFilter filter)
@@ -40,6 +46,23 @@ namespace OS.Business.Logic
         public Product GetByName(string name)
         {
             return _productsRepository.GetByName(name);
+        }
+
+        public decimal CalculatePriceInTheMainCurrency(int currencyIdOfThePrice, decimal price)
+        {
+            return CalculatePriceInTheMainCurrency(currencyIdOfThePrice, price, DateTime.Now);
+        }
+
+        public decimal CalculatePriceInTheMainCurrency(int currencyIdOfThePrice, decimal price, DateTime date)
+        {
+            Currency mainCurrency = _currenciesRepository.GetMainCurrency();
+            if (currencyIdOfThePrice == mainCurrency.Id)
+            {
+                return price;
+            }
+
+            CurrencyRate currencyRate = _currencyRatesRepository.GetActualRate(currencyIdOfThePrice, date);
+            return currencyRate.Rate * price;
         }
 
         public void DeletePermanently(int productId)
@@ -93,7 +116,7 @@ namespace OS.Business.Logic
                         ProductId = id,
                         Count = 1,
                         User = applicationUser
-                };
+                    };
 
                 _productViewingInfosRepository.Add(productViewingInfo);
             }
@@ -109,10 +132,11 @@ namespace OS.Business.Logic
         public List<Product> GetByIds(IEnumerable<int> ids)
         {
             return _productsRepository.GetByIds(ids).ToList();
-        } 
+        }
 
         public void Update(Product product)
         {
+            product.PriceInTheMainCurrency = CalculatePriceInTheMainCurrency(product.CurrencyIdOfThePrice, product.Price);
             _productsRepository.Update(product);
         }
 

@@ -6,11 +6,9 @@ using OS.DAL.EF.Core;
 
 namespace OS.DAL.EF.Repositories
 {
-    
-
     public class OnlineStoreCrudRepository<TEntity, TEntityId> : BaseCRUDRepository<EntityFrameworkDbContext, TEntity, TEntityId>,
-        IOnlineStoreCRUDRepository<TEntity, TEntityId> 
-        where TEntity: class, IEntity<TEntityId>
+        IOnlineStoreCRUDRepository<TEntity, TEntityId>
+        where TEntity : class, IEntity<TEntityId>
     {
         public OnlineStoreCrudRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
@@ -48,14 +46,14 @@ namespace OS.DAL.EF.Repositories
             return base.GetAll().Where(entity => includeDeleted || entity.IsDeleted == false);
         }
 
-        public override void Update(TEntity entity)
+        public override void Update(TEntity entity, bool save = true)
         {
             entity.Updated = DateTime.UtcNow;
-            base.Update(entity);
+            base.Update(entity, save);
         }
     }
 
-    public class OnlineStoreCrudRepository<TEntity> : OnlineStoreCrudRepository<TEntity, int> 
+    public class OnlineStoreCrudRepository<TEntity> : OnlineStoreCrudRepository<TEntity, int>
         where TEntity : Entity<int>
     {
         public OnlineStoreCrudRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)

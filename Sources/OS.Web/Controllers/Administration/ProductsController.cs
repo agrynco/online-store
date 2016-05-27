@@ -11,16 +11,18 @@ namespace OS.Web.Controllers.Administration
 {
     public class ProductsController : BaseAdminController
     {
-        private readonly ProductCategoriesBL _productCategoriesBL;
-        private readonly ProductsBL _productsBL;
         private readonly BrandsBL _brandsBL;
-        private readonly CountriesBL _countriesBL;
         private readonly ContentContentTypesBL _contentContentTypesBL;
+        private readonly CountriesBL _countriesBL;
+        private readonly CurrenciesBL _currenciesBL;
+        private readonly ProductCategoriesBL _productCategoriesBL;
         private readonly ProductPhotosBL _productPhotosBL;
+        private readonly ProductsBL _productsBL;
 
         public ProductsController(ProductCategoriesBL productCategoriesBL,
             ProductsBL productsBL, BrandsBL brandsBL, CountriesBL countriesBL,
-            ContentContentTypesBL contentContentTypesBL, ProductPhotosBL productPhotosBL)
+            ContentContentTypesBL contentContentTypesBL, ProductPhotosBL productPhotosBL,
+            CurrenciesBL currenciesBL)
         {
             _productCategoriesBL = productCategoriesBL;
             _productsBL = productsBL;
@@ -28,6 +30,7 @@ namespace OS.Web.Controllers.Administration
             _countriesBL = countriesBL;
             _contentContentTypesBL = contentContentTypesBL;
             _productPhotosBL = productPhotosBL;
+            _currenciesBL = currenciesBL;
         }
 
         public ActionResult Index(ProductsFilterViewModel filter)
@@ -113,7 +116,10 @@ namespace OS.Web.Controllers.Administration
                     CountryName = product.CountryProducer.Name,
                     Price = product.Price.ToString(),
                     Publish = product.Publish,
-                    Code = product.Code
+                    Code = product.Code,
+                    Currencies = _currenciesBL.GetAll(),
+                    CurrencyIdOfThePrice = product.CurrencyIdOfThePrice,
+                    PriceInTheMainCurrency = product.PriceInTheMainCurrency
                 };
 
             if (product.MetaData != null)
@@ -187,10 +193,13 @@ namespace OS.Web.Controllers.Administration
                 target.Name = model.Name;
                 target.Description = model.Description;
                 target.ShortDescription = model.ShortDescription;
-                target.Price = decimal.Parse(model.Price);
+                decimal price = decimal.Parse(model.Price);
+                target.Price = price;
                 target.Publish = model.Publish;
                 target.Code = model.Code;
-                
+                target.PriceInTheMainCurrency = _productsBL.CalculatePriceInTheMainCurrency(model.CurrencyIdOfThePrice.Value, price);
+                target.CurrencyIdOfThePrice = model.CurrencyIdOfThePrice.Value;
+
                 ProcessBrand(model, target);
                 ProcessCountry(model, target);
                 ProcessPhotos(model, target);
@@ -213,7 +222,8 @@ namespace OS.Web.Controllers.Administration
             }
             if (model.CategorySelectorViewModel.Id.HasValue)
             {
-                model.CategorySelectorViewModel.ParentCategories = _productCategoriesBL.GetParentCategories(model.CategorySelectorViewModel.Id.Value).Select(parentCategory => parentCategory.Name).ToArray();
+                model.CategorySelectorViewModel.ParentCategories =
+                    _productCategoriesBL.GetParentCategories(model.CategorySelectorViewModel.Id.Value).Select(parentCategory => parentCategory.Name).ToArray();
             }
 
             return View("Edit", model);
