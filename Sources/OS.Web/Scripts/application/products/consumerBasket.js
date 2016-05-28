@@ -56,7 +56,7 @@ function ConsumerBasket()
         {
             result = result + product.price * product.quantity;
         });
-        return result;
+        return result.toFixed(2);
     }
 
     var updateUI = function()
