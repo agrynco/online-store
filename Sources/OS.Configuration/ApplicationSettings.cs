@@ -33,7 +33,7 @@ namespace OS.Configuration
 
             public int DefaultPageSize
             {
-                get { return SettingsManager.Instance.GetAppSetting("DefaultPageSize", 50); }
+                get { return SettingsManager.Instance.GetAppSetting("DefaultPageSize", 48); }
             }
 
             public ApplicationEnvironment Environment
