@@ -9,18 +9,18 @@
                 ajax: "/api/currencyrates",
                 columns: [
                     { data: "Id" },
-                    { data: "Name" },
-                    { data: "Symbol" },
+                    { data: "Currency" },
                     { data: "DateOfRate" },
-                    { data: "Rate" },
+                    { data: "Rate" }
                 ],
+                order: [[2, "desc"]],
                 columnDefs: [
                     {
                         targets: [1],
                         render: function(data, type, row)
                         {
-                            return row.Name + " (" + row.Symbol + ")";
-                        },
+                            return data;
+                        }
                     },
                     {
                         targets: [2],
@@ -29,17 +29,18 @@
                             moment.locale("uk");
                             var momentDate = moment(row.DateOfRate);
                             return momentDate.format("l") + " " + momentDate.format("LT");
-                        },
+                        }
                     },
                     {
                         targets: [3],
                         render: function(data, type, row)
                         {
                             return row.Rate;
-                        },
+                        }
                     },
                     {
                         targets: [4],
+                        orderable: false,
                         render: function(data, type, row)
                         {
                             var $editTemplate = $("#editTeamplate");
@@ -51,6 +52,7 @@
                     },
                     {
                         targets: [5],
+                        orderable: false,
                         render: function(data, type, row)
                         {
                             return "Видалити";

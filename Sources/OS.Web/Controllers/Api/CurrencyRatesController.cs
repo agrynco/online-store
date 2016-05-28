@@ -25,8 +25,7 @@ namespace OS.Web.Controllers.Api
                     data = currencyRates.Select(currencyRate => new
                         {
                             currencyRate.Id,
-                            currencyRate.Currency.Name,
-                            currencyRate.Currency.Symbol,
+                            Currency = $"{currencyRate.Currency.Name} ({currencyRate.Currency.Symbol})",
                             currencyRate.DateOfRate,
                             currencyRate.Rate
                         })
