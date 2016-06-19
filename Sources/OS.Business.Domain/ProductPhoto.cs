@@ -6,5 +6,7 @@ namespace OS.Business.Domain
     public class ProductPhoto : File
     {
         public bool IsMain { get; set; }
+
+        public File WaterMarked { get; set; }
     }
 }

@@ -78,6 +78,7 @@
     <Compile Include="CountriesBLTests.cs" />
     <Compile Include="MailServiceTests.cs" />
     <Compile Include="ProductCategoriesBLTests.cs" />
+    <Compile Include="ProductPhotosBLTests.cs" />
     <Compile Include="ProductsBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

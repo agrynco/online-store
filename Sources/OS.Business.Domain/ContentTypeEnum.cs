@@ -3,6 +3,6 @@
     public enum ContentTypeEnum
     {
         JPEG = 1,
-        PNG
+        PNG = 2,
     }
 }

@@ -235,6 +235,7 @@
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\CurrenciesController.cs" />
     <Compile Include="Controllers\Api\CurrencyRatesController.cs" />
+    <Compile Include="Controllers\Api\ProductPhotosController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Models\CurrencyRateViewModels\CurrencyRateCreateOrEditViewModel.cs" />
