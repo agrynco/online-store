@@ -46,7 +46,7 @@ namespace OS.Business.Logic
 
                 Bitmap sourceImage = (Bitmap) Image.FromStream(memoryStream);
 
-                using (Font font = new Font("Arial", 24, FontStyle.Bold))
+                using (Font font = new Font("Arial", 14, FontStyle.Bold))
                 {
                     using (Graphics destination = Graphics.FromImage(sourceImage))
                     {
@@ -58,7 +58,7 @@ namespace OS.Business.Logic
 
                         SizeF size = destination.MeasureString(waterMarkText, font);
                         PointF drawPoint = new PointF(-size.Width / 2f, -size.Height / 2f);
-                        destination.DrawString("Hello world", font, Brushes.LawnGreen, drawPoint);
+                        destination.DrawString(waterMarkText, font, Brushes.LawnGreen, drawPoint);
                     }
                 }
 
@@ -76,6 +76,9 @@ namespace OS.Business.Logic
                     productPhoto.WaterMarked.FileName = productPhoto.FileName;
                 }
             }
+
+            _productPhotosRepository.Update(productPhoto);
+
             return productPhoto;
         }
 
