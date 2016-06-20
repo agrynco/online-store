@@ -368,6 +368,7 @@
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\application\Currencies\currenciesListController.js" />
     <Content Include="Scripts\application\CurrencyRates\currencRatesListController.js" />
+    <Content Include="Scripts\application\products\publicList.js" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap2-toggle.css" />
