@@ -130,9 +130,9 @@ body
 
 .os-item
 {
-    float: none !important;
+    float: none;
     display: inline-block;
-    vertical-align: top;
+    //vertical-align: top;
 }
 
 .ui-autocomplete
