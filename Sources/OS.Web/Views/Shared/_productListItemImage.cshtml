@@ -2,6 +2,8 @@
 @model Product
 
 @{
+
+
     string productImageSrc = "http://placehold.it/400x250/000/fff";
 
     ProductPhoto mainPhoto = Model.Photos.SingleOrDefault(x => x.IsMain);
@@ -17,4 +19,4 @@
     }
 }
 
-<img class="group list-group-image" src="@productImageSrc" width="160" height="100" alt=""/>
+<img class="cbp-vm-image" src="@productImageSrc" alt=""/>
