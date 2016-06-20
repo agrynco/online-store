@@ -4,6 +4,10 @@
 
 @{
     Layout = "../Shared/_publicLayout.cshtml";
+
+    <link href="/Content/ViewModeSwitch/css/default.css" rel="stylesheet" />
+    <link href="/Content/ViewModeSwitch/css/component.css" rel="stylesheet" />
+    <script src="/Content/ViewModeSwitch/js/modernizr.custom.js"></script>
 }
 
 @section breadcrumbs
@@ -18,10 +22,10 @@
             {
                 <li>
                     @Html.ActionLink(Model.ParentCategories[i].Name, "Index", new
-                        {
-                            searchdTerm = Model.PaginationFilterViewModel.SearchTerm,
-                            parentCategoryId = Model.PaginationFilterViewModel.ParentCategoryId
-                        }, null)
+               {
+                   searchdTerm = Model.PaginationFilterViewModel.SearchTerm,
+                   parentCategoryId = Model.PaginationFilterViewModel.ParentCategoryId
+               }, null)
                 </li>
             }
             <li class="active">
@@ -35,14 +39,22 @@
 {
     @Html.Partial("_pager", Model.PaginationFilterViewModel)
 
-    <div id="products" class="table-row list-group">
-        @foreach (Product product in Model.Products)
-        {
-            @Html.Partial("_productItem", product)
-        }
+    <div id="products" class="list-group">
+        <div id="cbp-vm" class="cbp-vm-switcher">
+            <div class="cbp-vm-options">
+                <a href="#" class="cbp-vm-icon cbp-vm-grid" data-view="cbp-vm-view-grid">Grid View</a>
+                <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+            </div>
+            <ul>
+                @foreach (Product product in Model.Products)
+                {
+                    @Html.Partial("_productItem", product)
+                }
+            </ul>
+        </div>
     </div>
 
-    @Html.Partial("_pager", Model.PaginationFilterViewModel)
+        @Html.Partial("_pager", Model.PaginationFilterViewModel)
 }
 else
 {
@@ -53,4 +65,11 @@ else
 
 @section scripts
 {
+    <script src="/Content/ViewModeSwitch/js/classie.js"></script>
+    <script src="/Content/ViewModeSwitch/js/cbpViewModeSwitch.js"></script>
+
+    <script src="~/Scripts/application/products/publicList.js"></script>
+    <script type="text/javascript">
+        var productListController = new PublicProductListController();
+    </script>
 }

@@ -5,39 +5,26 @@
     int categoryId = Model.Categories.First().Id;
 }
 
-<div class="os-item col-xs-3 col-lg-3">
-    <div class="thumbnail">
-        <a href="@Url.Action("Details", "Home", new
-                     {
-                         productId = Model.Id, categoryId
-                     })">
+<li class="thumbnail">
+    <a href="@Url.Action("Details", "Home", new
+                 {
+                     productId = Model.Id, categoryId
+                 })">
 
-            @Html.Partial("_productListItemImage", Model)
-            <div class="caption">
-                <h5 class="group inner list-group-item-heading">
-                    @Model.Name
-                </h5>
-                <p class="group inner list-group-item-text">
-                    @Model.ShortDescription
-                </p>
+        @Html.Partial("_productListItemImage", Model)
+        <h3 class="cbp-vm-title">@Model.Name</h3>
+        <div class="cbp-vm-details">
+            @Model.ShortDescription
+        </div>
+        <div class="cbp-vm-price">@string.Format("{0}{1}", Model.PriceInTheMainCurrency, ApplicationContext.MainCurrency.Symbol)</div>
 
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <b>
-                            @string.Format("{0}{1}", Model.PriceInTheMainCurrency, ApplicationContext.MainCurrency.Symbol)
-                        </b>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        @Html.ActionLink("Купити", "Index", "ConsumerBasket", new {afterBuy = true}, new
-                            {
-                                @class = "btn btn-success btn-buy-product",
-                                style = "display: none",
-                                productId = Model.Id, categoryId,
-                                productPrice = Model.PriceInTheMainCurrency
-                            })
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
+        @Html.ActionLink("Купити", "Index", "ConsumerBasket", new {afterBuy = true}, new
+            {
+                @class = "btn btn-success btn-buy-product",
+                style = "display: none",
+                productId = Model.Id,
+                categoryId,
+                productPrice = Model.PriceInTheMainCurrency
+            })
+    </a>
+</li>
