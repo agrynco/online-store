@@ -5,20 +5,26 @@
     int categoryId = Model.Categories.First().Id;
 }
 
-<li>
-    @Html.Partial("_productListItemImage", Model)
-    <h3 class="cbp-vm-title">@Model.Name</h3>
-    <div class="cbp-vm-price">@string.Format("{0}{1}", Model.PriceInTheMainCurrency, ApplicationContext.MainCurrency.Symbol)</div>
-    <div class="cbp-vm-details">
-        @Model.ShortDescription
-    </div>
-    @Html.ActionLink("Купити", "Index", "ConsumerBasket", new { afterBuy = true }, new
-                       {
-                           @class = "btn btn-success btn-buy-product",
-                           style = "display: none",
-                           productId = Model.Id,
-                           categoryId,
-                           productPrice = Model.PriceInTheMainCurrency
-                       })
+<li class="thumbnail">
+    <a href="@Url.Action("Details", "Home", new
+                 {
+                     productId = Model.Id, categoryId
+                 })">
 
+        @Html.Partial("_productListItemImage", Model)
+        <h3 class="cbp-vm-title">@Model.Name</h3>
+        <div class="cbp-vm-details">
+            @Model.ShortDescription
+        </div>
+        <div class="cbp-vm-price">@string.Format("{0}{1}", Model.PriceInTheMainCurrency, ApplicationContext.MainCurrency.Symbol)</div>
+
+        @Html.ActionLink("Купити", "Index", "ConsumerBasket", new {afterBuy = true}, new
+            {
+                @class = "btn btn-success btn-buy-product",
+                style = "display: none",
+                productId = Model.Id,
+                categoryId,
+                productPrice = Model.PriceInTheMainCurrency
+            })
+    </a>
 </li>
