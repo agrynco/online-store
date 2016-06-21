@@ -37,24 +37,26 @@
 
 @if (Model.Products.Count > 0)
 {
-    @Html.Partial("_pager", Model.PaginationFilterViewModel)
+    <div id="products" class="hidden">
+        @Html.Partial("_pager", Model.PaginationFilterViewModel)
 
-    <div id="products" class="list-group">
-        <div id="cbp-vm" class="cbp-vm-switcher">
-            <div class="cbp-vm-options">
-                <a href="#" class="cbp-vm-icon cbp-vm-grid" data-view="cbp-vm-view-grid">Grid View</a>
-                <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
-            </div>
-            <ul>
-                @foreach (Product product in Model.Products)
+        <div class="list-group">
+            <div id="cbp-vm" class="cbp-vm-switcher">
+                <div class="cbp-vm-options">
+                    <a href="#" class="cbp-vm-icon cbp-vm-grid" data-view="cbp-vm-view-grid">Grid View</a>
+                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+                </div>
+                <ul>
+                    @foreach (Product product in Model.Products)
                 {
-                    @Html.Partial("_productItem", product)
-                }
-            </ul>
+                        @Html.Partial("_productItem", product)
+                    }
+                </ul>
+            </div>
         </div>
-    </div>
 
         @Html.Partial("_pager", Model.PaginationFilterViewModel)
+    </div>
 }
 else
 {
