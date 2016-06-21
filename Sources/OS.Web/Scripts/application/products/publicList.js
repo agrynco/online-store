@@ -31,5 +31,6 @@ function PublicProductListController()
         .ready(function()
         {
             init();
+            $("#products").removeClass("hidden");
         });
 }
