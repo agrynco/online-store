@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -368,6 +368,7 @@
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\application\Currencies\currenciesListController.js" />
     <Content Include="Scripts\application\CurrencyRates\currencRatesListController.js" />
+    <Content Include="Scripts\application\utils.js" />
     <Content Include="Scripts\application\products\publicList.js" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.css" />
     <Content Include="Scripts\bootstrap.toggle\css\bootstrap-toggle.min.css" />
@@ -409,6 +410,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\tinymce\js\tinymce\langs\uk_UA.js" />
     <Content Include="Views\Brands\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
