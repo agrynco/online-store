@@ -130,13 +130,14 @@
 @section scripts
 {
     <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
-
+<script src="~/Scripts/application/utils.js"></script>
     <script type="text/javascript">
-        tinyMCE.init(
-        {
-            selector: "#@Html.IdFor(m => m.Description)",
-            entity_encoding: "raw"
-        });
+        initTinyMCE("#@Html.IdFor(m => m.Description)");
+//        tinyMCE.init(
+//        {
+//            selector: "#@Html.IdFor(m => m.Description)",
+//            entity_encoding: "raw"
+//        });
 
         $("#@Html.IdFor(m => m.BrandName)")
             .autocomplete(
