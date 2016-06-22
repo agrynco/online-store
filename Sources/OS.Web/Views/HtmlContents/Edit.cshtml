@@ -24,15 +24,15 @@
                         </text>
                     }
                 </h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <hr/>
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
                 @Html.HiddenFor(m => m.Id)
                 @Html.HiddenFor(m => m.Code)
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+                        @Html.TextAreaFor(m => m.Text, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.Text, "", new {@class = "text-danger"})
                     </div>
                 </div>
             </section>
@@ -43,15 +43,9 @@
 @section scripts
 {
     <script src="~/Scripts/tinymce/js/tinymce/tinymce.min.js"></script>
-
+    <script src="~/Scripts/application/utils.js"></script>
     <script type="text/javascript">
-        tinyMCE.init(
-        {
-            selector: "#@Html.IdFor(m => m.Text)",
-            entity_encoding: "raw",
-            plugins: "autoresize",
-            autoresize_bottom_margin: 0
-        });
+        initTinyMCE("#@Html.IdFor(m => m.Text)");
     </script>
 }
 
