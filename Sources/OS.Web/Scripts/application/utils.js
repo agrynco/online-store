@@ -14,7 +14,7 @@ function initTinyMCE(selector)
         toolbar:
             'insertfile undo redo | styleselect | forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         autoresize_bottom_margin: 0,
-        convert_urls: false
-        //language: 'uk_UA'
+        convert_urls: false,
+        language: 'uk_UA'
     });
 }
