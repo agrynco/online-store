@@ -762,6 +762,7 @@
     <Content Include="Scripts\bootstrap.toggle\js\bootstrap2-toggle.min.js.map" />
     <None Include="Properties\PublishProfiles\qa.online-store.grynco.com.ua.pubxml" />
     <Content Include="Scripts\datatables.extensions\RowReorder-1.1.1\Readme.md" />
+    <None Include="Properties\PublishProfiles\stage.ukrfreza.com.ua.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
