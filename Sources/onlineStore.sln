@@ -31,16 +31,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUpdatesApplier", "DbUpdatesApplier", "{60113D1B-2569-4FC3-A000-742A654EEC10}"
 	ProjectSection(SolutionItems) = preProject
 		..\Tools\DbUpdatesApplier\AGrynco.Lib.dll = ..\Tools\DbUpdatesApplier\AGrynco.Lib.dll
-		..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb = ..\Tools\DbUpdatesApplier\AGrynco.Lib.pdb
 		..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe
 		..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe.config = ..\Tools\DbUpdatesApplier\allvent.com.ua_DbUpdateApplier.exe.config
 		..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\CI_Tests_DbUpdateApplier.Console.exe.config
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.exe.config
-		..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb = ..\Tools\DbUpdatesApplier\DbUpdateApplier.Console.pdb
 		..\Tools\DbUpdatesApplier\DbVersioning.dll = ..\Tools\DbUpdatesApplier\DbVersioning.dll
-		..\Tools\DbUpdatesApplier\DbVersioning.pdb = ..\Tools\DbUpdatesApplier\DbVersioning.pdb
 		..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe = ..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe
 		..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe.config = ..\Tools\DbUpdatesApplier\GeneralChecks-DbUpdateApplier.Console.exe.config
 		..\Tools\DbUpdatesApplier\qa.allvent.com.ua_DbUpdateApplier.exe = ..\Tools\DbUpdatesApplier\qa.allvent.com.ua_DbUpdateApplier.exe
@@ -79,9 +76,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OS.Web.Tests", "OS.Web.Tests\OS.Web.Tests.csproj", "{78FD6BCF-B56F-4DC1-A55E-51956BB34F47}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0A6D004-F007-4896-8656-3C3BC29072F6}"
-	ProjectSection(SolutionItems) = preProject
-		WE-Markdown.css = WE-Markdown.css
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qa.allvent.com.ua", "qa.allvent.com.ua", "{F8C7607E-6E94-4FD3-8A8F-58F5350E114C}"
 	ProjectSection(SolutionItems) = preProject

@@ -684,6 +684,7 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\allvent.com.ua.pubxml" />
     <None Include="Properties\PublishProfiles\FileSystemDeployment.pubxml" />
     <None Include="Properties\PublishProfiles\qa.allvent.com.ua.pubxml" />
     <Content Include="Images\minus_white.png" />
