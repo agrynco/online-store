@@ -129,15 +129,10 @@
 
 @section scripts
 {
-<script src="~/Scripts/tinymce/tinymce.js"></script>
-<script src="~/Scripts/application/utils.js"></script>
+    @Scripts.Render(Constants.Bundles.TINY_MCE)
+
     <script type="text/javascript">
         initTinyMCE("#@Html.IdFor(m => m.Description)");
-//        tinyMCE.init(
-//        {
-//            selector: "#@Html.IdFor(m => m.Description)",
-//            entity_encoding: "raw"
-//        });
 
         $("#@Html.IdFor(m => m.BrandName)")
             .autocomplete(

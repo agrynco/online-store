@@ -42,6 +42,7 @@
         {
             public const string SMART_MENU = "~/Bundles/SmartMenus";
             public const string MOMENT = "~/bundles/moment";
+            public const string TINY_MCE = "~/bundles/tinymce";
         }
 
         public static class ViewData
