@@ -91,8 +91,13 @@
 }
 
 <div class="row">
-    <div class="col-md-offset-4">
+    <div class="col-md-offset-4 col-md-1">
+        @string.Format("{0}{1}", Model.Product.PriceInTheMainCurrency, ApplicationContext.MainCurrency.Symbol)
+    </div>
+    <div class="col-md-1">
         <span class="btn btn-success btn-buy-product" style="display: none" productId="@Model.Product.Id" categoryId="@Model.CategoryId" productPrice="@Model.Product.Price">Купити</span>
+    </div>
+    <div class="col-md-1">
         <a class="btn btn-default" href="@returnUrl">Повернутися до пошуку товарів</a>
     </div>
 </div>
