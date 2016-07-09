@@ -21,5 +21,18 @@ namespace OS.Business.Logic.Tests
             //Asserts
             Assert.That(productPhoto.WaterMarked.Data.Length > 0);
         }
+
+        [Test]
+        public void GetById()
+        {
+            //Arrange
+            ProductPhotosBL target = DI.Resolve<ProductPhotosBL>();
+
+            //Act
+            ProductPhoto productPhoto = target.GetById(1);
+
+            //Asserts
+            Assert.That(productPhoto.WaterMarked, !Is.Null);
+        }
     }
 }

@@ -70,10 +70,6 @@
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="EntityConfigurations\ProductViewingInfoConfiguration.cs" />
     <Compile Include="EntityConfigurations\UserHostAddressConfiguration.cs" />
-    <Compile Include="Migrations\201606180709307_migration.cs" />
-    <Compile Include="Migrations\201606180709307_migration.Designer.cs">
-      <DependentUpon>201606180709307_migration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Repositories\CurrenciesRepository.cs" />
     <Compile Include="Repositories\CurrencyRatesRepository.cs" />
     <Compile Include="Repositories\HtmlContentsRepository.cs" />
@@ -123,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\0-0.sql" />
+    <Content Include="Migrations\0-53.sql" />
     <Content Include="Migrations\0-52.sql" />
     <Content Include="Migrations\0-51.sql" />
     <Content Include="Migrations\0-50.sql" />
@@ -142,11 +139,6 @@
     <Content Include="Migrations\0-36.sql" />
     <Content Include="Migrations\0-35.sql" />
     <Content Include="Migrations\0-34.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606180709307_migration.resx">
-      <DependentUpon>201606180709307_migration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
