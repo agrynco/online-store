@@ -7,6 +7,6 @@ namespace OS.Business.Domain
     {
         public bool IsMain { get; set; }
 
-        public File WaterMarked { get; set; }
+        public virtual File WaterMarked { get; set; }
     }
 }
