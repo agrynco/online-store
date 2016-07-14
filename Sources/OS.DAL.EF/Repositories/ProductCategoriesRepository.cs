@@ -100,7 +100,8 @@ namespace OS.DAL.EF.Repositories
 
         public int GetMaxOrder(int? parentId, bool isDeleted)
         {
-            ProductCategory productCategory = GetAll(true).Where(category => category.ParentId == parentId && category.IsDeleted == isDeleted).OrderByDescending(category => category.Order).FirstOrDefault();
+            ProductCategory productCategory =
+                GetAll(true).Where(category => category.ParentId == parentId && category.IsDeleted == isDeleted).OrderByDescending(category => category.Order).FirstOrDefault();
             return productCategory == null ? 0 : productCategory.Order;
         }
     }
