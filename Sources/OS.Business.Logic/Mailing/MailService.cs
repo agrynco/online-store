@@ -17,7 +17,8 @@ namespace OS.Business.Logic.Mailing
                     EnableSsl = enableSsl,
                     UseDefaultCredentials = false,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = credentials
+                    Credentials = credentials,
+                    Timeout = 10000
                 };
         }
 
