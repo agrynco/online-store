@@ -4,6 +4,15 @@
 <head>
     <meta charset="utf-8"/>
 
+    @if (IsSectionDefined("nameTag"))
+    {
+        @RenderSection("nameTag")
+    }
+    else
+    {
+        <meta name="google-site-verification" content="izQQqk6Q7u94R9dVpuWoK2ktHq4bn3imA2zTZ-nBEfw"/>
+    }
+
     @if (IsSectionDefined("titleTag"))
     {
         @RenderSection("titleTag")

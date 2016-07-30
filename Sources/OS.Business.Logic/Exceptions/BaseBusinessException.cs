@@ -11,5 +11,9 @@ namespace OS.Business.Logic.Exceptions
         public BaseBusinessException(string message) : base(message)
         {
         }
+
+        public BaseBusinessException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }

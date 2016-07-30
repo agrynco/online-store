@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using AGrynCo.Lib.ResourcesUtils;
 using OS.Business.Domain;
+using OS.Business.Logic.Exceptions;
 using OS.Business.Logic.Mailing;
 using OS.Configuration;
 using OS.DAL.Abstract;
@@ -97,24 +98,40 @@ namespace OS.Business.Logic
 
             _ordersRepository.Update(order);
 
+            NotifyAboutOrder(order);
+
+            return order;
+        }
+
+        private void NotifyAboutOrder(Order order)
+        {
             IQueryable<ApplicationUser> administrators = _usersRepository.GetAdministrators();
 
             string template = ResourceReader.ReadAsString(GetType(), "OS.Business.Logic.EmailTemplates.OrderDetails.cshtml");
-            string body = Razor.Parse(template, order);
+
+            string body;
+
+            try
+            {
+                body = Razor.Parse(template, order);
+            }
+            catch (Exception ex)
+            {
+                throw new OrderNotificationMessageTextBuildException(order, ex);
+            }
+
             MailMessage mailMessage = new MailMessage
                 {
-                    Subject = string.Format("{0}: Замовлення", ApplicationSettings.Instance.AppSettings.ApplicationName),
+                    Subject = $"{ApplicationSettings.Instance.AppSettings.ApplicationName}: Замовлення",
                     Body = body,
                     From = new MailAddress(ApplicationSettings.Instance.MailServiceSettings.FromAddress,
                         ApplicationSettings.Instance.AppSettings.ApplicationName),
-                    To = {createOrderQuery.Person.Email},
+                    To = {order.Person.Email},
                     IsBodyHtml = true
                 };
             mailMessage.CC.Add(string.Join(",", administrators.Select(admin => admin.Email)));
 
             _mailService.Send(mailMessage);
-
-            return order;
         }
 
         public Order GetById(int id)

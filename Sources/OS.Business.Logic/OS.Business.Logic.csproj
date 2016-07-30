@@ -85,6 +85,7 @@
     <Compile Include="CurrencyRatesBL.cs" />
     <Compile Include="EmailTemplatesBL.cs" />
     <Compile Include="Exceptions\CanNotDeletePermanentlyNotMarkedToDeleteException.cs" />
+    <Compile Include="Exceptions\OrderNotificationMessageTextBuildException.cs" />
     <Compile Include="HtmlContentsBL.cs" />
     <Compile Include="Mailing\IMailService.cs" />
     <Compile Include="Mailing\MailService.cs" />
