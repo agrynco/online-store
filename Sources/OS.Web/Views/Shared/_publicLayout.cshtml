@@ -31,9 +31,9 @@
             <div class="navbar-collapse collapse row">
                 <ul class="nav navbar-nav navbar-left">
                     @Html.Partial("_commonMenuItems")
-                    <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
                     @if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
                     {
+                        <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
                         <li>
                             @Html.ActionLink("Адміністрування", "Index", "ProductCategories", null, new
                                 {
