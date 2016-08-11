@@ -25,5 +25,7 @@ namespace OS.Business.Domain
         public int? ParentId { get; set; }
 
         public virtual List<Product> Products { get; private set; }
+
+        public virtual string Article { get; set; }
     }
 }

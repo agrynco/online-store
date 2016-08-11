@@ -35,6 +35,11 @@
     }
 }
 
+@if (Model.SelectedCategory != null)
+{
+    @Html.Partial("_productCategoryArticle", Model.SelectedCategory)
+}
+
 @if (Model.Products.Count > 0)
 {
     <div id="products" class="hidden">
@@ -56,12 +61,6 @@
         </div>
 
         @Html.Partial("_pager", Model.PaginationFilterViewModel)
-    </div>
-}
-else
-{
-    <div class="alert alert-info">
-        Ця категорія не містить продуктів
     </div>
 }
 
