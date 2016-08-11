@@ -8,5 +8,6 @@ namespace OS.Web.Models
         public HomePagePaginationFilterViewModel PaginationFilterViewModel { get; set; }
         public List<ProductCategory> ParentCategories { get; set; }
         public IList<Product> Products { get; set; }
+        public ProductCategory SelectedCategory { get; set; }
     }
 }

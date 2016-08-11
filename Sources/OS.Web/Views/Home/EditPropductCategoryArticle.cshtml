@@ -1,0 +1,35 @@
+﻿@using OS.Web.Models
+@model ProductCategoryArticleEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_adminEditLayout.cshtml";
+}
+
+@section editor
+{
+    <div class="row">
+        <div class="col-md-12">
+            <section id="category-editor">
+                <h4>Редагування</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.HiddenFor(m => m.Id)
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render(Constants.Bundles.TINY_MCE)
+    <script type="text/javascript">
+        initTinyMCE("#@Html.IdFor(m => m.Text)");
+    </script>
+}

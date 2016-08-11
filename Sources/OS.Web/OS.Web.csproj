@@ -241,6 +241,7 @@
     <Compile Include="Models\CurrencyRateViewModels\CurrencyRateCreateOrEditViewModel.cs" />
     <Compile Include="Models\CurrencyViewModels\CurrencyCreateOrEditViewModel.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
+    <Compile Include="Models\ProductCategoryArticleEditViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
@@ -1892,6 +1893,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Home\EditPropductCategoryArticle.cshtml" />
+    <Content Include="Views\Home\_productCategoryArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

@@ -1,0 +1,29 @@
+﻿@using OS.Business.Domain
+@model ProductCategory
+
+
+<div id="productCategoryArticle">
+    @if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
+    {
+        <div>
+            <a href='@Url.Action("EditPropductCategoryArticle", "Home", new
+                         {
+                             categoryId = Model.Id
+                         })'>
+                <span class="glyphicon glyphicon-edit">
+                </span>
+            </a>
+        </div>
+        if (Model.Article == null)
+        {
+            <div class="alert alert-info">
+                Категорія не містить статті
+            </div>
+        }
+    }
+
+    @if (Model.Article != null)
+    {
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Article))
+    }
+</div>
