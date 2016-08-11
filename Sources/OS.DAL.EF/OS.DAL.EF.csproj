@@ -74,10 +74,6 @@
     <Compile Include="EntityConfigurations\PersonConfiguration.cs" />
     <Compile Include="EntityConfigurations\ProductViewingInfoConfiguration.cs" />
     <Compile Include="EntityConfigurations\UserHostAddressConfiguration.cs" />
-    <Compile Include="Migrations\201608111804402_ProductCategoryArticle.cs" />
-    <Compile Include="Migrations\201608111804402_ProductCategoryArticle.Designer.cs">
-      <DependentUpon>201608111804402_ProductCategoryArticle.cs</DependentUpon>
-    </Compile>
     <Compile Include="Repositories\CurrenciesRepository.cs" />
     <Compile Include="Repositories\CurrencyRatesRepository.cs" />
     <Compile Include="Repositories\HtmlContentsRepository.cs" />
@@ -148,11 +144,6 @@
     <Content Include="Migrations\0-36.sql" />
     <Content Include="Migrations\0-35.sql" />
     <Content Include="Migrations\0-34.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608111804402_ProductCategoryArticle.resx">
-      <DependentUpon>201608111804402_ProductCategoryArticle.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
