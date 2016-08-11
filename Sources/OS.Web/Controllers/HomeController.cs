@@ -28,39 +28,67 @@ namespace OS.Web.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "admin")]
+        public ActionResult EditPropductCategoryArticle(int categoryId)
+        {
+            ProductCategory productCategory = _productCategoriesBL.GetById(categoryId);
+            ProductCategoryArticleEditViewModel model = new ProductCategoryArticleEditViewModel
+            {
+                Id = productCategory.Id,
+                Text = productCategory.Article
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [Authorize(Roles = "admin")]
+        public ActionResult Save(ProductCategoryArticleEditViewModel model)
+        {
+            ProductCategory productCategory = _productCategoriesBL.GetById(model.Id.Value);
+            productCategory.Article = model.Text;
+            _productCategoriesBL.Update(productCategory);
+
+            return RedirectToAction("Index", new
+                {
+                    parentCategoryId = model.Id.Value
+                });
+        }
+
         private HomePageViewModel BuildHomePageViewModel(string searchTerm, int? parentCategoryId, int? pageNumber)
         {
             HomePageViewModel viewModel = new HomePageViewModel();
             viewModel.RootCategories = _productCategoriesBL.GetCategories(null).Select(productCategory => new HorizontalCategoryItemViewModel
-                {
-                    ProductCategory = productCategory,
-                    IsSelected = false
-                }).ToList();
+            {
+                ProductCategory = productCategory,
+                IsSelected = false
+            }).ToList();
 
             viewModel.SelectedCategory = null;
             ProductsFilter productsFilter = new ProductsFilter
-                {
-                    Text = searchTerm,
-                    Publish = true,
-                    ParentId = parentCategoryId
-                };
+            {
+                Text = searchTerm,
+                Publish = true,
+                ParentId = parentCategoryId
+            };
             productsFilter.PaginationFilter.PageNumber = pageNumber == null ? 1 : pageNumber.Value;
             productsFilter.PaginationFilter.PageSize = ApplicationSettings.Instance.AppSettings.DefaultPageSize;
 
             PagedProductListResult pagedProductListResult = _productsBL.Get(productsFilter);
             viewModel.Products = pagedProductListResult.Entities;
             viewModel.PaginationFilterViewModel = new HomePagePaginationFilterViewModel
-                {
-                    PageNumber = productsFilter.PaginationFilter.PageNumber,
-                    TotalRecords = pagedProductListResult.TotalRecords,
-                    PageSize = productsFilter.PaginationFilter.PageSize,
-                    SearchTerm = searchTerm,
-                    ParentCategoryId = parentCategoryId
-                };
+            {
+                PageNumber = productsFilter.PaginationFilter.PageNumber,
+                TotalRecords = pagedProductListResult.TotalRecords,
+                PageSize = productsFilter.PaginationFilter.PageSize,
+                SearchTerm = searchTerm,
+                ParentCategoryId = parentCategoryId
+            };
             if (parentCategoryId.HasValue)
             {
                 viewModel.ParentCategories = _productCategoriesBL.GetParentCategories(parentCategoryId.Value);
-                viewModel.ParentCategories.Add(_productCategoriesBL.GetById(parentCategoryId.Value));
+                viewModel.SelectedCategory = _productCategoriesBL.GetById(parentCategoryId.Value);
+                viewModel.ParentCategories.Add(viewModel.SelectedCategory);
             }
             else
             {
@@ -75,10 +103,10 @@ namespace OS.Web.Controllers
         {
             ViewData["category"] = categoryId;
             ProductDetailsViewModel viewModel = new ProductDetailsViewModel
-                {
-                    CategoryId = categoryId,
-                    Product = _productsBL.GetById(productId, Request.IsAuthenticated ? User.Identity.Name : null, Request.UserHostAddress)
-                };
+            {
+                CategoryId = categoryId,
+                Product = _productsBL.GetById(productId, Request.IsAuthenticated ? User.Identity.Name : null, Request.UserHostAddress)
+            };
             viewModel.ParentCategories = _productCategoriesBL.GetParentCategories(categoryId);
             viewModel.ParentCategories.Add(_productCategoriesBL.GetById(categoryId));
 

@@ -40,6 +40,6 @@ namespace OS.DAL.EF.EntityConfigurations
                 {
                     IsUnique = true,
                 }));
-        }
+       }
     }
 }
