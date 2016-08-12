@@ -1,11 +1,10 @@
-﻿<form class="navbar-form" role="search">
-    <div class="input-group" style="width: 200px;">
-        <input type="text" id="tbSearchProducts" class="form-control" placeholder="Що ви бажаєте купити?" name="searchTerm">
-        <span class="input-group-btn" onclick="$('#searchForm').submit();">
-            <button class="btn btn-danger" type="submit">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
+﻿<form class="navbar-form" style="padding-left: 0 !important; padding-right: 0 !important">
+    <div class="form-group" style="display:inline;">
+        <div class="input-group" style="display:table;">
+
+            <input class="form-control" name="search" id="tbSearchProducts" placeholder="Що ви бажаєте купити?" autocomplete="off" autofocus="autofocus" type="text">
+            <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search" onclick="$('#searchForm').submit();"></span></span>
+        </div>
     </div>
 </form>
 
