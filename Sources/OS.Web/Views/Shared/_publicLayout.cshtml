@@ -5,10 +5,10 @@
 
 @if (IsSectionDefined("substituteTitleTag"))
 {
-@section titleTag
+    @section titleTag
 {
-    @RenderSection("substituteTitleTag")
-}}
+        @RenderSection("substituteTitleTag")
+    }}
 
 @section SeoMetaTags
 {
@@ -17,7 +17,7 @@
 
 @section topSection
 {
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,30 +26,30 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink(ApplicationSettings.Instance.AppSettings.ApplicationName, "Index", "Home",
-                    new {area = ""}, new {@class = "navbar-brand"})
+                    new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse row">
-                <ul class="nav navbar-nav navbar-left">
+            <div class="navbar-collapse collapse row" style="width: 100%">
+                <ul class="nav navbar-nav navbar-right">
                     @Html.Partial("_commonMenuItems")
+                    <li>@Html.Partial("_consumerBasket")</li>
                     @if (Request.IsAuthenticated && Request.RequestContext.HttpContext.User.IsInRole("admin"))
                     {
-                        <li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>
+                        @*<li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>*@
                         <li>
                             @Html.ActionLink("Адміністрування", "Index", "ProductCategories", null, new
-                                {
-                                    style = "color: red;",
-                                    @class = "top-menu-item"
-                                })
+                       {
+                           style = "color: red;",
+                           @class = "top-menu-item"
+                       })
                         </li>
                     }
-                </ul>
-                <ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
-                    <li>
-                        @Html.Partial("_searchControl")
-                    </li>
                     @Html.Partial("_loginPartial")
+                </ul>
 
-                    <li>@Html.Partial("_consumerBasket")</li>
+            </div>
+            <div class="navbar-collapse collapse row" style="padding-left: 0 !important; padding-right: 0 !important">
+                        @Html.Partial("_searchControl")
+                    
                 </ul>
             </div>
         </div>
