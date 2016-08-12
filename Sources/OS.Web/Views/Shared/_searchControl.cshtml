@@ -1,26 +1,38 @@
-﻿<form class="navbar-form" style="padding-left: 0 !important; padding-right: 0 !important">
-    <div class="form-group" style="display:inline;">
-        <div class="input-group" style="display:table;">
+﻿@{
+    string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
+}
 
-            <input class="form-control" name="search" id="tbSearchProducts" placeholder="Що ви бажаєте купити?" autocomplete="off" autofocus="autofocus" type="text">
-            <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search" onclick="$('#searchForm').submit();"></span></span>
+@using (Html.BeginForm("Index", currentControllerName, FormMethod.Get, new
+{
+    @class = "navbar-form",
+    style = "padding-left: 0 !important; padding-right: 0 !important",
+    id = "searchForm"
+}))
+{
+    <div class="form-group" style="display: inline;">
+        <div class="input-group" style="display: table;">
+            <input class="form-control" name="searchTerm" id="tbSearchProducts" placeholder="Що ви бажаєте купити?" autocomplete="off" autofocus="autofocus" type="text">
+            <span class="input-group-addon" style="width: 1%;">
+                <span class="glyphicon glyphicon-search" onclick="$('#searchForm').submit();"></span>
+            </span>
         </div>
     </div>
-</form>
+}
 
 <script type="text/javascript">
-    $("#tbSearchProducts").autocomplete(
-       {
-           source: "/api/products/autocomplete",
-           minLength: 1,
-           create: function ()
-           {
-               $(this).data('ui-autocomplete')._renderItem = function (ul, item)
-               {
-                   return $('<li>')
-                       .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
-                       .appendTo(ul);
-               };
-           }
-       });
+    $("#tbSearchProducts")
+        .autocomplete(
+        {
+    source: "/api/products/autocomplete",
+            minLength: 1,
+            create: function ()
+            {
+                $(this).data('ui-autocomplete')._renderItem = function (ul, item)
+                {
+            return $('<li>')
+                .append('<a>' + item.label.replace(this.term, "<b>" + this.term + "</b>") + '</a>')
+                .appendTo(ul);
+        };
+    }
+});
 </script>

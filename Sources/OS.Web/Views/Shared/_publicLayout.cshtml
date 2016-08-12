@@ -37,10 +37,10 @@
                         @*<li>@Html.ActionLink("Карта сайту", "Index", "SiteMap")</li>*@
                         <li>
                             @Html.ActionLink("Адміністрування", "Index", "ProductCategories", null, new
-                       {
-                           style = "color: red;",
-                           @class = "top-menu-item"
-                       })
+                               {
+                                   style = "color: red;",
+                                   @class = "top-menu-item"
+                               })
                         </li>
                     }
                     @Html.Partial("_loginPartial")
@@ -48,9 +48,7 @@
 
             </div>
             <div class="navbar-collapse collapse row" style="padding-left: 0 !important; padding-right: 0 !important">
-                        @Html.Partial("_searchControl")
-                    
-                </ul>
+                        @Html.Partial("_searchControl")                
             </div>
         </div>
     </div>
