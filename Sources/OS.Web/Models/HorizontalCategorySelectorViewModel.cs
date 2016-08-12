@@ -11,7 +11,6 @@ namespace OS.Web.Models
         {
             RootCategories = new List<HorizontalCategoryItemViewModel>();
         }
-
         public IList<HorizontalCategoryItemViewModel> RootCategories { get; set; }
         public ProductCategory SelectedCategory { get; set; }
     }

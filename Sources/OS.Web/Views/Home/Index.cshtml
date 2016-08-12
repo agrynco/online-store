@@ -73,4 +73,8 @@
     <script type="text/javascript">
         var productListController = new PublicProductListController();
     </script>
+
+    <script type="text/javascript">
+        $("#tbSearchProducts").val("@Model.PaginationFilterViewModel.SearchTerm")
+    </script>
 }
