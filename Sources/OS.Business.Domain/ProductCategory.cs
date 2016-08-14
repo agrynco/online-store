@@ -27,5 +27,7 @@ namespace OS.Business.Domain
         public virtual List<Product> Products { get; private set; }
 
         public virtual string Article { get; set; }
+
+        public virtual Photo Photo { get; set; }
     }
 }
