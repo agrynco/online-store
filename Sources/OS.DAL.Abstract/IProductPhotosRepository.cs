@@ -2,7 +2,7 @@
 
 namespace OS.DAL.Abstract
 {
-    public interface IProductPhotosRepository : IOnlineStoreRepository<Photo>
+    public interface IProductPhotosRepository : IOnlineStoreRepository<ProductPhoto>
     {
     }
 }

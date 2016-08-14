@@ -8,7 +8,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class ProductCategoriesRepository : OnlineStoreCrudRepository<ProductCategory>, IProductCategoriesRepository
+    public class ProductCategoriesRepository : OnlineStoreCRUDRepository<ProductCategory>, IProductCategoriesRepository
     {
         public ProductCategoriesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

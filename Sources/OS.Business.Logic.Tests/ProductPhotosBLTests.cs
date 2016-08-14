@@ -13,7 +13,7 @@ namespace OS.Business.Logic.Tests
         {
             //Arrange
             ResetDataBase();
-            ProductPhotosBL target = DI.Resolve<ProductPhotosBL>();
+            PhotosBL target = DI.Resolve<PhotosBL>();
 
             //Act
             Photo photo = target.ApplyWaterMark(18, "test");
@@ -26,7 +26,7 @@ namespace OS.Business.Logic.Tests
         public void GetById()
         {
             //Arrange
-            ProductPhotosBL target = DI.Resolve<ProductPhotosBL>();
+            PhotosBL target = DI.Resolve<PhotosBL>();
 
             //Act
             Photo photo = target.GetById(1);

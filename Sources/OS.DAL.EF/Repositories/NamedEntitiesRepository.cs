@@ -5,7 +5,7 @@ using OS.DAL.Abstract.Exceptions;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class NamedEntitiesRepository<TNamedEntity> : OnlineStoreCrudRepository<TNamedEntity>, INamedEntitiesRepository<TNamedEntity> where TNamedEntity : NamedEntity
+    public class NamedEntitiesRepository<TNamedEntity> : OnlineStoreCRUDRepository<TNamedEntity>, INamedEntitiesRepository<TNamedEntity> where TNamedEntity : NamedEntity
     {
         public NamedEntitiesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

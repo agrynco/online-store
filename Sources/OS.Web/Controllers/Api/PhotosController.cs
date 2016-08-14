@@ -9,21 +9,23 @@ using OS.Business.Logic;
 namespace OS.Web.Controllers.Api
 {
     [RoutePrefix("api/productphotos")]
-    public class ProductPhotosController : ApiController
+    public class PhotosController : ApiController
     {
-        private readonly ProductPhotosBL _productPhotosBL;
+        private readonly PhotosBL _photosBL;
 
-        public ProductPhotosController(ProductPhotosBL productPhotosBL)
+        public PhotosController(PhotosBL photosBL)
         {
-            _productPhotosBL = productPhotosBL;
+            _photosBL = photosBL;
         }
 
         [Route("{id}")]
         public HttpResponseMessage GetWaterMarkedPhoto(int id)
         {
-            Photo photo = _productPhotosBL.GetById(id);
-            HttpResponseMessage responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            responseMessage.Content = new ByteArrayContent(photo.WaterMarked.Data);
+            Photo photo = _photosBL.GetById(id);
+            HttpResponseMessage responseMessage = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(photo.WaterMarked.Data)
+                };
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(photo.FileName));
 
             return responseMessage;

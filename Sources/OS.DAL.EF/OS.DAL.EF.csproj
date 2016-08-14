@@ -77,6 +77,7 @@
     <Compile Include="Repositories\CurrenciesRepository.cs" />
     <Compile Include="Repositories\CurrencyRatesRepository.cs" />
     <Compile Include="Repositories\HtmlContentsRepository.cs" />
+    <Compile Include="Repositories\PhotosRepository.cs" />
     <Compile Include="Repositories\ProductMetaDataRepository.cs" />
     <Compile Include="Repositories\ProductViewingInfosRepository.cs" />
     <Compile Include="Repositories\UserHostAddressesRepository.cs" />
@@ -144,6 +145,7 @@
     <Content Include="Migrations\0-36.sql" />
     <Content Include="Migrations\0-35.sql" />
     <Content Include="Migrations\0-34.sql" />
+    <Content Include="Migrations\0-56.sql" />
     <Content Include="Migrations\0-55.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

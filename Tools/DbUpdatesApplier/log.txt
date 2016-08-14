@@ -1,0 +1,132 @@
+Current dir: D:\Projects\Grynco\AGrynco\online-store\Tools\DbUpdatesApplier
+Begin process - 14.08.2016 23:11:31
+Drop database DevOnlineStore_Tests
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-0.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-0.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-34.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-34.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-35.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-35.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-36.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-36.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-37.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-37.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-38.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-38.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-39.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-39.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-40.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-40.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-41.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-41.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-42.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-42.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-43.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-43.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-44.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-44.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-45.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-45.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-46.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-46.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-47.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-47.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-48.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-48.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-49.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-49.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-50.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-50.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-51.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-51.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-52.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-52.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-53.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-53.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-54.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-54.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-55.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-55.sql executed successfully
+Applying '..\..\Sources\OS.DAL.EF\Migrations\0-56.sql'
+Update ..\..\Sources\OS.DAL.EF\Migrations\0-56.sql failure.
+(Could not apply update
+(Error during execution ' -- End checking possibility of using
+ 
+ -- BEGIN CHANGES
+ USE DevOnlineStore
+
+IF EXISTS (SELECT name FROM sys.indexes WHERE name = N'IX_Product_Id' AND object_id = object_id(N'[dbo].[Photos]', N'U'))
+    DROP INDEX [IX_Product_Id] ON [dbo].[Photos]
+CREATE TABLE [dbo].[ProductPhotos] (
+    [Id] [int] NOT NULL,
+    [Product_Id] [int],
+    [IsMain] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.ProductPhotos] PRIMARY KEY ([Id])
+)
+
+CREATE INDEX [IX_Id] ON [dbo].[ProductPhotos]([Id])
+CREATE INDEX [IX_Product_Id] ON [dbo].[ProductPhotos]([Product_Id])
+
+INSERT INTO ProductPhotos
+(
+	Id,
+	Product_Id,
+	IsMain
+)
+SELECT Id, Product_Id, IsMain  FROM Photos
+
+-----------------
+
+DECLARE @var0 nvarchar(128)
+SELECT @var0 = NAME
+FROM sys.default_constraints
+WHERE parent_object_id = object_id(N'dbo.Photos')
+AND col_name(parent_object_id, parent_column_id) = 'Product_Id';
+IF @var0 IS NOT NULL
+    EXECUTE('ALTER TABLE [dbo].[Photos] DROP CONSTRAINT [' + @var0 + ']')
+'
+(Invalid column name 'Product_Id'.
+Invalid column name 'IsMain'.
+)
+)
+)
+Could not apply update
+(Error during execution ' -- End checking possibility of using
+ 
+ -- BEGIN CHANGES
+ USE DevOnlineStore
+
+IF EXISTS (SELECT name FROM sys.indexes WHERE name = N'IX_Product_Id' AND object_id = object_id(N'[dbo].[Photos]', N'U'))
+    DROP INDEX [IX_Product_Id] ON [dbo].[Photos]
+CREATE TABLE [dbo].[ProductPhotos] (
+    [Id] [int] NOT NULL,
+    [Product_Id] [int],
+    [IsMain] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.ProductPhotos] PRIMARY KEY ([Id])
+)
+
+CREATE INDEX [IX_Id] ON [dbo].[ProductPhotos]([Id])
+CREATE INDEX [IX_Product_Id] ON [dbo].[ProductPhotos]([Product_Id])
+
+INSERT INTO ProductPhotos
+(
+	Id,
+	Product_Id,
+	IsMain
+)
+SELECT Id, Product_Id, IsMain  FROM Photos
+
+-----------------
+
+DECLARE @var0 nvarchar(128)
+SELECT @var0 = NAME
+FROM sys.default_constraints
+WHERE parent_object_id = object_id(N'dbo.Photos')
+AND col_name(parent_object_id, parent_column_id) = 'Product_Id';
+IF @var0 IS NOT NULL
+    EXECUTE('ALTER TABLE [dbo].[Photos] DROP CONSTRAINT [' + @var0 + ']')
+'
+(Invalid column name 'Product_Id'.
+Invalid column name 'IsMain'.
+)
+)
