@@ -10,7 +10,7 @@ namespace OS.Business.Domain
         public Product()
         {
             Categories = new List<ProductCategory>();
-            Photos = new List<ProductPhoto>();
+            Photos = new List<Photo>();
         }
 
         [Display(Name = "Бренд")]
@@ -37,7 +37,7 @@ namespace OS.Business.Domain
         public virtual ProductMetaData MetaData { get; set; }
 
         [Display(Name = "Зображення")]
-        public virtual List<ProductPhoto> Photos { get; set; }
+        public virtual List<Photo> Photos { get; set; }
 
         public decimal Price { get; set; }
 

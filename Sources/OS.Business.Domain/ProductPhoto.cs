@@ -2,8 +2,8 @@
 
 namespace OS.Business.Domain
 {
-    [Table("ProductPhotos")]
-    public class ProductPhoto : File
+    [Table("Photos")]
+    public class Photo : File
     {
         public bool IsMain { get; set; }
 

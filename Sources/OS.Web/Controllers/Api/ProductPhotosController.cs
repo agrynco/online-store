@@ -21,10 +21,10 @@ namespace OS.Web.Controllers.Api
         [Route("{id}")]
         public HttpResponseMessage GetWaterMarkedPhoto(int id)
         {
-            ProductPhoto productPhoto = _productPhotosBL.GetById(id);
+            Photo photo = _productPhotosBL.GetById(id);
             HttpResponseMessage responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            responseMessage.Content = new ByteArrayContent(productPhoto.WaterMarked.Data);
-            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(productPhoto.FileName));
+            responseMessage.Content = new ByteArrayContent(photo.WaterMarked.Data);
+            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(photo.FileName));
 
             return responseMessage;
         }

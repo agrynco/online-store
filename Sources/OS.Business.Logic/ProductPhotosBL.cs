@@ -21,27 +21,27 @@ namespace OS.Business.Logic
             _productPhotosRepository.Delete(id);
         }
 
-        public ProductPhoto GetById(int id, string waterMarkText = null)
+        public Photo GetById(int id, string waterMarkText = null)
         {
             if (string.IsNullOrEmpty(waterMarkText))
             {
                 waterMarkText = ApplicationSettings.Instance.AppSettings.ApplicationName;
             }
 
-            ProductPhoto productPhoto = _productPhotosRepository.GetById(id);
-            if (productPhoto.WaterMarked == null)
+            Photo photo = _productPhotosRepository.GetById(id);
+            if (photo.WaterMarked == null)
             {
-                productPhoto = ApplyWaterMark(productPhoto, waterMarkText);
+                photo = ApplyWaterMark(photo, waterMarkText);
             }
 
-            return productPhoto;
+            return photo;
         }
 
-        private ProductPhoto ApplyWaterMark(ProductPhoto productPhoto, string waterMarkText)
+        private Photo ApplyWaterMark(Photo photo, string waterMarkText)
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                memoryStream.Write(productPhoto.Data, 0, productPhoto.Data.Length);
+                memoryStream.Write(photo.Data, 0, photo.Data.Length);
                 memoryStream.Position = 0;
 
                 Bitmap sourceImage = (Bitmap) Image.FromStream(memoryStream);
@@ -66,29 +66,29 @@ namespace OS.Business.Logic
                 {
                     sourceImage.Save(waterMarkedMemoryStream, sourceImage.RawFormat);
 
-                    if (productPhoto.WaterMarked == null)
+                    if (photo.WaterMarked == null)
                     {
-                        productPhoto.WaterMarked = new File();
+                        photo.WaterMarked = new File();
                     }
 
-                    productPhoto.WaterMarked.ContentContentType = productPhoto.ContentContentType;
-                    productPhoto.WaterMarked.Data = waterMarkedMemoryStream.ToArray();
-                    productPhoto.WaterMarked.FileName = productPhoto.FileName;
+                    photo.WaterMarked.ContentContentType = photo.ContentContentType;
+                    photo.WaterMarked.Data = waterMarkedMemoryStream.ToArray();
+                    photo.WaterMarked.FileName = photo.FileName;
                 }
             }
 
-            _productPhotosRepository.Update(productPhoto);
+            _productPhotosRepository.Update(photo);
 
-            return productPhoto;
+            return photo;
         }
 
-        public ProductPhoto ApplyWaterMark(int id, string waterMarkText)
+        public Photo ApplyWaterMark(int id, string waterMarkText)
         {
-            ProductPhoto productPhoto = _productPhotosRepository.GetById(id);
+            Photo photo = _productPhotosRepository.GetById(id);
 
-            ApplyWaterMark(productPhoto, waterMarkText);
+            ApplyWaterMark(photo, waterMarkText);
 
-            return productPhoto;
+            return photo;
         }
     }
 }

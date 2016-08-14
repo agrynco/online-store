@@ -16,10 +16,10 @@ namespace OS.Business.Logic.Tests
             ProductPhotosBL target = DI.Resolve<ProductPhotosBL>();
 
             //Act
-            ProductPhoto productPhoto = target.ApplyWaterMark(18, "test");
+            Photo photo = target.ApplyWaterMark(18, "test");
 
             //Asserts
-            Assert.That(productPhoto.WaterMarked.Data.Length > 0);
+            Assert.That(photo.WaterMarked.Data.Length > 0);
         }
 
         [Test]
@@ -29,10 +29,10 @@ namespace OS.Business.Logic.Tests
             ProductPhotosBL target = DI.Resolve<ProductPhotosBL>();
 
             //Act
-            ProductPhoto productPhoto = target.GetById(1);
+            Photo photo = target.GetById(1);
 
             //Asserts
-            Assert.That(productPhoto.WaterMarked, !Is.Null);
+            Assert.That(photo.WaterMarked, !Is.Null);
         }
     }
 }

@@ -31,9 +31,9 @@ namespace OS.Web.Controllers
         [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "id")]
         public FileResult GetWhaterMarkedPhoto(int id)
         {
-            ProductPhoto productPhoto = _productPhotosBL.GetById(id, Request.Url.Host);
+            Photo photo = _productPhotosBL.GetById(id, Request.Url.Host);
 
-            return new FileContentResult(productPhoto.WaterMarked.Data, MimeMapping.GetMimeMapping(productPhoto.FileName));
+            return new FileContentResult(photo.WaterMarked.Data, MimeMapping.GetMimeMapping(photo.FileName));
         }
     }
 }
