@@ -23,6 +23,16 @@ namespace OS.Web.Controllers
 
         public ActionResult Index(string searchTerm, int? parentCategoryId, int? pageNumber)
         {
+            Product product = _productsBL.GetByCode(searchTerm);
+            if (product != null)
+            {
+                return RedirectToAction("Details", new
+                    {
+                        productId = product.Id,
+                        categoryId = product.Categories.First().Id
+                    });
+            }
+
             HomePageViewModel viewModel = BuildHomePageViewModel(searchTerm, parentCategoryId, pageNumber);
 
             return View(viewModel);
