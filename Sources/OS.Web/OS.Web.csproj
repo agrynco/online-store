@@ -1894,6 +1894,7 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Home\EditPropductCategoryArticle.cshtml" />
     <Content Include="Views\Home\_productCategoryArticle.cshtml" />
+    <Content Include="Views\Home\_productCategoryItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
