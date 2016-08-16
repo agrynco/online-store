@@ -5,7 +5,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class CurrencyRatesRepository : OnlineStoreCrudRepository<CurrencyRate>, ICurrencyRatesRepository
+    public class CurrencyRatesRepository : OnlineStoreCRUDRepository<CurrencyRate>, ICurrencyRatesRepository
     {
         public CurrencyRatesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

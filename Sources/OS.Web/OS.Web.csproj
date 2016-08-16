@@ -235,12 +235,13 @@
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\CurrenciesController.cs" />
     <Compile Include="Controllers\Api\CurrencyRatesController.cs" />
-    <Compile Include="Controllers\Api\ProductPhotosController.cs" />
+    <Compile Include="Controllers\Api\PhotosController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Models\CurrencyRateViewModels\CurrencyRateCreateOrEditViewModel.cs" />
     <Compile Include="Models\CurrencyViewModels\CurrencyCreateOrEditViewModel.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
+    <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\ProductCategoryArticleEditViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
@@ -1895,6 +1896,8 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Home\EditPropductCategoryArticle.cshtml" />
     <Content Include="Views\Home\_productCategoryArticle.cshtml" />
+    <Content Include="Views\Home\_productCategoryItem.cshtml" />
+    <Content Include="Views\Shared\_photo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

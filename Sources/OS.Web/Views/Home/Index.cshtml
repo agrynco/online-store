@@ -40,7 +40,8 @@
     @Html.Partial("_productCategoryArticle", Model.SelectedCategory)
 }
 
-@if (Model.Products.Count > 0)
+
+@if (Model.Products.Any() || Model.ChildCategories.Any())
 {
     <div id="products" class="hidden">
         <div class="list-group">
@@ -50,6 +51,11 @@
                     <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
                 </div>
                 <ul>
+                    @foreach (ProductCategory productCategory in Model.ChildCategories)
+                    {
+                        @Html.Partial("_productCategoryItem", productCategory)
+                    }
+
                     @foreach (Product product in Model.Products)
                     {
                         @Html.Partial("_productItem", product)

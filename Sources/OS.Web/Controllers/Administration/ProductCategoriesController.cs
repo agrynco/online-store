@@ -12,10 +12,12 @@ namespace OS.Web.Controllers.Administration
     public class ProductCategoriesController : BaseAdminController
     {
         private readonly ProductCategoriesBL _productCategoriesBL;
+        private readonly PhotosBL _photosBL;
 
-        public ProductCategoriesController(ProductCategoriesBL productCategoriesBL)
+        public ProductCategoriesController(ProductCategoriesBL productCategoriesBL, PhotosBL photosBL)
         {
             _productCategoriesBL = productCategoriesBL;
+            _photosBL = photosBL;
         }
 
         [System.Web.Mvc.HttpGet]
@@ -65,7 +67,8 @@ namespace OS.Web.Controllers.Administration
                     Id = productCategory.Id,
                     Name = productCategory.Name,
                     Description = productCategory.Description,
-                    Publish = productCategory.Publish
+                    Publish = productCategory.Publish,
+                    Photo = productCategory.Photo
                 });
         }
 
@@ -90,7 +93,13 @@ namespace OS.Web.Controllers.Administration
                         productCategory.Name = model.Name;
                         productCategory.Description = model.Description;
 
+                        if (model.PostedPhoto != null)
+                        {
+                            productCategory.Photo = _photosBL.UpdateOrAdd(productCategory.Photo, model.PostedPhoto);
+                        }
+
                         _productCategoriesBL.Update(productCategory);
+
                         if (productCategory.Publish != model.Publish)
                         {
                             _productCategoriesBL.SetPublish(productCategory.Id, model.Publish);
@@ -103,8 +112,14 @@ namespace OS.Web.Controllers.Administration
                                 ParentId = model.ParentId,
                                 Name = model.Name,
                                 Description = model.Description,
-                                Publish = model.Publish
+                                Publish = model.Publish,
                             };
+
+                        if (model.PostedPhoto != null)
+                        {
+                            productCategory.Photo = _photosBL.UpdateOrAdd(null, model.PostedPhoto);
+                        }
+
                         _productCategoriesBL.Create(productCategory);
                     }
 

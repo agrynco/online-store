@@ -1,0 +1,17 @@
+﻿@using OS.Business.Domain
+@model ProductCategory
+
+<li class="thumbnail category">
+    <a href="@Url.Action("Index", "Home", new
+                 {
+                     parentCategoryId = Model.Id
+                 })">
+
+        @Html.Partial("_photo", Model.Photo ?? new Photo {Id = -1})
+
+        <h3 class="cbp-vm-title">@Model.Name</h3>
+        <div class="cbp-vm-details">
+            @Model.Description
+        </div>
+    </a>
+</li>

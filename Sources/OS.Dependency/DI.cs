@@ -78,6 +78,9 @@ namespace OS.Dependency
             Register<IProductPhotosRepository, ProductPhotosRepository>();
             Register<ProductPhotosBL>();
 
+            Register<IPhotosRepository, PhotosRepository>();
+            Register<PhotosBL>();
+
             Register<IOrdersRepository, OrdersRepository>();
             Register<OrdersBL>();
 

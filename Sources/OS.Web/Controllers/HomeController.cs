@@ -99,10 +99,12 @@ namespace OS.Web.Controllers
                 viewModel.ParentCategories = _productCategoriesBL.GetParentCategories(parentCategoryId.Value);
                 viewModel.SelectedCategory = _productCategoriesBL.GetById(parentCategoryId.Value);
                 viewModel.ParentCategories.Add(viewModel.SelectedCategory);
+                viewModel.ChildCategories = _productCategoriesBL.GetCategories(parentCategoryId);
             }
             else
             {
                 viewModel.ParentCategories = new List<ProductCategory>();
+                viewModel.ChildCategories = new List<ProductCategory>();
             }
 
             return viewModel;
