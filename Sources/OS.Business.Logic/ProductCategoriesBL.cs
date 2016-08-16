@@ -21,7 +21,7 @@ namespace OS.Business.Logic
 
         public List<ProductCategory> GetCategories(int? parentId)
         {
-            return _productCategoriesRepository.GetCategories(parentId).OrderBy(x => x.Name).ToList();
+            return _productCategoriesRepository.GetCategories(parentId).Where(category => !category.IsDeleted).OrderBy(x => x.Name).ToList();
         }
 
         public List<ProductCategory> SearchCategories(string searchTerm)
