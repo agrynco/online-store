@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.IO;
+using System.Web;
 using OS.Business.Domain;
 using OS.Configuration;
 using OS.DAL.Abstract;
@@ -9,6 +10,7 @@ namespace OS.Business.Logic
 {
     public class PhotosBL
     {
+        private readonly ContentContentTypesBL _contentContentTypesBL;
         private readonly IPhotosRepository _photosRepository;
 
         private Photo ApplyWaterMark(Photo photo, string waterMarkText)
@@ -56,9 +58,10 @@ namespace OS.Business.Logic
             return photo;
         }
         
-        public PhotosBL(IPhotosRepository photosRepository)
+        public PhotosBL(IPhotosRepository photosRepository, ContentContentTypesBL contentContentTypesBL)
         {
             _photosRepository = photosRepository;
+            _contentContentTypesBL = contentContentTypesBL;
         }
 
         public Photo GetById(int id, string waterMarkText = null)
@@ -83,6 +86,37 @@ namespace OS.Business.Logic
             Photo photo = _photosRepository.GetById(id);
 
             ApplyWaterMark(photo, waterMarkText);
+
+            return photo;
+        }
+
+        public Photo Update(Photo photo)
+        {
+            _photosRepository.Update(photo);
+            return photo;
+        }
+
+        public Photo UpdateOrAdd(Photo photo, HttpPostedFileBase postedFile)
+        {
+            if (photo == null)
+            {
+                photo = new Photo();
+            }
+
+            byte[] buffer = new byte[postedFile.InputStream.Length];
+            postedFile.InputStream.Read(buffer, 0, buffer.Length);
+            photo.Data = buffer;
+            photo.FileName = postedFile.FileName;
+            photo.ContentContentType = _contentContentTypesBL.Get(postedFile.ContentType);
+
+            if (photo.Id != 0)
+            {
+                _photosRepository.Update(photo);
+            }
+            else
+            {
+                photo = _photosRepository.Add(photo);
+            }
 
             return photo;
         }

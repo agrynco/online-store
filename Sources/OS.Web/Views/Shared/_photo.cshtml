@@ -1,0 +1,16 @@
+﻿@using OS.Business.Domain
+@model Photo
+    
+@{
+    string imageSrc = "http://placehold.it/400x250/000/fff";
+
+    if (Model.Id != -1)
+    {
+        imageSrc = Url.Action("GetWhaterMarkedPhoto", "Files", new
+            {
+                id = Model.Id
+            });
+    }
+}
+
+<img class="cbp-vm-image" src="@imageSrc" alt="" />

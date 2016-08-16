@@ -1,25 +1,13 @@
 ﻿@using OS.Business.Domain
 @model ProductCategory
 
-@{
-    string imageSrc = "http://placehold.it/400x250/000/fff";
-
-    if (Model.Photo != null)
-    {
-        imageSrc = Url.Action("GetWhaterMarkedPhoto", "Files", new
-        {
-            id = Model.Photo.Id
-        });
-    }
-}
-
-<li class="thumbnail">
+<li class="thumbnail category">
     <a href="@Url.Action("Index", "Home", new
                  {
                      parentCategoryId = Model.Id
                  })">
 
-        <img class="cbp-vm-image" src="@imageSrc" alt="" />
+        @Html.Partial("_photo", Model.Photo ?? new Photo {Id = -1})
 
         <h3 class="cbp-vm-title">@Model.Name</h3>
         <div class="cbp-vm-details">

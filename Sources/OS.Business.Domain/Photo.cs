@@ -7,10 +7,4 @@ namespace OS.Business.Domain
     {
         public virtual File WaterMarked { get; set; }
     }
-
-    [Table("ProductPhotos")]
-    public class ProductPhoto : Photo
-    {
-        public bool IsMain { get; set; }
-    }
 }

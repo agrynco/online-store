@@ -74,6 +74,7 @@
     <Compile Include="OrderedProduct.cs" />
     <Compile Include="ProductCategoryReorderingInfo.cs" />
     <Compile Include="ProductMetaData.cs" />
+    <Compile Include="ProductPhoto.cs" />
     <Compile Include="ProductsFilter.cs" />
     <Compile Include="Content.cs" />
     <Compile Include="ContentContentType.cs" />

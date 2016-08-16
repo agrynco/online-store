@@ -241,6 +241,7 @@
     <Compile Include="Models\CurrencyRateViewModels\CurrencyRateCreateOrEditViewModel.cs" />
     <Compile Include="Models\CurrencyViewModels\CurrencyCreateOrEditViewModel.cs" />
     <Compile Include="Models\HomePagePaginationFilterViewModel.cs" />
+    <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\ProductCategoryArticleEditViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
@@ -1895,6 +1896,7 @@
     <Content Include="Views\Home\EditPropductCategoryArticle.cshtml" />
     <Content Include="Views\Home\_productCategoryArticle.cshtml" />
     <Content Include="Views\Home\_productCategoryItem.cshtml" />
+    <Content Include="Views\Shared\_photo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
