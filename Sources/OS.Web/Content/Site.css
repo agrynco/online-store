@@ -163,3 +163,11 @@ input[type=number]::-webkit-outer-spin-button {
 {
     font-size: medium;
 }
+
+.category
+{
+    border: gold;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #fff3b5;
+}

@@ -3,10 +3,8 @@
 namespace OS.Business.Domain
 {
     [Table("ProductPhotos")]
-    public class ProductPhoto : File
+    public class ProductPhoto : Photo
     {
         public bool IsMain { get; set; }
-
-        public virtual File WaterMarked { get; set; }
     }
 }

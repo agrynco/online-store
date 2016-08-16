@@ -4,7 +4,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class HtmlContentsRepository : OnlineStoreCrudRepository<HtmlContent>, IHtmlContentsRepository
+    public class HtmlContentsRepository : OnlineStoreCRUDRepository<HtmlContent>, IHtmlContentsRepository
     {
         public HtmlContentsRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

@@ -53,10 +53,10 @@ namespace OS.DAL.EF.Repositories
         }
     }
 
-    public class OnlineStoreCrudRepository<TEntity> : OnlineStoreCrudRepository<TEntity, int>
+    public class OnlineStoreCRUDRepository<TEntity> : OnlineStoreCrudRepository<TEntity, int>
         where TEntity : Entity<int>
     {
-        public OnlineStoreCrudRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
+        public OnlineStoreCRUDRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
         }
     }

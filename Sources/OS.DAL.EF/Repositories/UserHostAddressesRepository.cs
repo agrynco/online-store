@@ -4,7 +4,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class UserHostAddressesRepository : OnlineStoreCrudRepository<UserHostAddress>, IUserHostAddressesRepository
+    public class UserHostAddressesRepository : OnlineStoreCRUDRepository<UserHostAddress>, IUserHostAddressesRepository
     {
         public UserHostAddressesRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

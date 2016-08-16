@@ -9,6 +9,6 @@ namespace OS.Business.Domain
         
         public virtual ContentContentType ContentContentType { get; set; }
 
-        public byte[] Data { get; set; }
+        public virtual byte[] Data { get; set; }
     }
 }

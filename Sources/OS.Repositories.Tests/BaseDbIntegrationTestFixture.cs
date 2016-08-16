@@ -31,8 +31,7 @@ namespace OS.Repositories.Tests
             process.WaitForExit();
             if (process.ExitCode != 0)
             {
-                throw new ResetDatabaseException(string.Format("Error during executing {0}. Error code equals {1}", 
-                    ApplicationSettings.Instance.TestsSettings.DbUpdatesApplierExeName, process.ExitCode));
+                throw new ResetDatabaseException($"Error during executing {ApplicationSettings.Instance.TestsSettings.DbUpdatesApplierExeName}. Error code equals {process.ExitCode}");
             }
         }
 

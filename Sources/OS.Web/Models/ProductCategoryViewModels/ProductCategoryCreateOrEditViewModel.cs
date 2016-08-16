@@ -1,5 +1,6 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
+using OS.Business.Domain;
 
 namespace OS.Web.Models.ProductCategoryViewModels
 {
@@ -13,5 +14,9 @@ namespace OS.Web.Models.ProductCategoryViewModels
 
         [Display(Name = "Публікувати")]
         public bool Publish { get; set; }
+
+        public Photo Photo { get; set; }
+
+        public HttpPostedFileBase PostedPhoto { get; set; }
     }
 }

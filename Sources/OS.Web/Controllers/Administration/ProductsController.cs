@@ -312,17 +312,17 @@ namespace OS.Web.Controllers.Administration
             {
                 if (postedFile != null)
                 {
-                    ProductPhoto productPhoto = new ProductPhoto
-                        {
+                    ProductPhoto photo = new ProductPhoto
+                    {
                             Data = new byte[postedFile.InputStream.Length],
                             ContentContentType = _contentContentTypesBL.Get(postedFile.ContentType),
                             FileName = postedFile.FileName,
                             IsMain = false
                         };
 
-                    postedFile.InputStream.Read(productPhoto.Data, 0, productPhoto.Data.Length);
+                    postedFile.InputStream.Read(photo.Data, 0, photo.Data.Length);
 
-                    target.Photos.Add(productPhoto);
+                    target.Photos.Add(photo);
                 }
             }
         }

@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Headers;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using OS.Business.Domain;
@@ -11,12 +10,12 @@ namespace OS.Web.Controllers
     public class FilesController : Controller
     {
         private readonly FilesBL _filesBl;
-        private readonly ProductPhotosBL _productPhotosBL;
+        private readonly PhotosBL _photosBL;
 
-        public FilesController(FilesBL filesBL, ProductPhotosBL productPhotosBL)
+        public FilesController(FilesBL filesBL, PhotosBL photosBL)
         {
             _filesBl = filesBL;
-            _productPhotosBL = productPhotosBL;
+            _photosBL = photosBL;
         }
 
         [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "id")]
@@ -27,13 +26,13 @@ namespace OS.Web.Controllers
             return new FileContentResult(file.Data, file.ContentContentType.ToString());
         }
 
-        [Route("productphotos/{id}")]
+        [Route("photos/{id}")]
         [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "id")]
         public FileResult GetWhaterMarkedPhoto(int id)
         {
-            ProductPhoto productPhoto = _productPhotosBL.GetById(id, Request.Url.Host);
+            Photo photo = _photosBL.GetById(id, Request.Url.Host);
 
-            return new FileContentResult(productPhoto.WaterMarked.Data, MimeMapping.GetMimeMapping(productPhoto.FileName));
+            return new FileContentResult(photo.WaterMarked.Data, MimeMapping.GetMimeMapping(photo.FileName));
         }
     }
 }

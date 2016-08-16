@@ -3,7 +3,7 @@ using OS.DAL.Abstract;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class OrderStatusHistoryItemsRepository : OnlineStoreCrudRepository<OrderStatusHistoryItem>, IOrderStatusHistoryItemsRepository
+    public class OrderStatusHistoryItemsRepository : OnlineStoreCRUDRepository<OrderStatusHistoryItem>, IOrderStatusHistoryItemsRepository
     {
         public OrderStatusHistoryItemsRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {

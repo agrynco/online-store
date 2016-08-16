@@ -2,11 +2,9 @@
 @model Product
 
 @{
-
-
     string productImageSrc = "http://placehold.it/400x250/000/fff";
 
-    ProductPhoto mainPhoto = Model.Photos.SingleOrDefault(x => x.IsMain);
+    Photo mainPhoto = Model.Photos.SingleOrDefault(x => x.IsMain);
 
     mainPhoto = mainPhoto ?? Model.Photos.FirstOrDefault();
 
