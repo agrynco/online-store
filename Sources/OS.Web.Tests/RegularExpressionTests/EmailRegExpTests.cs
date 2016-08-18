@@ -13,7 +13,7 @@ namespace OS.Web.Tests.RegularExpressionTests
             Regex regex = new Regex(Constants.RegularExpressions.EMAIL);
 
             //Act
-            
+
 
             //Asserts
             Assert.That(regex.Match("abcdefghixyz@example1.com").Success);
@@ -22,7 +22,7 @@ namespace OS.Web.Tests.RegularExpressionTests
             Assert.That(regex.Match("very.common@example.com").Success);
             Assert.That(regex.Match("disposable.style.email.with+symbol@example.com").Success);
             Assert.That(regex.Match("other.email-with-dash@example.com").Success);
-            
+
             Assert.That(regex.Match("jsmith@example.org").Success);
             Assert.That(regex.Match("jsmith@[192.168.2.1]").Success);
         }
