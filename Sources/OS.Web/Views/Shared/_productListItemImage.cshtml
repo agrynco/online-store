@@ -10,10 +10,7 @@
 
     if (mainPhoto != null)
     {
-        productImageSrc = Url.Action("GetWhaterMarkedPhoto", "Files", new
-            {
-                id = mainPhoto.Id
-            });
+        productImageSrc = $"/api/photos/{mainPhoto.Id}/whatermarked";
     }
 }
 

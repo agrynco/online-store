@@ -8,7 +8,7 @@ using OS.Business.Logic;
 
 namespace OS.Web.Controllers.Api
 {
-    [RoutePrefix("api/productphotos")]
+    [RoutePrefix("api/photos")]
     public class PhotosController : ApiController
     {
         private readonly PhotosBL _photosBL;
@@ -18,17 +18,21 @@ namespace OS.Web.Controllers.Api
             _photosBL = photosBL;
         }
 
-        [Route("{id}")]
+        [Route("{id}/whatermarked")]
         public HttpResponseMessage GetWaterMarkedPhoto(int id)
         {
-            Photo photo = _photosBL.GetById(id);
-            HttpResponseMessage responseMessage = new HttpResponseMessage(HttpStatusCode.OK)
-                {
-                    Content = new ByteArrayContent(photo.WaterMarked.Data)
-                };
-            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(photo.FileName));
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.NotFound);
 
-            return responseMessage;
+            Photo photo = _photosBL.GetById(id);
+
+            if (photo != null)
+            {
+                result.StatusCode = HttpStatusCode.OK;
+                result.Content = new ByteArrayContent(photo.WaterMarked.Data);
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(photo.FileName));
+            }
+
+            return result;
         }
     }
 }
