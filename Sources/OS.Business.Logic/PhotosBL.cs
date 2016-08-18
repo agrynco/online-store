@@ -72,6 +72,12 @@ namespace OS.Business.Logic
             }
 
             Photo photo = _photosRepository.GetById(id);
+
+            if (photo == null)
+            {
+                return null;
+            }
+
             if (photo.WaterMarked == null)
             {
                 photo = ApplyWaterMark(photo, waterMarkText);

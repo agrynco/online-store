@@ -25,10 +25,11 @@
                         </div>
                     </div>
 
-                    <img src="@Url.Action("GetFileContent", "Files", new
-                                  {
-                                      id = Model.ProductPhotoViewModels[i].Id
-                                  })" width="160px" height="100px"/>
+                    @{
+                        string imageSrc = $"/api/photos/{Model.ProductPhotoViewModels[i].Id}/whatermarked";
+                    }
+
+                    <img src='@imageSrc' width="160px" height="100px"/>
 
                 </div>
             </div>

@@ -6,10 +6,7 @@
 
     if (Model.Id != -1)
     {
-        imageSrc = Url.Action("GetWhaterMarkedPhoto", "Files", new
-            {
-                id = Model.Id
-            });
+        imageSrc = $"/api/photos/{Model.Id}/whatermarked";
     }
 }
 
