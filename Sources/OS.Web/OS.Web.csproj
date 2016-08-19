@@ -1809,9 +1809,7 @@
     <Content Include="Scripts\tinymce\tests\.jshintrc" />
     <Content Include="Scripts\tinymce\tests\js\qunit\QUnit.LICENSE" />
     <Content Include="Scripts\tinymce\tools\antlib\ant-contrib.zip" />
-    <Content Include="Views\Shared\EditorTemplates\_productPhotos.cshtml" />
     <Content Include="Views\Products\_productItem.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Shared\_consumerBasket.cshtml" />
     <Content Include="Views\ConsumerBasket\Index.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
