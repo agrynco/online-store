@@ -4,12 +4,10 @@ namespace OS.Business.Logic
 {
     public class ProductPhotosBL
     {
-        private readonly PhotosBL _photosBL;
         private readonly IProductPhotosRepository _productPhotosRepository;
 
-        public ProductPhotosBL(PhotosBL photosBL, IProductPhotosRepository productPhotosRepository)
+        public ProductPhotosBL(IProductPhotosRepository productPhotosRepository)
         {
-            _photosBL = photosBL;
             _productPhotosRepository = productPhotosRepository;
         }
 
