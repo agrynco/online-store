@@ -60,26 +60,15 @@
 }}
 
 
-@{
-    Photo mainPhoto = Model.Product.Photos.SingleOrDefault(x => x.IsMain);
 
-    mainPhoto = mainPhoto != null ? mainPhoto : Model.Product.Photos.FirstOrDefault();
-}
-
-<div class="row">
-    <div class="col-md-4">
-        @if (mainPhoto != null)
-        {
-            <img height="171" width="180" src="/api/photos/@mainPhoto.Id/whatermarked"/>
-        }
-    </div>
-    <div class="col-md-8">
+<div class="row" style="padding-left: 20px;">
+    <div class="col-md-12">
         <div class="row" style="padding-bottom: 10px; vertical-align: middle">
             <span class="product-code-block">
                 <span class="product-code-lable">Код товару: </span><span class="product-code" style="vertical-align: middle">@Model.Product.Code</span>
             </span>
         </div>
-        <div class="row">
+        <div class="row" style="padding-bottom: 10px;">
             @Html.Raw(Model.Product.Description)
         </div>
     </div>
@@ -90,7 +79,7 @@
     string returnUrl = Request.UrlReferrer != null ? Request.UrlReferrer.LocalPath : Url.Action("Index", "Home");
 }
 
-<div class="row">
+<div id="product-details" class="row">
     <div class="col-md-offset-4 col-md-1">
         @string.Format("{0}{1}", Model.Product.PriceInTheMainCurrency, ApplicationContext.MainCurrency.Symbol)
     </div>
