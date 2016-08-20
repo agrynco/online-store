@@ -145,6 +145,7 @@
     <Content Include="Migrations\0-36.sql" />
     <Content Include="Migrations\0-35.sql" />
     <Content Include="Migrations\0-34.sql" />
+    <Content Include="Migrations\0-61.sql" />
     <Content Include="Migrations\0-60.sql" />
     <Content Include="Migrations\0-59.sql" />
     <Content Include="Migrations\0-58.sql" />
