@@ -23,7 +23,7 @@ namespace OS.Web.Controllers.Api
         {
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.NotFound);
 
-            Photo photo = _photosBL.GetById(id);
+            Photo photo = _photosBL.GetById(id, Request.RequestUri.Host);
 
             if (photo != null)
             {
