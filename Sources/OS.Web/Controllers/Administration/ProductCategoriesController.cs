@@ -27,7 +27,6 @@ namespace OS.Web.Controllers.Administration
 
             int? parentCategoryId = (int?) parentCategoryIdObject ?? parentId;
 
-
             List<ProductCategory> parentCategories = new List<ProductCategory>();
             if (parentCategoryId.HasValue)
             {

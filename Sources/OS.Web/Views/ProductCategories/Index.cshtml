@@ -5,6 +5,26 @@
     Layout = "~/Views/Shared/_adminListLayout.cshtml";
 }
 
+@section substituteBreadcrumbs
+{
+    <ol class="breadcrumb">
+        @for (int i = 0; i < Model.BreadCrumbItems.Count - 1; i++)
+        {
+            <li>
+                @Html.ActionLink(Model.BreadCrumbItems[i].Name, "Index", "ProductCategories", new
+                    {
+                        parentId = Model.BreadCrumbItems[i].Id
+                    })
+            </li>
+        }
+        @if (@Model.BreadCrumbItems.Any())
+        {
+            <li>
+                @Model.BreadCrumbItems.Last().Name
+            </li>
+        }
+    </ol>
+}
 
 @section createToolBarItem
 {
