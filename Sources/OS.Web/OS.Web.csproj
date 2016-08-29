@@ -1905,7 +1905,7 @@
     <Content Include="Views\Home\_productCategoryArticle.cshtml" />
     <Content Include="Views\Home\_productCategoryItem.cshtml" />
     <Content Include="Views\Shared\_photo.cshtml" />
-    <None Include="Views\RobotsTxt\Edit.cshtml" />
+    <Content Include="Views\RobotsTxt\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
