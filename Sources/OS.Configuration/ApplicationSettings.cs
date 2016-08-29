@@ -40,6 +40,11 @@ namespace OS.Configuration
             {
                 get { return SettingsManager.Instance.GetAppSetting<ApplicationEnvironment>("ApplicationEnvironment"); }
             }
+
+            public string SeqUrl
+            {
+                get { return SettingsManager.Instance.GetAppSetting("SeqUrl", "http://127.0.0.1:5341"); }
+            }
         }
 
         public class MailServiceSettingsContainer : BaseClass
