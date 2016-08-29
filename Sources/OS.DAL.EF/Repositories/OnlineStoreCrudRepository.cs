@@ -6,11 +6,11 @@ using OS.DAL.EF.Core;
 
 namespace OS.DAL.EF.Repositories
 {
-    public class OnlineStoreCrudRepository<TEntity, TEntityId> : BaseCRUDRepository<EntityFrameworkDbContext, TEntity, TEntityId>,
+    public class OnlineStoreCRUDRepository<TEntity, TEntityId> : BaseCRUDRepository<EntityFrameworkDbContext, TEntity, TEntityId>,
         IOnlineStoreCRUDRepository<TEntity, TEntityId>
         where TEntity : class, IEntity<TEntityId>
     {
-        public OnlineStoreCrudRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
+        public OnlineStoreCRUDRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)
         {
         }
 
@@ -53,7 +53,7 @@ namespace OS.DAL.EF.Repositories
         }
     }
 
-    public class OnlineStoreCRUDRepository<TEntity> : OnlineStoreCrudRepository<TEntity, int>
+    public class OnlineStoreCRUDRepository<TEntity> : OnlineStoreCRUDRepository<TEntity, int>
         where TEntity : Entity<int>
     {
         public OnlineStoreCRUDRepository(EntityFrameworkDbContext entityFrameworkDbContext) : base(entityFrameworkDbContext)

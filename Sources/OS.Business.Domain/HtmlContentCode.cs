@@ -4,7 +4,6 @@
     {
         About = 1,
         Contacts,
-        Delivery,
-        ProductCategoryDescription
+        Delivery
     }
 }

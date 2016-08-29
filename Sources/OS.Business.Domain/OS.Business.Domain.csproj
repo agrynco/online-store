@@ -91,6 +91,8 @@
     <Compile Include="Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProductViewingInfo.cs" />
+    <Compile Include="TextContent.cs" />
+    <Compile Include="TextContentCode.cs" />
     <Compile Include="UserHostAddress.cs" />
   </ItemGroup>
   <ItemGroup>
