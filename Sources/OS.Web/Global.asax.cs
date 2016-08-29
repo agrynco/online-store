@@ -5,7 +5,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using OS.Configuration;
 using OS.Web.Controllers;
+using Serilog;
 #endregion
 
 namespace OS.Web
@@ -14,6 +16,14 @@ namespace OS.Web
     {
         protected void Application_Start()
         {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.WithProperty("ApplicationName", ApplicationSettings.Instance.AppSettings.ApplicationName)
+                .Enrich.WithMachineName()
+                .Enrich.WithProcessId()
+                .Enrich.WithThreadId()
+                .WriteTo.Seq(ApplicationSettings.Instance.AppSettings.SeqUrl)
+                .CreateLogger();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -23,6 +33,17 @@ namespace OS.Web
 
         protected void Application_Error(object sender, EventArgs e)
         {
+            Exception exception = Server.GetLastError();
+            if (exception is HttpUnhandledException)
+            {
+                exception = exception.InnerException;
+            }
+
+            // log exception message using   
+            if (exception != null)
+            {
+                Log.Error($"exception.Message @{exception}");
+            }
         }
 
         protected void Application_EndRequest()
