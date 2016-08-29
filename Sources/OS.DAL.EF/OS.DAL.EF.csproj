@@ -80,6 +80,7 @@
     <Compile Include="Repositories\PhotosRepository.cs" />
     <Compile Include="Repositories\ProductMetaDataRepository.cs" />
     <Compile Include="Repositories\ProductViewingInfosRepository.cs" />
+    <Compile Include="Repositories\TextContentsRepository.cs" />
     <Compile Include="Repositories\UserHostAddressesRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="Repositories\OnlineStoreCrudRepository.cs" />
@@ -145,6 +146,7 @@
     <Content Include="Migrations\0-36.sql" />
     <Content Include="Migrations\0-35.sql" />
     <Content Include="Migrations\0-34.sql" />
+    <Content Include="Migrations\0-62.sql" />
     <Content Include="Migrations\0-61.sql" />
     <Content Include="Migrations\0-60.sql" />
     <Content Include="Migrations\0-59.sql" />

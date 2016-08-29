@@ -1,5 +1,5 @@
-﻿@using OS.Web.Models.HtmlContentViewModels
-@model HtmlContentCreateOrEditViewModel
+﻿@using OS.Web.Models
+@model RobotsTxtCreateOrEditViewModel
 
 @{
     Layout = "~/Views/Shared/_adminEditLayout.cshtml";
@@ -24,15 +24,14 @@
                         </text>
                     }
                 </h4>
-                <hr/>
-                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 @Html.HiddenFor(m => m.Id)
-                @Html.HiddenFor(m => m.Code)
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.TextAreaFor(m => m.Text, new {@class = "form-control"})
-                        @Html.ValidationMessageFor(m => m.Text, "", new {@class = "text-danger"})
+                        @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </section>
@@ -42,9 +41,4 @@
 
 @section scripts
 {
-    @Scripts.Render(Constants.Bundles.TINY_MCE)
-
-    <script type="text/javascript">
-        initTinyMCE("#@Html.IdFor(m => m.Text)");
-    </script>
 }

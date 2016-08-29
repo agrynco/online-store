@@ -94,6 +94,7 @@
     <Compile Include="PagedProductListResult.cs" />
     <Compile Include="PhotosBL.cs" />
     <Compile Include="ProductCategoryReorderInfo2Category.cs" />
+    <Compile Include="TextContentsBL.cs" />
     <Compile Include="UsersBL.cs" />
     <Compile Include="BrandsBL.cs" />
     <Compile Include="ContentContentTypesBL.cs" />

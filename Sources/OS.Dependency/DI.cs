@@ -98,6 +98,9 @@ namespace OS.Dependency
             Register<ICurrenciesRepository, CurrenciesRepository>();
             Register<CurrenciesBL>();
 
+            Register<ITextContentsRepository, TextContentsRepository>();
+            Register<TextContentsBL>();
+
             Register<ICurrencyRatesRepository, CurrencyRatesRepository>();
 
             _container.Register<IMailService>(() => new MailService(
