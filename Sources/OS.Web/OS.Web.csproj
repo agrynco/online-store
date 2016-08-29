@@ -240,10 +240,12 @@
     <Compile Include="Controllers\Administration\CurrenciesController.cs" />
     <Compile Include="Controllers\Administration\CurrencyRatesController.cs" />
     <Compile Include="Controllers\Administration\StatisticsController.cs" />
+    <Compile Include="Controllers\Administration\RobotsTxtController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\CurrenciesController.cs" />
     <Compile Include="Controllers\Api\CurrencyRatesController.cs" />
     <Compile Include="Controllers\Api\PhotosController.cs" />
+    <Compile Include="Controllers\Api\RobotsController.cs" />
     <Compile Include="Controllers\Api\StatisticsController.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Models\CurrencyRateViewModels\CurrencyRateCreateOrEditViewModel.cs" />
@@ -252,6 +254,7 @@
     <Compile Include="Models\PhotoViewModel.cs" />
     <Compile Include="Models\ProductCategoryArticleEditViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductMetadataViewModel.cs" />
+    <Compile Include="Models\RobotsTxtCreateOrEditViewModel.cs" />
     <Compile Include="Models\Statistics\ProductViewFreqencyViewModel.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsNodeProvider.cs" />
     <Compile Include="SiteMapNodeProviders\HtmlContentNodeProviders\HtmlContactsEditNodeProvider.cs" />
@@ -1903,6 +1906,7 @@
     <Content Include="Views\Home\_productCategoryArticle.cshtml" />
     <Content Include="Views\Home\_productCategoryItem.cshtml" />
     <Content Include="Views\Shared\_photo.cshtml" />
+    <None Include="Views\RobotsTxt\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

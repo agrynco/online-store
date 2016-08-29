@@ -71,6 +71,7 @@
     <Compile Include="IPhotosRepository.cs" />
     <Compile Include="IProductMetaDataRepository.cs" />
     <Compile Include="IProductViewingInfosRepository.cs" />
+    <Compile Include="ITextContentsRepository.cs" />
     <Compile Include="IUserHostAddressesRepository.cs" />
     <Compile Include="IUsersRepository.cs" />
     <Compile Include="IBrandsRepository.cs" />
