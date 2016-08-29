@@ -48,8 +48,10 @@ namespace OS.Web.Controllers.Administration
                 {
                     textContent = new TextContent();
                     AssignModelToEntity(model, textContent);
-                    _textContentsBL.Add(textContent);
+                    textContent = _textContentsBL.Add(textContent);
                 }
+
+                model.Id = textContent.Id;
             }
 
             return View("Edit", model);
