@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using OS.Configuration;
-using OS.Web.Controllers;
 using Serilog;
 #endregion
 
@@ -18,6 +17,7 @@ namespace OS.Web
         {
             Log.Logger = new LoggerConfiguration()
                 .Enrich.WithProperty("ApplicationName", ApplicationSettings.Instance.AppSettings.ApplicationName)
+                .Enrich.WithProperty("Environment", ApplicationSettings.Instance.AppSettings.Environment)
                 .Enrich.WithMachineName()
                 .Enrich.WithProcessId()
                 .Enrich.WithThreadId()
@@ -42,7 +42,7 @@ namespace OS.Web
             // log exception message using   
             if (exception != null)
             {
-                Log.Error($"exception.Message @{exception}");
+                Log.Error($"exception.Message @{exception}", exception);
             }
         }
 
