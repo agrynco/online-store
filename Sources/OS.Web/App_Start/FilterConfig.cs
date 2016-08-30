@@ -1,19 +1,30 @@
 ﻿using System.Web.Mvc;
-using Elmah;
+using Serilog;
 
 namespace OS.Web
 {
-    public class ElmahHandleErrorAttribute : HandleErrorAttribute
+    public class OnlineStoreHandleErrorAttribute : HandleErrorAttribute
     {
         public override void OnException(ExceptionContext filterContext)
         {
-            var exceptionHandled = filterContext.ExceptionHandled;
+            bool exceptionHandled = filterContext.ExceptionHandled;
 
             base.OnException(filterContext);
+            if (!exceptionHandled)
+            {
+                var controllerName = (string) filterContext.RouteData.Values["controller"];
+                var actionName = (string) filterContext.RouteData.Values["action"];
+                //var model = new HandleErrorInfo(filterContext.Exception, controllerName, actionName);
 
-            // signal ELMAH to log the exception
-            if (!exceptionHandled && filterContext.ExceptionHandled)
-                ErrorSignal.FromCurrentContext().Raise(filterContext.Exception);
+                Log.Error("{@ExceptionDetails}", new
+                    {
+                        Controller = controllerName,
+                        Action = actionName,
+                        ExceptionMessage = filterContext.Exception.Message,
+                        filterContext.Exception.StackTrace,
+                        filterContext.Exception.Source
+                    });
+            }
         }
     }
 
@@ -21,7 +32,7 @@ namespace OS.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new ElmahHandleErrorAttribute());
+            filters.Add(new OnlineStoreHandleErrorAttribute());
         }
     }
 }
