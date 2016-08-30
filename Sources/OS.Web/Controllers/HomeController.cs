@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using OS.Business.Domain;
@@ -123,7 +122,6 @@ namespace OS.Web.Controllers
         [Route("categories/{categoryId:int}/products/{productId:int}")]
         public ActionResult Details(int productId, int categoryId)
         {
-            throw new NotImplementedException();
             ViewData["category"] = categoryId;
             ProductDetailsViewModel viewModel = new ProductDetailsViewModel
                 {
