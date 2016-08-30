@@ -1,12 +1,12 @@
 ﻿@model string
 
 @{
-    Layout = "_errorLayout.cshtml";
+    Layout = "~/Views/Shared/_errorLayout.cshtml";
 }
 
 <div class="alert alert-warning" style="margin-top: 20px;">
         <h1 style="color: #d9534f">
-            Помилка сервера
+            Сторінку не знайдено
         </h1>
     <p>
         Сторінка @Request.Params["aspxerrorpath"] не знайдена

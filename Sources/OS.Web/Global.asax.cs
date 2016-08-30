@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using OS.Configuration;
 using Serilog;
+using Serilog.Exceptions;
 #endregion
 
 namespace OS.Web
@@ -21,6 +22,7 @@ namespace OS.Web
                 .Enrich.WithMachineName()
                 .Enrich.WithProcessId()
                 .Enrich.WithThreadId()
+                //.Enrich.WithExceptionDetails()
                 .WriteTo.Seq(ApplicationSettings.Instance.AppSettings.SeqUrl)
                 .CreateLogger();
 
@@ -32,18 +34,7 @@ namespace OS.Web
         }
 
         protected void Application_Error(object sender, EventArgs e)
-        {
-            Exception exception = Server.GetLastError();
-            if (exception is HttpUnhandledException)
-            {
-                exception = exception.InnerException;
-            }
-
-            // log exception message using   
-            if (exception != null)
-            {
-                Log.Error($"exception.Message @{exception}", exception);
-            }
+        { 
         }
 
         protected void Application_EndRequest()
@@ -54,10 +45,10 @@ namespace OS.Web
 
             //    var routeData = new RouteData();
             //    //rd.DataTokens["area"] = "AreaName"; // In case controller is in another area
-            //    routeData.Values["controller"] = "NotFoundController";
+            //    routeData.Values["controller"] = "ErrorsController";
             //    routeData.Values["action"] = "Index";
 
-            //    IController controller = new NotFoundController();
+            //    IController controller = new ErrorsController();
             //    controller.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
             //}
         }

@@ -1,0 +1,29 @@
+﻿@model HandleErrorInfo
+
+@{
+    Layout = "~/Views/Shared/_errorLayout.cshtml";
+}
+
+
+<div class="alert alert-warning" style="margin-top: 20px;">
+
+    <h1 style="color: #d9534f">
+        Помилка сервера
+    </h1>
+
+    <div class="alert alert-error">
+        Неочікувана помилка. Будь-ласка повідомте адміністратора системи.
+    </div>
+    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+    {
+        <p>
+            <b>Exception:</b> @Model.Exception.Message<br />
+            <b>Controller:</b> @Model.ControllerName<br />
+            <b>Action:</b> @Model.ActionName
+        </p>
+
+        <pre>
+            @Model.Exception.StackTrace
+        </pre>
+    }
+</div>
