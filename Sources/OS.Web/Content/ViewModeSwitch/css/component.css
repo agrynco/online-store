@@ -163,7 +163,6 @@
 	font-size: 1.5em;
 }
 
-
 /* List view */
 .cbp-vm-view-list li {
 	padding: 20px 0;
@@ -204,6 +203,10 @@
 
 .cbp-vm-view-list .cbp-vm-add {
 	margin: 0;
+}
+
+.thumbnail .cbp-vm-title {
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 66.7em) {
