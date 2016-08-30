@@ -4,7 +4,7 @@ using OS.Web;
 using Owin;
 #endregion
 
-[assembly: OwinStartup(typeof (Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace OS.Web
 {
