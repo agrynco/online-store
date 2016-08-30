@@ -56,14 +56,6 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +107,10 @@
     </Reference>
     <Reference Include="Serilog.Enrichers.Thread, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.Enrichers.Thread.2.0.0\lib\net45\Serilog.Enrichers.Thread.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.Exceptions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=fc5550082a9c642c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Exceptions.2.0.0\lib\net45\Serilog.Exceptions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Serilog.Formatting.Compact, Version=1.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
@@ -361,7 +357,7 @@
     <Compile Include="Controllers\ConsumerBasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HtmlContentsController.cs" />
-    <Compile Include="Controllers\NotFoundController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -404,7 +400,6 @@
     <Compile Include="Models\ProductViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductsViewModel.cs" />
     <Compile Include="Models\SystemInfoViewModel.cs" />
-    <Compile Include="OsSqlErrorLog.cs" />
     <Compile Include="SiteMapNodeProviders\ProductDetailsNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="HtmlTemplates\paginationTemplate.html" />
@@ -1927,7 +1922,7 @@
     <Content Include="Views\MailTemplates\OrderDetails.cshtml" />
     <Content Include="Views\Shared\_errorLayout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\HtmlContents\Edit.cshtml" />
     <Content Include="Views\HtmlContents\Index.cshtml" />
     <Content Include="Views\Shared\_commonMenuItems.cshtml" />
@@ -1960,6 +1955,9 @@
     <Content Include="Views\Home\_productCategoryItem.cshtml" />
     <Content Include="Views\Shared\_photo.cshtml" />
     <Content Include="Views\RobotsTxt\Edit.cshtml" />
+    <Content Include="Views\Shared\_photo - Copy.cshtml" />
+    <Content Include="Views\Shared\_publicTopSection.cshtml" />
+    <Content Include="Views\Errors\ServerError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

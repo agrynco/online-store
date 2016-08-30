@@ -1,0 +1,13 @@
+﻿@using OS.Business.Domain
+@model Photo
+    
+@{
+    string imageSrc = "http://placehold.it/400x250/000/fff";
+
+    if (Model.Id != -1)
+    {
+        imageSrc = $"/api/photos/{Model.Id}/whatermarked";
+    }
+}
+
+<img class="cbp-vm-image" src="@imageSrc" alt="" />
