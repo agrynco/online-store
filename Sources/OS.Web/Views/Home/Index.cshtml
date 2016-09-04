@@ -43,9 +43,20 @@
 
 @if (Model.Products.Any() || Model.ChildCategories.Any())
 {
+    <div class="list-group">
+        <div id="cbp-vm" class="cbp-vm-switcher">
+            <ul>
+                @foreach (ProductCategory productCategory in Model.ChildCategories)
+                {
+                    @Html.Partial("_productCategoryItem", productCategory)
+                }
+            </ul>
+        </div>
+    </div>
+
+
     <div id="products" class="hidden">
         @Html.Partial("_pager", Model.PaginationFilterViewModel)
-
         <div class="list-group">
             <div id="cbp-vm" class="cbp-vm-switcher">
                 <div class="cbp-vm-options">
@@ -53,11 +64,6 @@
                     <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
                 </div>
                 <ul>
-                    @foreach (ProductCategory productCategory in Model.ChildCategories)
-                    {
-                        @Html.Partial("_productCategoryItem", productCategory)
-                    }
-
                     @foreach (Product product in Model.Products)
                     {
                         @Html.Partial("_productItem", product)
@@ -84,3 +90,4 @@
         $("#tbSearchProducts").val("@Model.PaginationFilterViewModel.SearchTerm")
     </script>
 }
+

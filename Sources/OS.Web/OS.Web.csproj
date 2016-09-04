@@ -425,6 +425,7 @@
     <Content Include="Content\ViewModeSwitch\js\cbpViewModeSwitch.js" />
     <Content Include="Content\ViewModeSwitch\js\classie.js" />
     <Content Include="Content\ViewModeSwitch\js\modernizr.custom.js" />
+    <Content Include="Images\category-no-picture.png" />
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\application\Currencies\currenciesListController.js" />
     <Content Include="Scripts\application\CurrencyRates\currencRatesListController.js" />

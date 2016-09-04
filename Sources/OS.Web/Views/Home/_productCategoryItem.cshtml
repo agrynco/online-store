@@ -1,17 +1,23 @@
 ﻿@using OS.Business.Domain
 @model ProductCategory
 
-<li class="thumbnail category">
+<li class="thumbnail category" style="width: 240px !important;">
     <a href="@Url.Action("Index", "Home", new
                  {
                      parentCategoryId = Model.Id
                  })">
 
-        @Html.Partial("_photo", Model.Photo ?? new Photo {Id = -1})
+        @{
+            string imageSrc = "/Images/category-no-picture.png";
 
-        <h3 class="cbp-vm-title">@Model.Name</h3>
-        <div class="cbp-vm-details">
-            @Model.Description
-        </div>
+            if (Model.Photo != null)
+            {
+                imageSrc = $"/api/photos/{Model.Photo.Id}/whatermarked";
+            }
+        }
+
+        <img class="cbp-vm-image" src="@imageSrc" alt=""/>
+
+        <h1 class="cbp-vm-title">@Model.Name</h1>
     </a>
 </li>
