@@ -21,7 +21,7 @@ namespace OS.Business.Logic
 
         public List<ProductCategory> GetCategories(int? parentId)
         {
-            return _productCategoriesRepository.GetCategories(parentId).Where(category => !category.IsDeleted).OrderBy(x => x.Name).ToList();
+            return _productCategoriesRepository.GetCategories(parentId).Where(category => !category.IsDeleted).OrderBy(x => x.Order).ToList();
         }
 
         public List<ProductCategory> SearchCategories(string searchTerm)
@@ -46,11 +46,11 @@ namespace OS.Business.Logic
 
         public PagedProductCategoryListResult SearchByFilter(ProductCategoriesFilter filter)
         {
-            IQueryable<ProductCategory> query = _productCategoriesRepository.SearchByFilter(filter).OrderBy(entity => entity.Name);
+            IQueryable<ProductCategory> query = _productCategoriesRepository.SearchByFilter(filter).OrderBy(entity => entity.Order);
 
             PagedProductCategoryListResult result = new PagedProductCategoryListResult();
             result.TotalRecords = query.Count();
-            result.Entities.AddRange(query.OrderBy(category => category.Order).Skip((filter.PaginationFilter.PageNumber - 1)* filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
+            result.Entities.AddRange(query.Skip((filter.PaginationFilter.PageNumber - 1) * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
 
             return result;
         }
