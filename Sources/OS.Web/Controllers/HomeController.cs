@@ -108,7 +108,12 @@ namespace OS.Web.Controllers
                 viewModel.ParentCategories = _productCategoriesBL.GetParentCategories(parentCategoryId.Value);
                 viewModel.SelectedCategory = _productCategoriesBL.GetById(parentCategoryId.Value);
                 viewModel.ParentCategories.Add(viewModel.SelectedCategory);
-                viewModel.ChildCategories = _productCategoriesBL.GetCategories(parentCategoryId);
+                viewModel.ChildCategories = _productCategoriesBL.SearchByFilter(new ProductCategoriesFilter
+                {
+                    ParentId = parentCategoryId,
+                    IncludeDeleted = false,
+                    Publish = true
+                }).Entities;
             }
             else
             {
