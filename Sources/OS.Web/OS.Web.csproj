@@ -1959,6 +1959,7 @@
     <Content Include="Views\Shared\_photo - Copy.cshtml" />
     <Content Include="Views\Shared\_publicTopSection.cshtml" />
     <Content Include="Views\Errors\ServerError.cshtml" />
+    <Content Include="Views\Products\_pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
