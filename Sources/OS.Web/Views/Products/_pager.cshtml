@@ -1,0 +1,23 @@
+﻿@using OS.Web.Models.ProductViewModels
+@model ProductsFilterViewModel
+
+<div style="margin-left: 15px;">
+
+    @functions
+    {
+        private RouteValueDictionary buildRouteValueDictionary(int pageNumber)
+        {
+            RouteValueDictionary result = new RouteValueDictionary();
+            result.Add(Html.NameFor(x => Model.PageNumber).ToString(), pageNumber);
+            result.Add(Html.NameFor(x => Model.Category.Id).ToString(), Model.Category.Id);
+            result.Add(Html.NameFor(x => Model.Category.Name).ToString(), Model.Category.Name);
+
+            return result;
+        }
+
+    }
+
+    @Html.Pager(Model, i => Html.ActionLink(i.ToString(), "Index", buildRouteValueDictionary(i)),
+        Model.PageNumber > 1 ? () => Html.ActionLink("«", "Index", buildRouteValueDictionary(Model.PageNumber - 1)) : (Func<MvcHtmlString>) null,
+        Model.PageNumber < Model.GetPagesCount() ? () => Html.ActionLink("»", "Index", buildRouteValueDictionary(Model.PageNumber + 1)) : (Func<MvcHtmlString>) null)
+</div>

@@ -22,23 +22,35 @@
 
 @section list
 {
+    @*@{
+        string currentControllerName = (string) ViewContext.RouteData.Values[Constants.RouteDataKeys.CONTROLLER];
+    }
+
+    @using (Html.BeginForm("Index", currentControllerName, FormMethod.Get))
+    {
+        
+    }*@
+
+
     @if (Model.Products.Count > 0)
     {
+        @Html.Partial("_pager", Model.Filter)
+
         <div id="products" class="row list-group">
             @foreach (ProductListItemViewModel product in Model.Products)
             {
                 @Html.Partial("_productItem", product)
-
             }
         </div>
+
+        @Html.Partial("_pager", Model.Filter)
     }
     else
     {
         <div class="alert alert-info">
             Ця категорія не містить категорій
         </div>
-    }
-
+        }
 }
 
 @section scripts
