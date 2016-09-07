@@ -5,6 +5,7 @@ using MvcSiteMapProvider.Web.Mvc.Filters;
 using OS.Business.Domain;
 using OS.Business.Logic;
 using OS.Business.Logic.Exceptions;
+using OS.Configuration;
 using OS.Web.Models.ProductViewModels;
 
 namespace OS.Web.Controllers.Administration
@@ -40,6 +41,8 @@ namespace OS.Web.Controllers.Administration
                 filter = (ProductsFilterViewModel) TempData[Constants.TempDataKeys.PRODUCTS_FILTER_VIEW_MODEL];
             }
 
+            filter.PageSize = ApplicationSettings.Instance.AppSettings.DefaultPageSize;
+
             ProductsViewModel model = new ProductsViewModel
                 {
                     Filter = filter
@@ -61,6 +64,7 @@ namespace OS.Web.Controllers.Administration
                 productsFilter.PaginationFilter.PageSize = filter.PageSize;
 
                 PagedProductListResult pagedProductListResult = _productsBL.Get(productsFilter);
+                model.Filter.TotalRecords = pagedProductListResult.TotalRecords;
 
                 model.Products = pagedProductListResult.Entities.Select(entity => new ProductListItemViewModel
                     {
