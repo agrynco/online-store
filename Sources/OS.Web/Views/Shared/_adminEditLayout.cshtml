@@ -21,7 +21,7 @@
             enctype = "multipart/form-data"
         }))
     {
-        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => Model.Id)
 
         @RenderSection("editor")
 
