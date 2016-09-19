@@ -103,6 +103,7 @@ namespace OS.Web.Controllers
                     SearchTerm = searchTerm,
                     ParentCategoryId = parentCategoryId
                 };
+
             if (parentCategoryId.HasValue)
             {
                 viewModel.ParentCategories = _productCategoriesBL.GetParentCategories(parentCategoryId.Value);
