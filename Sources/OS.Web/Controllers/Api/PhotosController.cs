@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using OS.Business.Domain;
 using OS.Business.Logic;
+using OS.Configuration;
 
 namespace OS.Web.Controllers.Api
 {
@@ -28,7 +29,12 @@ namespace OS.Web.Controllers.Api
             if (photo != null)
             {
                 result.StatusCode = HttpStatusCode.OK;
-                result.Content = new ByteArrayContent(photo.WaterMarked.Data);
+
+                result.Content = new ByteArrayContent(
+                    ApplicationSettings.Instance.AppSettings.UseWatermarks
+                        ? photo.WaterMarked.Data
+                        : photo.Data);
+
                 result.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(photo.FileName));
             }
 
