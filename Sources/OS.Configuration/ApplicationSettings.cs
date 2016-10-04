@@ -40,6 +40,11 @@ namespace OS.Configuration
             {
                 get { return SettingsManager.Instance.GetAppSetting<ApplicationEnvironment>("ApplicationEnvironment"); }
             }
+
+            public bool UseWatermarks
+            {
+                get { return SettingsManager.Instance.GetAppSetting("UseWatermarks", true); }
+            }
         }
 
         public class MailServiceSettingsContainer : BaseClass
