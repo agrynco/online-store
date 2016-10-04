@@ -45,6 +45,11 @@ namespace OS.Configuration
             {
                 get { return SettingsManager.Instance.GetAppSetting("SeqUrl", "http://127.0.0.1:5341"); }
             }
+
+            public bool UseWatermarks
+            {
+                get { return SettingsManager.Instance.GetAppSetting("UseWatermarks", true); }
+            }
         }
 
         public class MailServiceSettingsContainer : BaseClass
