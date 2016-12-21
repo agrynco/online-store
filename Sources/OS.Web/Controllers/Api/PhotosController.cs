@@ -36,6 +36,7 @@ namespace OS.Web.Controllers.Api
                         : photo.Data);
 
                 result.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(photo.FileName));
+                result.Content.Headers.Add("Content-Disposition", $"attachment; filename=\"{photo.FileName}\"");
             }
 
             return result;
