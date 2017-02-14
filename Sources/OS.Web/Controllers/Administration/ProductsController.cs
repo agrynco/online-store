@@ -317,7 +317,7 @@ namespace OS.Web.Controllers.Administration
                 if (postedFile != null)
                 {
                     ProductPhoto photo = new ProductPhoto
-                    {
+                        {
                             Data = new byte[postedFile.InputStream.Length],
                             ContentContentType = _contentContentTypesBL.Get(postedFile.ContentType),
                             FileName = postedFile.FileName,

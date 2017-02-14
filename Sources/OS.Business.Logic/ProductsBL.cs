@@ -36,8 +36,11 @@ namespace OS.Business.Logic
         {
             IQueryable<Product> query = _productsRepository.Get(filter).OrderBy(entity => entity.Name);
 
-            PagedProductListResult result = new PagedProductListResult();
-            result.TotalRecords = query.Count();
+            PagedProductListResult result = new PagedProductListResult
+                {
+                    TotalRecords = query.Count()
+                };
+
             result.Entities.AddRange(query.Skip((filter.PaginationFilter.PageNumber - 1) * filter.PaginationFilter.PageSize).Take(filter.PaginationFilter.PageSize));
 
             return result;
