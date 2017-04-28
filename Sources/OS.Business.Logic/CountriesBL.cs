@@ -12,6 +12,7 @@ namespace OS.Business.Logic
 {
     public class CountriesBL
     {
+
         private readonly ICountriesRepository _countriesRepository;
 
         public CountriesBL(ICountriesRepository countriesRepository)
